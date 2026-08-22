@@ -1,0 +1,95 @@
+# ═══════════════════════════════════════════════════════════════════
+#  DATEN FÜR DIE WEBSITE
+#  Hier alles eintragen, dann  python3 setup.py  ausführen.
+#  Format: SCHLUESSEL = Wert     ·     Zeilen mit # sind Kommentare
+#  Kann beliebig oft neu ausgeführt werden – immer aus der Vorlage.
+# ═══════════════════════════════════════════════════════════════════
+
+# ── Person & Ort ───────────────────────────────────────────────────
+VORNAME            = Faruk
+NACHNAME           =
+STADT              =
+NACHBARSTADT_1     =
+NACHBARSTADT_2     =
+BUNDESLAND         =
+
+# Umkreis in km, in dem Faruk zu Kunden fährt
+UMKREIS_KM         = 20
+
+# ── Kontakt ────────────────────────────────────────────────────────
+# Domain OHNE https:// und OHNE www.
+DOMAIN             =
+EMAIL              =
+# Telefonnummer so schreiben, wie sie auf der Seite stehen soll.
+# Die WhatsApp- und Anruf-Links werden daraus automatisch gebaut.
+TELEFON            =
+# Instagram-Name ohne @. Leer lassen, wenn (noch) keins da ist.
+INSTAGRAM          =
+# Im Google-Unternehmensprofil auf "Profil teilen" → Link hier einfügen
+GOOGLE_PROFIL_LINK =
+
+# ── Impressum (Pflichtangaben) ─────────────────────────────────────
+# Muss eine ladungsfähige Anschrift sein, kein Postfach.
+STRASSE            =
+PLZ                =
+# Firmenname nur falls vorhanden, sonst leer lassen (Zeile entfällt dann)
+FIRMENNAME         =
+# Entweder die USt-IdNr eintragen ODER exakt das Wort: kleinunternehmer
+UMSATZSTEUER       = kleinunternehmer
+AUSBILDUNGSINSTITUT=
+AUSBILDUNGSJAHR    =
+VERSICHERUNG_NAME       =
+VERSICHERUNG_ANSCHRIFT  =
+
+# ── Zahlen in der Leiste unter dem Hero ────────────────────────────
+JAHRE_ERFAHRUNG    =
+ANZAHL_KUNDEN      =
+
+# ── Preise (nur Zahl, ohne €) ──────────────────────────────────────
+PREIS_EINZEL           =
+PREIS_10ER_GESAMT      =
+PREIS_10ER_PRO_EINHEIT =
+PREIS_ONLINE           =
+PREIS_DUO              =
+# Bis wie viele Stunden vorher kann kostenfrei abgesagt werden?
+ABSAGE_STUNDEN         = 24
+
+# ── Qualifikationen ────────────────────────────────────────────────
+ZUSATZ_QUALIFIKATION = 
+# Weitere Sprachen außer Deutsch, mit Komma getrennt
+SPRACHEN             =
+
+# ── "Über mich" – der wichtigste Text der ganzen Seite ─────────────
+# 3-4 Sätze, persönlich, in einer Zeile. Wie kam Faruk zum Training,
+# was war sein Wendepunkt, warum macht er das heute beruflich?
+UEBER_MICH =
+
+# ── Kundenstimmen (echte Zitate, keine erfundenen!) ────────────────
+STIMME1_ZITAT =
+STIMME1_NAME  =
+STIMME1_ALTER =
+STIMME1_ZIEL  =
+
+STIMME2_ZITAT =
+STIMME2_NAME  =
+STIMME2_ALTER =
+STIMME2_ZIEL  =
+
+STIMME3_ZITAT =
+STIMME3_NAME  =
+STIMME3_ALTER =
+STIMME3_ZIEL  =
+
+# ── Standort für Google (Koordinaten) ──────────────────────────────
+# Auf google.de/maps den Ort rechtsklicken -> die zwei Zahlen kopieren.
+# Wenn Faruk zu Kunden fährt: einfach die Stadtmitte nehmen.
+BREITENGRAD  =
+LAENGENGRAD  =
+
+# ── Technische Auswahl ─────────────────────────────────────────────
+# HOSTING:  github | netlify | cloudflare
+HOSTING  = github
+# FORMULAR: mailto (funktioniert sofort) | formspree | netlify
+FORMULAR = mailto
+# Nur bei FORMULAR = formspree: die Endpoint-URL eintragen
+FORMSPREE_ENDPOINT =

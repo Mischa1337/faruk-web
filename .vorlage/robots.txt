@@ -1,0 +1,6 @@
+# Alle Suchmaschinen dürfen die Seite vollständig lesen.
+User-agent: *
+Allow: /
+
+# ‹deine-domain.de› durch die echte Domain ersetzen
+Sitemap: https://‹deine-domain.de›/sitemap.xml
