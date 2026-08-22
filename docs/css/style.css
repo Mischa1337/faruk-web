@@ -19,8 +19,8 @@
   /* Markenfarbe. --accent-hi ist die lesbare Textvariante auf dem
      Hintergrund, --on-accent die Schrift AUF der Markenfarbe. Beide
      berechnet setup.py so, dass der Kontrast nachweislich reicht. */
-  --accent:      #8FB89A;
-  --accent-hi:   #ABCAB3;
+  --accent:      #519A70;
+  --accent-hi:   #69B087;
   --on-accent:   #140904;
   --accent-soft: color-mix(in srgb, var(--accent) 12%, transparent);
 

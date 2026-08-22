@@ -107,7 +107,7 @@ FORMSPREE_ENDPOINT =
 # Akzent je Schema. AKZENTFARBE gilt als Rueckfall, wenn eines der
 # beiden Felder leer bleibt.
 AKZENTFARBE        = #C6A15B
-AKZENTFARBE_DUNKEL = #8FB89A
+AKZENTFARBE_DUNKEL = #519A70
 AKZENTFARBE_HELL   = #C6A15B
 # FARBMODUS: dunkel | hell
 FARBMODUS   = dunkel
