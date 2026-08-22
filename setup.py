@@ -118,10 +118,15 @@ def helligkeit(hexwert, delta):
 
 
 def text_variante(akzent, grund):
-    """Markenfarbe so weit aufhellen/abdunkeln, bis sie auf dem
-       Hintergrund sicher lesbar ist (WCAG AA, 4.5:1)."""
-    schritt = 0.02 if leuchtkraft(zu_rgb(grund)) < 0.5 else -0.02
-    farbe = akzent
+    """Markenfarbe als Textfarbe.
+
+    Startet mit einem festen Versatz, damit sie sich vom Vollton sichtbar
+    abhebt – davon leben der Hover-Effekt der Buttons und der Logo-Verlauf.
+    Reicht der Kontrast dann noch nicht, wird weiter nachgeschoben, bis
+    WCAG AA (4.5:1) erreicht ist."""
+    auf_dunklem = leuchtkraft(zu_rgb(grund)) < 0.5
+    schritt = 0.02 if auf_dunklem else -0.02
+    farbe = helligkeit(akzent, 0.09 if auf_dunklem else -0.09)
     for _ in range(60):
         if kontrast(farbe, grund) >= 4.5:
             break

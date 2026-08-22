@@ -250,11 +250,12 @@
     return zuHex(hslZuRgb(hsl[0], hsl[1], Math.max(0, Math.min(1, hsl[2] + delta))));
   }
 
-  /* Textvariante der Markenfarbe: so weit aufhellen bzw. abdunkeln,
-     bis der Kontrast zum Hintergrund mindestens 4,5:1 beträgt. */
+  /* Textvariante der Markenfarbe. Fester Versatz zuerst, damit sie sich
+     vom Vollton abhebt (Hover-Effekt, Logo-Verlauf), danach so weit
+     nachschieben, bis 4,5:1 erreicht sind. */
   function textVariante(akzent, hintergrund) {
     var dunklerGrund = leuchtkraft(zuRgb(hintergrund)) < 0.5;
-    var farbe = akzent;
+    var farbe = helligkeit(akzent, dunklerGrund ? 0.09 : -0.09);
     for (var i = 0; i < 60 && kontrast(farbe, hintergrund) < 4.5; i++) {
       farbe = helligkeit(farbe, dunklerGrund ? 0.02 : -0.02);
     }
