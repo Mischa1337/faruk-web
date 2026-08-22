@@ -496,6 +496,12 @@ def main():
                 print('   Anzeigename: "%s"%s' % (vorname,
                       ', Marke "%s"' % marke if marke != vorname else ''))
 
+        # ── Zeile unter dem Markennamen ──
+        claim = d.get('CLAIM', '').strip()
+        if claim and rel.endswith('.html'):
+            text = text.replace('<span class="brand-sub">Personal Training</span>',
+                                '<span class="brand-sub">%s</span>' % claim)
+
         # ── Einfache Platzhalter ──
         for platzhalter, wert in ersetzungen.items():
             if wert:

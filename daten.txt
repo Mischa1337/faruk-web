@@ -10,6 +10,8 @@ VORNAME            = A. Faruk
 # Name in der Kopfzeile und im Logo. Leer = wie VORNAME.
 # Bei einem Firmennamen mit passender Domain meist die bessere Wahl.
 MARKENNAME         = AFP-Coaching
+# Zeile unter dem Markennamen im Seitenkopf.
+CLAIM              = Achtsamkeit • Fortschritt • Präzision
 NACHNAME           = Palteki
 STADT              = Gießen
 NACHBARSTADT_1     =
