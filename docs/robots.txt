@@ -2,4 +2,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://‹deine-domain.de›/sitemap.xml
+Sitemap: https://afp-coaching.de/sitemap.xml

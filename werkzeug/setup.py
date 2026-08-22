@@ -153,6 +153,61 @@ def schrift_auf_akzent(akzent):
 
 
 
+# Abstände und Sättigungsfaktoren, abgelesen aus den beiden von Hand
+# gestalteten Schemata. Je heller eine Fläche wird, desto weniger Sättigung –
+# sonst wirken die oberen Ebenen lackiert statt tief.
+STUFEN = {
+    'dunkel': [('bg', 0.000, 1.00), ('bg-alt', 0.019, 0.88), ('surface', 0.032, 0.80),
+               ('surface-2', 0.050, 0.72), ('line-soft', 0.056, 0.70),
+               ('line', 0.095, 0.58), ('line-strong', 0.146, 0.48)],
+    'hell':   [('bg', 0.000, 1.00), ('bg-alt', -0.028, 1.05), ('surface', 0.010, 0.70),
+               ('surface-2', -0.040, 1.10), ('line-soft', -0.075, 1.15),
+               ('line', -0.122, 1.25), ('line-strong', -0.208, 1.35)],
+}
+
+
+def flaechen_familie(basis, modus):
+    """Leitet Hintergrund, Kartenflächen und Trennlinien aus einer Grundfarbe ab."""
+    import colorsys
+    r, g, b = (v / 255 for v in zu_rgb(basis))
+    h, l0, s0 = colorsys.rgb_to_hls(r, g, b)
+    familie = {}
+    for name, dl, fs in STUFEN[modus]:
+        l = max(0.0, min(1.0, l0 + dl))
+        s = max(0.0, min(1.0, s0 * fs))
+        familie['--' + name] = zu_hex([v * 255 for v in colorsys.hls_to_rgb(h, l, s)])
+    return familie
+
+
+def schrift_familie(grund):
+    """Schrifttöne, die zur Grundfarbe passen und sicher lesbar sind.
+
+    Nimmt den Farbton des Hintergrunds leicht auf – reines Grau wirkt auf
+    einem farbigen Grund fremd. Danach wird so lange nachgeschoben, bis die
+    Kontraste stimmen: 7:1 für den Fliesstext, 4.5:1 fuer die Nebentoene."""
+    import colorsys
+    h, l_grund, _ = colorsys.rgb_to_hls(*[v / 255 for v in zu_rgb(grund)])
+    auf_dunklem = leuchtkraft(zu_rgb(grund)) < 0.5
+    richtung = 0.02 if auf_dunklem else -0.02
+
+    def ton(start_l, saettigung, ziel):
+        farbe = zu_hex([v * 255 for v in colorsys.hls_to_rgb(h, start_l, saettigung)])
+        for _ in range(80):
+            if kontrast(farbe, grund) >= ziel:
+                break
+            farbe = helligkeit(farbe, richtung)
+        return farbe
+
+    if auf_dunklem:
+        return {'--text':       ton(0.94, 0.16, 12.0),
+                '--text-muted': ton(0.68, 0.10, 6.0),
+                '--text-dim':   ton(0.55, 0.08, 4.5)}
+    return {'--text':       ton(0.09, 0.16, 12.0),
+            '--text-muted': ton(0.33, 0.10, 6.0),
+            '--text-dim':   ton(0.45, 0.08, 4.5)}
+
+
+
 # ── Freitext HTML-sicher machen ───────────────────────────────────
 # Nur für Felder, die als sichtbarer Text in die Seite wandern. Werte, die
 # zusätzlich im JSON-LD-Block stehen (Stadt, Domain, Name …), dürfen NICHT
@@ -343,12 +398,49 @@ def main():
                                 "formEndpoint: '%s'" % d.get('FORMSPREE_ENDPOINT', ''))
 
         if rel == 'css/style.css':
+            # Buchstabe in der Logo-Kachel folgt dem Markennamen
+            anfang = (d.get('MARKENNAME', '').strip() or d.get('VORNAME', '').strip() or 'F')[0].upper()
+            text = text.replace('content: "F";', 'content: "%s";' % anfang)
+
             roh = d.get('AKZENTFARBE', '').strip().lower()
             akzent = PALETTEN.get(roh, d.get('AKZENTFARBE', '').strip() or '#FF5C1A')
             if not re.fullmatch(r'#[0-9A-Fa-f]{6}', akzent):
                 print('   Hinweis: AKZENTFARBE "%s" unbrauchbar, Orange bleibt.' % akzent)
                 akzent = '#FF5C1A'
-            grund = '#FFFFFF' if modus == 'hell' else '#0A0A0B'
+            # Beide Schemata erzeugen, nicht nur das aktive. Sonst würde
+            # HINTERGRUND_HELL stillschweigend ignoriert, solange dunkel
+            # eingestellt ist – und ein Umschalten liefert Weiß statt Creme.
+            gruende = {}
+            for m_modus, feld, standard in (('dunkel', 'HINTERGRUND_DUNKEL', '#0A0A0B'),
+                                            ('hell',   'HINTERGRUND_HELL',   '#FFFFFF')):
+                farbe = d.get(feld, '').strip() or standard
+                if not re.fullmatch(r'#[0-9A-Fa-f]{6}', farbe):
+                    print('   Hinweis: %s "%s" unbrauchbar, Standard bleibt.' % (feld, farbe))
+                    farbe = standard
+                gruende[m_modus] = farbe
+                if farbe.upper() == standard:
+                    continue
+
+                toene = flaechen_familie(farbe, m_modus)
+                toene.update(schrift_familie(farbe))
+                # Im hellen Schema stehen die Werte im zweiten Block. Nur dort
+                # ersetzen, sonst kippt das dunkle Schema mit um.
+                stelle = text.index(':root[data-farbmodus="hell"]')
+                for name, wert in toene.items():
+                    muster = r'(?m)^(  %s:\s*)[^;]+;' % re.escape(name)
+                    if m_modus == 'hell':
+                        kopf, rest = text[:stelle], text[stelle:]
+                        text = kopf + re.sub(muster, r'\g<1>%s;' % wert, rest, count=1)
+                    else:
+                        kopf, rest = text[:stelle], text[stelle:]
+                        text = re.sub(muster, r'\g<1>%s;' % wert, kopf, count=1) + rest
+                    stelle = text.index(':root[data-farbmodus="hell"]')
+
+                print('   %-6s Grund %s → Schrift %s (%.1f:1) · gedämpft %s (%.1f:1)'
+                      % (m_modus, farbe, toene['--text'], kontrast(toene['--text'], farbe),
+                         toene['--text-muted'], kontrast(toene['--text-muted'], farbe)))
+
+            grund = gruende[modus]
             hi  = text_variante(akzent, grund)
             wunsch = d.get('SCHRIFT_AUF_BUTTONS', 'automatisch').strip().lower()
             auf = {'hell': '#FFFFFF', 'dunkel': '#140904'}.get(wunsch) or schrift_auf_akzent(akzent)
@@ -358,6 +450,16 @@ def main():
                 print('            für manche schwer lesbar. SCHRIFT_AUF_BUTTONS = automatisch behebt das.')
             text = re.sub(r'(--accent:\s*)#[0-9A-Fa-f]{6};',    r'\g<1>%s;' % akzent, text, count=1)
             text = re.sub(r'(--accent-hi:\s*)#[0-9A-Fa-f]{6};', r'\g<1>%s;' % hi, text, count=1)
+
+            # Die Textvariante des Akzents haengt vom Untergrund ab. Ohne einen
+            # eigenen Wert im hellen Block truege dort der fuer Dunkel gerechnete
+            # Ton - bei Gold auf Creme waeren das 1.8:1 und damit unlesbar.
+            hi_hell = text_variante(akzent, gruende['hell'])
+            text = text.replace(':root[data-farbmodus="hell"] {',
+                                ':root[data-farbmodus="hell"] {\n  --accent-hi:   %s;' % hi_hell, 1)
+            if modus == 'dunkel':
+                print('     Akzent als Text: dunkel %s (%.1f:1) · hell %s (%.1f:1)'
+                      % (hi, kontrast(hi, gruende['dunkel']), hi_hell, kontrast(hi_hell, gruende['hell'])))
             text = re.sub(r'(--on-accent:\s*)#[0-9A-Fa-f]{6};', r'\g<1>%s;' % auf, text, count=1)
             print('   Farben: %s  ·  Textvariante %s (%.1f:1)  ·  Schrift darauf %s (%.1f:1)'
                   % (akzent, hi, kontrast(hi, grund), auf, kontrast(auf, akzent)))
@@ -369,6 +471,30 @@ def main():
         if rel == 'sitemap.xml':
             text = re.sub(r'<lastmod>[^<]*</lastmod>',
                           '<lastmod>%s</lastmod>' % heute.isoformat(), text)
+
+        # ── Anzeigename ──
+        # "Faruk" steht als Vorgabe fest im Text. Nur die gross geschriebene
+        # Form ersetzen, damit img/faruk.svg und der Instagram-Name unberührt
+        # bleiben. In den WhatsApp-Adressen muss der Name kodiert werden,
+        # sonst zerbricht ein Leerzeichen oder Punkt den Link.
+        vorname = d.get('VORNAME', '').strip() or 'Faruk'
+        marke = d.get('MARKENNAME', '').strip() or vorname
+        if rel.endswith(('.html', '.js')) and (vorname != 'Faruk' or marke != 'Faruk'):
+            import urllib.parse
+            kodiert = urllib.parse.quote(vorname)
+            text = re.sub(r'(wa\.me/[^"\']*?)Faruk', lambda m: m.group(1) + kodiert, text)
+            text = re.sub(r'(<span class="brand-text">)Faruk',
+                          lambda m: m.group(1) + marke, text)
+            text = re.sub(r'(<strong>)Faruk( – Personal Training</strong>)',
+                          lambda m: m.group(1) + marke + m.group(2), text)
+            text = re.sub(r'\bFaruk\b(?![^<]*</span>)', vorname, text)
+            text = text.replace('"name": "%s – Personal Training"' % vorname,
+                                '"name": "%s – Personal Training"' % marke)
+            text = text.replace('content="%s – Personal Training"' % vorname,
+                                'content="%s – Personal Training"' % marke)
+            if rel == 'index.html':
+                print('   Anzeigename: "%s"%s' % (vorname,
+                      ', Marke "%s"' % marke if marke != vorname else ''))
 
         # ── Einfache Platzhalter ──
         for platzhalter, wert in ersetzungen.items():

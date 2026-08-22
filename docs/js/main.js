@@ -1,5 +1,5 @@
 /* ═══════════════════════════════════════════════════════════
-   Faruk – Personal Training
+   A. Faruk – Personal Training
    Vanilla JS, keine Bibliotheken, keine externen Requests.
    ═══════════════════════════════════════════════════════════ */
 (function () {
@@ -15,7 +15,7 @@
      die Seite funktioniert also von der ersten Minute an. */
   var CONFIG = {
     formEndpoint: '',
-    fallbackMail: '‹mail@deine-domain.de›'
+    fallbackMail: 'kontakt@afp-coaching.de'
   };
 
   // Signal an das Sicherheitsnetz im <head>: Das Skript ist angekommen,
