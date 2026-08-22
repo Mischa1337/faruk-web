@@ -6,37 +6,40 @@
 # ═══════════════════════════════════════════════════════════════════
 
 # ── Person & Ort ───────────────────────────────────────────────────
-VORNAME            = Faruk
-NACHNAME           =
-STADT              =
+VORNAME            = A. Faruk
+# Name in der Kopfzeile und im Logo. Leer = wie VORNAME.
+# Bei einem Firmennamen mit passender Domain meist die bessere Wahl.
+MARKENNAME         = AFP-Coaching
+NACHNAME           = Palteki
+STADT              = Gießen
 NACHBARSTADT_1     =
 NACHBARSTADT_2     =
-BUNDESLAND         =
+BUNDESLAND         = Hessen
 
-# Umkreis in km, in dem Faruk zu Kunden fährt
+# Umkreis in km, in dem Faruk zu Kunden fährt !Erstmal auslasse!
 UMKREIS_KM         = 20
 
 # ── Kontakt ────────────────────────────────────────────────────────
 # Domain OHNE https:// und OHNE www.
-DOMAIN             =
-EMAIL              =
+DOMAIN             = afp-coaching.de
+EMAIL              = kontakt@afp-coaching.de
 # Telefonnummer so schreiben, wie sie auf der Seite stehen soll.
 # Die WhatsApp- und Anruf-Links werden daraus automatisch gebaut.
-TELEFON            =
+TELEFON            = 0176-42755110
 # Instagram-Name ohne @. Leer lassen, wenn (noch) keins da ist.
-INSTAGRAM          =
-# Im Google-Unternehmensprofil auf "Profil teilen" → Link hier einfügen
-GOOGLE_PROFIL_LINK =
+INSTAGRAM          = faruk.palteki.pt
+# Im Google-Unternehmensprofil auf "Profil teilen" → Link hier einfügen !kommt noch!
+GOOGLE_PROFIL_LINK = 
 
 # ── Impressum (Pflichtangaben) ─────────────────────────────────────
 # Muss eine ladungsfähige Anschrift sein, kein Postfach.
-STRASSE            =
-PLZ                =
+STRASSE            = Ludwigsteraße 44
+PLZ                = 35390
 # Firmenname nur falls vorhanden, sonst leer lassen (Zeile entfällt dann)
-FIRMENNAME         =
+FIRMENNAME         = AFP-Coaching
 # Entweder die USt-IdNr eintragen ODER exakt das Wort: kleinunternehmer
 UMSATZSTEUER       = kleinunternehmer
-AUSBILDUNGSINSTITUT=
+AUSBILDUNGSINSTITUT= 
 AUSBILDUNGSJAHR    =
 VERSICHERUNG_NAME       =
 VERSICHERUNG_ANSCHRIFT  =
@@ -46,7 +49,7 @@ JAHRE_ERFAHRUNG    =
 ANZAHL_KUNDEN      =
 
 # ── Preise (nur Zahl, ohne €) ──────────────────────────────────────
-PREIS_EINZEL           =
+PREIS_EINZEL           = 
 PREIS_10ER_GESAMT      =
 PREIS_10ER_PRO_EINHEIT =
 PREIS_ONLINE           =
@@ -83,8 +86,8 @@ STIMME3_ZIEL  =
 # ── Standort für Google (Koordinaten) ──────────────────────────────
 # Auf google.de/maps den Ort rechtsklicken -> die zwei Zahlen kopieren.
 # Wenn Faruk zu Kunden fährt: einfach die Stadtmitte nehmen.
-BREITENGRAD  =
-LAENGENGRAD  =
+BREITENGRAD  = 50.5866
+LAENGENGRAD  = 8.6742
 
 # ── Technische Auswahl ─────────────────────────────────────────────
 # HOSTING:  github | netlify | cloudflare
@@ -99,9 +102,14 @@ FORMSPREE_ENDPOINT =
 # zwei Zeilen von dort hierher übernehmen.
 # AKZENTFARBE: Hex-Code (#3B82F6) oder ein Name aus der Liste:
 #   orange · lime · tuerkis · blau · violett · rot · gold · anthrazit
-AKZENTFARBE = #8A94A6
+AKZENTFARBE = #C6A15B
 # FARBMODUS: dunkel | hell
 FARBMODUS   = dunkel
+# Grundfarbe des jeweiligen Schemas. Leer lassen = Standard
+# (Fast-Schwarz beim dunklen, Weiss beim hellen). Flaechen, Trennlinien
+# und Schrifttoene werden daraus abgeleitet und auf Kontrast geprueft.
+HINTERGRUND_DUNKEL = #1F3B2B
+HINTERGRUND_HELL   = #FAF6EF
 # Schrift auf den farbigen Buttons: automatisch | hell | dunkel
 # "automatisch" wählt immer die besser lesbare Variante – nur ändern,
 # wenn das Ergebnis optisch nicht gefällt.

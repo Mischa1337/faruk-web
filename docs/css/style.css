@@ -19,23 +19,23 @@
   /* Markenfarbe. --accent-hi ist die lesbare Textvariante auf dem
      Hintergrund, --on-accent die Schrift AUF der Markenfarbe. Beide
      berechnet setup.py so, dass der Kontrast nachweislich reicht. */
-  --accent:      #8A94A6;
-  --accent-hi:   #A4ACBA;
+  --accent:      #C6A15B;
+  --accent-hi:   #D2B57D;
   --on-accent:   #140904;
   --accent-soft: color-mix(in srgb, var(--accent) 12%, transparent);
 
   /* Dunkles Grundschema */
-  --bg:          #0A0A0B;
-  --bg-alt:      #101014;
-  --surface:     #16161B;
-  --surface-2:   #1D1D24;
-  --line:        #2A2A33;
-  --line-soft:   #202027;
-  --line-strong: #34343F;
+  --bg:          #1F3B2B;
+  --bg-alt:      #243F30;
+  --surface:     #284233;
+  --surface-2:   #2D4738;
+  --line:        #395243;
+  --line-soft:   #2E4839;
+  --line-strong: #465F50;
 
-  --text:        #F4F4F5;
-  --text-muted:  #A0A0AB;
-  --text-dim:    #74747F;
+  --text:        #FFFFFF;
+  --text-muted:  #ABBBB1;
+  --text-dim:    #94A49A;
 
   /* Schleier für Glas- und Hover-Effekte. Nimmt die Textfarbe auf und
      kippt dadurch im hellen Schema von selbst weiß -> schwarz. */
@@ -73,17 +73,18 @@
    Nur die Grundtöne werden neu gesetzt – alles, was per color-mix()
    davon abgeleitet ist, folgt automatisch. */
 :root[data-farbmodus="hell"] {
-  --bg:          #FFFFFF;
-  --bg-alt:      #F5F5F8;
-  --surface:     #FFFFFF;
-  --surface-2:   #F1F1F5;
-  --line:        #DCDCE4;
-  --line-soft:   #E9E9EF;
-  --line-strong: #C4C4D0;
+  --accent-hi:   #84682D;
+  --bg:          #FAF6EF;
+  --bg-alt:      #F7F0E4;
+  --surface:     #FAF8F4;
+  --surface-2:   #F6EEDE;
+  --line:        #F1DDBA;
+  --line-soft:   #F3E6D0;
+  --line-strong: #ECCC93;
 
-  --text:        #15151A;
-  --text-muted:  #52525C;
-  --text-dim:    #6C6C78;
+  --text:        #1B1813;
+  --text-muted:  #5D564C;
+  --text-dim:    #777065;
 
   --ok:          #15803D;
   --fehler:      #C81E24;
@@ -273,7 +274,7 @@ p  { text-wrap: pretty; }
   box-shadow: 0 4px 14px -4px color-mix(in srgb, var(--accent) 60%, transparent);
 }
 .brand-mark::after {
-  content: "F";
+  content: "A";
   position: absolute; inset: 0;
   display: grid; place-items: center;
   color: var(--on-accent);
