@@ -277,11 +277,14 @@ p  { text-wrap: pretty; }
 }
 .brand-text { display: flex; flex-direction: column; line-height: 1.15; font-size: 1.05rem; }
 .brand-sub {
-  font-size: .66rem;
-  font-weight: 600;
-  letter-spacing: .13em;
-  text-transform: uppercase;
+  /* Als Tagline gesetzt, nicht als Versalien mit weiter Laufweite: Ein
+     mehrteiliger Claim waere in Grossbuchstaben rund 60 % breiter und
+     wuerde die Kopfzeile am Handy sprengen. */
+  font-size: .7rem;
+  font-weight: 500;
+  letter-spacing: .01em;
   color: var(--text-dim);
+  white-space: nowrap;
 }
 
 .site-nav ul {
@@ -981,6 +984,15 @@ p  { text-wrap: pretty; }
      dort ist für die Unterzeile kein Platz. */
   .legal-nav a { padding: .5rem .55rem; font-size: .85rem; }
   .header-legal .brand-sub { display: none; }
+
+  /* Ein mehrteiliger Claim braucht neben Logo und Menüknopf mehr Platz,
+     als schmale Geräte hergeben. Erst verkleinern, dann weglassen –
+     ein abgeschnittener Claim sähe schlechter aus als gar keiner. */
+  .brand-sub { font-size: .62rem; }
+}
+
+@media (max-width: 379px) {
+  .brand-sub { display: none; }
 }
 
 @media (max-width: 420px) {
