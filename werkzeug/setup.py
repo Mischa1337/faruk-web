@@ -402,11 +402,6 @@ def main():
             anfang = (d.get('MARKENNAME', '').strip() or d.get('VORNAME', '').strip() or 'F')[0].upper()
             text = text.replace('content: "F";', 'content: "%s";' % anfang)
 
-            roh = d.get('AKZENTFARBE', '').strip().lower()
-            akzent = PALETTEN.get(roh, d.get('AKZENTFARBE', '').strip() or '#FF5C1A')
-            if not re.fullmatch(r'#[0-9A-Fa-f]{6}', akzent):
-                print('   Hinweis: AKZENTFARBE "%s" unbrauchbar, Orange bleibt.' % akzent)
-                akzent = '#FF5C1A'
             # Beide Schemata erzeugen, nicht nur das aktive. Sonst würde
             # HINTERGRUND_HELL stillschweigend ignoriert, solange dunkel
             # eingestellt ist – und ein Umschalten liefert Weiß statt Creme.
@@ -420,49 +415,58 @@ def main():
                 gruende[m_modus] = farbe
                 if farbe.upper() == standard:
                     continue
-
                 toene = flaechen_familie(farbe, m_modus)
                 toene.update(schrift_familie(farbe))
-                # Im hellen Schema stehen die Werte im zweiten Block. Nur dort
-                # ersetzen, sonst kippt das dunkle Schema mit um.
                 stelle = text.index(':root[data-farbmodus="hell"]')
                 for name, wert in toene.items():
                     muster = r'(?m)^(  %s:\s*)[^;]+;' % re.escape(name)
+                    kopf, rest = text[:stelle], text[stelle:]
                     if m_modus == 'hell':
-                        kopf, rest = text[:stelle], text[stelle:]
                         text = kopf + re.sub(muster, r'\g<1>%s;' % wert, rest, count=1)
                     else:
-                        kopf, rest = text[:stelle], text[stelle:]
                         text = re.sub(muster, r'\g<1>%s;' % wert, kopf, count=1) + rest
                     stelle = text.index(':root[data-farbmodus="hell"]')
-
                 print('   %-6s Grund %s → Schrift %s (%.1f:1) · gedämpft %s (%.1f:1)'
                       % (m_modus, farbe, toene['--text'], kontrast(toene['--text'], farbe),
                          toene['--text-muted'], kontrast(toene['--text-muted'], farbe)))
 
-            grund = gruende[modus]
-            hi  = text_variante(akzent, grund)
-            wunsch = d.get('SCHRIFT_AUF_BUTTONS', 'automatisch').strip().lower()
-            auf = {'hell': '#FFFFFF', 'dunkel': '#140904'}.get(wunsch) or schrift_auf_akzent(akzent)
-            if wunsch in ('hell', 'dunkel') and kontrast(auf, akzent) < 4.5:
-                print('   Achtung: Schrift auf Buttons erreicht nur %.1f:1 – unter 4.5:1 wird es'
-                      % kontrast(auf, akzent))
-                print('            für manche schwer lesbar. SCHRIFT_AUF_BUTTONS = automatisch behebt das.')
-            text = re.sub(r'(--accent:\s*)#[0-9A-Fa-f]{6};',    r'\g<1>%s;' % akzent, text, count=1)
-            text = re.sub(r'(--accent-hi:\s*)#[0-9A-Fa-f]{6};', r'\g<1>%s;' % hi, text, count=1)
+            # ── Akzent, je Schema eigener Wert ──
+            # AKZENTFARBE_DUNKEL/_HELL schlagen AKZENTFARBE. So kann das dunkle
+            # Schema grün und das helle gold sein, ohne zwei Stylesheets.
+            def akzent_lesen(feld):
+                roh = d.get(feld, '').strip()
+                wert = PALETTEN.get(roh.lower(), roh)
+                if wert and not re.fullmatch(r'#[0-9A-Fa-f]{6}', wert):
+                    print('   Hinweis: %s "%s" unbrauchbar, wird übergangen.' % (feld, roh))
+                    return ''
+                return wert
 
-            # Die Textvariante des Akzents haengt vom Untergrund ab. Ohne einen
-            # eigenen Wert im hellen Block truege dort der fuer Dunkel gerechnete
-            # Ton - bei Gold auf Creme waeren das 1.8:1 und damit unlesbar.
-            hi_hell = text_variante(akzent, gruende['hell'])
+            grundakzent = akzent_lesen('AKZENTFARBE') or '#FF5C1A'
+            akzente = {m: akzent_lesen('AKZENTFARBE_' + m.upper()) or grundakzent
+                       for m in ('dunkel', 'hell')}
+            wunsch = d.get('SCHRIFT_AUF_BUTTONS', 'automatisch').strip().lower()
+
+            werte = {}
+            for m_modus in ('dunkel', 'hell'):
+                a = akzente[m_modus]
+                auf = {'hell': '#FFFFFF', 'dunkel': '#140904'}.get(wunsch) or schrift_auf_akzent(a)
+                if wunsch in ('hell', 'dunkel') and kontrast(auf, a) < 4.5:
+                    print('   Achtung: Schrift auf Buttons erreicht im Schema %s nur %.1f:1.'
+                          % (m_modus, kontrast(auf, a)))
+                werte[m_modus] = (a, text_variante(a, gruende[m_modus]), auf)
+                print('   %-6s Akzent %s → als Text %s (%.1f:1) · Schrift darauf %s (%.1f:1)'
+                      % (m_modus, a, werte[m_modus][1], kontrast(werte[m_modus][1], gruende[m_modus]),
+                         auf, kontrast(auf, a)))
+
+            # Dunkel steht im Grundblock ...
+            a, hi, auf = werte['dunkel']
+            for name, wert in (('accent', a), ('accent-hi', hi), ('on-accent', auf)):
+                text = re.sub(r'(--%s:\s*)#[0-9A-Fa-f]{6};' % name, r'\g<1>%s;' % wert, text, count=1)
+            # ... hell wird im zweiten Block überschrieben
+            a, hi, auf = werte['hell']
             text = text.replace(':root[data-farbmodus="hell"] {',
-                                ':root[data-farbmodus="hell"] {\n  --accent-hi:   %s;' % hi_hell, 1)
-            if modus == 'dunkel':
-                print('     Akzent als Text: dunkel %s (%.1f:1) · hell %s (%.1f:1)'
-                      % (hi, kontrast(hi, gruende['dunkel']), hi_hell, kontrast(hi_hell, gruende['hell'])))
-            text = re.sub(r'(--on-accent:\s*)#[0-9A-Fa-f]{6};', r'\g<1>%s;' % auf, text, count=1)
-            print('   Farben: %s  ·  Textvariante %s (%.1f:1)  ·  Schrift darauf %s (%.1f:1)'
-                  % (akzent, hi, kontrast(hi, grund), auf, kontrast(auf, akzent)))
+                ':root[data-farbmodus="hell"] {\n  --accent:      %s;\n  --accent-hi:   %s;'
+                '\n  --on-accent:   %s;' % (a, hi, auf), 1)
 
         if rel.endswith('.html'):
             # Farbmodus am <html>-Tag verankern

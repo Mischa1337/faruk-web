@@ -104,7 +104,11 @@ FORMSPREE_ENDPOINT =
 # zwei Zeilen von dort hierher übernehmen.
 # AKZENTFARBE: Hex-Code (#3B82F6) oder ein Name aus der Liste:
 #   orange · lime · tuerkis · blau · violett · rot · gold · anthrazit
-AKZENTFARBE = #C6A15B
+# Akzent je Schema. AKZENTFARBE gilt als Rueckfall, wenn eines der
+# beiden Felder leer bleibt.
+AKZENTFARBE        = #C6A15B
+AKZENTFARBE_DUNKEL = #8FB89A
+AKZENTFARBE_HELL   = #C6A15B
 # FARBMODUS: dunkel | hell
 FARBMODUS   = dunkel
 # Grundfarbe des jeweiligen Schemas. Leer lassen = Standard
