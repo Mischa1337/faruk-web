@@ -934,7 +934,10 @@ p  { text-wrap: pretty; }
   .hero-inner { grid-template-columns: 1fr; }
   .hero { padding-bottom: clamp(3rem, 6vw, 5rem); }
   .hero-photo { max-width: 520px; margin-top: 1rem; }
-  .hero-photo img { aspect-ratio: 16 / 11; }
+  /* Am Handy wird das Hochformat auf Querformat beschnitten. Ohne
+     object-position schneidet der Browser mittig – bei einem Porträt
+     wäre dann der Kopf ab. 20 % schiebt den Ausschnitt nach oben. */
+  .hero-photo img { aspect-ratio: 16 / 11; object-position: center 20%; }
   .about-grid { grid-template-columns: 1fr; }
   .about-photo { max-width: 420px; }
   .contact-grid { grid-template-columns: 1fr; }
