@@ -114,7 +114,7 @@ FARBMODUS   = dunkel
 # Grundfarbe des jeweiligen Schemas. Leer lassen = Standard
 # (Fast-Schwarz beim dunklen, Weiss beim hellen). Flaechen, Trennlinien
 # und Schrifttoene werden daraus abgeleitet und auf Kontrast geprueft.
-HINTERGRUND_DUNKEL = #1F3B2B
+HINTERGRUND_DUNKEL =
 HINTERGRUND_HELL   = #FAF6EF
 # Schrift auf den farbigen Buttons: automatisch | hell | dunkel
 # "automatisch" wählt immer die besser lesbare Variante – nur ändern,
