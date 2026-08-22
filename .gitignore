@@ -6,3 +6,6 @@ __pycache__/
 
 # Werkzeug-Konfiguration, nur lokal relevant
 .claude/
+
+# Ablage für Originalfotos, gehört nicht ins Repository
+pics/

@@ -265,20 +265,15 @@ p  { text-wrap: pretty; }
   letter-spacing: -.02em;
 }
 .brand-mark {
-  width: 34px; height: 34px;
+  /* Echtes Logo als Maske eingebunden, nicht als farbiges Bild. Dadurch
+     nimmt es var(--accent) an und passt automatisch zu beiden Farbschemata
+     und zu jeder späteren Farbänderung. */
+  width: 70px;
+  height: 34px;
   flex: none;
-  border-radius: 10px;
-  background: linear-gradient(140deg, var(--accent) 0%, var(--accent-hi) 100%);
-  position: relative;
-  box-shadow: 0 4px 14px -4px color-mix(in srgb, var(--accent) 60%, transparent);
-}
-.brand-mark::after {
-  content: "F";
-  position: absolute; inset: 0;
-  display: grid; place-items: center;
-  color: var(--on-accent);
-  font-size: 1.05rem;
-  font-weight: 900;
+  background: var(--accent);
+  -webkit-mask: url("../img/logo.png") center / contain no-repeat;
+          mask: url("../img/logo.png") center / contain no-repeat;
 }
 .brand-text { display: flex; flex-direction: column; line-height: 1.15; font-size: 1.05rem; }
 .brand-sub {
