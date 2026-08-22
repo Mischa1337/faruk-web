@@ -16,7 +16,7 @@ import os, re, shutil, sys, datetime
 BASIS   = os.path.dirname(os.path.abspath(__file__))
 VORLAGE = os.path.join(BASIS, '.vorlage')
 DATEIEN = ['index.html', 'impressum.html', 'datenschutz.html', '404.html',
-           'robots.txt', 'sitemap.xml', 'js/main.js']
+           'robots.txt', 'sitemap.xml', 'js/main.js', 'css/style.css']
 
 MONATE = ['Januar', 'Februar', 'März', 'April', 'Mai', 'Juni', 'Juli',
           'August', 'September', 'Oktober', 'November', 'Dezember']
@@ -44,13 +44,16 @@ def lies_daten():
 
 # ── Vorlagen sichern / zurückholen ────────────────────────────────
 def vorlage_bereitstellen():
-    if not os.path.isdir(VORLAGE):
-        os.makedirs(VORLAGE)
-        for rel in DATEIEN:
-            ziel = os.path.join(VORLAGE, rel)
-            os.makedirs(os.path.dirname(ziel), exist_ok=True)
-            shutil.copy2(os.path.join(BASIS, rel), ziel)
-        print('Vorlagen gesichert unter .vorlage/')
+    neu = []
+    for rel in DATEIEN:
+        ziel = os.path.join(VORLAGE, rel)
+        if os.path.exists(ziel):
+            continue
+        os.makedirs(os.path.dirname(ziel), exist_ok=True)
+        shutil.copy2(os.path.join(BASIS, rel), ziel)
+        neu.append(rel)
+    if neu:
+        print('Vorlage gesichert: ' + ', '.join(neu))
 
 
 def lies_vorlage(rel):
@@ -68,6 +71,75 @@ def telefon_fuer_links(roh):
     elif ziffern.startswith('0'):
         ziffern = ziffern[1:]
     return ziffern
+
+
+
+# ── Farben ────────────────────────────────────────────────────────
+# Dieselben Formeln stecken in farben.html. Beide müssen identisch
+# rechnen, sonst zeigt die Vorschau etwas anderes als das Ergebnis.
+
+PALETTEN = {
+    'orange': '#FF5C1A', 'lime': '#B8E62E', 'tuerkis': '#12B5A5',
+    'blau': '#3B82F6', 'violett': '#8B5CF6', 'rot': '#E23D3D',
+    'gold': '#E0A526', 'anthrazit': '#8A94A6',
+}
+
+
+def zu_rgb(hexwert):
+    h = hexwert.lstrip('#')
+    if len(h) == 3:
+        h = ''.join(z * 2 for z in h)
+    return tuple(int(h[i:i + 2], 16) for i in (0, 2, 4))
+
+
+def zu_hex(rgb):
+    return '#%02X%02X%02X' % tuple(max(0, min(255, int(round(v)))) for v in rgb)
+
+
+def leuchtkraft(rgb):
+    werte = []
+    for v in rgb:
+        v /= 255
+        werte.append(v / 12.92 if v <= 0.03928 else ((v + 0.055) / 1.055) ** 2.4)
+    return 0.2126 * werte[0] + 0.7152 * werte[1] + 0.0722 * werte[2]
+
+
+def kontrast(a, b):
+    l1, l2 = leuchtkraft(zu_rgb(a)), leuchtkraft(zu_rgb(b))
+    return (max(l1, l2) + 0.05) / (min(l1, l2) + 0.05)
+
+
+def helligkeit(hexwert, delta):
+    import colorsys
+    r, g, b = (v / 255 for v in zu_rgb(hexwert))
+    h, l, sat = colorsys.rgb_to_hls(r, g, b)
+    l = max(0.0, min(1.0, l + delta))
+    return zu_hex([v * 255 for v in colorsys.hls_to_rgb(h, l, sat)])
+
+
+def text_variante(akzent, grund):
+    """Markenfarbe so weit aufhellen/abdunkeln, bis sie auf dem
+       Hintergrund sicher lesbar ist (WCAG AA, 4.5:1)."""
+    schritt = 0.02 if leuchtkraft(zu_rgb(grund)) < 0.5 else -0.02
+    farbe = akzent
+    for _ in range(60):
+        if kontrast(farbe, grund) >= 4.5:
+            break
+        farbe = helligkeit(farbe, schritt)
+    return farbe
+
+
+def schrift_auf_akzent(akzent):
+    """Schrift AUF der Markenfarbe. Weiß auf Farbe ist die übliche
+       Erwartung, deshalb hat es Vorrang – aber nur, wenn es die
+       4.5:1 auch wirklich erreicht. Sonst dunkle Schrift, und wenn
+       beide durchfallen, die kontrastreichere von beiden."""
+    hell, dunkel = '#FFFFFF', '#140904'
+    if kontrast(akzent, hell) >= 4.5:
+        return hell
+    if kontrast(akzent, dunkel) >= 4.5:
+        return dunkel
+    return dunkel if kontrast(akzent, dunkel) >= kontrast(akzent, hell) else hell
 
 
 
@@ -125,6 +197,11 @@ def main():
             print('   ·', k)
         if not nur_pruefen:
             print('\nDie Seite wird trotzdem gebaut – die Lücken bleiben sichtbar.\n')
+
+    modus = d.get('FARBMODUS', 'dunkel').strip().lower()
+    if modus not in ('dunkel', 'hell'):
+        print('   Hinweis: FARBMODUS "%s" unbekannt, dunkel bleibt.' % modus)
+        modus = 'dunkel'
 
     heute = datetime.date.today()
     tel_link = telefon_fuer_links(d.get('TELEFON', ''))
@@ -254,6 +331,30 @@ def main():
         if rel == 'js/main.js' and d.get('FORMULAR', '').lower() == 'formspree':
             text = text.replace("formEndpoint: ''",
                                 "formEndpoint: '%s'" % d.get('FORMSPREE_ENDPOINT', ''))
+
+        if rel == 'css/style.css':
+            roh = d.get('AKZENTFARBE', '').strip().lower()
+            akzent = PALETTEN.get(roh, d.get('AKZENTFARBE', '').strip() or '#FF5C1A')
+            if not re.fullmatch(r'#[0-9A-Fa-f]{6}', akzent):
+                print('   Hinweis: AKZENTFARBE "%s" unbrauchbar, Orange bleibt.' % akzent)
+                akzent = '#FF5C1A'
+            grund = '#FFFFFF' if modus == 'hell' else '#0A0A0B'
+            hi  = text_variante(akzent, grund)
+            wunsch = d.get('SCHRIFT_AUF_BUTTONS', 'automatisch').strip().lower()
+            auf = {'hell': '#FFFFFF', 'dunkel': '#140904'}.get(wunsch) or schrift_auf_akzent(akzent)
+            if wunsch in ('hell', 'dunkel') and kontrast(auf, akzent) < 4.5:
+                print('   Achtung: Schrift auf Buttons erreicht nur %.1f:1 – unter 4.5:1 wird es'
+                      % kontrast(auf, akzent))
+                print('            für manche schwer lesbar. SCHRIFT_AUF_BUTTONS = automatisch behebt das.')
+            text = re.sub(r'(--accent:\s*)#[0-9A-Fa-f]{6};',    r'\g<1>%s;' % akzent, text, count=1)
+            text = re.sub(r'(--accent-hi:\s*)#[0-9A-Fa-f]{6};', r'\g<1>%s;' % hi, text, count=1)
+            text = re.sub(r'(--on-accent:\s*)#[0-9A-Fa-f]{6};', r'\g<1>%s;' % auf, text, count=1)
+            print('   Farben: %s  ·  Textvariante %s (%.1f:1)  ·  Schrift darauf %s (%.1f:1)'
+                  % (akzent, hi, kontrast(hi, grund), auf, kontrast(auf, akzent)))
+
+        if rel.endswith('.html'):
+            # Farbmodus am <html>-Tag verankern
+            text = re.sub(r'<html lang="de"[^>]*>', '<html lang="de" data-farbmodus="%s">' % modus, text, count=1)
 
         if rel == 'sitemap.xml':
             text = re.sub(r'<lastmod>[^<]*</lastmod>',

@@ -93,3 +93,16 @@ HOSTING  = github
 FORMULAR = mailto
 # Nur bei FORMULAR = formspree: die Endpoint-URL eintragen
 FORMSPREE_ENDPOINT =
+
+# ── Farben ─────────────────────────────────────────────────────────
+# Am einfachsten farben.html im Browser öffnen, ausprobieren und die
+# zwei Zeilen von dort hierher übernehmen.
+# AKZENTFARBE: Hex-Code (#3B82F6) oder ein Name aus der Liste:
+#   orange · lime · tuerkis · blau · violett · rot · gold · anthrazit
+AKZENTFARBE = orange
+# FARBMODUS: dunkel | hell
+FARBMODUS   = dunkel
+# Schrift auf den farbigen Buttons: automatisch | hell | dunkel
+# "automatisch" wählt immer die besser lesbare Variante – nur ändern,
+# wenn das Ergebnis optisch nicht gefällt.
+SCHRIFT_AUF_BUTTONS = automatisch
