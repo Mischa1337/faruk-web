@@ -99,7 +99,7 @@ FORMSPREE_ENDPOINT =
 # zwei Zeilen von dort hierher übernehmen.
 # AKZENTFARBE: Hex-Code (#3B82F6) oder ein Name aus der Liste:
 #   orange · lime · tuerkis · blau · violett · rot · gold · anthrazit
-AKZENTFARBE = orange
+AKZENTFARBE = #8A94A6
 # FARBMODUS: dunkel | hell
 FARBMODUS   = dunkel
 # Schrift auf den farbigen Buttons: automatisch | hell | dunkel
