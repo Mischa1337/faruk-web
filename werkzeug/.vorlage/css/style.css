@@ -35,7 +35,7 @@
 
   --text:        #F4F4F5;
   --text-muted:  #A0A0AB;
-  --text-dim:    #74747F;
+  --text-dim:    #787887;
 
   /* Schleier für Glas- und Hover-Effekte. Nimmt die Textfarbe auf und
      kippt dadurch im hellen Schema von selbst weiß -> schwarz. */

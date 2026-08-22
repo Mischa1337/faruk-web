@@ -25,17 +25,17 @@
   --accent-soft: color-mix(in srgb, var(--accent) 12%, transparent);
 
   /* Dunkles Grundschema */
-  --bg:          #1F3B2B;
-  --bg-alt:      #243F30;
-  --surface:     #284233;
-  --surface-2:   #2D4738;
-  --line:        #395243;
-  --line-soft:   #2E4839;
-  --line-strong: #465F50;
+  --bg:          #0A0A0B;
+  --bg-alt:      #101014;
+  --surface:     #16161B;
+  --surface-2:   #1D1D24;
+  --line:        #2A2A33;
+  --line-soft:   #202027;
+  --line-strong: #34343F;
 
-  --text:        #FFFFFF;
-  --text-muted:  #ABBBB1;
-  --text-dim:    #94A49A;
+  --text:        #F4F4F5;
+  --text-muted:  #A0A0AB;
+  --text-dim:    #787887;
 
   /* Schleier für Glas- und Hover-Effekte. Nimmt die Textfarbe auf und
      kippt dadurch im hellen Schema von selbst weiß -> schwarz. */
