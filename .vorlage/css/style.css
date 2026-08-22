@@ -20,7 +20,7 @@
      Hintergrund, --on-accent die Schrift AUF der Markenfarbe. Beide
      berechnet setup.py so, dass der Kontrast nachweislich reicht. */
   --accent:      #FF5C1A;
-  --accent-hi:   #FF5C1A;
+  --accent-hi:   #FF7A3D;
   --on-accent:   #140904;
   --accent-soft: color-mix(in srgb, var(--accent) 12%, transparent);
 
