@@ -3,8 +3,10 @@
 """
 Trägt alle Daten aus daten.txt in die Website ein.
 
-    python3 setup.py             schreibt die Dateien
-    python3 setup.py --pruefen   zeigt nur, was noch fehlt
+Aus dem Projektordner aufrufen:
+
+    python3 werkzeug/setup.py             schreibt die Dateien
+    python3 werkzeug/setup.py --pruefen   zeigt nur, was noch fehlt
 
 Beim ersten Lauf wird eine unveränderte Kopie der Vorlagen unter .vorlage/
 abgelegt. Jeder weitere Lauf beginnt wieder dort – das Skript kann also
@@ -13,8 +15,11 @@ beliebig oft laufen, ohne dass sich Ersetzungen aufschaukeln.
 
 import os, re, shutil, sys, datetime
 
-BASIS   = os.path.dirname(os.path.abspath(__file__))
-VORLAGE = os.path.join(BASIS, '.vorlage')
+# Das Skript liegt in werkzeug/, die Website in docs/, daten.txt oben.
+WERKZEUG = os.path.dirname(os.path.abspath(__file__))
+PROJEKT  = os.path.dirname(WERKZEUG)
+ZIEL     = os.path.join(PROJEKT, 'docs')
+VORLAGE  = os.path.join(WERKZEUG, '.vorlage')
 DATEIEN = ['index.html', 'impressum.html', 'datenschutz.html', '404.html',
            'robots.txt', 'sitemap.xml', 'js/main.js', 'css/style.css']
 
@@ -29,7 +34,7 @@ PFLICHT = ['NACHNAME', 'STADT', 'DOMAIN', 'EMAIL', 'TELEFON', 'STRASSE', 'PLZ',
 
 # ── daten.txt einlesen ────────────────────────────────────────────
 def lies_daten():
-    pfad = os.path.join(BASIS, 'daten.txt')
+    pfad = os.path.join(PROJEKT, 'daten.txt')
     if not os.path.exists(pfad):
         sys.exit('FEHLER: daten.txt nicht gefunden.')
     werte = {}
@@ -50,7 +55,7 @@ def vorlage_bereitstellen():
         if os.path.exists(ziel):
             continue
         os.makedirs(os.path.dirname(ziel), exist_ok=True)
-        shutil.copy2(os.path.join(BASIS, rel), ziel)
+        shutil.copy2(os.path.join(ZIEL, rel), ziel)
         neu.append(rel)
     if neu:
         print('Vorlage gesichert: ' + ', '.join(neu))
@@ -372,7 +377,7 @@ def main():
 
         ergebnis[rel] = text
         if not nur_pruefen:
-            open(os.path.join(BASIS, rel), 'w', encoding='utf-8').write(text)
+            open(os.path.join(ZIEL, rel), 'w', encoding='utf-8').write(text)
 
     # ── Endkontrolle ──
     print('\n' + '─' * 62)
