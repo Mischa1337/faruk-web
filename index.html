@@ -1,0 +1,661 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<!-- ═══ SEO: Diese drei Zeilen sind die wichtigsten der ganzen Seite ═══
+     title: max. ~60 Zeichen, Ortsname möglichst weit vorn. Enthält bewusst
+            beide Suchbegriffe – „Personal Trainer ‹Stadt›" und „Personal Training".
+     description: max. ~155 Zeichen, sonst schneidet Google sie ab. Sie ist kein
+            Rankingfaktor, entscheidet aber darüber, ob geklickt wird. -->
+<title>Personal Trainer ‹Stadt› | Faruk – Personal Training</title>
+<meta name="description" content="Personal Training in ‹Stadt› und Umgebung: individuelles 1:1-Training für Kraft, Abnehmen und Beweglichkeit. Erstes Kennenlerntraining kostenlos.">
+<link rel="canonical" href="https://‹deine-domain.de›/">
+
+<meta name="robots" content="index, follow, max-image-preview:large">
+<meta name="author" content="Faruk ‹Nachname›">
+<meta name="geo.region" content="DE">
+<meta name="geo.placename" content="‹Stadt›">
+<meta name="theme-color" content="#0A0A0B">
+
+<!-- Social-Vorschau (WhatsApp, Instagram-Bio, Facebook) -->
+<meta property="og:type" content="website">
+<meta property="og:locale" content="de_DE">
+<meta property="og:site_name" content="Faruk – Personal Training">
+<meta property="og:title" content="Personal Training in ‹Stadt› | Faruk">
+<meta property="og:description" content="Individuelles 1:1-Training für Kraft, Abnehmen und Beweglichkeit. Erstes Kennenlerntraining kostenlos.">
+<meta property="og:url" content="https://‹deine-domain.de›/">
+<meta property="og:image" content="https://‹deine-domain.de›/img/og-vorschau.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+
+<link rel="icon" href="img/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="img/favicon.svg">
+<link rel="stylesheet" href="css/style.css">
+
+<!-- Sicherheitsnetz für die Einblend-Animation: Die Abschnitte starten nur dann
+     unsichtbar, wenn JavaScript auch wirklich läuft. Ohne diese drei Zeilen wäre
+     die halbe Seite leer, falls js/main.js mal nicht lädt – und genau das würde
+     Google als leere Seite werten. -->
+<script>
+  document.documentElement.classList.add('js');
+  setTimeout(function () {
+    if (!window.__siteReady) document.documentElement.classList.remove('js');
+  }, 2000);
+</script>
+
+<!-- ═══ Strukturierte Daten: sorgt für den hübschen Google-Eintrag ═══ -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": ["LocalBusiness", "SportsActivityLocation"],
+      "@id": "https://‹deine-domain.de›/#business",
+      "name": "Faruk – Personal Training",
+      "description": "Personal Training und individuelle Trainingsbetreuung in ‹Stadt› und Umgebung.",
+      "url": "https://‹deine-domain.de›/",
+      "telephone": "+49‹Telefonnummer ohne 0›",
+      "email": "‹mail@deine-domain.de›",
+      "image": "https://‹deine-domain.de›/img/og-vorschau.jpg",
+      "priceRange": "€€",
+      "currenciesAccepted": "EUR",
+      "paymentAccepted": "Barzahlung, Überweisung",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "‹Straße und Hausnummer›",
+        "postalCode": "‹PLZ›",
+        "addressLocality": "‹Stadt›",
+        "addressRegion": "‹Bundesland›",
+        "addressCountry": "DE"
+      },
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": "‹51.2277›",
+        "longitude": "‹6.7735›"
+      },
+      "areaServed": [
+        { "@type": "City", "name": "‹Stadt›" },
+        { "@type": "City", "name": "‹Nachbarstadt 1›" },
+        { "@type": "City", "name": "‹Nachbarstadt 2›" }
+      ],
+      "openingHoursSpecification": [{
+        "@type": "OpeningHoursSpecification",
+        "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"],
+        "opens": "07:00",
+        "closes": "21:00"
+      }],
+      "sameAs": [
+        "https://www.instagram.com/‹instagram-name›/",
+        "‹Link zum Google-Unternehmensprofil – im Profil auf „Profil teilen" klicken›"
+      ],
+      "makesOffer": [
+        {
+          "@type": "Offer",
+          "itemOffered": { "@type": "Service", "name": "Personal Training 1:1", "serviceType": "Personal Training" },
+          "price": "‹75›", "priceCurrency": "EUR",
+          "description": "Einzelstunde, 60 Minuten, individuelle 1:1-Betreuung."
+        },
+        {
+          "@type": "Offer",
+          "itemOffered": { "@type": "Service", "name": "Duo-Training zu zweit", "serviceType": "Personal Training" },
+          "price": "‹95›", "priceCurrency": "EUR",
+          "description": "Training zu zweit, Preis gilt für beide Personen zusammen."
+        },
+        {
+          "@type": "Offer",
+          "itemOffered": { "@type": "Service", "name": "Online-Coaching", "serviceType": "Fernbetreuung" },
+          "price": "‹119›", "priceCurrency": "EUR",
+          "description": "Monatliche Betreuung mit Trainingsplan und Video-Analyse."
+        },
+        {
+          "@type": "Offer",
+          "itemOffered": { "@type": "Service", "name": "Ernährungscoaching", "serviceType": "Ernährungsberatung" }
+        }
+      ]
+    },
+    {
+      "@type": "FAQPage",
+      "@id": "https://‹deine-domain.de›/#faq",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Ich habe noch nie richtig trainiert – ist das ein Problem?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Im Gegenteil. Anfängerinnen und Anfänger machen die schnellsten Fortschritte, weil wir von Beginn an sauber aufbauen und du dir keine falschen Bewegungsmuster abgewöhnen musst. Wir starten mit dem, was du kannst." }
+        },
+        {
+          "@type": "Question",
+          "name": "Wo findet das Personal Training statt?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Bei dir zuhause, in einem Partnerstudio in ‹Stadt› oder draußen im Park – ganz wie du magst. Für das Training zuhause bringe ich das nötige Equipment mit. Ich komme im Umkreis von ca. ‹20› km um ‹Stadt›." }
+        },
+        {
+          "@type": "Question",
+          "name": "Was brauche ich für die erste Einheit?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Bequeme Sportkleidung, Hallenschuhe, ein Handtuch und Wasser. Alles Weitere bringe ich mit." }
+        },
+        {
+          "@type": "Question",
+          "name": "Wie oft sollte ich trainieren?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Für sichtbare Ergebnisse reichen meist zwei Einheiten pro Woche – eine davon mit mir, eine selbstständig nach Plan. Was zählt, ist nicht die perfekte Woche, sondern die Regelmäßigkeit über Monate." }
+        },
+        {
+          "@type": "Question",
+          "name": "Kann ich Termine absagen?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Ja. Bis ‹24› Stunden vor dem Termin kostenfrei, danach berechne ich die Einheit. Bei Krankheit finden wir immer eine Lösung." }
+        },
+        {
+          "@type": "Question",
+          "name": "Beteiligt sich meine Krankenkasse an den Kosten für Personal Training?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Personal Training ist in der Regel keine Kassenleistung. Viele Krankenkassen bezuschussen aber zertifizierte Präventionskurse. Sprich mich an – ich sage dir ehrlich, was möglich ist und was nicht." }
+        },
+        {
+          "@type": "Question",
+          "name": "Trainierst du auch mit Vorerkrankungen oder nach einer Verletzung?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Ja, sofern dein Arzt oder deine Ärztin grünes Licht gibt. Bring den Befund gerne mit, dann bauen wir das Training darum herum. Ich ersetze keine Physiotherapie, arbeite aber gerne ergänzend dazu." }
+        }
+      ]
+    },
+    {
+      "@type": "Person",
+      "@id": "https://‹deine-domain.de›/#faruk",
+      "name": "Faruk ‹Nachname›",
+      "jobTitle": "Personal Trainer",
+      "worksFor": { "@id": "https://‹deine-domain.de›/#business" },
+      "knowsAbout": ["Krafttraining", "Functional Training", "Gewichtsreduktion", "Beweglichkeit", "Ernährung"]
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://‹deine-domain.de›/#website",
+      "url": "https://‹deine-domain.de›/",
+      "name": "Faruk – Personal Training",
+      "inLanguage": "de-DE",
+      "publisher": { "@id": "https://‹deine-domain.de›/#business" }
+    }
+  ]
+}
+</script>
+</head>
+
+<body>
+<a class="skip-link" href="#main">Zum Inhalt springen</a>
+
+<!-- ══════════════════ HEADER ══════════════════ -->
+<header class="site-header" id="siteHeader">
+  <div class="wrap header-inner">
+    <a class="brand" href="#top" aria-label="Startseite">
+      <span class="brand-mark" aria-hidden="true"></span>
+      <span class="brand-text">Faruk<span class="brand-sub">Personal Training</span></span>
+    </a>
+
+    <button class="nav-toggle" id="navToggle" aria-expanded="false" aria-controls="siteNav" aria-label="Menü öffnen">
+      <span class="nav-toggle-bars" aria-hidden="true"><i></i><i></i><i></i></span>
+    </button>
+
+    <nav class="site-nav" id="siteNav" aria-label="Hauptnavigation">
+      <ul>
+        <li><a href="#angebote">Angebote</a></li>
+        <li><a href="#ueber-mich">Über mich</a></li>
+        <li><a href="#ablauf">Ablauf</a></li>
+        <li><a href="#preise">Preise</a></li>
+        <li><a href="#faq">FAQ</a></li>
+        <li><a class="btn btn-primary btn-sm" href="#kontakt">Probetraining</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<main id="main">
+
+  <!-- ══════════════════ HERO ══════════════════ -->
+  <section class="hero" id="top">
+    <div class="hero-bg" aria-hidden="true"></div>
+    <div class="wrap hero-inner">
+      <div class="hero-copy">
+        <!-- Der Ortsname steht bewusst INNERHALB der H1: optisch bleibt es die
+             kleine orangefarbene Zeile darüber, für Google ist es aber Teil der
+             wichtigsten Überschrift der Seite. „Stärker werden" allein hat null
+             Suchvolumen, „Personal Training ‹Stadt›" ist der Begriff, der Kunden
+             bringt – so bekommt die Seite beides, ohne dass das Design leidet. -->
+        <h1>
+          <span class="h1-kicker">Personal Training in ‹Stadt› &amp; Umgebung</span>
+          Stärker werden.<br>In deinem Tempo.
+        </h1>
+        <p class="lead">
+          Ich bin Faruk, dein Personal Trainer. Gemeinsam bringen wir dich dahin, wo du hinwillst –
+          mit einem Trainingsplan, der zu deinem Alltag passt, und jemandem, der dranbleibt, wenn die Motivation mal nicht will.
+        </p>
+        <div class="hero-actions">
+          <a class="btn btn-primary btn-lg" href="#kontakt">Kostenloses Kennenlerntraining</a>
+          <a class="btn btn-ghost btn-lg" href="https://wa.me/49‹Telefonnummer ohne 0›?text=Hallo%20Faruk%2C%20ich%20interessiere%20mich%20f%C3%BCr%20Personal%20Training." target="_blank" rel="noopener">
+            <svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2 22l5.25-1.38a9.9 9.9 0 0 0 4.79 1.22h.01c5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.82 9.82 0 0 0 12.04 2Zm5.8 14.13c-.25.69-1.44 1.32-1.99 1.36-.53.05-1.02.24-3.44-.72-2.9-1.14-4.74-4.1-4.88-4.29-.14-.19-1.17-1.55-1.17-2.96 0-1.41.74-2.1 1-2.39.25-.29.55-.36.73-.36.18 0 .37 0 .53.01.17.01.4-.06.62.48.25.6.83 2.06.9 2.2.07.15.12.32.02.51-.09.19-.14.31-.28.48-.14.16-.29.36-.42.49-.14.14-.28.29-.12.57.16.29.72 1.18 1.54 1.91 1.06.94 1.95 1.23 2.23 1.37.28.14.44.12.6-.07.17-.19.7-.81.88-1.09.19-.29.37-.24.63-.14.25.09 1.6.75 1.88.89.28.14.46.21.53.33.07.11.07.67-.18 1.32Z"/></svg>
+            Per WhatsApp schreiben
+          </a>
+        </div>
+        <p class="hero-note">Unverbindlich · Antwort meist innerhalb von 24&nbsp;Stunden</p>
+      </div>
+
+      <figure class="hero-photo">
+        <!-- fetchpriority="high": Dieses Bild ist das größte sichtbare Element
+             beim Laden. Google misst genau dessen Ladezeit (LCP) als Rankingfaktor. -->
+        <img src="img/hero.svg" width="800" height="1000" fetchpriority="high" decoding="async"
+             alt="Personal Trainer Faruk beim Krafttraining mit einer Kundin in ‹Stadt›">
+      </figure>
+    </div>
+  </section>
+
+  <!-- ══════════════════ VERTRAUEN ══════════════════ -->
+  <section class="trustbar" aria-label="Auf einen Blick">
+    <div class="wrap trust-grid">
+      <div class="trust-item reveal"><strong>‹8›</strong><span>Jahre Trainings&shy;erfahrung</span></div>
+      <div class="trust-item reveal"><strong>‹120›+</strong><span>betreute Kundinnen &amp; Kunden</span></div>
+      <div class="trust-item reveal"><strong>A&nbsp;&amp;&nbsp;B</strong><span>Lizenz Fitness&shy;trainer</span></div>
+      <div class="trust-item reveal"><strong>3</strong><span>Orte: zuhause, Studio, outdoor</span></div>
+    </div>
+  </section>
+
+  <!-- ══════════════════ ANGEBOTE ══════════════════ -->
+  <section class="section" id="angebote">
+    <div class="wrap">
+      <header class="section-head reveal">
+        <p class="eyebrow">Angebote</p>
+        <h2>Dein Personal Training – vier Wege, mit mir zu trainieren</h2>
+        <p class="section-lead">Jedes Training startet mit einem ehrlichen Gespräch über dein Ziel. Danach entscheiden wir gemeinsam, welches Format am besten passt.</p>
+      </header>
+
+      <div class="cards">
+        <article class="card reveal">
+          <div class="card-ico" aria-hidden="true">
+            <svg viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" d="M4 9v6M20 9v6M7 6v12M17 6v12M7 12h10"/></svg>
+          </div>
+          <h3>Personal Training 1:1</h3>
+          <p>Die ganze Stunde nur für dich. Ich korrigiere jede Wiederholung, passe das Gewicht in Echtzeit an und sorge dafür, dass du dich nicht verletzt.</p>
+          <ul class="ticks">
+            <li>Individueller Trainingsplan</li>
+            <li>Technik-Korrektur in jeder Einheit</li>
+            <li>60 Minuten, bei dir oder im Studio</li>
+          </ul>
+        </article>
+
+        <article class="card reveal">
+          <div class="card-ico" aria-hidden="true">
+            <svg viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" d="M9 11a3 3 0 1 0 0-6 3 3 0 0 0 0 6ZM17 11a3 3 0 1 0 0-6 3 3 0 0 0 0 6ZM3 19a6 6 0 0 1 12 0M15 19a6 6 0 0 1 6-6"/></svg>
+          </div>
+          <h3>Duo-Training</h3>
+          <p>Zu zweit trainieren, Kosten teilen, sich gegenseitig ziehen. Ideal für Paare, Geschwister oder Freunde mit ähnlichem Ziel.</p>
+          <ul class="ticks">
+            <li>Pro Person deutlich günstiger</li>
+            <li>Mehr Spaß, weniger Ausreden</li>
+            <li>Auf beide Leistungsstände abgestimmt</li>
+          </ul>
+        </article>
+
+        <article class="card reveal">
+          <div class="card-ico" aria-hidden="true">
+            <svg viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" d="M7 3h10a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2ZM11 18h2"/></svg>
+          </div>
+          <h3>Online-Coaching</h3>
+          <p>Du trainierst selbstständig, aber nicht allein. Plan in der App, Video-Check deiner Technik und feste Check-ins.</p>
+          <ul class="ticks">
+            <li>Ortsunabhängig, auch auf Reisen</li>
+            <li>Wöchentliche Plan-Anpassung</li>
+            <li>Antwort auf Fragen per Chat</li>
+          </ul>
+        </article>
+
+        <article class="card reveal">
+          <div class="card-ico" aria-hidden="true">
+            <svg viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" d="M12 21a9 9 0 1 0 0-18 9 9 0 0 0 0 18ZM12 8v4l3 2"/></svg>
+          </div>
+          <h3>Ernährungscoaching</h3>
+          <p>Kein Verzichtsplan, den nach drei Wochen keiner mehr durchhält. Wir bauen Schritt für Schritt Gewohnheiten, die in dein Leben passen.</p>
+          <ul class="ticks">
+            <li>Alltagstaugliche Empfehlungen</li>
+            <li>Ohne Verbotsliste</li>
+            <li>Kombinierbar mit jedem Training</li>
+          </ul>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════ ÜBER MICH ══════════════════ -->
+  <section class="section section-alt" id="ueber-mich">
+    <div class="wrap about-grid">
+      <figure class="about-photo reveal">
+        <img src="img/faruk.svg" width="700" height="850" loading="lazy" decoding="async"
+             alt="Porträt von Faruk ‹Nachname›, Personal Trainer in ‹Stadt›">
+      </figure>
+
+      <div class="about-copy reveal">
+        <p class="eyebrow">Über mich</p>
+        <h2>Hi, ich bin Faruk – dein Personal Trainer in ‹Stadt›</h2>
+        <p>
+          ‹Hier kommen 3–4 Sätze deiner echten Geschichte hin: Wie bist du zum Training gekommen?
+          Was war dein eigener Wendepunkt? Warum machst du das heute beruflich?
+          Genau dieser Absatz entscheidet, ob jemand anruft – schreib ihn persönlich, nicht wie eine Broschüre.›
+        </p>
+        <p>
+          Mir geht es nicht um schnelle Versprechen. Mir geht es darum, dass du in sechs Monaten noch trainierst –
+          weil es sich richtig anfühlt und in deinen Alltag passt.
+        </p>
+
+        <ul class="quals">
+          <li><span>Lizenz</span> Fitnesstrainer/in A- und B-Lizenz</li>
+          <li><span>Zusatz</span> ‹z.&nbsp;B. Rückentraining, Athletiktrainer, Ernährungsberater›</li>
+          <li><span>Sicherheit</span> Erste-Hilfe-Ausbildung, aktuell</li>
+          <li><span>Sprachen</span> Deutsch, ‹weitere Sprachen›</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════ ABLAUF ══════════════════ -->
+  <section class="section" id="ablauf">
+    <div class="wrap">
+      <header class="section-head reveal">
+        <p class="eyebrow">Ablauf</p>
+        <h2>So läuft der Start ab</h2>
+        <p class="section-lead">Kein Vertrag, kein Druck. Erst schauen wir, ob es zwischen uns passt.</p>
+      </header>
+
+      <ol class="steps">
+        <li class="step reveal">
+          <span class="step-num">01</span>
+          <h3>Kennenlernen</h3>
+          <p>Kurzes Gespräch per Telefon oder WhatsApp: Was ist dein Ziel, wie viel Zeit hast du, was hat bisher nicht funktioniert?</p>
+        </li>
+        <li class="step reveal">
+          <span class="step-num">02</span>
+          <h3>Erstes Training – kostenlos</h3>
+          <p>Wir trainieren einmal gemeinsam. Du merkst, wie ich arbeite, ich sehe deinen Stand. Danach entscheidest du in Ruhe.</p>
+        </li>
+        <li class="step reveal">
+          <span class="step-num">03</span>
+          <h3>Dein Plan</h3>
+          <p>Ich baue dir einen Plan auf Basis von Analyse, Beweglichkeits-Check und deinem Alltag. Keine Vorlage von der Stange.</p>
+        </li>
+        <li class="step reveal">
+          <span class="step-num">04</span>
+          <h3>Dranbleiben</h3>
+          <p>Feste Termine, regelmäßige Anpassung, sichtbarer Fortschritt. Alle 8 Wochen schauen wir gemeinsam auf die Entwicklung.</p>
+        </li>
+      </ol>
+    </div>
+  </section>
+
+  <!-- ══════════════════ STIMMEN ══════════════════ -->
+  <section class="section section-alt" id="stimmen">
+    <div class="wrap">
+      <header class="section-head reveal">
+        <p class="eyebrow">Stimmen</p>
+        <h2>Was meine Kundinnen und Kunden sagen</h2>
+        <p class="section-lead">‹Ersetze diese drei Zitate durch echte. Frag zufriedene Kunden per WhatsApp – zwei Sätze und der Vorname reichen völlig.›</p>
+      </header>
+
+      <div class="quotes">
+        <figure class="quote reveal">
+          <div class="stars" aria-label="5 von 5 Sternen">★★★★★</div>
+          <blockquote><p>‹Echtes Zitat einfügen. Am besten mit konkretem Ergebnis: „Nach vier Monaten sind meine Rückenschmerzen weg und ich hebe 20 kg mehr."›</p></blockquote>
+          <figcaption><strong>‹Vorname›</strong><span>‹Alter›, ‹Ziel, z. B. Rücken &amp; Kraft›</span></figcaption>
+        </figure>
+        <figure class="quote reveal">
+          <div class="stars" aria-label="5 von 5 Sternen">★★★★★</div>
+          <blockquote><p>‹Echtes Zitat einfügen.›</p></blockquote>
+          <figcaption><strong>‹Vorname›</strong><span>‹Alter›, ‹Ziel›</span></figcaption>
+        </figure>
+        <figure class="quote reveal">
+          <div class="stars" aria-label="5 von 5 Sternen">★★★★★</div>
+          <blockquote><p>‹Echtes Zitat einfügen.›</p></blockquote>
+          <figcaption><strong>‹Vorname›</strong><span>‹Alter›, ‹Ziel›</span></figcaption>
+        </figure>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════ PREISE ══════════════════ -->
+  <section class="section" id="preise">
+    <div class="wrap">
+      <header class="section-head reveal">
+        <p class="eyebrow">Preise</p>
+        <h2>Preise – transparent und ohne Vertragsbindung</h2>
+        <p class="section-lead">Alle Preise inkl. MwSt. Anfahrt innerhalb von ‹Stadt› ist inklusive.</p>
+      </header>
+
+      <div class="pricing">
+        <article class="price reveal">
+          <h3>Einzelstunde</h3>
+          <p class="price-tag"><span class="amount">‹75›</span><span class="unit">€ / 60 Min</span></p>
+          <p class="price-desc">Zum Reinschnuppern oder für unregelmäßige Termine.</p>
+          <ul class="ticks">
+            <li>1:1-Betreuung</li>
+            <li>Keine Mindestlaufzeit</li>
+            <li>Ort nach Absprache</li>
+          </ul>
+          <!-- data-paket: wählt das passende Anliegen im Kontaktformular
+               schon vor, damit im Formular ein Schritt weniger nötig ist. -->
+          <a class="btn btn-ghost btn-block" href="#kontakt" data-paket="Personal Training 1:1">Termin anfragen</a>
+        </article>
+
+        <article class="price price-featured reveal">
+          <p class="badge">Beliebteste Wahl</p>
+          <h3>10er-Karte</h3>
+          <p class="price-tag"><span class="amount">‹650›</span><span class="unit">€ gesamt</span></p>
+          <p class="price-desc">Der Klassiker. Genug Einheiten, um echte Fortschritte zu sehen.</p>
+          <ul class="ticks">
+            <li>‹65› € pro Einheit statt ‹75› €</li>
+            <li>12 Monate gültig</li>
+            <li>Trainingsplan inklusive</li>
+            <li>WhatsApp-Support zwischendurch</li>
+          </ul>
+          <a class="btn btn-primary btn-block" href="#kontakt" data-paket="Personal Training 1:1">Kostenlos starten</a>
+        </article>
+
+        <article class="price reveal">
+          <h3>Online-Coaching</h3>
+          <p class="price-tag"><span class="amount">‹119›</span><span class="unit">€ / Monat</span></p>
+          <p class="price-desc">Für alle, die selbstständig trainieren, aber Struktur brauchen.</p>
+          <ul class="ticks">
+            <li>Plan &amp; wöchentliche Anpassung</li>
+            <li>Video-Check deiner Technik</li>
+            <li>Monatlich kündbar</li>
+          </ul>
+          <a class="btn btn-ghost btn-block" href="#kontakt" data-paket="Online-Coaching">Mehr erfahren</a>
+        </article>
+      </div>
+
+      <p class="price-foot reveal">Duo-Training: ‹95› € pro Einheit für zwei Personen. Firmen- und Gruppenangebote auf Anfrage.</p>
+    </div>
+  </section>
+
+  <!-- ══════════════════ FAQ ══════════════════ -->
+  <section class="section section-alt" id="faq">
+    <div class="wrap wrap-narrow">
+      <header class="section-head reveal">
+        <p class="eyebrow">FAQ</p>
+        <h2>Häufige Fragen zum Personal Training</h2>
+      </header>
+
+      <div class="faq">
+        <details class="reveal">
+          <summary>Ich habe noch nie richtig trainiert – ist das ein Problem?</summary>
+          <div class="faq-body"><p>Im Gegenteil. Anfängerinnen und Anfänger machen die schnellsten Fortschritte, weil wir von Beginn an sauber aufbauen und du dir keine falschen Bewegungsmuster abgewöhnen musst. Wir starten mit dem, was du kannst.</p></div>
+        </details>
+        <details class="reveal">
+          <summary>Wo findet das Personal Training statt?</summary>
+          <div class="faq-body"><p>Bei dir zuhause, in einem Partnerstudio in ‹Stadt› oder draußen im Park – ganz wie du magst. Für das Training zuhause bringe ich das nötige Equipment mit. Ich komme im Umkreis von ca. ‹20› km um ‹Stadt›.</p></div>
+        </details>
+        <details class="reveal">
+          <summary>Was brauche ich für die erste Einheit?</summary>
+          <div class="faq-body"><p>Bequeme Sportkleidung, Hallenschuhe, ein Handtuch und Wasser. Alles Weitere bringe ich mit.</p></div>
+        </details>
+        <details class="reveal">
+          <summary>Wie oft sollte ich trainieren?</summary>
+          <div class="faq-body"><p>Für sichtbare Ergebnisse reichen meist zwei Einheiten pro Woche – eine davon mit mir, eine selbstständig nach Plan. Was zählt, ist nicht die perfekte Woche, sondern die Regelmäßigkeit über Monate.</p></div>
+        </details>
+        <details class="reveal">
+          <summary>Kann ich Termine absagen?</summary>
+          <div class="faq-body"><p>Ja. Bis ‹24› Stunden vor dem Termin kostenfrei, danach berechne ich die Einheit. Bei Krankheit finden wir immer eine Lösung.</p></div>
+        </details>
+        <details class="reveal">
+          <summary>Beteiligt sich meine Krankenkasse an den Kosten für Personal Training?</summary>
+          <div class="faq-body"><p>Personal Training ist in der Regel keine Kassenleistung. Viele Krankenkassen bezuschussen aber zertifizierte Präventionskurse. Sprich mich an – ich sage dir ehrlich, was möglich ist und was nicht.</p></div>
+        </details>
+        <details class="reveal">
+          <summary>Trainierst du auch mit Vorerkrankungen oder nach einer Verletzung?</summary>
+          <div class="faq-body"><p>Ja, sofern dein Arzt oder deine Ärztin grünes Licht gibt. Bring den Befund gerne mit, dann bauen wir das Training darum herum. Ich ersetze keine Physiotherapie, arbeite aber gerne ergänzend dazu.</p></div>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════ KONTAKT ══════════════════ -->
+  <section class="section" id="kontakt">
+    <div class="wrap contact-grid">
+      <div class="contact-copy reveal">
+        <p class="eyebrow">Kontakt</p>
+        <h2>Lass uns starten</h2>
+        <p class="section-lead">Schreib mir kurz, was du erreichen willst. Das erste Training ist kostenlos und unverbindlich – danach entscheidest du in Ruhe.</p>
+
+        <ul class="contact-list">
+          <li>
+            <a href="https://wa.me/49‹Telefonnummer ohne 0›?text=Hallo%20Faruk%2C%20ich%20interessiere%20mich%20f%C3%BCr%20Personal%20Training." target="_blank" rel="noopener">
+              <svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2 22l5.25-1.38a9.9 9.9 0 0 0 4.79 1.22h.01c5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.82 9.82 0 0 0 12.04 2Zm5.8 14.13c-.25.69-1.44 1.32-1.99 1.36-.53.05-1.02.24-3.44-.72-2.9-1.14-4.74-4.1-4.88-4.29-.14-.19-1.17-1.55-1.17-2.96 0-1.41.74-2.1 1-2.39.25-.29.55-.36.73-.36.18 0 .37 0 .53.01.17.01.4-.06.62.48.25.6.83 2.06.9 2.2.07.15.12.32.02.51-.09.19-.14.31-.28.48-.14.16-.29.36-.42.49-.14.14-.28.29-.12.57.16.29.72 1.18 1.54 1.91 1.06.94 1.95 1.23 2.23 1.37.28.14.44.12.6-.07.17-.19.7-.81.88-1.09.19-.29.37-.24.63-.14.25.09 1.6.75 1.88.89.28.14.46.21.53.33.07.11.07.67-.18 1.32Z"/></svg>
+              <span><strong>WhatsApp</strong>Schnellste Antwort</span>
+            </a>
+          </li>
+          <li>
+            <a href="tel:+49‹Telefonnummer ohne 0›">
+              <svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8.1 9.9a16 16 0 0 0 6 6l1.3-1.2a2 2 0 0 1 2.1-.5c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2Z"/></svg>
+              <span><strong>‹0123 456789›</strong>Mo–Sa, 8–20 Uhr</span>
+            </a>
+          </li>
+          <li>
+            <a href="mailto:‹mail@deine-domain.de›">
+              <svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" d="M4 4h16a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2Zm18 2-10 7L2 6"/></svg>
+              <span><strong>‹mail@deine-domain.de›</strong>Für alles Ausführliche</span>
+            </a>
+          </li>
+          <li>
+            <a href="https://www.instagram.com/‹instagram-name›/" target="_blank" rel="noopener">
+              <svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" d="M7 2h10a5 5 0 0 1 5 5v10a5 5 0 0 1-5 5H7a5 5 0 0 1-5-5V7a5 5 0 0 1 5-5Zm5 5.5a4.5 4.5 0 1 1 0 9 4.5 4.5 0 0 1 0-9ZM17.5 6h.01"/></svg>
+              <span><strong>@‹instagram-name›</strong>Training &amp; Alltag</span>
+            </a>
+          </li>
+        </ul>
+
+        <p class="contact-area"><strong>Einzugsgebiet:</strong> ‹Stadt›, ‹Nachbarstadt 1›, ‹Nachbarstadt 2› und Umgebung.</p>
+      </div>
+
+      <div class="contact-form-wrap reveal">
+        <form class="contact-form" id="contactForm" novalidate>
+          <p class="form-intro">Oder schreib mir direkt hier:</p>
+
+          <div class="field">
+            <label for="f-name">Name <span aria-hidden="true">*</span></label>
+            <input type="text" id="f-name" name="name" required autocomplete="name" placeholder="Dein Name" aria-describedby="err-f-name">
+            <p class="error" id="err-f-name" data-for="f-name"></p>
+          </div>
+
+          <div class="field-row">
+            <div class="field">
+              <label for="f-mail">E-Mail <span aria-hidden="true">*</span></label>
+              <input type="email" id="f-mail" name="email" required autocomplete="email" placeholder="name@beispiel.de" aria-describedby="err-f-mail">
+              <p class="error" id="err-f-mail" data-for="f-mail"></p>
+            </div>
+            <div class="field">
+              <label for="f-tel">Telefon <span class="opt">optional</span></label>
+              <input type="tel" id="f-tel" name="telefon" autocomplete="tel" placeholder="0123 456789">
+            </div>
+          </div>
+
+          <div class="field">
+            <label for="f-ziel">Worum geht's?</label>
+            <select id="f-ziel" name="ziel">
+              <option value="Personal Training 1:1">Personal Training 1:1</option>
+              <option value="Duo-Training">Duo-Training zu zweit</option>
+              <option value="Online-Coaching">Online-Coaching</option>
+              <option value="Ernährungscoaching">Ernährungscoaching</option>
+              <option value="Noch unklar">Weiß ich noch nicht</option>
+            </select>
+          </div>
+
+          <div class="field">
+            <label for="f-msg">Nachricht <span aria-hidden="true">*</span></label>
+            <textarea id="f-msg" name="nachricht" rows="5" required placeholder="Was möchtest du erreichen? Wie viel Zeit hast du pro Woche?" aria-describedby="err-f-msg"></textarea>
+            <p class="error" id="err-f-msg" data-for="f-msg"></p>
+          </div>
+
+          <!-- Spam-Falle. Der Feldname `_gotcha` ist bewusst gewählt: Formspree
+               kennt ihn und wirft ausgefüllte Einsendungen serverseitig weg.
+               Dadurch greift die Falle auch dann, wenn ein Bot das Formular
+               umgeht und direkt an den Endpunkt sendet. -->
+          <div class="hp" aria-hidden="true"><label for="f-hp">Bitte leer lassen</label><input type="text" id="f-hp" name="_gotcha" tabindex="-1" autocomplete="off"></div>
+
+          <div class="field field-check">
+            <input type="checkbox" id="f-dsgvo" name="einwilligung" required aria-describedby="err-f-dsgvo">
+            <label for="f-dsgvo">Ich habe die <a href="datenschutz.html">Datenschutzerklärung</a> gelesen und bin damit einverstanden, dass meine Angaben zur Bearbeitung meiner Anfrage gespeichert werden. <span aria-hidden="true">*</span></label>
+            <p class="error" id="err-f-dsgvo" data-for="f-dsgvo"></p>
+          </div>
+
+          <button type="submit" class="btn btn-primary btn-block btn-lg" id="submitBtn">Anfrage senden</button>
+          <p class="form-status" id="formStatus" role="status" aria-live="polite"></p>
+        </form>
+
+        <!-- Bestätigung nach erfolgreichem Versand: ersetzt das Formular,
+             damit klar ist, dass die Nachricht wirklich raus ist. -->
+        <div class="form-success" id="formSuccess" hidden>
+          <div class="success-ico" aria-hidden="true">
+            <svg viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" d="m4 12.5 5 5L20 6.5"/></svg>
+          </div>
+          <h3>Danke, deine Anfrage ist da!</h3>
+          <p>Ich melde mich innerhalb von 24&nbsp;Stunden bei dir – meistens deutlich schneller.</p>
+          <p class="success-hint">Wenn es eilig ist, erreichst du mich am schnellsten direkt:</p>
+          <a class="btn btn-ghost btn-block" href="https://wa.me/49‹Telefonnummer ohne 0›?text=Hallo%20Faruk%2C%20ich%20habe%20gerade%20eine%20Anfrage%20%C3%BCber%20die%20Website%20geschickt." target="_blank" rel="noopener">
+            <svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2 22l5.25-1.38a9.9 9.9 0 0 0 4.79 1.22h.01c5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.82 9.82 0 0 0 12.04 2Zm5.8 14.13c-.25.69-1.44 1.32-1.99 1.36-.53.05-1.02.24-3.44-.72-2.9-1.14-4.74-4.1-4.88-4.29-.14-.19-1.17-1.55-1.17-2.96 0-1.41.74-2.1 1-2.39.25-.29.55-.36.73-.36.18 0 .37 0 .53.01.17.01.4-.06.62.48.25.6.83 2.06.9 2.2.07.15.12.32.02.51-.09.19-.14.31-.28.48-.14.16-.29.36-.42.49-.14.14-.28.29-.12.57.16.29.72 1.18 1.54 1.91 1.06.94 1.95 1.23 2.23 1.37.28.14.44.12.6-.07.17-.19.7-.81.88-1.09.19-.29.37-.24.63-.14.25.09 1.6.75 1.88.89.28.14.46.21.53.33.07.11.07.67-.18 1.32Z"/></svg>
+            Per WhatsApp schreiben
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<!-- ══════════════════ FOOTER ══════════════════ -->
+<footer class="site-footer">
+  <div class="wrap footer-inner">
+    <div class="footer-brand">
+      <span class="brand-mark" aria-hidden="true"></span>
+      <p><strong>Faruk – Personal Training</strong><br>Personal Training in ‹Stadt› und Umgebung</p>
+    </div>
+    <nav class="footer-nav" aria-label="Fußzeile">
+      <a href="#angebote">Angebote</a>
+      <a href="#preise">Preise</a>
+      <a href="#kontakt">Kontakt</a>
+      <a href="impressum.html">Impressum</a>
+      <a href="datenschutz.html">Datenschutz</a>
+    </nav>
+  </div>
+  <div class="wrap footer-legal">
+    <p>&copy; <span id="year">2026</span> Faruk ‹Nachname›. Alle Rechte vorbehalten.</p>
+  </div>
+</footer>
+
+<!-- Feste Kontaktleiste, nur am Handy sichtbar. Beide Wege sind immer einen
+     Daumentipp entfernt. Sobald der Kontaktbereich im Bild ist, fährt die
+     Leiste nach unten weg – dort steht ohnehin alles ausführlich. -->
+<div class="mobile-cta" id="mobileCta">
+  <a class="mcta mcta-wa" href="https://wa.me/49‹Telefonnummer ohne 0›?text=Hallo%20Faruk%2C%20ich%20interessiere%20mich%20f%C3%BCr%20Personal%20Training." target="_blank" rel="noopener">
+    <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2 22l5.25-1.38a9.9 9.9 0 0 0 4.79 1.22h.01c5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.82 9.82 0 0 0 12.04 2Zm5.8 14.13c-.25.69-1.44 1.32-1.99 1.36-.53.05-1.02.24-3.44-.72-2.9-1.14-4.74-4.1-4.88-4.29-.14-.19-1.17-1.55-1.17-2.96 0-1.41.74-2.1 1-2.39.25-.29.55-.36.73-.36.18 0 .37 0 .53.01.17.01.4-.06.62.48.25.6.83 2.06.9 2.2.07.15.12.32.02.51-.09.19-.14.31-.28.48-.14.16-.29.36-.42.49-.14.14-.28.29-.12.57.16.29.72 1.18 1.54 1.91 1.06.94 1.95 1.23 2.23 1.37.28.14.44.12.6-.07.17-.19.7-.81.88-1.09.19-.29.37-.24.63-.14.25.09 1.6.75 1.88.89.28.14.46.21.53.33.07.11.07.67-.18 1.32Z"/></svg>
+    WhatsApp
+  </a>
+  <a class="mcta mcta-tel" href="tel:+49‹Telefonnummer ohne 0›">
+    <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8.1 9.9a16 16 0 0 0 6 6l1.3-1.2a2 2 0 0 1 2.1-.5c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2Z"/></svg>
+    Anrufen
+  </a>
+</div>
+
+<script src="js/main.js" defer></script>
+</body>
+</html>
