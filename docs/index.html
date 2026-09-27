@@ -1,5 +1,14 @@
 <!DOCTYPE html>
 <html lang="de" data-farbmodus="dunkel">
+<!-- ═══════════════════════════════════════════════════════════════
+     AUFBAU DIESER DATEI (die Abschnitte sind unten mit ═══ markiert)
+       <head>   SEO-Angaben und Vorschau beim Teilen per WhatsApp & Co.
+       <body>   HEADER · HERO · VERTRAUEN · ANGEBOTE · ÜBER MICH · ABLAUF ·
+                STIMMEN · PREISE · FAQ · KONTAKT · FOOTER
+       Ende     Google-Daten (JSON-LD) und das Skript
+     Noch offene Stellen stehen in ‹spitzen Klammern› – einfach nach ‹ suchen.
+     Farben und Design: css/style.css · Verhalten und Formular: js/main.js
+     ═══════════════════════════════════════════════════════════════ -->
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -44,137 +53,6 @@
   setTimeout(function () {
     if (!window.__siteReady) document.documentElement.classList.remove('js');
   }, 2000);
-</script>
-
-<!-- ═══ Strukturierte Daten: sorgt für den hübschen Google-Eintrag ═══ -->
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@graph": [
-    {
-      "@type": ["LocalBusiness", "SportsActivityLocation"],
-      "@id": "https://afp-coaching.de/#business",
-      "name": "AFP-Coaching – Personal Training",
-      "description": "Personal Training und individuelle Trainingsbetreuung in Gießen und Umgebung.",
-      "url": "https://afp-coaching.de/",
-      "telephone": "+4917642755110",
-      "email": "kontakt@afp-coaching.de",
-      "image": "https://afp-coaching.de/img/og-vorschau.jpg",
-      "priceRange": "€€",
-      "currenciesAccepted": "EUR",
-      "paymentAccepted": "Barzahlung, Überweisung",
-      "address": {
-        "@type": "PostalAddress",
-        "streetAddress": "Ludwigsteraße 44",
-        "postalCode": "35390",
-        "addressLocality": "Gießen",
-        "addressRegion": "Hessen",
-        "addressCountry": "DE"
-      },
-      "geo": {
-        "@type": "GeoCoordinates",
-        "latitude": "50.5866",
-        "longitude": "8.6742"
-      },
-      "areaServed": [
-        { "@type": "City", "name": "Gießen" },
-        { "@type": "City", "name": "‹Nachbarstadt 1›" },
-        { "@type": "City", "name": "‹Nachbarstadt 2›" }
-      ],
-      "openingHoursSpecification": [{
-        "@type": "OpeningHoursSpecification",
-        "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"],
-        "opens": "07:00",
-        "closes": "21:00"
-      }],
-      "sameAs": [
-        "https://www.instagram.com/faruk.palteki.pt/",
-        ""
-      ],
-      "makesOffer": [
-        {
-          "@type": "Offer",
-          "itemOffered": { "@type": "Service", "name": "Personal Training 1:1", "serviceType": "Personal Training" },
-          "price": "‹75›", "priceCurrency": "EUR",
-          "description": "Einzelstunde, 60 Minuten, individuelle 1:1-Betreuung."
-        },
-        {
-          "@type": "Offer",
-          "itemOffered": { "@type": "Service", "name": "Duo-Training zu zweit", "serviceType": "Personal Training" },
-          "price": "‹95›", "priceCurrency": "EUR",
-          "description": "Training zu zweit, Preis gilt für beide Personen zusammen."
-        },
-        {
-          "@type": "Offer",
-          "itemOffered": { "@type": "Service", "name": "Online-Coaching", "serviceType": "Fernbetreuung" },
-          "price": "‹119›", "priceCurrency": "EUR",
-          "description": "Monatliche Betreuung mit Trainingsplan und Video-Analyse."
-        },
-        {
-          "@type": "Offer",
-          "itemOffered": { "@type": "Service", "name": "Ernährungscoaching", "serviceType": "Ernährungsberatung" }
-        }
-      ]
-    },
-    {
-      "@type": "FAQPage",
-      "@id": "https://afp-coaching.de/#faq",
-      "mainEntity": [
-        {
-          "@type": "Question",
-          "name": "Ich habe noch nie richtig trainiert – ist das ein Problem?",
-          "acceptedAnswer": { "@type": "Answer", "text": "Im Gegenteil. Anfängerinnen und Anfänger machen die schnellsten Fortschritte, weil wir von Beginn an sauber aufbauen und du dir keine falschen Bewegungsmuster abgewöhnen musst. Wir starten mit dem, was du kannst." }
-        },
-        {
-          "@type": "Question",
-          "name": "Wo findet das Personal Training statt?",
-          "acceptedAnswer": { "@type": "Answer", "text": "Bei dir zuhause, in einem Partnerstudio in Gießen oder draußen im Park – ganz wie du magst. Für das Training zuhause bringe ich das nötige Equipment mit. Ich komme im Umkreis von ca. 20 km um Gießen." }
-        },
-        {
-          "@type": "Question",
-          "name": "Was brauche ich für die erste Einheit?",
-          "acceptedAnswer": { "@type": "Answer", "text": "Bequeme Sportkleidung, Hallenschuhe, ein Handtuch und Wasser. Alles Weitere bringe ich mit." }
-        },
-        {
-          "@type": "Question",
-          "name": "Wie oft sollte ich trainieren?",
-          "acceptedAnswer": { "@type": "Answer", "text": "Für sichtbare Ergebnisse reichen meist zwei Einheiten pro Woche – eine davon mit mir, eine selbstständig nach Plan. Was zählt, ist nicht die perfekte Woche, sondern die Regelmäßigkeit über Monate." }
-        },
-        {
-          "@type": "Question",
-          "name": "Kann ich Termine absagen?",
-          "acceptedAnswer": { "@type": "Answer", "text": "Ja. Bis 24 Stunden vor dem Termin kostenfrei, danach berechne ich die Einheit. Bei Krankheit finden wir immer eine Lösung." }
-        },
-        {
-          "@type": "Question",
-          "name": "Beteiligt sich meine Krankenkasse an den Kosten für Personal Training?",
-          "acceptedAnswer": { "@type": "Answer", "text": "Personal Training ist in der Regel keine Kassenleistung. Viele Krankenkassen bezuschussen aber zertifizierte Präventionskurse. Sprich mich an – ich sage dir ehrlich, was möglich ist und was nicht." }
-        },
-        {
-          "@type": "Question",
-          "name": "Trainierst du auch mit Vorerkrankungen oder nach einer Verletzung?",
-          "acceptedAnswer": { "@type": "Answer", "text": "Ja, sofern dein Arzt oder deine Ärztin grünes Licht gibt. Bring den Befund gerne mit, dann bauen wir das Training darum herum. Ich ersetze keine Physiotherapie, arbeite aber gerne ergänzend dazu." }
-        }
-      ]
-    },
-    {
-      "@type": "Person",
-      "@id": "https://afp-coaching.de/#faruk",
-      "name": "A. Faruk Palteki",
-      "jobTitle": "Personal Trainer",
-      "worksFor": { "@id": "https://afp-coaching.de/#business" },
-      "knowsAbout": ["Krafttraining", "Functional Training", "Gewichtsreduktion", "Beweglichkeit", "Ernährung"]
-    },
-    {
-      "@type": "WebSite",
-      "@id": "https://afp-coaching.de/#website",
-      "url": "https://afp-coaching.de/",
-      "name": "AFP-Coaching – Personal Training",
-      "inLanguage": "de-DE",
-      "publisher": { "@id": "https://afp-coaching.de/#business" }
-    }
-  ]
-}
 </script>
 </head>
 
@@ -332,7 +210,9 @@
         <p class="eyebrow">Über mich</p>
         <h2>Hi, ich bin A. Faruk – dein Personal Trainer in Gießen</h2>
         <p>
-          
+          ‹Hier kommen 3–4 Sätze deiner echten Geschichte hin: Wie bist du zum Training gekommen?
+          Was war dein eigener Wendepunkt? Warum machst du das heute beruflich?
+          Genau dieser Absatz entscheidet, ob jemand anruft – schreib ihn persönlich, nicht wie eine Broschüre.›
         </p>
         <p>
           Mir geht es nicht um schnelle Versprechen. Mir geht es darum, dass du in sechs Monaten noch trainierst –
@@ -341,7 +221,7 @@
 
         <ul class="quals">
           <li><span>Lizenz</span> Fitnesstrainer/in A- und B-Lizenz</li>
-          <li><span>Zusatz</span> </li>
+          <li><span>Zusatz</span> ‹z.&nbsp;B. Rückentraining, Athletiktrainer, Ernährungsberater›</li>
           <li><span>Sicherheit</span> Erste-Hilfe-Ausbildung, aktuell</li>
           <li><span>Sprachen</span> Deutsch, ‹weitere Sprachen›</li>
         </ul>
@@ -653,6 +533,138 @@
     Anrufen
   </a>
 </div>
+
+<!-- ═══ Strukturierte Daten: sorgt für den hübschen Google-Eintrag ═══
+     Steht bewusst hier am Ende statt im <head>: Google liest den Block an
+     jeder Stelle, und so beginnt die Datei oben mit dem, was man bearbeitet.
+     Die FAQ-Fragen hier müssen wortgleich mit der sichtbaren FAQ sein.
+     Preise stehen absichtlich nicht drin, damit sie nur an einer Stelle
+     gepflegt werden müssen (Abschnitt PREISE). -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": ["LocalBusiness", "SportsActivityLocation"],
+      "@id": "https://afp-coaching.de/#business",
+      "name": "AFP-Coaching – Personal Training",
+      "description": "Personal Training und individuelle Trainingsbetreuung in Gießen und Umgebung.",
+      "url": "https://afp-coaching.de/",
+      "telephone": "+4917642755110",
+      "email": "kontakt@afp-coaching.de",
+      "image": "https://afp-coaching.de/img/og-vorschau.jpg",
+      "priceRange": "€€",
+      "currenciesAccepted": "EUR",
+      "paymentAccepted": "Barzahlung, Überweisung",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "Ludwigsteraße 44",
+        "postalCode": "35390",
+        "addressLocality": "Gießen",
+        "addressRegion": "Hessen",
+        "addressCountry": "DE"
+      },
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": "50.5866",
+        "longitude": "8.6742"
+      },
+      "areaServed": [
+        { "@type": "City", "name": "Gießen" },
+        { "@type": "City", "name": "‹Nachbarstadt 1›" },
+        { "@type": "City", "name": "‹Nachbarstadt 2›" }
+      ],
+      "openingHoursSpecification": [{
+        "@type": "OpeningHoursSpecification",
+        "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"],
+        "opens": "07:00",
+        "closes": "21:00"
+      }],
+      "sameAs": [
+        "https://www.instagram.com/faruk.palteki.pt/"
+      ],
+      "makesOffer": [
+        {
+          "@type": "Offer",
+          "itemOffered": { "@type": "Service", "name": "Personal Training 1:1", "serviceType": "Personal Training" },
+          "description": "Einzelstunde, 60 Minuten, individuelle 1:1-Betreuung."
+        },
+        {
+          "@type": "Offer",
+          "itemOffered": { "@type": "Service", "name": "Duo-Training zu zweit", "serviceType": "Personal Training" },
+          "description": "Gemeinsames Training für zwei Personen."
+        },
+        {
+          "@type": "Offer",
+          "itemOffered": { "@type": "Service", "name": "Online-Coaching", "serviceType": "Fernbetreuung" },
+          "description": "Monatliche Betreuung mit Trainingsplan und Video-Analyse."
+        },
+        {
+          "@type": "Offer",
+          "itemOffered": { "@type": "Service", "name": "Ernährungscoaching", "serviceType": "Ernährungsberatung" }
+        }
+      ]
+    },
+    {
+      "@type": "FAQPage",
+      "@id": "https://afp-coaching.de/#faq",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Ich habe noch nie richtig trainiert – ist das ein Problem?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Im Gegenteil. Anfängerinnen und Anfänger machen die schnellsten Fortschritte, weil wir von Beginn an sauber aufbauen und du dir keine falschen Bewegungsmuster abgewöhnen musst. Wir starten mit dem, was du kannst." }
+        },
+        {
+          "@type": "Question",
+          "name": "Wo findet das Personal Training statt?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Bei dir zuhause, in einem Partnerstudio in Gießen oder draußen im Park – ganz wie du magst. Für das Training zuhause bringe ich das nötige Equipment mit. Ich komme im Umkreis von ca. 20 km um Gießen." }
+        },
+        {
+          "@type": "Question",
+          "name": "Was brauche ich für die erste Einheit?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Bequeme Sportkleidung, Hallenschuhe, ein Handtuch und Wasser. Alles Weitere bringe ich mit." }
+        },
+        {
+          "@type": "Question",
+          "name": "Wie oft sollte ich trainieren?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Für sichtbare Ergebnisse reichen meist zwei Einheiten pro Woche – eine davon mit mir, eine selbstständig nach Plan. Was zählt, ist nicht die perfekte Woche, sondern die Regelmäßigkeit über Monate." }
+        },
+        {
+          "@type": "Question",
+          "name": "Kann ich Termine absagen?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Ja. Bis 24 Stunden vor dem Termin kostenfrei, danach berechne ich die Einheit. Bei Krankheit finden wir immer eine Lösung." }
+        },
+        {
+          "@type": "Question",
+          "name": "Beteiligt sich meine Krankenkasse an den Kosten für Personal Training?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Personal Training ist in der Regel keine Kassenleistung. Viele Krankenkassen bezuschussen aber zertifizierte Präventionskurse. Sprich mich an – ich sage dir ehrlich, was möglich ist und was nicht." }
+        },
+        {
+          "@type": "Question",
+          "name": "Trainierst du auch mit Vorerkrankungen oder nach einer Verletzung?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Ja, sofern dein Arzt oder deine Ärztin grünes Licht gibt. Bring den Befund gerne mit, dann bauen wir das Training darum herum. Ich ersetze keine Physiotherapie, arbeite aber gerne ergänzend dazu." }
+        }
+      ]
+    },
+    {
+      "@type": "Person",
+      "@id": "https://afp-coaching.de/#faruk",
+      "name": "A. Faruk Palteki",
+      "jobTitle": "Personal Trainer",
+      "worksFor": { "@id": "https://afp-coaching.de/#business" },
+      "knowsAbout": ["Krafttraining", "Functional Training", "Gewichtsreduktion", "Beweglichkeit", "Ernährung"]
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://afp-coaching.de/#website",
+      "url": "https://afp-coaching.de/",
+      "name": "AFP-Coaching – Personal Training",
+      "inLanguage": "de-DE",
+      "publisher": { "@id": "https://afp-coaching.de/#business" }
+    }
+  ]
+}
+</script>
 
 <script src="js/main.js" defer></script>
 </body>
