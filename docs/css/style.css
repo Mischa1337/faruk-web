@@ -12,13 +12,13 @@
        1. --accent            die Markenfarbe
        2. data-farbmodus      am <html>-Tag: "dunkel" oder "hell"
      Alles Übrige leitet sich per color-mix() daraus ab und zieht
-     automatisch mit. Zum Ausprobieren farben.html im Browser öffnen –
-     dort gibt es eine Live-Vorschau mit Kontrastprüfung.
+     automatisch mit.
      ═══════════════════════════════════════════════════════════════ */
 
   /* Markenfarbe. --accent-hi ist die lesbare Textvariante auf dem
-     Hintergrund, --on-accent die Schrift AUF der Markenfarbe. Beide
-     berechnet setup.py so, dass der Kontrast nachweislich reicht. */
+     Hintergrund, --on-accent die Schrift AUF der Markenfarbe. Wer
+     --accent ändert, muss beide mitziehen und den Kontrast prüfen
+     (mind. 4,5:1, z. B. mit dem Kontrast-Check der Browser-Devtools). */
   --accent:      #519A70;
   --accent-hi:   #69B087;
   --on-accent:   #140904;
