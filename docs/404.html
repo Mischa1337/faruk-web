@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="de" data-farbmodus="dunkel">
+<html lang="de" data-theme="dark">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Seite nicht gefunden | Faruk – Personal Training</title>
+<title>Seite nicht gefunden | AFP-Coaching</title>
 <meta name="robots" content="noindex, follow">
 <meta name="theme-color" content="#0A0A0B">
 <link rel="icon" href="img/favicon.png" type="image/png">
@@ -11,6 +11,8 @@
 </head>
 
 <body>
+<a class="skip-link" href="#main">Zum Inhalt springen</a>
+
 <header class="site-header is-stuck header-legal">
   <div class="wrap header-inner">
     <a class="brand" href="index.html" aria-label="Zur Startseite">
@@ -18,12 +20,14 @@
       <span class="brand-text">AFP-Coaching<span class="brand-sub">Achtsamkeit • Fortschritt • Präzision</span></span>
     </a>
     <nav class="legal-nav" aria-label="Hauptnavigation">
-      <ul><li><a href="index.html">Startseite</a></li></ul>
+      <ul>
+        <li><a href="index.html">Startseite</a></li>
+      </ul>
     </nav>
   </div>
 </header>
 
-<main class="legal">
+<main id="main" class="legal">
   <div class="wrap wrap-narrow">
     <p class="eyebrow">Fehler 404</p>
     <h1>Diese Seite gibt&nbsp;es nicht (mehr)</h1>
@@ -31,7 +35,7 @@
       Vermutlich hat sich ein Tippfehler in die Adresse geschlichen, oder der Link ist veraltet.
       Alles Wichtige – Angebote, Preise und Kontakt – findest du auf der Startseite.
     </p>
-    <p style="margin-top:2rem; display:flex; flex-wrap:wrap; gap:.85rem;">
+    <p class="legal-actions">
       <a class="btn btn-primary btn-lg" href="index.html">Zur Startseite</a>
       <a class="btn btn-ghost btn-lg" href="index.html#kontakt">Direkt zum Kontakt</a>
     </p>
@@ -50,6 +54,11 @@
       <a href="datenschutz.html">Datenschutz</a>
     </nav>
   </div>
+  <div class="wrap footer-legal">
+    <p>&copy; <span id="year">2026</span> Faruk Palteki. Alle Rechte vorbehalten.</p>
+  </div>
 </footer>
+
+<script src="js/main.js" defer></script>
 </body>
 </html>
