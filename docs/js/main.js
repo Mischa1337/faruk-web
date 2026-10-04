@@ -1,5 +1,5 @@
 /* ═══════════════════════════════════════════════════════════
-   A. Faruk – Personal Training
+   Faruk – Personal Training
    Vanilla JS, keine Bibliotheken, keine externen Requests.
    ═══════════════════════════════════════════════════════════ */
 (function () {

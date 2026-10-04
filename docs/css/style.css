@@ -976,13 +976,16 @@ p  { text-wrap: pretty; }
      sichtbar sind. Das Foto folgt direkt darunter. */
   .hero-inner { grid-template-columns: 1fr; }
   .hero { padding-bottom: clamp(3rem, 6vw, 5rem); }
-  .hero-photo { max-width: 520px; margin-top: 1rem; }
+  /* Ohne Text daneben nutzen die Fotos die volle Breite */
+  .hero-photo { margin-top: 1rem; }
   /* Am Handy wird das Hochformat auf Querformat beschnitten. Ohne
      object-position schneidet der Browser mittig – bei einem Porträt
      wäre dann der Kopf ab. 20 % schiebt den Ausschnitt nach oben. */
   .hero-photo img { aspect-ratio: 16 / 11; object-position: center 20%; }
   .about-grid { grid-template-columns: 1fr; }
-  .about-photo { max-width: 420px; }
+  /* Hochformat wäre in voller Breite über 1000 px hoch – daher Querformat.
+     25 % hält Kopf und Hantelstange im Ausschnitt. */
+  .about-photo img { aspect-ratio: 16 / 11; object-position: center 25%; }
   .contact-grid { grid-template-columns: 1fr; }
   .trust-grid { grid-template-columns: repeat(2, 1fr); row-gap: 2rem; }
 }
@@ -1015,6 +1018,9 @@ p  { text-wrap: pretty; }
   }
   .site-nav .btn { margin: 1.1rem 0 0; width: 100%; padding: .9rem; }
 }
+
+/* Am Handy ist das Hochformat in voller Breite angenehm hoch – das ganze Bild zeigen */
+@media (max-width: 600px) { .about-photo img { aspect-ratio: 4 / 5; object-position: center; } }
 
 @media (max-width: 780px) {
   html { scroll-padding-top: 78px; }
