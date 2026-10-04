@@ -1,11 +1,11 @@
 <!DOCTYPE html>
-<html lang="de" data-farbmodus="dunkel">
+<html lang="de" data-theme="dark">
 <!-- ═══════════════════════════════════════════════════════════════
      AUFBAU DIESER DATEI (die Abschnitte sind unten mit ═══ markiert)
        <head>   SEO-Angaben und Vorschau beim Teilen per WhatsApp & Co.
        <body>   HEADER · HERO · VERTRAUEN · ANGEBOTE · ÜBER MICH · ABLAUF ·
-                STIMMEN · PREISE · FAQ · KONTAKT · FOOTER
-       Ende     Google-Daten (JSON-LD) und das Skript
+                STIMMEN · PREISE · FAQ · KONTAKT · FOOTER · KONTAKTLEISTE
+       Ende     ICONS (alle SVG-Symbole), Google-Daten (JSON-LD), Skript
      Noch offene Stellen stehen in ‹spitzen Klammern› – einfach nach ‹ suchen.
      Farben und Design: css/style.css · Verhalten und Formular: js/main.js
      ═══════════════════════════════════════════════════════════════ -->
@@ -105,7 +105,7 @@
         <div class="hero-actions">
           <a class="btn btn-primary btn-lg" href="#kontakt">Kostenloses Erstgespräch</a>
           <a class="btn btn-ghost btn-lg" href="https://wa.me/4917642755110?text=Hallo%20Faruk%2C%20ich%20interessiere%20mich%20f%C3%BCr%20Personal%20Training." target="_blank" rel="noopener">
-            <svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2 22l5.25-1.38a9.9 9.9 0 0 0 4.79 1.22h.01c5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.82 9.82 0 0 0 12.04 2Zm5.8 14.13c-.25.69-1.44 1.32-1.99 1.36-.53.05-1.02.24-3.44-.72-2.9-1.14-4.74-4.1-4.88-4.29-.14-.19-1.17-1.55-1.17-2.96 0-1.41.74-2.1 1-2.39.25-.29.55-.36.73-.36.18 0 .37 0 .53.01.17.01.4-.06.62.48.25.6.83 2.06.9 2.2.07.15.12.32.02.51-.09.19-.14.31-.28.48-.14.16-.29.36-.42.49-.14.14-.28.29-.12.57.16.29.72 1.18 1.54 1.91 1.06.94 1.95 1.23 2.23 1.37.28.14.44.12.6-.07.17-.19.7-.81.88-1.09.19-.29.37-.24.63-.14.25.09 1.6.75 1.88.89.28.14.46.21.53.33.07.11.07.67-.18 1.32Z"/></svg>
+            <svg class="ico" aria-hidden="true"><use href="#i-whatsapp"/></svg>
             Per WhatsApp schreiben
           </a>
         </div>
@@ -143,7 +143,7 @@
       <div class="cards">
         <article class="card reveal">
           <div class="card-ico" aria-hidden="true">
-            <svg viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" d="M4 9v6M20 9v6M7 6v12M17 6v12M7 12h10"/></svg>
+            <svg><use href="#i-dumbbell"/></svg>
           </div>
           <h3>Personal Training 1:1</h3>
           <p>Die ganze Einheit gehört dir. Ich begleite dich bei der Übungsausführung, passe das Training an deine Tagesform an und helfe dir dabei, sicher und zielgerichtet zu trainieren.</p>
@@ -156,7 +156,7 @@
 
         <article class="card reveal">
           <div class="card-ico" aria-hidden="true">
-            <svg viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" d="M9 11a3 3 0 1 0 0-6 3 3 0 0 0 0 6ZM17 11a3 3 0 1 0 0-6 3 3 0 0 0 0 6ZM3 19a6 6 0 0 1 12 0M15 19a6 6 0 0 1 6-6"/></svg>
+            <svg><use href="#i-duo"/></svg>
           </div>
           <h3>Duo-Training</h3>
           <p>Gemeinsam trainieren, sich gegenseitig motivieren und dabei von persönlicher Betreuung profitieren. Ideal für Paare, Freunde oder Geschwister mit ähnlichen Zielen und einem vergleichbaren Trainingsstand.</p>
@@ -169,7 +169,7 @@
 
         <article class="card reveal">
           <div class="card-ico" aria-hidden="true">
-            <svg viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" d="M7 3h10a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2ZM11 18h2"/></svg>
+            <svg><use href="#i-smartphone"/></svg>
           </div>
           <h3>Online-Coaching</h3>
           <p>Du trainierst selbstständig, aber nicht allein. Du erhältst einen individuell geplanten Trainingsablauf, regelmäßige Rückmeldungen zu deiner Technik und persönliche Check-ins. So weißt du auch dann, was zu tun ist, wenn wir nicht gemeinsam im Studio stehen.</p>
@@ -183,7 +183,7 @@
 
         <article class="card reveal">
           <div class="card-ico" aria-hidden="true">
-            <svg viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" d="M12 21a9 9 0 1 0 0-18 9 9 0 0 0 0 18ZM12 8v4l3 2"/></svg>
+            <svg><use href="#i-clock"/></svg>
           </div>
           <h3>Ernährungs&shy;coaching</h3>
           <p>Keine kurzfristige Diät und keine Verbotslisten. Gemeinsam entwickeln wir Ernährungs&shy;gewohnheiten, die zu deinem Alltag passen und die du langfristig beibehalten kannst.</p>
@@ -311,9 +311,9 @@
             <li>Keine Mindestlaufzeit</li>
             <li>Ort nach Absprache</li>
           </ul>
-          <!-- data-paket: wählt das passende Anliegen im Kontaktformular
+          <!-- data-package: wählt das passende Anliegen im Kontaktformular
                schon vor, damit im Formular ein Schritt weniger nötig ist. -->
-          <a class="btn btn-ghost btn-block" href="#kontakt" data-paket="Personal Training 1:1">Termin anfragen</a>
+          <a class="btn btn-ghost btn-block" href="#kontakt" data-package="Personal Training 1:1">Termin anfragen</a>
         </article>
 
         <article class="price reveal">
@@ -328,7 +328,7 @@
             <li>1:1-Betreuung</li>
             <li>Ort nach Absprache</li>
           </ul>
-          <a class="btn btn-ghost btn-block" href="#kontakt" data-paket="Personal Training 1:1">Termin anfragen</a>
+          <a class="btn btn-ghost btn-block" href="#kontakt" data-package="Personal Training 1:1">Termin anfragen</a>
         </article>
 
         <article class="price price-featured reveal">
@@ -345,7 +345,7 @@
             <li>Trainingsplan inklusive</li>
             <li>WhatsApp-Support zwischendurch</li>
           </ul>
-          <a class="btn btn-primary btn-block" href="#kontakt" data-paket="Personal Training 1:1">Erstgespräch vereinbaren</a>
+          <a class="btn btn-primary btn-block" href="#kontakt" data-package="Personal Training 1:1">Erstgespräch vereinbaren</a>
         </article>
 
         <article class="price reveal">
@@ -357,7 +357,7 @@
             <li>Technik-Feedback per Video</li>
             <li>Monatlich kündbar</li>
           </ul>
-          <a class="btn btn-ghost btn-block" href="#kontakt" data-paket="Online-Coaching">Mehr erfahren</a>
+          <a class="btn btn-ghost btn-block" href="#kontakt" data-package="Online-Coaching">Mehr erfahren</a>
         </article>
       </div>
 
@@ -421,25 +421,25 @@
         <ul class="contact-list">
           <li>
             <a href="https://wa.me/4917642755110?text=Hallo%20Faruk%2C%20ich%20interessiere%20mich%20f%C3%BCr%20Personal%20Training." target="_blank" rel="noopener">
-              <svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2 22l5.25-1.38a9.9 9.9 0 0 0 4.79 1.22h.01c5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.82 9.82 0 0 0 12.04 2Zm5.8 14.13c-.25.69-1.44 1.32-1.99 1.36-.53.05-1.02.24-3.44-.72-2.9-1.14-4.74-4.1-4.88-4.29-.14-.19-1.17-1.55-1.17-2.96 0-1.41.74-2.1 1-2.39.25-.29.55-.36.73-.36.18 0 .37 0 .53.01.17.01.4-.06.62.48.25.6.83 2.06.9 2.2.07.15.12.32.02.51-.09.19-.14.31-.28.48-.14.16-.29.36-.42.49-.14.14-.28.29-.12.57.16.29.72 1.18 1.54 1.91 1.06.94 1.95 1.23 2.23 1.37.28.14.44.12.6-.07.17-.19.7-.81.88-1.09.19-.29.37-.24.63-.14.25.09 1.6.75 1.88.89.28.14.46.21.53.33.07.11.07.67-.18 1.32Z"/></svg>
+              <svg class="ico" aria-hidden="true"><use href="#i-whatsapp"/></svg>
               <span><strong>WhatsApp</strong>Schnellste Antwort</span>
             </a>
           </li>
           <li>
             <a href="tel:+4917642755110">
-              <svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8.1 9.9a16 16 0 0 0 6 6l1.3-1.2a2 2 0 0 1 2.1-.5c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2Z"/></svg>
+              <svg class="ico" aria-hidden="true"><use href="#i-phone"/></svg>
               <span><strong>0176-42755110</strong>Mo–Sa, 8–20 Uhr</span>
             </a>
           </li>
           <li>
             <a href="mailto:kontakt@afp-coaching.de">
-              <svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" d="M4 4h16a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2Zm18 2-10 7L2 6"/></svg>
+              <svg class="ico" aria-hidden="true"><use href="#i-mail"/></svg>
               <span><strong>kontakt@afp-coaching.de</strong>Für alles Ausführliche</span>
             </a>
           </li>
           <li>
             <a href="https://www.instagram.com/faruk.palteki.pt/" target="_blank" rel="noopener">
-              <svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" d="M7 2h10a5 5 0 0 1 5 5v10a5 5 0 0 1-5 5H7a5 5 0 0 1-5-5V7a5 5 0 0 1 5-5Zm5 5.5a4.5 4.5 0 1 1 0 9 4.5 4.5 0 0 1 0-9ZM17.5 6h.01"/></svg>
+              <svg class="ico" aria-hidden="true"><use href="#i-instagram"/></svg>
               <span><strong>@faruk.palteki.pt</strong>Training &amp; Alltag</span>
             </a>
           </li>
@@ -471,8 +471,8 @@
           </div>
 
           <div class="field">
-            <label for="f-ziel">Worum geht's?</label>
-            <select id="f-ziel" name="ziel">
+            <label for="f-topic">Worum geht's?</label>
+            <select id="f-topic" name="ziel">
               <option value="Personal Training 1:1">Personal Training 1:1</option>
               <option value="Duo-Training">Duo-Training zu zweit</option>
               <option value="Online-Coaching">Online-Coaching</option>
@@ -494,9 +494,9 @@
           <div class="hp" aria-hidden="true"><label for="f-hp">Bitte leer lassen</label><input type="text" id="f-hp" name="_gotcha" tabindex="-1" autocomplete="off"></div>
 
           <div class="field field-check">
-            <input type="checkbox" id="f-dsgvo" name="einwilligung" required aria-describedby="err-f-dsgvo">
-            <label for="f-dsgvo">Ich habe die <a href="datenschutz.html">Datenschutzerklärung</a> gelesen und bin damit einverstanden, dass meine Angaben zur Bearbeitung meiner Anfrage gespeichert werden. <span aria-hidden="true">*</span></label>
-            <p class="error" id="err-f-dsgvo" data-for="f-dsgvo"></p>
+            <input type="checkbox" id="f-consent" name="einwilligung" required aria-describedby="err-f-consent">
+            <label for="f-consent">Ich habe die <a href="datenschutz.html">Datenschutzerklärung</a> gelesen und bin damit einverstanden, dass meine Angaben zur Bearbeitung meiner Anfrage gespeichert werden. <span aria-hidden="true">*</span></label>
+            <p class="error" id="err-f-consent" data-for="f-consent"></p>
           </div>
 
           <button type="submit" class="btn btn-primary btn-block btn-lg" id="submitBtn">Anfrage senden</button>
@@ -507,13 +507,13 @@
              damit klar ist, dass die Nachricht wirklich raus ist. -->
         <div class="form-success" id="formSuccess" hidden>
           <div class="success-ico" aria-hidden="true">
-            <svg viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" d="m4 12.5 5 5L20 6.5"/></svg>
+            <svg><use href="#i-check"/></svg>
           </div>
           <h3>Danke, deine Anfrage ist da!</h3>
           <p>Ich melde mich innerhalb von 24&nbsp;Stunden bei dir – meistens deutlich schneller.</p>
           <p class="success-hint">Wenn es eilig ist, erreichst du mich am schnellsten direkt:</p>
           <a class="btn btn-ghost btn-block" href="https://wa.me/4917642755110?text=Hallo%20Faruk%2C%20ich%20habe%20gerade%20eine%20Anfrage%20%C3%BCber%20die%20Website%20geschickt." target="_blank" rel="noopener">
-            <svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2 22l5.25-1.38a9.9 9.9 0 0 0 4.79 1.22h.01c5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.82 9.82 0 0 0 12.04 2Zm5.8 14.13c-.25.69-1.44 1.32-1.99 1.36-.53.05-1.02.24-3.44-.72-2.9-1.14-4.74-4.1-4.88-4.29-.14-.19-1.17-1.55-1.17-2.96 0-1.41.74-2.1 1-2.39.25-.29.55-.36.73-.36.18 0 .37 0 .53.01.17.01.4-.06.62.48.25.6.83 2.06.9 2.2.07.15.12.32.02.51-.09.19-.14.31-.28.48-.14.16-.29.36-.42.49-.14.14-.28.29-.12.57.16.29.72 1.18 1.54 1.91 1.06.94 1.95 1.23 2.23 1.37.28.14.44.12.6-.07.17-.19.7-.81.88-1.09.19-.29.37-.24.63-.14.25.09 1.6.75 1.88.89.28.14.46.21.53.33.07.11.07.67-.18 1.32Z"/></svg>
+            <svg class="ico" aria-hidden="true"><use href="#i-whatsapp"/></svg>
             Per WhatsApp schreiben
           </a>
         </div>
@@ -542,19 +542,36 @@
   </div>
 </footer>
 
-<!-- Feste Kontaktleiste, nur am Handy sichtbar. Beide Wege sind immer einen
+<!-- ══════════════════ KONTAKTLEISTE ══════════════════
+     Feste Kontaktleiste, nur am Handy sichtbar. Beide Wege sind immer einen
      Daumentipp entfernt. Sobald der Kontaktbereich im Bild ist, fährt die
      Leiste nach unten weg – dort steht ohnehin alles ausführlich. -->
 <div class="mobile-cta" id="mobileCta">
   <a class="mcta mcta-wa" href="https://wa.me/4917642755110?text=Hallo%20Faruk%2C%20ich%20interessiere%20mich%20f%C3%BCr%20Personal%20Training." target="_blank" rel="noopener">
-    <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2 22l5.25-1.38a9.9 9.9 0 0 0 4.79 1.22h.01c5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.82 9.82 0 0 0 12.04 2Zm5.8 14.13c-.25.69-1.44 1.32-1.99 1.36-.53.05-1.02.24-3.44-.72-2.9-1.14-4.74-4.1-4.88-4.29-.14-.19-1.17-1.55-1.17-2.96 0-1.41.74-2.1 1-2.39.25-.29.55-.36.73-.36.18 0 .37 0 .53.01.17.01.4-.06.62.48.25.6.83 2.06.9 2.2.07.15.12.32.02.51-.09.19-.14.31-.28.48-.14.16-.29.36-.42.49-.14.14-.28.29-.12.57.16.29.72 1.18 1.54 1.91 1.06.94 1.95 1.23 2.23 1.37.28.14.44.12.6-.07.17-.19.7-.81.88-1.09.19-.29.37-.24.63-.14.25.09 1.6.75 1.88.89.28.14.46.21.53.33.07.11.07.67-.18 1.32Z"/></svg>
+    <svg aria-hidden="true"><use href="#i-whatsapp"/></svg>
     WhatsApp
   </a>
   <a class="mcta mcta-tel" href="tel:+4917642755110">
-    <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8.1 9.9a16 16 0 0 0 6 6l1.3-1.2a2 2 0 0 1 2.1-.5c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2Z"/></svg>
+    <svg aria-hidden="true"><use href="#i-phone"/></svg>
     Anrufen
   </a>
 </div>
+
+<!-- ═══ ICONS ═══
+     Jedes Icon steht hier genau einmal und wird oben per
+     <svg><use href="#i-…"/></svg> eingesetzt. Größe und Strichstärke
+     kommen aus css/style.css (Abschnitt „Icons“). -->
+<svg class="sprite" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+  <symbol id="i-whatsapp" viewBox="0 0 24 24"><path fill="currentColor" d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2 22l5.25-1.38a9.9 9.9 0 0 0 4.79 1.22h.01c5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.82 9.82 0 0 0 12.04 2Zm5.8 14.13c-.25.69-1.44 1.32-1.99 1.36-.53.05-1.02.24-3.44-.72-2.9-1.14-4.74-4.1-4.88-4.29-.14-.19-1.17-1.55-1.17-2.96 0-1.41.74-2.1 1-2.39.25-.29.55-.36.73-.36.18 0 .37 0 .53.01.17.01.4-.06.62.48.25.6.83 2.06.9 2.2.07.15.12.32.02.51-.09.19-.14.31-.28.48-.14.16-.29.36-.42.49-.14.14-.28.29-.12.57.16.29.72 1.18 1.54 1.91 1.06.94 1.95 1.23 2.23 1.37.28.14.44.12.6-.07.17-.19.7-.81.88-1.09.19-.29.37-.24.63-.14.25.09 1.6.75 1.88.89.28.14.46.21.53.33.07.11.07.67-.18 1.32Z"/></symbol>
+  <symbol id="i-dumbbell" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" d="M4 9v6M20 9v6M7 6v12M17 6v12M7 12h10"/></symbol>
+  <symbol id="i-duo" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" d="M9 11a3 3 0 1 0 0-6 3 3 0 0 0 0 6ZM17 11a3 3 0 1 0 0-6 3 3 0 0 0 0 6ZM3 19a6 6 0 0 1 12 0M15 19a6 6 0 0 1 6-6"/></symbol>
+  <symbol id="i-smartphone" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" d="M7 3h10a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2ZM11 18h2"/></symbol>
+  <symbol id="i-clock" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" d="M12 21a9 9 0 1 0 0-18 9 9 0 0 0 0 18ZM12 8v4l3 2"/></symbol>
+  <symbol id="i-phone" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8.1 9.9a16 16 0 0 0 6 6l1.3-1.2a2 2 0 0 1 2.1-.5c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2Z"/></symbol>
+  <symbol id="i-mail" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" d="M4 4h16a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2Zm18 2-10 7L2 6"/></symbol>
+  <symbol id="i-instagram" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" d="M7 2h10a5 5 0 0 1 5 5v10a5 5 0 0 1-5 5H7a5 5 0 0 1-5-5V7a5 5 0 0 1 5-5Zm5 5.5a4.5 4.5 0 1 1 0 9 4.5 4.5 0 0 1 0-9ZM17.5 6h.01"/></symbol>
+  <symbol id="i-check" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" d="m4 12.5 5 5L20 6.5"/></symbol>
+</svg>
 
 <!-- ═══ Strukturierte Daten: sorgt für den hübschen Google-Eintrag ═══
      Steht bewusst hier am Ende statt im <head>: Google liest den Block an
