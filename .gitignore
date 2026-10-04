@@ -1,11 +1,12 @@
+# Systemdateien
 .DS_Store
 Thumbs.db
-*.log
-__pycache__/
-*.pyc
 
 # Werkzeug-Konfiguration, nur lokal relevant
 .claude/
 
-# Ablage für Originalfotos, gehört nicht ins Repository
+# Originalfotos, zu groß fürs Repository
 pics/
+
+# Anleitungen, bleiben bewusst nur lokal
+anleitung/
