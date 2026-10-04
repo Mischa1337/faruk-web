@@ -305,6 +305,7 @@ p  { text-wrap: pretty; }
   font-size: .93rem;
   font-weight: 600;
   color: var(--text-muted);
+  white-space: nowrap;
   transition: color .18s, background-color .18s;
 }
 .site-nav a:not(.btn):hover { color: var(--text); background: var(--schleier); }
@@ -392,18 +393,28 @@ p  { text-wrap: pretty; }
 }
 .trust-grid {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(4, minmax(0, 1fr));
   gap: clamp(1.25rem, 3vw, 2.5rem);
   text-align: center;
 }
 .trust-item { display: flex; flex-direction: column; gap: .35rem; }
+/* Alle großen Elemente sind gleich hoch (min-height = große Schriftgröße) und
+   stehen unten bündig. So liegen Überschriften und Beschriftungen jeweils auf
+   einer Linie, auch wenn ein Element kleiner gesetzt oder seine Beschriftung
+   zweizeilig ist. */
 .trust-item strong {
   font-size: clamp(1.7rem, 1.3rem + 1.4vw, 2.5rem);
+  min-height: clamp(1.7rem, 1.3rem + 1.4vw, 2.5rem);
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
   font-weight: 800;
   letter-spacing: -.03em;
   color: var(--accent-hi);
   line-height: 1;
 }
+/* Text statt Zahl („Vor Ort & online") – kleiner, damit er in einer Zeile bleibt */
+.trust-item-text strong { font-size: clamp(1.3rem, 1rem + .75vw, 1.75rem); }
 .trust-item span {
   font-size: .86rem;
   color: var(--text-muted);
@@ -411,11 +422,15 @@ p  { text-wrap: pretty; }
 }
 
 /* ── Karten (Angebote) ─────────────────────────────────── */
+/* Wie bei den Preisen: 4 nebeneinander, dann 2 × 2, am Handy untereinander –
+   nie eine Karte allein in der letzten Reihe. */
 .cards {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(255px, 1fr));
+  grid-template-columns: repeat(4, minmax(0, 1fr));
   gap: 1.15rem;
 }
+@media (max-width: 1080px) { .cards { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (max-width: 600px)  { .cards { grid-template-columns: 1fr; } }
 .card {
   background: var(--surface);
   border: 1px solid var(--line-soft);
@@ -502,14 +517,17 @@ p  { text-wrap: pretty; }
 }
 
 /* ── Ablauf ────────────────────────────────────────────── */
+/* Drei Schritte: nebeneinander, unter 780 px direkt untereinander –
+   kein 2 + 1, bei dem ein Schritt allein in der zweiten Reihe steht. */
 .steps {
   list-style: none;
   padding: 0;
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+  grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 1.15rem;
   counter-reset: step;
 }
+@media (max-width: 780px) { .steps { grid-template-columns: 1fr; } }
 .step {
   position: relative;
   padding: clamp(1.6rem, 3vw, 2.1rem);
@@ -527,6 +545,7 @@ p  { text-wrap: pretty; }
 }
 .step h3 { margin-bottom: .55rem; }
 .step p { color: var(--text-muted); font-size: .95rem; }
+.step p + p { margin-top: .75rem; }
 
 /* ── Stimmen ───────────────────────────────────────────── */
 .quotes {
@@ -560,12 +579,16 @@ p  { text-wrap: pretty; }
 .quote figcaption span { font-size: .85rem; color: var(--text-dim); }
 
 /* ── Preise ────────────────────────────────────────────── */
+/* Vier Karten: 4 nebeneinander, darunter 2 × 2, am Handy untereinander –
+   feste Stufen, damit nie eine Karte allein in der letzten Reihe steht. */
 .pricing {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  grid-template-columns: repeat(4, minmax(0, 1fr));
   gap: 1.15rem;
   align-items: start;
 }
+@media (max-width: 1080px) { .pricing { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (max-width: 600px)  { .pricing { grid-template-columns: 1fr; } }
 .price {
   position: relative;
   background: var(--surface);
@@ -602,9 +625,29 @@ p  { text-wrap: pretty; }
   line-height: 1;
 }
 .price-tag .unit { font-size: .95rem; color: var(--text-dim); font-weight: 600; }
+
+/* Zwei Preiszeilen (60 / 90 Min) in einer Karte */
+.price-rows { display: grid; }
+.price-rows > div {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: .75rem;
+  padding: .55rem 0;
+}
+.price-rows > div + div { border-top: 1px solid var(--line-soft); }
+.price-rows dt { font-size: .9rem; color: var(--text-dim); font-weight: 600; }
+.price-rows dd { margin: 0; font-size: 1.05rem; color: var(--text-dim); font-weight: 600; }
+.price-rows .amount {
+  font-size: clamp(1.75rem, 1.5rem + .8vw, 2.15rem);
+  font-weight: 800;
+  letter-spacing: -.03em;
+  line-height: 1;
+  color: var(--text);
+}
 .price-desc { font-size: .94rem; color: var(--text-muted); }
 .price .ticks { margin-bottom: .5rem; }
-.price .btn { margin-top: auto; }
+.price .btn { margin-top: auto; white-space: normal; text-align: center; }
 .price-foot {
   margin-top: 1.75rem;
   text-align: center;
@@ -944,9 +987,9 @@ p  { text-wrap: pretty; }
   .trust-grid { grid-template-columns: repeat(2, 1fr); row-gap: 2rem; }
 }
 
-@media (max-width: 780px) {
-  html { scroll-padding-top: 78px; }
-
+/* Klappmenü (☰) schon ab 940 px: Darunter passen Logo und alle fünf
+   Menüpunkte nicht mehr nebeneinander in die Kopfzeile. */
+@media (max-width: 940px) {
   .nav-toggle { display: flex; }
 
   .site-nav {
@@ -971,6 +1014,10 @@ p  { text-wrap: pretty; }
     border-radius: 0;
   }
   .site-nav .btn { margin: 1.1rem 0 0; width: 100%; padding: .9rem; }
+}
+
+@media (max-width: 780px) {
+  html { scroll-padding-top: 78px; }
 
   .mobile-cta { display: flex; }
   /* Platz, damit die feste Leiste nichts überdeckt */
