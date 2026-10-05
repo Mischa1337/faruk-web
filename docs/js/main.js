@@ -284,7 +284,7 @@
          zweiter Versuch – ein Bot schafft den nicht, ein Mensch klickt einfach
          noch einmal. So geht garantiert keine echte Anfrage verloren. */
       if (Date.now() - loadedAt < MIN_FILL_MS) {
-        setStatus('Fast geschafft – bitte klicke noch einmal auf „Anfrage senden".', 'err');
+        setStatus('Fast geschafft – bitte klicke noch einmal auf „Jetzt unverbindlich anfragen".', 'err');
         loadedAt = 0;
         return;
       }

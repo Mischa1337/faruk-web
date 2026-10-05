@@ -177,6 +177,13 @@ p  { text-wrap: pretty; }
   line-height: 1.7;
 }
 
+/* Hervorhebungen im grauen Fließtext: fett und in voller Schriftfarbe.
+   Neue Stellen mit <strong> hier ergänzen. */
+.hero-claim strong,
+.hero-copy .lead strong,
+.about-copy p strong,
+.faq-body strong { color: var(--text); font-weight: 700; }
+
 /* ── Layout ────────────────────────────────────────────── */
 .wrap {
   width: 100%;
@@ -413,6 +420,15 @@ p  { text-wrap: pretty; }
 .hero-copy h1 { margin-bottom: 1.4rem; }
 .hero-copy .lead { max-width: 34em; }
 
+/* Zeile zwischen Überschrift und Fließtext, etwas größer als dieser */
+.hero-claim {
+  font-size: clamp(1.15rem, 1.05rem + .5vw, 1.4rem);
+  line-height: 1.5;
+  color: var(--text-muted);
+  max-width: 30em;
+  margin-bottom: 1.1rem;
+}
+
 .hero-actions {
   display: flex;
   flex-wrap: wrap;
@@ -583,7 +599,9 @@ p  { text-wrap: pretty; }
 }
 .quals li {
   display: grid;
-  grid-template-columns: 110px 1fr;
+  /* Breit genug für „Schwerpunkte“ in einer Zeile; zweiteilige
+     Bezeichnungen wie „Lizenzen & Ausbildung“ brechen sauber um. */
+  grid-template-columns: 150px 1fr;
   gap: 1rem;
   padding: .85rem 0;
   border-bottom: 1px solid var(--line-soft);
