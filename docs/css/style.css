@@ -6,7 +6,7 @@
    AUFBAU (Reihenfolge wie in index.html)
      Design-Tokens · Helles Schema · Reset · Typografie · Layout ·
      Buttons · Icons · Header · Hero · Trustbar · Karten · Über mich ·
-     Ablauf · Stimmen · Preise · FAQ · Kontakt · Formular · Footer ·
+     Ablauf · Stimmen (derzeit ungenutzt) · Preise · FAQ · Kontakt · Formular · Footer ·
      Kontaktleiste am Handy · Rechtstexte · Einblend-Animation ·
      Reduzierte Bewegung · Druckansicht
 
@@ -631,6 +631,8 @@ p  { text-wrap: pretty; }
 .step p + p { margin-top: .75rem; }
 
 /* ── Stimmen ───────────────────────────────────────────── */
+/* Derzeit nicht im HTML, bis es echte Kundenstimmen gibt. Das Markup steht
+   in der Git-Historie (Commit 77724f0, Abschnitt STIMMEN in index.html). */
 .quotes {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
