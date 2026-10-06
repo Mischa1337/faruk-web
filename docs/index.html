@@ -4,7 +4,7 @@
      AUFBAU DIESER DATEI (die Abschnitte sind unten mit ═══ markiert)
        <head>   SEO-Angaben und Vorschau beim Teilen per WhatsApp & Co.
        <body>   HEADER · HERO · VERTRAUEN · ANGEBOTE · ÜBER MICH · ABLAUF ·
-                STIMMEN · PREISE · FAQ · KONTAKT · FOOTER · KONTAKTLEISTE
+                EINBLICKE · STIMMEN · PREISE · FAQ · KONTAKT · FOOTER · KONTAKTLEISTE
        Ende     ICONS (alle SVG-Symbole), Google-Daten (JSON-LD), Skript
      Noch offene Stellen stehen in ‹spitzen Klammern› – einfach nach ‹ suchen.
      Farben und Design: css/style.css · Verhalten und Formular: js/main.js
@@ -274,10 +274,37 @@
     </div>
   </section>
 
+  <!-- ══════════════════ EINBLICKE ══════════════════
+       Fotos aus dem Training, alle im Format 4:3 (ca. 1200 × 900 px, unter
+       300 KB). Neues Foto: einfach ein weiteres <figure> anhängen – das Raster
+       ordnet sich selbst. Gerade Anzahl, damit keins allein in der Reihe steht.
+       Nur Fotos mit Einverständnis der abgebildeten Kunden. -->
+  <section class="section section-alt" id="einblicke">
+    <div class="wrap">
+      <header class="section-head reveal">
+        <p class="eyebrow">Einblicke</p>
+        <h2>So sieht Training mit mir aus</h2>
+      </header>
+
+      <div class="gallery">
+        <figure class="gallery-item reveal">
+          <img src="img/einblick-technik.jpg" width="1200" height="900" loading="lazy" decoding="async"
+               alt="Faruk korrigiert im Studio die Technik eines Kunden bei Split Squats mit Kettlebell">
+          <figcaption>Technik im Detail</figcaption>
+        </figure>
+        <figure class="gallery-item reveal">
+          <img src="img/einblick-stabilitaet.jpg" width="880" height="660" loading="lazy" decoding="async"
+               alt="Faruk begleitet eine Kundin bei einer Stabilitätsübung im Vierfüßlerstand">
+          <figcaption>Stabilität &amp; Rücken</figcaption>
+        </figure>
+      </div>
+    </div>
+  </section>
+
   <!-- ══════════════════ STIMMEN ══════════════════
        Echte Google-Bewertungen, mit Einverständnis der Verfasser übernommen.
        Die Zeile „5,0 von 5 Sternen" bei neuen Bewertungen von Hand anpassen. -->
-  <section class="section section-alt" id="stimmen">
+  <section class="section" id="stimmen">
     <div class="wrap">
       <header class="section-head reveal">
         <p class="eyebrow">Stimmen</p>
@@ -310,7 +337,7 @@
   </section>
 
   <!-- ══════════════════ PREISE ══════════════════ -->
-  <section class="section" id="preise">
+  <section class="section section-alt" id="preise">
     <div class="wrap">
       <header class="section-head reveal">
         <p class="eyebrow">Preise</p>
@@ -333,7 +360,7 @@
           </ul>
           <!-- data-package: wählt das passende Anliegen im Kontaktformular
                schon vor, damit im Formular ein Schritt weniger nötig ist. -->
-          <a class="btn btn-ghost btn-block" href="#kontakt" data-package="Personal Training 1:1">Termin anfragen</a>
+          <a class="btn btn-ghost btn-block" href="#kontakt" data-package="Personal Training 1:1">Erstgespräch vereinbaren</a>
         </article>
 
         <article class="price reveal">
@@ -348,7 +375,7 @@
             <li>1:1-Betreuung</li>
             <li>Ort nach Absprache</li>
           </ul>
-          <a class="btn btn-ghost btn-block" href="#kontakt" data-package="Personal Training 1:1">Termin anfragen</a>
+          <a class="btn btn-ghost btn-block" href="#kontakt" data-package="Personal Training 1:1">Erstgespräch vereinbaren</a>
         </article>
 
         <article class="price price-featured reveal">
@@ -377,7 +404,7 @@
             <li>Monatlich kündbar</li>
             <li>Support per Chat</li>
           </ul>
-          <a class="btn btn-ghost btn-block" href="#kontakt" data-package="Online-Coaching">Mehr erfahren</a>
+          <a class="btn btn-ghost btn-block" href="#kontakt" data-package="Online-Coaching">Erstgespräch vereinbaren</a>
         </article>
       </div>
 
@@ -389,7 +416,7 @@
   </section>
 
   <!-- ══════════════════ FAQ ══════════════════ -->
-  <section class="section section-alt" id="faq">
+  <section class="section" id="faq">
     <div class="wrap wrap-narrow">
       <header class="section-head reveal">
         <p class="eyebrow">FAQ</p>
@@ -434,7 +461,7 @@
   </section>
 
   <!-- ══════════════════ KONTAKT ══════════════════ -->
-  <section class="section" id="kontakt">
+  <section class="section section-alt" id="kontakt">
     <div class="wrap contact-grid">
       <div class="contact-copy reveal">
         <p class="eyebrow">Kontakt</p>
