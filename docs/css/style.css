@@ -6,7 +6,7 @@
    AUFBAU (Reihenfolge wie in index.html)
      Design-Tokens · Helles Schema · Reset · Typografie · Layout ·
      Buttons · Icons · Header · Hero · Trustbar · Karten · Über mich ·
-     Ablauf · Stimmen (derzeit ungenutzt) · Preise · FAQ · Kontakt · Formular · Footer ·
+     Ablauf · Stimmen · Preise · FAQ · Kontakt · Formular · Footer ·
      Kontaktleiste am Handy · Rechtstexte · Einblend-Animation ·
      Reduzierte Bewegung · Druckansicht
 
@@ -649,12 +649,21 @@ p  { text-wrap: pretty; }
 .step p + p { margin-top: .75rem; }
 
 /* ── Stimmen ───────────────────────────────────────────── */
-/* Derzeit nicht im HTML, bis es echte Kundenstimmen gibt. Das Markup steht
-   in der Git-Historie (Commit 77724f0, Abschnitt STIMMEN in index.html). */
+/* Die längste Bewertung steht groß links über zwei Spalten und zwei Reihen,
+   die kürzeren rechts übereinander. So bleibt keine Karte halb leer. */
 .quotes {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
+  grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 1.15rem;
+}
+.quote-featured { grid-column: span 2; grid-row: span 2; }
+@media (max-width: 940px) {
+  .quotes { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .quote-featured { grid-row: auto; }
+}
+@media (max-width: 600px) {
+  .quotes { grid-template-columns: 1fr; }
+  .quote-featured { grid-column: auto; }
 }
 .quote {
   background: var(--surface);
@@ -671,6 +680,8 @@ p  { text-wrap: pretty; }
   line-height: 1.6;
   color: var(--text);
 }
+/* Hervorgehobene Bewertung: größer gesetzt, füllt die breite Karte */
+.quote-featured blockquote p { font-size: clamp(1.1rem, 1rem + .45vw, 1.3rem); line-height: 1.65; }
 .quote figcaption {
   margin-top: auto;
   display: flex;
@@ -680,6 +691,10 @@ p  { text-wrap: pretty; }
 }
 .quote figcaption strong { font-size: .95rem; padding-top: 1rem; }
 .quote figcaption span { font-size: .85rem; color: var(--text-dim); }
+/* Sterne-Zusammenfassung unter der Überschrift */
+.rating-summary { display: flex; align-items: center; gap: .6rem; flex-wrap: wrap; }
+.rating-summary .stars { font-size: 1.1rem; }
+.quotes-more { margin-top: 2.25rem; text-align: center; }
 
 /* ── Preise ────────────────────────────────────────────── */
 /* Vier Karten: 4 nebeneinander, darunter 2 × 2, am Handy untereinander –
