@@ -10,6 +10,7 @@
      initScrollSpy     aktiven Menüpunkt markieren
      initReveal        Elemente beim Scrollen einblenden
      initMobileCta     Kontaktleiste am Handy ein-/ausblenden
+     initQuoteToggles  lange Bewertungen am Handy kürzen, „Weiterlesen“
      initPackageLinks  Preiskarten wählen das Anliegen im Formular vor
      initContactForm   Prüfung, Spam-Schutz und Versand des Formulars
      Start             ruft alles der Reihe nach auf
@@ -145,6 +146,55 @@
     new IntersectionObserver(function (entries) {
       mobileCta.classList.toggle('is-hidden', entries[0].isIntersecting);
     }, { threshold: 0.12 }).observe(contactSection);
+  }
+
+  /* ── Lange Bewertungen am Handy kürzen ────────────────────
+     Am Handy stehen die Bewertungen untereinander. Jede Bewertung mit mehr
+     als MAX_LINES Zeilen zeigt dort nur die ersten 4 Zeilen (CSS) und einen
+     „Weiterlesen“-Knopf. Kürzere bleiben ohne Knopf. Am Desktop bleibt
+     alles ausgeklappt; ohne JavaScript wird nichts gekürzt. */
+  function initQuoteToggles() {
+    var quotes = $$('.quote');
+    if (!quotes.length || !window.matchMedia) return;
+
+    var mobile = window.matchMedia('(max-width: 600px)');
+    var MAX_LINES = 4;   // muss zu -webkit-line-clamp in style.css passen
+
+    quotes.forEach(function (quote, i) {
+      var text = $('blockquote p', quote);
+      var btn  = document.createElement('button');
+      text.id = text.id || 'quote-text-' + (i + 1);
+      btn.type = 'button';
+      btn.className = 'quote-toggle';
+      btn.textContent = 'Weiterlesen';
+      btn.setAttribute('aria-expanded', 'false');
+      btn.setAttribute('aria-controls', text.id);
+      btn.addEventListener('click', function () {
+        var open = quote.classList.toggle('is-open');
+        btn.setAttribute('aria-expanded', String(open));
+        btn.textContent = open ? 'Weniger anzeigen' : 'Weiterlesen';
+      });
+      $('blockquote', quote).insertAdjacentElement('afterend', btn);
+    });
+
+    var countLines = function (text) {
+      var cs = getComputedStyle(text);
+      var lh = parseFloat(cs.lineHeight);
+      // Manche Browser liefern die Zeilenhöhe als Faktor statt in Pixeln
+      if (!lh || lh < 4) lh = (lh || 1.6) * parseFloat(cs.fontSize);
+      return text.scrollHeight / lh;
+    };
+
+    var update = function () {
+      quotes.forEach(function (quote) {
+        var text = $('blockquote p', quote);
+        quote.classList.remove('is-collapsible');   // ungekürzt messen
+        quote.classList.toggle('is-collapsible', mobile.matches && countLines(text) > MAX_LINES);
+      });
+    };
+
+    update();
+    if (mobile.addEventListener) mobile.addEventListener('change', update);
   }
 
   /* ── Paket aus den Preiskarten vorauswählen ───────────────
@@ -354,6 +404,7 @@
   initScrollSpy();
   initReveal();
   initMobileCta();
+  initQuoteToggles();
   initPackageLinks();
   initContactForm();
 })();

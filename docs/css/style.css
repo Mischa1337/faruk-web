@@ -6,7 +6,7 @@
    AUFBAU (Reihenfolge wie in index.html)
      Design-Tokens · Helles Schema · Reset · Typografie · Layout ·
      Buttons · Icons · Header · Hero · Trustbar · Karten · Über mich ·
-     Ablauf · Stimmen · Preise · FAQ · Kontakt · Formular · Footer ·
+     Ablauf · Einblicke · Stimmen · Preise · FAQ · Kontakt · Formular · Footer ·
      Kontaktleiste am Handy · Rechtstexte · Einblend-Animation ·
      Reduzierte Bewegung · Druckansicht
 
@@ -648,6 +648,29 @@ p  { text-wrap: pretty; }
 .step p { color: var(--text-muted); font-size: .95rem; }
 .step p + p { margin-top: .75rem; }
 
+/* ── Einblicke ─────────────────────────────────────────── */
+/* Zwei Fotos nebeneinander, am Handy untereinander. Alle Bilder werden auf
+   4:3 gebracht, damit die Reihen gleich hoch sind. */
+.gallery {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1.15rem;
+}
+@media (max-width: 600px) { .gallery { grid-template-columns: 1fr; } }
+.gallery-item img {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--line-soft);
+  box-shadow: var(--shadow);
+}
+.gallery-item figcaption {
+  margin-top: .75rem;
+  font-size: .88rem;
+  color: var(--text-dim);
+}
+
 /* ── Stimmen ───────────────────────────────────────────── */
 /* Die längste Bewertung steht groß links über zwei Spalten und zwei Reihen,
    die kürzeren rechts übereinander. So bleibt keine Karte halb leer. */
@@ -691,6 +714,27 @@ p  { text-wrap: pretty; }
 }
 .quote figcaption strong { font-size: .95rem; padding-top: 1rem; }
 .quote figcaption span { font-size: .85rem; color: var(--text-dim); }
+/* Lange Bewertung am Handy gekürzt; die Klasse setzt js/main.js */
+.quote.is-collapsible:not(.is-open) blockquote p {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 4;
+  line-clamp: 4;
+  overflow: hidden;
+}
+.quote-toggle {
+  display: none;
+  align-self: flex-start;
+  margin-top: -.35rem;
+  padding: 0;
+  background: none;
+  border: 0;
+  font-size: .92rem;
+  font-weight: 650;
+  color: var(--accent-hi);
+  cursor: pointer;
+}
+.quote.is-collapsible .quote-toggle { display: inline-block; }
 /* Sterne-Zusammenfassung unter der Überschrift */
 .rating-summary { display: flex; align-items: center; gap: .6rem; flex-wrap: wrap; }
 .rating-summary .stars { font-size: 1.1rem; }
