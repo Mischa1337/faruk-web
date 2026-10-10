@@ -6,7 +6,7 @@
    AUFBAU (Reihenfolge wie in index.html)
      Design-Tokens · Helles Schema · Reset · Typografie · Layout ·
      Buttons · Icons · Header · Hero · Trustbar · Karten · Über mich ·
-     Ablauf · Einblicke · Stimmen · Preise · FAQ · Kontakt · Formular · Footer ·
+     Ablauf · Einblicke · Erfolge · Preise · FAQ · Kontakt · Formular · Footer ·
      Kontaktleiste am Handy · Rechtstexte · Einblend-Animation ·
      Reduzierte Bewegung · Druckansicht
 
@@ -359,9 +359,10 @@ p  { text-wrap: pretty; }
 .nav-toggle[aria-expanded="true"] i:nth-child(2) { opacity: 0; }
 .nav-toggle[aria-expanded="true"] i:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
 
-/* Klappmenü (☰) schon ab 940 px: Darunter passen Logo und alle fünf
-   Menüpunkte nicht mehr nebeneinander in die Kopfzeile. */
-@media (max-width: 940px) {
+/* Klappmenü (☰) schon unter 1040 px: Darunter passen Logo und alle sechs
+   Menüpunkte nicht mehr nebeneinander in die Kopfzeile (gemessen: ab ca.
+   1020 px läuft das Menü über). Bei einem weiteren Menüpunkt neu messen. */
+@media (max-width: 1040px) {
   .nav-toggle { display: flex; }
 
   .site-nav {
@@ -482,7 +483,16 @@ p  { text-wrap: pretty; }
   gap: clamp(1.25rem, 3vw, 2.5rem);
   text-align: center;
 }
-.trust-item { display: flex; flex-direction: column; gap: .35rem; }
+/* Jedes Element belegt zwei Zeilen des Rasters (Fett / Beschriftung) und
+   übernimmt sie per subgrid. So ist die fette Zeile überall so hoch wie die
+   höchste, und alle Beschriftungen beginnen auf einer Linie – auch wenn ein
+   längerer Text wie „A, B & Personal Trainer" umbricht. */
+.trust-item {
+  display: grid;
+  grid-row: span 2;
+  grid-template-rows: subgrid;
+  row-gap: .35rem;
+}
 /* Alle großen Elemente sind gleich hoch (min-height = große Schriftgröße) und
    stehen unten bündig. So liegen Überschriften und Beschriftungen jeweils auf
    einer Linie, auch wenn ein Element kleiner gesetzt oder seine Beschriftung
@@ -671,7 +681,7 @@ p  { text-wrap: pretty; }
   color: var(--text-dim);
 }
 
-/* ── Stimmen ───────────────────────────────────────────── */
+/* ── Erfolge (Bewertungen) ───────────────────────────────────────────── */
 /* Die längste Bewertung steht groß links über zwei Spalten und zwei Reihen,
    die kürzeren rechts übereinander. So bleibt keine Karte halb leer. */
 .quotes {
