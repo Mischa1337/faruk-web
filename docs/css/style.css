@@ -682,22 +682,17 @@ p  { text-wrap: pretty; }
 }
 
 /* ── Erfolge (Bewertungen) ───────────────────────────────────────────── */
-/* Die längste Bewertung steht groß links über zwei Spalten und zwei Reihen,
-   die kürzeren rechts übereinander. So bleibt keine Karte halb leer. */
+/* Die längste Bewertung steht oben über die volle Breite, die übrigen
+   darunter zu zweit nebeneinander – so bleibt auch bei unterschiedlich
+   langen Texten keine Karte halb leer. Unter der hervorgehobenen also
+   möglichst eine gerade Anzahl Bewertungen. */
 .quotes {
   display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
+  grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 1.15rem;
 }
-.quote-featured { grid-column: span 2; grid-row: span 2; }
-@media (max-width: 940px) {
-  .quotes { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-  .quote-featured { grid-row: auto; }
-}
-@media (max-width: 600px) {
-  .quotes { grid-template-columns: 1fr; }
-  .quote-featured { grid-column: auto; }
-}
+.quote-featured { grid-column: 1 / -1; }
+@media (max-width: 600px) { .quotes { grid-template-columns: 1fr; } }
 .quote {
   background: var(--surface);
   border: 1px solid var(--line-soft);
