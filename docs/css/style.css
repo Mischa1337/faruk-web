@@ -359,11 +359,47 @@ p  { text-wrap: pretty; }
 .nav-toggle[aria-expanded="true"] i:nth-child(2) { opacity: 0; }
 .nav-toggle[aria-expanded="true"] i:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
 
-/* Klappmenü (☰) schon unter 1040 px: Darunter passen Logo und alle sechs
-   Menüpunkte nicht mehr nebeneinander in die Kopfzeile (gemessen: ab ca.
-   1020 px läuft das Menü über). Bei einem weiteren Menüpunkt neu messen. */
-@media (max-width: 1040px) {
-  .nav-toggle { display: flex; }
+/* Menü (und auf den Rechtsseiten die kleine Navigation) rückt nach rechts,
+   der Hell/Dunkel-Knopf steht direkt dahinter. */
+.header-inner > .site-nav,
+.header-inner > .legal-nav { margin-left: auto; }
+
+/* Hell/Dunkel-Umschalter: Sonne im dunklen Schema (→ hell), Mond im hellen
+   (→ dunkel). Das Symbol ist eine Maske und nimmt die Schriftfarbe an. */
+.theme-toggle {
+  --icon: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23000' stroke-width='2' stroke-linecap='round'%3E%3Ccircle cx='12' cy='12' r='4'/%3E%3Cpath d='M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41'/%3E%3C/svg%3E");
+  display: grid;
+  place-items: center;
+  flex: none;
+  width: 44px; height: 44px;
+  background: var(--overlay);
+  border: 1px solid var(--line);
+  border-radius: 11px;
+  color: var(--text-muted);
+  cursor: pointer;
+  transition: color .18s, background-color .18s;
+}
+.theme-toggle[hidden] { display: none; }
+.theme-toggle:hover { color: var(--text); background: var(--overlay-strong); }
+.theme-toggle::before {
+  content: "";
+  width: 19px; height: 19px;
+  background: currentColor;
+  -webkit-mask: var(--icon) center / contain no-repeat;
+          mask: var(--icon) center / contain no-repeat;
+}
+:root[data-theme="light"] .theme-toggle {
+  --icon: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23000' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z'/%3E%3C/svg%3E");
+}
+
+/* Klappmenü (☰) schon unter 1100 px: Darunter passen Logo, alle sechs
+   Menüpunkte und der Hell/Dunkel-Knopf nicht mehr nebeneinander in die
+   Kopfzeile (gemessen: unter ca. 1080 px läuft sie über). Bei einem
+   weiteren Menüpunkt neu messen. */
+@media (max-width: 1100px) {
+  .nav-toggle { display: flex; order: 2; }
+  .header-inner { column-gap: .6rem; }
+  .theme-toggle { order: 1; margin-left: auto; }
 
   .site-nav {
     position: fixed;
@@ -393,7 +429,7 @@ p  { text-wrap: pretty; }
    als schmale Geräte hergeben. Erst verkleinern, dann weglassen –
    ein abgeschnittener Claim sähe schlechter aus als gar keiner. */
 @media (max-width: 480px) { .brand-sub { font-size: .62rem; } }
-@media (max-width: 379px) { .brand-sub { display: none; } }
+@media (max-width: 399px) { .brand-sub { display: none; } }   /* inkl. Platz für den Hell/Dunkel-Knopf */
 
 /* ── Hero ──────────────────────────────────────────────── */
 .hero {
@@ -747,12 +783,13 @@ p  { text-wrap: pretty; }
 
 /* ── Preise ────────────────────────────────────────────── */
 /* Vier Karten: 4 nebeneinander, darunter 2 × 2, am Handy untereinander –
-   feste Stufen, damit nie eine Karte allein in der letzten Reihe steht. */
+   feste Stufen, damit nie eine Karte allein in der letzten Reihe steht.
+   Karten einer Reihe sind gleich hoch (Standard „stretch“); die Buttons
+   rutschen per margin-top: auto nach unten und stehen auf einer Linie. */
 .pricing {
   display: grid;
   grid-template-columns: repeat(4, minmax(0, 1fr));
   gap: 1.15rem;
-  align-items: start;
 }
 @media (max-width: 1080px) { .pricing { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
 @media (max-width: 600px)  { .pricing { grid-template-columns: 1fr; } }
@@ -1105,10 +1142,16 @@ p  { text-wrap: pretty; }
 
 /* Auf den Rechtsseiten teilen sich Logo und Navigation die Kopfzeile –
    dort ist für die Unterzeile kein Platz. */
-@media (max-width: 480px) {
-  .legal-nav a { padding: .5rem .55rem; font-size: .85rem; }
+/* Logo, Navigation und Hell/Dunkel-Knopf teilen sich die Kopfzeile. Je
+   schmaler, desto knapper: erst ohne Unterzeile, dann ohne Schriftzug,
+   ganz schmal ohne den Link „Startseite“ – das Logo führt ebenfalls dorthin. */
+@media (max-width: 640px) {
+  .header-legal .header-inner { column-gap: .5rem; }
   .header-legal .brand-sub { display: none; }
+  .legal-nav a { padding: .5rem .55rem; font-size: .85rem; }
 }
+@media (max-width: 480px) { .header-legal .brand-text { display: none; } }
+@media (max-width: 360px) { .legal-nav li:first-child:not(:last-child) { display: none; } }
 
 .legal { padding-top: clamp(7rem, 12vw, 9rem); padding-bottom: var(--section-y); }
 .legal h1 { font-size: clamp(2.1rem, 1.6rem + 2vw, 3rem); margin-bottom: 2.5rem; }

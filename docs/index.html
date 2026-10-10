@@ -53,6 +53,14 @@
     if (!window.__siteReady) document.documentElement.classList.remove('js');
   }, 2000);
 </script>
+<!-- Gewähltes Farbschema setzen, bevor die Seite gezeichnet wird – sonst
+     blitzt kurz das dunkle Schema auf. Die Wahl speichert js/main.js. -->
+<script>
+  try {
+    var t = localStorage.getItem('theme');
+    if (t === 'light' || t === 'dark') document.documentElement.setAttribute('data-theme', t);
+  } catch (e) {}
+</script>
 </head>
 
 <body>
@@ -81,6 +89,8 @@
         <li><a class="btn btn-primary btn-sm" href="#kontakt">Erstgespräch</a></li>
       </ul>
     </nav>
+    <!-- Hell/Dunkel-Umschalter; erscheint erst, wenn js/main.js läuft -->
+    <button class="theme-toggle" type="button" aria-label="Helles Farbschema aktivieren" hidden></button>
   </div>
 </header>
 

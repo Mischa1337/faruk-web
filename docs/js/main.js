@@ -6,6 +6,7 @@
      Einstellungen · Hilfsfunktionen
      initYear          Jahreszahl im Footer
      initHeader        Hintergrund der Kopfzeile beim Scrollen
+     initThemeToggle   Umschalter hell/dunkel, Wahl wird lokal gespeichert
      initMobileNav     Klappmenü am Handy
      initScrollSpy     aktiven Menüpunkt markieren
      initReveal        Elemente beim Scrollen einblenden
@@ -59,6 +60,43 @@
     };
     setStuck();
     window.addEventListener('scroll', setStuck, { passive: true });
+  }
+
+  /* ── Farbschema hell/dunkel ───────────────────────────────
+     Der Knopf in der Kopfzeile schaltet data-theme am <html> um. Die Wahl
+     speichert der Browser lokal (localStorage, kein Cookie, verlässt das
+     Gerät nicht); ein kleines Skript im <head> jeder Seite setzt sie vor
+     dem ersten Zeichnen. Standard ohne gespeicherte Wahl: dunkel. */
+  function initThemeToggle() {
+    var buttons = $$('.theme-toggle');
+    if (!buttons.length) return;
+
+    var root = document.documentElement;
+    var meta = $('meta[name="theme-color"]');
+    var BG   = { dark: '#0A0A0B', light: '#FAF6EF' };   // = --bg in style.css
+
+    var apply = function (theme, save) {
+      var light = theme === 'light';
+      var label = light ? 'Dunkles Farbschema aktivieren' : 'Helles Farbschema aktivieren';
+      root.setAttribute('data-theme', theme);
+      if (meta) meta.setAttribute('content', BG[theme]);
+      buttons.forEach(function (btn) {
+        btn.setAttribute('aria-label', label);
+        btn.title = label;
+      });
+      if (save) {
+        try { localStorage.setItem('theme', theme); } catch (e) { /* privater Modus o. Ä. */ }
+      }
+    };
+
+    apply(root.getAttribute('data-theme') === 'light' ? 'light' : 'dark', false);
+
+    buttons.forEach(function (btn) {
+      btn.hidden = false;
+      btn.addEventListener('click', function () {
+        apply(root.getAttribute('data-theme') === 'light' ? 'dark' : 'light', true);
+      });
+    });
   }
 
   /* ── Mobile Navigation ────────────────────────────────── */
@@ -400,6 +438,7 @@
   /* ── Start ────────────────────────────────────────────── */
   initYear();
   initHeader();
+  initThemeToggle();
   initMobileNav();
   initScrollSpy();
   initReveal();
