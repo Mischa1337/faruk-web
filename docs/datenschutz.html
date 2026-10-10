@@ -10,6 +10,14 @@
 <link rel="canonical" href="https://afp-coaching.de/datenschutz.html">
 <link rel="icon" href="img/favicon.png" type="image/png">
 <link rel="stylesheet" href="css/style.css">
+<!-- Gewähltes Farbschema setzen, bevor die Seite gezeichnet wird – sonst
+     blitzt kurz das dunkle Schema auf. Die Wahl speichert js/main.js. -->
+<script>
+  try {
+    var t = localStorage.getItem('theme');
+    if (t === 'light' || t === 'dark') document.documentElement.setAttribute('data-theme', t);
+  } catch (e) {}
+</script>
 </head>
 
 <body>
@@ -27,6 +35,8 @@
         <li><a href="impressum.html">Impressum</a></li>
       </ul>
     </nav>
+    <!-- Hell/Dunkel-Umschalter; erscheint erst, wenn js/main.js läuft -->
+    <button class="theme-toggle" type="button" aria-label="Helles Farbschema aktivieren" hidden></button>
   </div>
 </header>
 
@@ -60,6 +70,14 @@
       Diese Website verwendet <strong>keine Cookies</strong>, <strong>keine Analyse- oder Tracking-Dienste</strong>
       und <strong>keine extern geladenen Schriftarten oder Skripte</strong>. Es wird daher auch kein
       Cookie-Banner benötigt. Alle Inhalte werden direkt vom Hosting-Server ausgeliefert.
+    </p>
+    <p>
+      Wählst du über das Symbol in der Kopfzeile das helle oder dunkle Farbschema, speichert dein
+      Browser diese Einstellung lokal auf deinem Gerät (im sogenannten Local Storage), damit sie beim
+      nächsten Seitenaufruf erhalten bleibt. Diese Information verlässt dein Gerät nicht und wird weder
+      an mich noch an Dritte übertragen. Rechtsgrundlage ist § 25 Abs. 2 Nr. 2 TDDDG, da die Speicherung
+      für die von dir ausdrücklich gewünschte Funktion erforderlich ist. Du kannst sie jederzeit über die
+      Einstellungen deines Browsers löschen.
     </p>
 
     <h2>3. Aufruf der Website und Server-Logfiles</h2>

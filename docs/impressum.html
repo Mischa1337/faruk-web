@@ -10,6 +10,14 @@
 <link rel="canonical" href="https://afp-coaching.de/impressum.html">
 <link rel="icon" href="img/favicon.png" type="image/png">
 <link rel="stylesheet" href="css/style.css">
+<!-- Gewähltes Farbschema setzen, bevor die Seite gezeichnet wird – sonst
+     blitzt kurz das dunkle Schema auf. Die Wahl speichert js/main.js. -->
+<script>
+  try {
+    var t = localStorage.getItem('theme');
+    if (t === 'light' || t === 'dark') document.documentElement.setAttribute('data-theme', t);
+  } catch (e) {}
+</script>
 </head>
 
 <body>
@@ -27,6 +35,8 @@
         <li><a href="datenschutz.html">Datenschutz</a></li>
       </ul>
     </nav>
+    <!-- Hell/Dunkel-Umschalter; erscheint erst, wenn js/main.js läuft -->
+    <button class="theme-toggle" type="button" aria-label="Helles Farbschema aktivieren" hidden></button>
   </div>
 </header>
 
