@@ -317,16 +317,13 @@ p  { text-wrap: pretty; }
   white-space: nowrap;
 }
 
-.site-nav ul {
-  display: flex;
-  align-items: center;
-  gap: .35rem;
-  list-style: none;
-  padding: 0;
-}
-.site-nav a:not(.btn) {
-  display: block;
-  padding: .5rem .85rem;
+/* Mischform: Die Kopfzeile zeigt nur Logo, „Erstgespräch“, Hell/Dunkel
+   und den Menüknopf (☰). Die Menüpunkte klappen auf jeder Breite aus –
+   am Desktop als schmale Karte rechts, am Handy über die volle Breite. */
+.header-inner { position: relative; }
+.header-links { order: 1; margin-left: auto; display: flex; gap: .2rem; }
+.header-links a {
+  padding: .5rem .8rem;
   border-radius: 8px;
   text-decoration: none;
   font-size: .93rem;
@@ -335,12 +332,62 @@ p  { text-wrap: pretty; }
   white-space: nowrap;
   transition: color .18s, background-color .18s;
 }
+.header-links a:hover { color: var(--text); background: var(--overlay); }
+.header-cta { order: 1; }
+
+/* Unter 900 px wird es neben Logo und Claim zu eng: Links ausblenden,
+   sie stehen ja weiterhin im Menü. */
+@media (max-width: 900px) {
+  .header-links { display: none; }
+  .header-cta { margin-left: auto; }
+}
+.theme-toggle { order: 2; }
+.nav-toggle { order: 3; }
+
+.site-nav {
+  position: absolute;
+  top: calc(100% + .4rem);
+  right: 0;
+  width: 270px;
+  background: color-mix(in srgb, var(--bg) 97%, transparent);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  box-shadow: 0 18px 40px rgba(0, 0, 0, .28);
+  padding: .5rem;
+  transform: translateY(-8px);
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity .22s var(--ease), transform .22s var(--ease), visibility .22s;
+}
+.site-nav.is-open { opacity: 1; visibility: visible; transform: none; }
+.site-nav ul {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  gap: .1rem;
+  list-style: none;
+  padding: 0;
+}
+.site-nav a:not(.btn) {
+  display: block;
+  padding: .7rem .9rem;
+  border-radius: 9px;
+  text-decoration: none;
+  font-size: .97rem;
+  font-weight: 600;
+  color: var(--text-muted);
+  white-space: nowrap;
+  transition: color .18s, background-color .18s;
+}
 .site-nav a:not(.btn):hover { color: var(--text); background: var(--overlay); }
 .site-nav a.is-active { color: var(--accent-hi); }
-.site-nav .btn { margin-left: .6rem; }
+/* „Erstgespräch“ steht am Desktop schon in der Kopfzeile */
+.site-nav li:has(.btn) { display: none; }
 
 .nav-toggle {
-  display: none;
+  display: flex;
   width: 44px; height: 44px;
   align-items: center;
   justify-content: center;
@@ -359,9 +406,8 @@ p  { text-wrap: pretty; }
 .nav-toggle[aria-expanded="true"] i:nth-child(2) { opacity: 0; }
 .nav-toggle[aria-expanded="true"] i:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
 
-/* Menü (und auf den Rechtsseiten die kleine Navigation) rückt nach rechts,
+/* Auf den Rechtsseiten rückt die kleine Navigation nach rechts,
    der Hell/Dunkel-Knopf steht direkt dahinter. */
-.header-inner > .site-nav,
 .header-inner > .legal-nav { margin-left: auto; }
 
 /* Hell/Dunkel-Umschalter: Sonne im dunklen Schema (→ hell), Mond im hellen
@@ -392,36 +438,31 @@ p  { text-wrap: pretty; }
   --icon: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23000' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z'/%3E%3C/svg%3E");
 }
 
-/* Klappmenü (☰) schon unter 1100 px: Darunter passen Logo, alle sechs
-   Menüpunkte und der Hell/Dunkel-Knopf nicht mehr nebeneinander in die
-   Kopfzeile (gemessen: unter ca. 1080 px läuft sie über). Bei einem
-   weiteren Menüpunkt neu messen. */
-@media (max-width: 1100px) {
-  .nav-toggle { display: flex; order: 2; }
+/* Handy: „Erstgespräch“ steht unten in der festen Leiste (.mobile-cta)
+   und im Menü; das Menü klappt über die volle Breite auf. */
+@media (max-width: 780px) {
   .header-inner { column-gap: .6rem; }
-  .theme-toggle { order: 1; margin-left: auto; }
+  .header-cta { display: none; }
+  .theme-toggle { margin-left: auto; }
 
   .site-nav {
     position: fixed;
     inset: 68px 0 auto 0;
-    background: color-mix(in srgb, var(--bg) 97%, transparent);
-    backdrop-filter: blur(16px);
-    -webkit-backdrop-filter: blur(16px);
+    width: auto;
+    border: 0;
     border-bottom: 1px solid var(--line);
+    border-radius: 0;
+    box-shadow: none;
     padding: .75rem var(--gutter) 1.6rem;
     transform: translateY(-12px);
-    opacity: 0;
-    visibility: hidden;
-    transition: opacity .22s var(--ease), transform .22s var(--ease), visibility .22s;
   }
-  .site-nav.is-open { opacity: 1; visibility: visible; transform: none; }
-  .site-nav ul { flex-direction: column; align-items: stretch; gap: .1rem; }
   .site-nav a:not(.btn) {
     padding: .95rem .5rem;
     font-size: 1.02rem;
     border-bottom: 1px solid var(--line-soft);
     border-radius: 0;
   }
+  .site-nav li:has(.btn) { display: list-item; }
   .site-nav .btn { margin: 1.1rem 0 0; width: 100%; padding: .9rem; }
 }
 

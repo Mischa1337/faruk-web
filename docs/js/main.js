@@ -7,7 +7,7 @@
      initYear          Jahreszahl im Footer
      initHeader        Hintergrund der Kopfzeile beim Scrollen
      initThemeToggle   Umschalter hell/dunkel, Wahl wird lokal gespeichert
-     initMobileNav     Klappmenü am Handy
+     initMobileNav     Klappmenü (☰)
      initScrollSpy     aktiven Menüpunkt markieren
      initReveal        Elemente beim Scrollen einblenden
      initMobileCta     Kontaktleiste am Handy ein-/ausblenden
@@ -99,7 +99,7 @@
     });
   }
 
-  /* ── Mobile Navigation ────────────────────────────────── */
+  /* ── Klappmenü ────────────────────────────────── */
   function initMobileNav() {
     var toggle = $('#navToggle');
     var nav    = $('#siteNav');
@@ -119,6 +119,14 @@
 
     $$('a', nav).forEach(function (link) {
       link.addEventListener('click', closeNav);
+    });
+
+    // Klick neben das aufgeklappte Menü schließt es
+    document.addEventListener('click', function (e) {
+      if (nav.classList.contains('is-open') &&
+          !nav.contains(e.target) && !toggle.contains(e.target)) {
+        closeNav();
+      }
     });
 
     document.addEventListener('keydown', function (e) {
