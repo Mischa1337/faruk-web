@@ -29,10 +29,14 @@
      Hintergrund, --on-accent die Schrift AUF der Markenfarbe. Wer
      --accent ändert, muss beide mitziehen und den Kontrast prüfen
      (mind. 4,5:1, z. B. mit dem Kontrast-Check der Browser-Devtools). */
-  --accent:      #519A70;
-  --accent-hi:   #69B087;
+  --accent:      #C6A15B;   /* Gold wie auf Faruks Rechnungen */
+  --accent-hi:   #D4B475;
   --on-accent:   #140904;
   --accent-soft: color-mix(in srgb, var(--accent) 12%, transparent);
+  /* Hauptbuttons; folgen standardmäßig der Markenfarbe */
+  --btn-bg:       var(--accent);
+  --btn-bg-hover: var(--accent-hi);
+  --logo:         var(--accent);
 
   /* Dunkles Grundschema */
   --bg:          #0A0A0B;
@@ -85,9 +89,14 @@
    Nur die Grundtöne werden neu gesetzt – alles, was per color-mix()
    davon abgeleitet ist, folgt automatisch. */
 :root[data-theme="light"] {
-  --accent:      #C6A15B;
-  --accent-hi:   #84682D;
-  --on-accent:   #140904;
+  /* Buttons und Logo exakt im Rechnungsgrün #1F3D2B; Häkchen, Sterne usw.
+     etwas heller, sonst wirken sie auf Creme fast schwarz. */
+  --accent:       #3A7A55;
+  --accent-hi:    #2F6B48;
+  --on-accent:    #FFFFFF;
+  --btn-bg:       #1F3D2B;
+  --btn-bg-hover: #2F6B48;
+  --logo:         #1F3D2B;
   --bg:          #FAF6EF;
   --bg-alt:      #F7F0E4;
   --surface:     #FAF8F4;
@@ -237,11 +246,11 @@ p  { text-wrap: pretty; }
 .btn[disabled] { opacity: .6; pointer-events: none; }
 
 .btn-primary {
-  background: var(--accent);
+  background: var(--btn-bg);
   color: var(--on-accent);
   box-shadow: 0 6px 20px -6px color-mix(in srgb, var(--accent) 55%, transparent);
 }
-.btn-primary:hover { background: var(--accent-hi); box-shadow: 0 10px 28px -8px color-mix(in srgb, var(--accent) 70%, transparent); }
+.btn-primary:hover { background: var(--btn-bg-hover); box-shadow: 0 10px 28px -8px color-mix(in srgb, var(--accent) 70%, transparent); }
 
 .btn-ghost {
   background: var(--overlay);
@@ -301,7 +310,7 @@ p  { text-wrap: pretty; }
   width: 70px;
   height: 34px;
   flex: none;
-  background: var(--accent);
+  background: var(--logo);
   -webkit-mask: url("../img/logo.png") center / contain no-repeat;
           mask: url("../img/logo.png") center / contain no-repeat;
 }

@@ -12,7 +12,6 @@
      initReveal        Elemente beim Scrollen einblenden
      initMobileCta     Kontaktleiste am Handy ein-/ausblenden
      initQuoteToggles  lange Bewertungen am Handy kürzen, „Weiterlesen“
-     initPackageLinks  Preiskarten wählen das Anliegen im Formular vor
      initContactForm   Prüfung, Spam-Schutz und Versand des Formulars
      Start             ruft alles der Reihe nach auf
 
@@ -243,22 +242,6 @@
     if (mobile.addEventListener) mobile.addEventListener('change', update);
   }
 
-  /* ── Paket aus den Preiskarten vorauswählen ───────────────
-     Ein Schritt weniger im Formular. */
-  function initPackageLinks() {
-    var topicSelect = $('#f-topic');
-    if (!topicSelect) return;
-
-    $$('a[data-package]').forEach(function (link) {
-      link.addEventListener('click', function () {
-        var wanted = link.getAttribute('data-package');
-        $$('option', topicSelect).forEach(function (opt) {
-          if (opt.value === wanted) topicSelect.value = wanted;
-        });
-      });
-    });
-  }
-
   /* ── Kontaktformular ──────────────────────────────────── */
   function initContactForm() {
     var form = $('#contactForm');
@@ -281,6 +264,7 @@
     var RULES = [
       { id: 'f-name',    test: function (v) { return v.trim().length >= 2; },            msg: 'Bitte gib deinen Namen an.' },
       { id: 'f-mail',    test: function (v) { return /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(v.trim()); }, msg: 'Bitte gib eine gültige E-Mail-Adresse an.' },
+      { id: 'f-source',  test: function (v) { return v.trim().length >= 2; },            msg: 'Bitte sag mir kurz, wie du auf mich aufmerksam geworden bist.' },
       { id: 'f-msg',     test: function (v) { return v.trim().length >= 10; },           msg: 'Bitte beschreibe kurz dein Anliegen (mind. 10 Zeichen).' },
       { id: 'f-consent', test: null,                                                     msg: 'Bitte stimme der Datenschutzerklärung zu.' }
     ];
@@ -341,7 +325,7 @@
         'Name: '     + data.name,
         'E-Mail: '   + data.email,
         'Telefon: '  + (data.telefon || '–'),
-        'Interesse: ' + data.ziel,
+        'Aufmerksam geworden durch: ' + data.quelle,
         '',
         data.nachricht
       ].join('\n');
@@ -404,7 +388,7 @@
         name:      fd.get('name'),
         email:     fd.get('email'),
         telefon:   fd.get('telefon'),
-        ziel:      fd.get('ziel'),
+        quelle:    fd.get('quelle'),
         nachricht: fd.get('nachricht'),
         // Leer mitschicken, damit Formspree das Feld kennt und selbst filtert
         _gotcha:   fd.get('_gotcha') || ''
@@ -452,6 +436,5 @@
   initReveal();
   initMobileCta();
   initQuoteToggles();
-  initPackageLinks();
   initContactForm();
 })();

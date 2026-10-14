@@ -375,9 +375,7 @@
             <li>Ort nach Absprache</li>
             <li>Keine Mindestlaufzeit</li>
           </ul>
-          <!-- data-package: wählt das passende Anliegen im Kontaktformular
-               schon vor, damit im Formular ein Schritt weniger nötig ist. -->
-          <a class="btn btn-ghost btn-block" href="#kontakt" data-package="Personal Training 1:1">Erstgespräch vereinbaren</a>
+          <a class="btn btn-ghost btn-block" href="#kontakt">Erstgespräch vereinbaren</a>
         </article>
 
         <article class="price reveal">
@@ -392,7 +390,7 @@
             <li>1:1-Betreuung</li>
             <li>Ort nach Absprache</li>
           </ul>
-          <a class="btn btn-ghost btn-block" href="#kontakt" data-package="Personal Training 1:1">Erstgespräch vereinbaren</a>
+          <a class="btn btn-ghost btn-block" href="#kontakt">Erstgespräch vereinbaren</a>
         </article>
 
         <article class="price price-featured reveal">
@@ -408,7 +406,7 @@
             <li>WhatsApp-Support zwischendurch</li>
             <li>6 Monate gültig</li>
           </ul>
-          <a class="btn btn-primary btn-block" href="#kontakt" data-package="Personal Training 1:1">Erstgespräch vereinbaren</a>
+          <a class="btn btn-primary btn-block" href="#kontakt">Erstgespräch vereinbaren</a>
         </article>
 
         <article class="price reveal">
@@ -421,7 +419,7 @@
             <li>Monatlich kündbar</li>
             <li>Support per Chat</li>
           </ul>
-          <a class="btn btn-ghost btn-block" href="#kontakt" data-package="Online-Coaching">Erstgespräch vereinbaren</a>
+          <a class="btn btn-ghost btn-block" href="#kontakt">Erstgespräch vereinbaren</a>
         </article>
       </div>
 
@@ -533,18 +531,14 @@
           </div>
 
           <div class="field">
-            <label for="f-topic">Worum geht es dir? <span aria-hidden="true">*</span></label>
-            <select id="f-topic" name="ziel" required>
-              <option value="Personal Training 1:1">Personal Training 1:1</option>
-              <option value="Duo-Training">Duo-Training</option>
-              <option value="Online-Coaching">Online-Coaching</option>
-              <option value="Ernährungscoaching">Ernährungscoaching</option>
-            </select>
+            <label for="f-source">Wie bist du auf mich aufmerksam geworden? <span aria-hidden="true">*</span></label>
+            <input type="text" id="f-source" name="quelle" required aria-describedby="err-f-source">
+            <p class="error" id="err-f-source" data-for="f-source"></p>
           </div>
 
           <div class="field">
             <label for="f-msg">Nachricht <span aria-hidden="true">*</span></label>
-            <textarea id="f-msg" name="nachricht" rows="5" required placeholder="Was möchtest du erreichen? Gibt es Besonderheiten oder Wunschzeiten?" aria-describedby="err-f-msg"></textarea>
+            <textarea id="f-msg" name="nachricht" rows="5" required placeholder="Was möchtest du erreichen? Gibt es aktuelle Herausforderungen, Besonderheiten oder Wunschzeiten für unser kostenloses Erstgespräch?" aria-describedby="err-f-msg"></textarea>
             <p class="error" id="err-f-msg" data-for="f-msg"></p>
           </div>
 
