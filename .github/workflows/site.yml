@@ -49,12 +49,6 @@ jobs:
 
       - run: npm run validate
 
-      - name: Upload site for Lighthouse
-        uses: actions/upload-artifact@v4
-        with:
-          name: site
-          path: _site/
-
       - name: Upload site for GitHub Pages
         if: github.ref == 'refs/heads/main'
         uses: actions/upload-pages-artifact@v3
@@ -66,13 +60,13 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - uses: actions/download-artifact@v4
-        with:
-          name: site
-          path: _site/
       - uses: actions/setup-node@v4
         with:
           node-version-file: .nvmrc
+          cache: npm
+      - run: npm ci
+      # Built without PATH_PREFIX, because Lighthouse serves _site/ from the root
+      - run: npm run build
       - name: Run Lighthouse CI
         run: npx --yes @lhci/cli@0.15.1 autorun
       - name: Upload Lighthouse reports
