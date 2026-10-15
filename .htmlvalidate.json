@@ -1,6 +1,8 @@
 {
   "extends": ["html-validate:recommended"],
   "rules": {
-    "tel-non-breaking": "off"
+    "tel-non-breaking": "off",
+    "attribute-boolean-style": "off",
+    "attribute-empty-style": "off"
   }
 }
