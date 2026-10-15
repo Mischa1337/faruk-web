@@ -5,5 +5,12 @@
     "icon": "health",
     "text": "Praxis in Gießen, die Osteopathie, Physiotherapie und Chiropraktik verbindet – mit Behandlungen zwischen Schulmedizin und alternativen Ansätzen.",
     "url": "https://www.bewegungshelden.de/"
+  },
+  {
+    "name": "Madero & Relax",
+    "kind": "Massage · Maderotherapie · Wellness",
+    "icon": "leaf",
+    "text": "Studio in Gießen für Massagen und Maderotherapie – eine Auszeit zum Durchatmen und Entspannen, ideal als Ausgleich zum Training.",
+    "url": "https://madero-relax.odoo.com/"
   }
 ]

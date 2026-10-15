@@ -1,28 +1,72 @@
 {
   "main": [
-    { "label": "Angebote", "href": "#angebote" },
-    { "label": "Über mich", "href": "#ueber-mich" },
-    { "label": "Ablauf", "href": "#ablauf" },
-    { "label": "Erfolge", "href": "#erfolge" },
-    { "label": "Partner", "href": "#partner" },
-    { "label": "Preise", "href": "#preise" },
-    { "label": "FAQ", "href": "#faq" }
+    {
+      "label": "Angebote",
+      "href": "#angebote"
+    },
+    {
+      "label": "Über mich",
+      "href": "#ueber-mich"
+    },
+    {
+      "label": "Ablauf",
+      "href": "#ablauf"
+    },
+    {
+      "label": "Erfolge",
+      "href": "#erfolge"
+    },
+    {
+      "label": "Kooperationen",
+      "href": "#kooperationen"
+    },
+    {
+      "label": "Preise",
+      "href": "#preise"
+    },
+    {
+      "label": "FAQ",
+      "href": "#faq"
+    }
   ],
-  "quickLinks": [
-    { "label": "Über mich", "href": "#ueber-mich" },
-    { "label": "Preise", "href": "#preise" }
-  ],
-  "cta": { "label": "Erstgespräch", "href": "#kontakt" },
+  "cta": {
+    "label": "Erstgespräch",
+    "href": "#kontakt"
+  },
   "footerHome": [
-    { "label": "Angebote", "href": "#angebote" },
-    { "label": "Preise", "href": "#preise" },
-    { "label": "Kontakt", "href": "#kontakt" },
-    { "label": "Impressum", "href": "/impressum.html" },
-    { "label": "Datenschutz", "href": "/datenschutz.html" }
+    {
+      "label": "Angebote",
+      "href": "#angebote"
+    },
+    {
+      "label": "Preise",
+      "href": "#preise"
+    },
+    {
+      "label": "Kontakt",
+      "href": "#kontakt"
+    },
+    {
+      "label": "Impressum",
+      "href": "/impressum.html"
+    },
+    {
+      "label": "Datenschutz",
+      "href": "/datenschutz.html"
+    }
   ],
   "footerSubpage": [
-    { "label": "Startseite", "href": "/" },
-    { "label": "Impressum", "href": "/impressum.html" },
-    { "label": "Datenschutz", "href": "/datenschutz.html" }
+    {
+      "label": "Startseite",
+      "href": "/"
+    },
+    {
+      "label": "Impressum",
+      "href": "/impressum.html"
+    },
+    {
+      "label": "Datenschutz",
+      "href": "/datenschutz.html"
+    }
   ]
 }

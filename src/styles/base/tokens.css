@@ -1,44 +1,47 @@
 /* ── Design tokens ─────────────────────────────────────────
    The only place where colours, spacing and radii are defined.
 
-   There are exactly two levers:
-     1. --accent         the brand colour
-     2. data-theme       on <html>: "dark" (default) or "light"
-   Everything else is derived via color-mix() and follows along. */
+   The colour scheme follows the visitor's system setting
+   (prefers-color-scheme): light by default, dark when the system asks for
+   it. Everything else is derived from these tokens via color-mix() and
+   follows along. */
 :root {
-  /* Brand colour. --accent-hi is the readable text variant on the page
-     background, --on-accent the text colour ON the brand colour. When
-     changing --accent, adjust both and re-check contrast (at least 4.5:1,
-     e.g. with the contrast checker in the browser devtools). */
-  --accent: #c6a15b; /* gold, as on the invoices */
-  --accent-hi: #d4b475;
-  --on-accent: #140904;
-  --accent-soft: color-mix(in srgb, var(--accent) 12%, transparent);
+  color-scheme: light;
 
-  /* Primary buttons and logo follow the brand colour by default */
-  --btn-bg: var(--accent);
-  --btn-bg-hover: var(--accent-hi);
-  --logo: var(--accent);
+  /* Brand colour. --accent is used for icons, ticks, stars and small
+     headings, --accent-hi for accent-coloured text, --on-accent for text
+     ON the brand colour (badge, primary button). When changing a colour,
+     re-check contrast (at least 4.5:1, e.g. with the browser devtools). */
+  --brand: #0a3221; /* dark green of the logo */
+  --accent: var(--brand);
+  --accent-hi: var(--brand);
+  --on-accent: #fff;
+  --accent-soft: color-mix(in srgb, var(--accent) 10%, transparent);
 
-  /* Dark base scheme */
-  --bg: #0a0a0b;
-  --bg-alt: #101014;
-  --surface: #16161b;
-  --surface-2: #1d1d24;
-  --line: #2a2a33;
-  --line-soft: #202027;
-  --line-strong: #34343f;
-  --text: #f4f4f5;
-  --text-muted: #a0a0ab;
-  --text-dim: #787887;
+  /* Primary buttons and logo */
+  --btn-bg: var(--brand);
+  --btn-bg-hover: #154a33;
+  --logo: var(--brand);
+
+  /* Light base scheme: white page, sage boxes, anthracite text */
+  --bg: #fff;
+  --bg-alt: #eef3f0;
+  --surface: #f4f7f5;
+  --surface-2: #e9f0ec;
+  --line: #d5e0d9;
+  --line-soft: #e2e9e4;
+  --line-strong: #b7c9be;
+  --text: #2b2b2b;
+  --text-muted: #525a55;
+  --text-dim: #646c67;
 
   /* Veil for glass and hover effects. Derived from the text colour, so it
-     flips from white to black in the light scheme on its own. */
+     flips from black to white in the dark scheme on its own. */
   --overlay: color-mix(in srgb, var(--text) 5%, transparent);
   --overlay-strong: color-mix(in srgb, var(--text) 10%, transparent);
 
-  --ok: #4ade80;
-  --error: #ff6b6e;
+  --ok: #15803d;
+  --error: #c81e24;
   --photo-shade: rgb(10 10 11 / 45%);
   --whatsapp: #25d366;
   --on-whatsapp: #063b1b;
@@ -50,10 +53,10 @@
   --radius: 14px;
   --radius-lg: 22px;
 
-  /* Shadow colours are separate so the light scheme only has to swap them */
-  --shadow-a: rgb(0 0 0 / 50%);
-  --shadow-b: rgb(0 0 0 / 70%);
-  --shadow-c: rgb(0 0 0 / 85%);
+  /* Shadow colours are separate so the dark scheme only has to swap them */
+  --shadow-a: rgb(10 50 33 / 6%);
+  --shadow-b: rgb(10 50 33 / 12%);
+  --shadow-c: rgb(10 50 33 / 18%);
   --shadow: 0 1px 2px var(--shadow-a), 0 12px 40px -12px var(--shadow-b);
   --shadow-lg: 0 24px 70px -20px var(--shadow-c);
 
@@ -64,31 +67,64 @@
   --ease: cubic-bezier(0.22, 0.61, 0.36, 1);
 }
 
-/* ── Light scheme ──────────────────────────────────────────
-   Activated by data-theme="light" on <html>. Only the base tones are
-   redefined; everything derived from them via color-mix() follows. */
-:root[data-theme='light'] {
-  /* Buttons and logo use the exact invoice green #1F3D2B; ticks, stars
-     etc. are a bit lighter, otherwise they look almost black on cream. */
-  --accent: #3a7a55;
-  --accent-hi: #2f6b48;
-  --on-accent: #fff;
-  --btn-bg: #1f3d2b;
-  --btn-bg-hover: #2f6b48;
-  --logo: #1f3d2b;
-  --bg: #faf6ef;
-  --bg-alt: #f7f0e4;
-  --surface: #faf8f4;
-  --surface-2: #f6eede;
-  --line: #f1ddba;
-  --line-soft: #f3e6d0;
-  --line-strong: #eccc93;
-  --text: #1b1813;
-  --text-muted: #5d564c;
-  --text-dim: #777065;
-  --ok: #15803d;
-  --error: #c81e24;
-  --shadow-a: rgb(20 20 35 / 6%);
-  --shadow-b: rgb(20 20 35 / 13%);
-  --shadow-c: rgb(20 20 35 / 20%);
+/* ── Dark scheme ───────────────────────────────────────────
+   Dark anthracite page, deep forest-green boxes, off-white text. The brand
+   green would have too little contrast on a dark background, so accents
+   and the logo use a lighter mint green, and primary buttons are white
+   with green text. */
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme='light']) {
+    color-scheme: dark;
+
+    --accent: #4caf75; /* mint green, readable on dark backgrounds */
+    --accent-hi: #4caf75;
+    --on-accent: var(--brand);
+    --btn-bg: #fff;
+    --btn-bg-hover: #e3efe8;
+    --logo: var(--accent);
+    --bg: #121212;
+    --bg-alt: #161a18;
+    --surface: #1a2e24;
+    --surface-2: #213a2e;
+    --line: #2b4537;
+    --line-soft: #22372c;
+    --line-strong: #3a5a49;
+    --text: #e5e5e5;
+    --text-muted: #b4bab6;
+    --text-dim: #9aa29d;
+    --ok: #4ade80;
+    --error: #ff6b6e;
+    --shadow-a: rgb(0 0 0 / 50%);
+    --shadow-b: rgb(0 0 0 / 70%);
+    --shadow-c: rgb(0 0 0 / 85%);
+  }
+}
+
+/* PREVIEW ONLY – remove together with the theme toggle before launch.
+   Forces the dark scheme when it was picked with the toggle on a system
+   set to light. Same values as above. */
+:root[data-theme='dark'] {
+  color-scheme: dark;
+
+  --accent: #4caf75; /* mint green, readable on dark backgrounds */
+  --accent-hi: #4caf75;
+  --on-accent: var(--brand);
+  --btn-bg: #fff;
+  --btn-bg-hover: #e3efe8;
+  --logo: var(--accent);
+  --bg: #121212;
+  --bg-alt: #161a18;
+  --surface: #1a2e24;
+  --surface-2: #213a2e;
+  --line: #2b4537;
+  --line-soft: #22372c;
+  --line-strong: #3a5a49;
+  --text: #e5e5e5;
+  --text-muted: #b4bab6;
+  --text-dim: #9aa29d;
+  --ok: #4ade80;
+  --error: #ff6b6e;
+  --shadow-a: rgb(0 0 0 / 50%);
+  --shadow-b: rgb(0 0 0 / 70%);
+  --shadow-c: rgb(0 0 0 / 85%);
 }

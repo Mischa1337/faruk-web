@@ -1,6 +1,8 @@
 /* ── Site header ───────────────────────────────────────────
-   Fixed bar with logo, quick links, "Erstgespräch" button, light/dark
-   toggle and the menu button (☰). The menu items fold out on every
+   Fixed bar with logo, "Erstgespräch" button, light/dark toggle and the
+   menu button (☰). Quick links to single sections are left out on
+   purpose: visitors should read the page in order and not jump straight
+   to the prices. The menu items fold out on every
    width: as a narrow card on desktop, full width on phones. */
 .site-header {
   position: fixed;
@@ -67,46 +69,10 @@
   white-space: nowrap;
 }
 
-/* ── Quick links next to the button (desktop) ── */
-.header-links {
-  order: 1;
-  margin-left: auto;
-  display: flex;
-  gap: 0.2rem;
-}
-
-.header-links a {
-  padding: 0.5rem 0.8rem;
-  border-radius: 8px;
-  text-decoration: none;
-  font-size: 0.93rem;
-  font-weight: 600;
-  color: var(--text-muted);
-  white-space: nowrap;
-  transition:
-    color 0.18s,
-    background-color 0.18s;
-}
-
-.header-links a:hover {
-  color: var(--text);
-  background: var(--overlay);
-}
-
+/* "Erstgespräch" button; pushes itself and everything after it to the right */
 .header-cta {
   order: 1;
-}
-
-/* Below 900 px there is not enough room next to logo and claim: hide the
-   quick links, they are still available in the menu. */
-@media (width <= 900px) {
-  .header-links {
-    display: none;
-  }
-
-  .header-cta {
-    margin-left: auto;
-  }
+  margin-left: auto;
 }
 
 .theme-toggle {

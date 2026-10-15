@@ -88,8 +88,10 @@ defines the cascade, from generic to specific:
 | `sections/`   | one file per home page section, same name as its template |
 | `pages/`      | styles used only by the legal pages                       |
 
-All colours are custom properties in `base/tokens.css`. The light scheme only
-redefines the base tones; everything else is derived with `color-mix()`.
+All colours are custom properties in `base/tokens.css`. The colour scheme
+follows the visitor's system setting (`prefers-color-scheme`): light by
+default, and the dark scheme only redefines the base tones; everything else
+is derived with `color-mix()`. No JavaScript is involved.
 Responsive rules sit next to the component they belong to.
 
 ## JavaScript

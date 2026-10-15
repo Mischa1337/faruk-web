@@ -1,4 +1,4 @@
-{# Header of the home page: fold-out menu, quick links, call to action, theme toggle #}
+{# Header of the home page: logo, call to action, theme toggle and fold-out menu #}
 <header class="site-header" id="siteHeader">
   <div class="wrap header-inner">
     {%- set brandHref = "#top" %}{% set brandLabel = "Startseite" %}
@@ -15,12 +15,6 @@
         {%- endfor %}
         <li><a class="btn btn-primary btn-sm" href="{{ navigation.cta.href }}">{{ navigation.cta.label }}</a></li>
       </ul>
-    </nav>
-    {#- Quick access next to the button (desktop); all items are in the menu too #}
-    <nav class="header-links" aria-label="Schnellzugriff">
-      {%- for item in navigation.quickLinks %}
-      <a href="{{ item.href }}">{{ item.label }}</a>
-      {%- endfor %}
     </nav>
     <a class="btn btn-primary btn-sm header-cta" href="{{ navigation.cta.href }}">{{ navigation.cta.label }}</a>
     {% include "partials/theme-toggle.njk" %}
