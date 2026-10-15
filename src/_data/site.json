@@ -6,7 +6,7 @@
   "footerClaim": "Personal Training vor Ort und online",
   "language": "de",
   "locale": "de_DE",
-  "themeColor": "#0A0A0B",
+  "themeColors": { "light": "#FFFFFF", "dark": "#121212" },
   "ogImage": "/img/og-vorschau.jpg",
   "owner": {
     "name": "Faruk Palteki",

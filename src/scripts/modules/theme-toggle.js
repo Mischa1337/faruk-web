@@ -1,4 +1,4 @@
-import { $, $$ } from '../lib/dom.js';
+import { $$ } from '../lib/dom.js';
 
 const STORAGE_KEY = 'theme';
 const LABELS = {
@@ -7,48 +7,49 @@ const LABELS = {
 };
 
 /**
- * Light/dark colour scheme.
+ * Light/dark toggle – PREVIEW ONLY, removed before launch.
  *
- * The button in the header toggles data-theme on <html>. The choice is
- * stored locally (localStorage – no cookie, never leaves the device); an
- * inline script in <head> applies it before the first paint to avoid a
- * flash of the wrong scheme. Default without a stored choice: dark.
+ * Without a choice the site follows the system setting (pure CSS). The
+ * button overrides it by setting data-theme on <html>; the choice is stored
+ * locally (localStorage – no cookie, never leaves the device) and applied
+ * before the first paint by an inline script in <head>.
  */
 export function initThemeToggle() {
   const buttons = $$('.theme-toggle');
   if (!buttons.length) return;
 
   const root = document.documentElement;
-  const themeColor = $('meta[name="theme-color"]');
-  const current = () => (root.dataset.theme === 'light' ? 'light' : 'dark');
+  const systemDark = window.matchMedia('(prefers-color-scheme: dark)');
+  const themeColors = $$('meta[name="theme-color"]');
+  const current = () => root.dataset.theme || (systemDark.matches ? 'dark' : 'light');
 
-  const apply = (theme, { save = false } = {}) => {
+  const updateLabels = () => {
+    for (const button of buttons) {
+      button.setAttribute('aria-label', LABELS[current()]);
+      button.title = LABELS[current()];
+    }
+  };
+
+  const apply = (theme) => {
     root.dataset.theme = theme;
 
     // Browser UI colour follows the page background defined in the CSS tokens
     const background = getComputedStyle(root).getPropertyValue('--bg').trim();
-    if (themeColor && background) themeColor.setAttribute('content', background);
+    for (const meta of themeColors) meta.setAttribute('content', background);
 
-    for (const button of buttons) {
-      button.setAttribute('aria-label', LABELS[theme]);
-      button.title = LABELS[theme];
-    }
-
-    if (save) {
-      try {
-        localStorage.setItem(STORAGE_KEY, theme);
-      } catch {
-        // Storage unavailable (e.g. private mode): the choice simply isn't remembered
-      }
+    updateLabels();
+    try {
+      localStorage.setItem(STORAGE_KEY, theme);
+    } catch {
+      // Storage unavailable (e.g. private mode): the choice simply isn't remembered
     }
   };
 
-  apply(current());
+  updateLabels();
+  systemDark.addEventListener('change', updateLabels);
 
   for (const button of buttons) {
     button.hidden = false;
-    button.addEventListener('click', () => {
-      apply(current() === 'light' ? 'dark' : 'light', { save: true });
-    });
+    button.addEventListener('click', () => apply(current() === 'light' ? 'dark' : 'light'));
   }
 }

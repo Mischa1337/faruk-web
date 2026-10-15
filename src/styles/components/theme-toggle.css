@@ -1,9 +1,12 @@
 /* ── Light/dark toggle ─────────────────────────────────────
-   Shows a sun in the dark scheme (→ switch to light) and a moon in the
-   light scheme (→ switch to dark). The symbol is a mask and takes on the
+   PREVIEW ONLY – lets Faruk compare both colour schemes; removed before
+   launch, after which the site simply follows the system setting.
+
+   Shows a moon in the light scheme (→ switch to dark) and a sun in the
+   dark scheme (→ switch to light). The symbol is a mask and takes on the
    text colour. The button stays hidden until the script is running. */
 .theme-toggle {
-  --icon: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23000' stroke-width='2' stroke-linecap='round'%3E%3Ccircle cx='12' cy='12' r='4'/%3E%3Cpath d='M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41'/%3E%3C/svg%3E");
+  --icon: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23000' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z'/%3E%3C/svg%3E");
 
   display: grid;
   place-items: center;
@@ -37,6 +40,16 @@
   mask: var(--icon) center / contain no-repeat;
 }
 
-:root[data-theme='light'] .theme-toggle {
-  --icon: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23000' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z'/%3E%3C/svg%3E");
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme='light']) .theme-toggle {
+    --icon: var(--icon-sun);
+  }
+}
+
+:root[data-theme='dark'] .theme-toggle {
+  --icon: var(--icon-sun);
+}
+
+:root {
+  --icon-sun: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23000' stroke-width='2' stroke-linecap='round'%3E%3Ccircle cx='12' cy='12' r='4'/%3E%3Cpath d='M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41'/%3E%3C/svg%3E");
 }
