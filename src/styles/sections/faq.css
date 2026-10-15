@@ -1,0 +1,70 @@
+/* ── FAQ ───────────────────────────────────────────────── */
+.faq {
+  display: grid;
+  gap: 0.7rem;
+}
+
+.faq details {
+  background: var(--surface);
+  border: 1px solid var(--line-soft);
+  border-radius: var(--radius);
+  overflow: hidden;
+  transition: border-color 0.2s;
+}
+
+.faq details[open] {
+  border-color: var(--line-strong);
+}
+
+.faq summary {
+  list-style: none;
+  cursor: pointer;
+  padding: 1.15rem 3.25rem 1.15rem 1.4rem;
+  font-weight: 650;
+  font-size: 1.02rem;
+  position: relative;
+  transition: color 0.2s;
+}
+
+.faq summary::-webkit-details-marker {
+  display: none;
+}
+
+.faq summary:hover {
+  color: var(--accent-hi);
+}
+
+.faq summary::after {
+  /* Plus sign, rotated into an × when opened */
+  --icon: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='none' stroke='%23000' stroke-width='2.5' stroke-linecap='round' d='M12 5v14M5 12h14'/%3E%3C/svg%3E");
+
+  content: '';
+  position: absolute;
+  right: 1.4rem;
+  top: 1.45rem;
+  width: 15px;
+  height: 15px;
+  background: currentcolor;
+  mask: var(--icon) center / contain no-repeat;
+  transition: transform 0.25s var(--ease);
+  color: var(--text-dim);
+}
+
+.faq details[open] summary::after {
+  transform: rotate(135deg);
+  color: var(--accent-hi);
+}
+
+.faq-body {
+  padding: 0 1.4rem 1.35rem;
+}
+
+.faq-body p {
+  color: var(--text-muted);
+  font-size: 0.96rem;
+}
+
+.faq-body strong {
+  color: var(--text);
+  font-weight: 700;
+}

@@ -1,0 +1,16 @@
+<footer class="site-footer">
+  <div class="wrap footer-inner">
+    <div class="footer-brand">
+      <span class="brand-mark" aria-hidden="true"></span>
+      <p><strong>{{ site.name }}</strong><br>{{ site.footerClaim }}</p>
+    </div>
+    <nav class="footer-nav" aria-label="Fußzeile">
+      {%- for item in (navigation.footerHome if isHome else navigation.footerSubpage) %}
+      <a href="{{ item.href }}">{{ item.label }}</a>
+      {%- endfor %}
+    </nav>
+  </div>
+  <div class="wrap footer-legal">
+    <p>&copy; <span id="year">{{ build.year }}</span> {{ site.owner.name }}. Alle Rechte vorbehalten.</p>
+  </div>
+</footer>

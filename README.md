@@ -1,35 +1,105 @@
 # AFP-Coaching · Website
 
-Website von AFP-Coaching – Personal Training vor Ort und online.
-Live unter [afp-coaching.de](https://afp-coaching.de).
+[![Site](https://github.com/Mischa1337/faruk-web/actions/workflows/site.yml/badge.svg)](https://github.com/Mischa1337/faruk-web/actions/workflows/site.yml)
 
-Reines HTML, CSS und JavaScript: kein Build-Prozess, keine Frameworks, keine
-Cookies und keine Anfragen an fremde Server.
+Website of AFP-Coaching – personal training on site and online coaching.
+Live at [afp-coaching.de](https://afp-coaching.de).
 
-## Aufbau
+A static site built with [Eleventy](https://www.11ty.dev/) and
+[esbuild](https://esbuild.github.io/): plain HTML, CSS and JavaScript in the
+browser – no framework, no cookies, no tracking and no requests to
+third-party servers.
 
-```
-docs/                 Die Website – nur dieser Ordner wird veröffentlicht
-  index.html          Startseite (One-Pager)
-  impressum.html
-  datenschutz.html
-  404.html            Fehlerseite
-  css/style.css       Design und Farben
-  js/main.js          Menü, Animationen, Kontaktformular
-  img/                Bilder
-  robots.txt
-  sitemap.xml
-```
+| Lighthouse (home page) | Score |
+| ---------------------- | ----- |
+| Performance            | 98+   |
+| Accessibility          | 96    |
+| Best Practices         | 100   |
+| SEO                    | 100   |
 
-## Lokal ansehen
+The scores are enforced in CI (see [Quality gates](#quality-gates)).
+
+## Getting started
+
+Requires Node.js 20 or newer (`.nvmrc` pins the version used in CI).
 
 ```bash
-python3 -m http.server 4321 --directory docs
+npm install
+npm run dev      # local server with live reload on http://localhost:4321
 ```
 
-Danach `http://localhost:4321` im Browser öffnen.
+## Where do I change what?
 
-## Veröffentlichen
+| I want to change …                            | File                                       |
+| --------------------------------------------- | ------------------------------------------ |
+| Prices, offers, FAQ, reviews, partners        | `src/_data/*.json`                         |
+| Phone, e-mail, address, WhatsApp text         | `src/_data/site.json`                      |
+| Menu and footer links                         | `src/_data/navigation.json`                |
+| Text of a section (hero, about me, process …) | `src/_includes/sections/<section>.njk`     |
+| Order of the sections                         | `src/index.njk`                            |
+| Look of a section                             | `src/styles/sections/<section>.css`        |
+| Colours, spacing, fonts                       | `src/styles/base/tokens.css`               |
+| Behaviour (menu, form, theme toggle …)        | `src/scripts/modules/`                     |
+| Contact form endpoint (Formspree)             | `src/scripts/config.js`                    |
+| Imprint, privacy policy                       | `src/impressum.njk`, `src/datenschutz.njk` |
+| Images                                        | `src/public/img/`                          |
 
-GitHub Pages veröffentlicht den Ordner `docs/` aus dem Branch `main`.
-Jede Änderung, die dort landet, ist nach etwa einer Minute live.
+Content data is the single source of truth: the FAQ, offers and contact
+details also feed the structured data for Google (JSON-LD) and `llms.txt` for
+AI assistants, so they can never contradict the visible page.
+
+## Scripts
+
+| Command            | What it does                                           |
+| ------------------ | ------------------------------------------------------ |
+| `npm run dev`      | Development server with live reload                    |
+| `npm run build`    | Builds the site into `_site/`                          |
+| `npm run lint`     | ESLint, Stylelint and Prettier check                   |
+| `npm run format`   | Formats all files with Prettier                        |
+| `npm run validate` | Validates the generated HTML (html-validate)           |
+| `npm test`         | Unit tests and SEO/link regression tests (`node:test`) |
+| `npm run check`    | Everything above in one go – run this before pushing   |
+
+## Quality gates
+
+Every push and pull request runs [`.github/workflows/site.yml`](.github/workflows/site.yml):
+
+1. **Lint** – ESLint, Stylelint, Prettier
+2. **Build** – Eleventy + esbuild
+3. **Validate** – html-validate on every generated page
+4. **Test** – form validation unit tests; SEO regression tests (one `<h1>` per
+   page, canonical URLs, `noindex` on legal pages, structured data matching
+   the visible FAQ, sitemap, no broken internal links or anchors)
+5. **Lighthouse CI** – fails below 95 accessibility / best practices and below
+   100 SEO on the home page ([`lighthouserc.json`](lighthouserc.json))
+6. **Deploy** – only from `main`, to GitHub Pages
+
+## Project structure
+
+```
+src/
+  _data/            content and settings (JSON) – single source of truth
+  _includes/
+    layouts/        page skeletons (base, sub-page)
+    partials/       header, footer, head, icons, contact form, JSON-LD
+    sections/       one file per section of the home page
+  styles/           CSS, bundled by esbuild into css/style.css
+  scripts/          ES modules, bundled by esbuild into js/main.js
+  public/           static files copied as they are (images)
+  index.njk         home page: list of sections
+  impressum.njk     imprint
+  datenschutz.njk   privacy policy
+  404.njk           error page
+  sitemap.njk, robots.njk, llms.11ty.js
+config/             build helpers (asset bundling, filters, structured data)
+test/               automated tests
+eleventy.config.js  build configuration
+```
+
+More background on the design decisions: [ARCHITECTURE.md](ARCHITECTURE.md).
+
+## Deployment
+
+GitHub Actions builds the site and publishes it to GitHub Pages on every push
+to `main` (repository settings → Pages → Source: **GitHub Actions**). A change
+is live about two minutes after it is merged.

@@ -1,0 +1,44 @@
+/* ── Partners ──────────────────────────────────────────────
+   The grid arranges itself for one, two or more partners. Card styles
+   live in components/card.css. */
+.partners {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 340px), 1fr));
+  gap: clamp(1rem, 2vw, 1.5rem);
+}
+
+.partner {
+  display: flex;
+  flex-direction: column;
+}
+
+.card .partner-kind {
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  color: var(--accent-hi);
+  margin-bottom: 0.35rem;
+}
+
+.partner-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  margin-top: auto;
+  padding-top: 1.2rem;
+  font-weight: 700;
+  font-size: 0.93rem;
+  color: var(--accent-hi);
+  text-decoration: none;
+}
+
+.partner-link .ico {
+  width: 1em;
+  height: 1em;
+  stroke-width: 2;
+}
+
+.partner-link:hover {
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}

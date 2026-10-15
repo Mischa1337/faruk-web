@@ -1,0 +1,28 @@
+{# Header of the home page: fold-out menu, quick links, call to action, theme toggle #}
+<header class="site-header" id="siteHeader">
+  <div class="wrap header-inner">
+    {%- set brandHref = "#top" %}{% set brandLabel = "Startseite" %}
+    {% include "partials/brand.njk" %}
+
+    <button class="nav-toggle" type="button" id="navToggle" aria-expanded="false" aria-controls="siteNav" aria-label="Menü öffnen">
+      <span class="nav-toggle-bars" aria-hidden="true"><i></i><i></i><i></i></span>
+    </button>
+
+    <nav class="site-nav" id="siteNav" aria-label="Hauptnavigation">
+      <ul>
+        {%- for item in navigation.main %}
+        <li><a href="{{ item.href }}">{{ item.label }}</a></li>
+        {%- endfor %}
+        <li><a class="btn btn-primary btn-sm" href="{{ navigation.cta.href }}">{{ navigation.cta.label }}</a></li>
+      </ul>
+    </nav>
+    {#- Quick access next to the button (desktop); all items are in the menu too #}
+    <nav class="header-links" aria-label="Schnellzugriff">
+      {%- for item in navigation.quickLinks %}
+      <a href="{{ item.href }}">{{ item.label }}</a>
+      {%- endfor %}
+    </nav>
+    <a class="btn btn-primary btn-sm header-cta" href="{{ navigation.cta.href }}">{{ navigation.cta.label }}</a>
+    {% include "partials/theme-toggle.njk" %}
+  </div>
+</header>

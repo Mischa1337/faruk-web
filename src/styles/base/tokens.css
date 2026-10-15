@@ -1,0 +1,94 @@
+/* ── Design tokens ─────────────────────────────────────────
+   The only place where colours, spacing and radii are defined.
+
+   There are exactly two levers:
+     1. --accent         the brand colour
+     2. data-theme       on <html>: "dark" (default) or "light"
+   Everything else is derived via color-mix() and follows along. */
+:root {
+  /* Brand colour. --accent-hi is the readable text variant on the page
+     background, --on-accent the text colour ON the brand colour. When
+     changing --accent, adjust both and re-check contrast (at least 4.5:1,
+     e.g. with the contrast checker in the browser devtools). */
+  --accent: #c6a15b; /* gold, as on the invoices */
+  --accent-hi: #d4b475;
+  --on-accent: #140904;
+  --accent-soft: color-mix(in srgb, var(--accent) 12%, transparent);
+
+  /* Primary buttons and logo follow the brand colour by default */
+  --btn-bg: var(--accent);
+  --btn-bg-hover: var(--accent-hi);
+  --logo: var(--accent);
+
+  /* Dark base scheme */
+  --bg: #0a0a0b;
+  --bg-alt: #101014;
+  --surface: #16161b;
+  --surface-2: #1d1d24;
+  --line: #2a2a33;
+  --line-soft: #202027;
+  --line-strong: #34343f;
+  --text: #f4f4f5;
+  --text-muted: #a0a0ab;
+  --text-dim: #787887;
+
+  /* Veil for glass and hover effects. Derived from the text colour, so it
+     flips from white to black in the light scheme on its own. */
+  --overlay: color-mix(in srgb, var(--text) 5%, transparent);
+  --overlay-strong: color-mix(in srgb, var(--text) 10%, transparent);
+
+  --ok: #4ade80;
+  --error: #ff6b6e;
+  --photo-shade: rgb(10 10 11 / 45%);
+  --whatsapp: #25d366;
+  --on-whatsapp: #063b1b;
+
+  --font:
+    ui-sans-serif, -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', Arial,
+    'Noto Sans', sans-serif;
+
+  --radius: 14px;
+  --radius-lg: 22px;
+
+  /* Shadow colours are separate so the light scheme only has to swap them */
+  --shadow-a: rgb(0 0 0 / 50%);
+  --shadow-b: rgb(0 0 0 / 70%);
+  --shadow-c: rgb(0 0 0 / 85%);
+  --shadow: 0 1px 2px var(--shadow-a), 0 12px 40px -12px var(--shadow-b);
+  --shadow-lg: 0 24px 70px -20px var(--shadow-c);
+
+  --wrap: 1180px;
+  --wrap-narrow: 780px;
+  --gutter: clamp(1.25rem, 4vw, 2.5rem);
+  --section-y: clamp(4.5rem, 10vw, 8.5rem);
+  --ease: cubic-bezier(0.22, 0.61, 0.36, 1);
+}
+
+/* ── Light scheme ──────────────────────────────────────────
+   Activated by data-theme="light" on <html>. Only the base tones are
+   redefined; everything derived from them via color-mix() follows. */
+:root[data-theme='light'] {
+  /* Buttons and logo use the exact invoice green #1F3D2B; ticks, stars
+     etc. are a bit lighter, otherwise they look almost black on cream. */
+  --accent: #3a7a55;
+  --accent-hi: #2f6b48;
+  --on-accent: #fff;
+  --btn-bg: #1f3d2b;
+  --btn-bg-hover: #2f6b48;
+  --logo: #1f3d2b;
+  --bg: #faf6ef;
+  --bg-alt: #f7f0e4;
+  --surface: #faf8f4;
+  --surface-2: #f6eede;
+  --line: #f1ddba;
+  --line-soft: #f3e6d0;
+  --line-strong: #eccc93;
+  --text: #1b1813;
+  --text-muted: #5d564c;
+  --text-dim: #777065;
+  --ok: #15803d;
+  --error: #c81e24;
+  --shadow-a: rgb(20 20 35 / 6%);
+  --shadow-b: rgb(20 20 35 / 13%);
+  --shadow-c: rgb(20 20 35 / 20%);
+}

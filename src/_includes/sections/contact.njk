@@ -1,0 +1,36 @@
+<section class="section" id="kontakt">
+  <div class="wrap contact-grid">
+    <div class="contact-copy reveal">
+      <p class="eyebrow">Kontakt</p>
+      <h2>Lass uns starten!</h2>
+      <p class="section-lead">Schreib mir einfach, was du erreichen möchtest. Unser Erstgespräch ist kostenlos und absolut unverbindlich – danach entscheidest du ganz in Ruhe.</p>
+
+      <ul class="contact-list">
+        <li>
+          <a href="{{ contactLinks.whatsapp }}" target="_blank" rel="noopener">
+            {% icon "whatsapp" %}
+            <span><strong>WhatsApp: {{ site.contact.phoneDisplay }}</strong>Schnellste Antwort · {{ site.contact.whatsappHours }}</span>
+          </a>
+        </li>
+        <li>
+          <a href="{{ contactLinks.email }}">
+            {% icon "mail" %}
+            <span><strong>{{ site.contact.email }}</strong>Für alles Ausführliche</span>
+          </a>
+        </li>
+        <li>
+          <a href="{{ site.contact.instagram.url }}" target="_blank" rel="noopener">
+            {% icon "instagram" %}
+            <span><strong>{{ site.contact.instagram.handle }}</strong>Training &amp; Alltag</span>
+          </a>
+        </li>
+      </ul>
+
+      <p class="contact-area"><strong>Egal, wo du zu Hause bist:</strong> Vor Ort trainiere ich mit dir in Gießen und Umgebung – mein Online-Coaching funktioniert von überall.</p>
+    </div>
+
+    <div class="contact-form-wrap reveal">
+      {% include "partials/contact-form.njk" %}
+    </div>
+  </div>
+</section>

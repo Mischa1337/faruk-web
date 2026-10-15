@@ -1,0 +1,41 @@
+{# Price cards; prices and features in _data/pricing.json #}
+<section class="section" id="preise">
+  <div class="wrap">
+    <header class="section-head reveal">
+      <p class="eyebrow">Preise</p>
+      <h2>Preise – transparent und ohne Vertragsbindung</h2>
+      <p class="section-lead">Online-Coaching kannst du von überall aus nutzen. Bei allen Terminen vor Ort ist die Anfahrt innerhalb von Gießen bereits inklusive.</p>
+    </header>
+
+    <div class="pricing">
+      {%- for plan in pricing.plans %}
+      <article class="price{% if plan.featured %} price-featured{% endif %} reveal">
+        {%- if plan.badge %}
+        <p class="badge">{{ plan.badge }}</p>
+        {%- endif %}
+        <h3>{{ plan.name }}</h3>
+        {%- if plan.rates %}
+        <dl class="price-rows">
+          {%- for rate in plan.rates %}
+          <div><dt>{{ rate.duration }}</dt><dd><span class="amount">{{ rate.amount }}</span> €</dd></div>
+          {%- endfor %}
+        </dl>
+        {%- else %}
+        <p class="price-tag"><span class="amount">{{ plan.price.amount }}</span><span class="unit">{{ plan.price.unit }}</span></p>
+        {%- endif %}
+        <p class="price-desc">{{ plan.description }}</p>
+        <ul class="ticks">
+          {%- for feature in plan.features %}
+          <li>{{ feature }}</li>
+          {%- endfor %}
+        </ul>
+        <a class="btn {{ 'btn-primary' if plan.featured else 'btn-ghost' }} btn-block" href="#kontakt">{{ pricing.cta }}</a>
+      </article>
+      {%- endfor %}
+    </div>
+
+    <p class="price-foot reveal">
+      {{ pricing.footnotes | join("<br>\n      ") | safe }}
+    </p>
+  </div>
+</section>

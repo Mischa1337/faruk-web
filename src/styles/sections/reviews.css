@@ -1,0 +1,111 @@
+/* ── Reviews ("Erfolge") ───────────────────────────────────
+   The featured review spans the full width, the others sit below in
+   pairs – so no card stays half empty with texts of different length.
+   Keep an even number of reviews below the featured one. */
+.quotes {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1.15rem;
+}
+
+.quote-featured {
+  grid-column: 1 / -1;
+}
+
+@media (width <= 600px) {
+  .quotes {
+    grid-template-columns: 1fr;
+  }
+}
+
+.quote {
+  /* Lines shown of a collapsed review on phones; read by modules/review-toggles.js */
+  --review-lines: 4;
+
+  background: var(--surface);
+  border: 1px solid var(--line-soft);
+  border-radius: var(--radius-lg);
+  padding: clamp(1.6rem, 3vw, 2.1rem);
+  display: flex;
+  flex-direction: column;
+  gap: 1.1rem;
+}
+
+.stars {
+  color: var(--accent);
+  letter-spacing: 0.15em;
+  font-size: 0.95rem;
+}
+
+.quote blockquote p {
+  font-size: 1.05rem;
+  line-height: 1.6;
+  color: var(--text);
+}
+
+/* Featured review: set larger, fills the wide card */
+.quote-featured blockquote p {
+  font-size: clamp(1.1rem, 1rem + 0.45vw, 1.3rem);
+  line-height: 1.65;
+}
+
+.quote figcaption {
+  margin-top: auto;
+  display: flex;
+  flex-direction: column;
+  padding-top: 0.3rem;
+  border-top: 1px solid var(--line-soft);
+}
+
+.quote figcaption strong {
+  font-size: 0.95rem;
+  padding-top: 1rem;
+}
+
+.quote figcaption span {
+  font-size: 0.85rem;
+  color: var(--text-dim);
+}
+
+/* Long reviews are shortened on phones; the class is set by the script */
+.quote.is-collapsible:not(.is-open) blockquote p {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: var(--review-lines);
+  line-clamp: var(--review-lines);
+  overflow: hidden;
+}
+
+.quote-toggle {
+  display: none;
+  align-self: flex-start;
+  margin-top: -0.35rem;
+  padding: 0;
+  background: none;
+  border: 0;
+  font-size: 0.92rem;
+  font-weight: 650;
+  color: var(--accent-hi);
+  cursor: pointer;
+}
+
+.quote.is-collapsible .quote-toggle {
+  display: inline-block;
+}
+
+/* Star summary below the heading */
+.rating-summary {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  flex-wrap: wrap;
+}
+
+.rating-summary .stars {
+  font-size: 1.1rem;
+}
+
+.quotes-more {
+  margin-top: 2.25rem;
+  text-align: center;
+}

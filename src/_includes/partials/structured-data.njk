@@ -1,0 +1,9 @@
+{#
+  Structured data (JSON-LD) for search engines and AI assistants.
+  Generated from the same data files as the visible page (see
+  config/structured-data.js), so FAQ, offers and contact details can never
+  drift apart from what visitors see.
+#}
+<script type="application/ld+json">
+{{ site | structuredData(offers, faq) | safe }}
+</script>

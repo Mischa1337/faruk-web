@@ -1,12 +1,17 @@
-# Systemdateien
+# Build output and dependencies
+_site/
+node_modules/
+.lighthouseci/
+
+# System files
 .DS_Store
 Thumbs.db
 
-# Werkzeug-Konfiguration, nur lokal relevant
+# Local tool configuration
 .claude/
 
-# Originalfotos, zu groß fürs Repository
+# Original photos, too large for the repository
 pics/
 
-# Anleitungen, bleiben bewusst nur lokal
+# Personal notes, deliberately kept local
 anleitung/

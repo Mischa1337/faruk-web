@@ -1,0 +1,43 @@
+<section class="hero" id="top">
+  <div class="hero-bg" aria-hidden="true"></div>
+  <div class="wrap hero-inner">
+    <div class="hero-copy">
+      {#
+        The small kicker line deliberately sits INSIDE the <h1>: visually it is
+        a line above the heading, but for Google it is part of the page's most
+        important heading. The slogan alone has no search volume –
+        "Personal Training" and "Online-Coaching" do.
+      #}
+      <h1>
+        <span class="h1-kicker">Personal Training &amp; Online-Coaching</span>
+        Training, das zu deinem Leben passt.
+      </h1>
+      <p class="hero-claim">
+        Für <strong>mehr Kraft</strong>, <strong>mehr Energie</strong> und einen Körper,
+        <strong>auf den du dich verlassen kannst</strong>.
+      </p>
+      <p class="lead">
+        Hallo, ich bin Faruk, dein Personal Trainer. Gemeinsam finden wir heraus, was du brauchst, um deine Ziele zu erreichen.
+        Dein Training passe ich <strong>individuell an dich und deinen Alltag an</strong> – und ich bleibe an deiner Seite,
+        <strong>auch wenn es mal nicht leichtfällt</strong>.
+      </p>
+      <div class="hero-actions">
+        <a class="btn btn-primary btn-lg" href="#kontakt">Kostenloses Erstgespräch</a>
+        <a class="btn btn-ghost btn-lg" href="{{ contactLinks.whatsapp }}" target="_blank" rel="noopener">
+          {% icon "whatsapp" %}
+          Per WhatsApp schreiben
+        </a>
+      </div>
+      <p class="hero-note">Unverbindlich · Antwort meist innerhalb von 24&nbsp;Stunden</p>
+    </div>
+
+    <figure class="hero-photo">
+      {#
+        fetchpriority="high": this image is the largest element visible on
+        load. Google measures exactly its load time (LCP) as a ranking factor.
+      #}
+      <img src="/img/hero.jpg" width="1200" height="1500" fetchpriority="high" decoding="async"
+           alt="Faruk, Personal Trainer, im Freien vor grünen Bäumen">
+    </figure>
+  </div>
+</section>

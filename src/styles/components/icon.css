@@ -1,0 +1,15 @@
+/* ── Icons ─────────────────────────────────────────────────
+   Every icon is defined once as a <symbol> in partials/icons.njk and
+   referenced via <svg><use href="#i-…"/></svg>. Line icons carry no fixed
+   stroke width there; they inherit it from here or from the component
+   that uses them (.card-ico, .mcta, .success-ico). */
+.sprite {
+  display: none;
+}
+
+.ico {
+  width: 1.15em;
+  height: 1.15em;
+  flex: none;
+  stroke-width: 1.7;
+}

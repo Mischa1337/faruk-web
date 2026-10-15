@@ -1,0 +1,206 @@
+/* ── Contact form ──────────────────────────────────────── */
+.contact-form {
+  background: var(--surface);
+  border: 1px solid var(--line-soft);
+  border-radius: var(--radius-lg);
+  padding: clamp(1.6rem, 3.5vw, 2.4rem);
+  display: grid;
+  gap: 1.05rem;
+  box-shadow: var(--shadow);
+}
+
+.form-intro {
+  font-size: 0.9rem;
+  color: var(--text-dim);
+}
+
+.field {
+  display: grid;
+  gap: 0.45rem;
+}
+
+.field-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.05rem;
+}
+
+@media (width <= 780px) {
+  .field-row {
+    grid-template-columns: 1fr;
+  }
+}
+
+.field label {
+  font-size: 0.87rem;
+  font-weight: 650;
+  color: var(--text-muted);
+}
+
+.field label span[aria-hidden] {
+  color: var(--accent-hi);
+}
+
+.field .opt {
+  font-weight: 500;
+  color: var(--text-dim);
+  font-size: 0.82rem;
+}
+
+.field input,
+.field select,
+.field textarea {
+  width: 100%;
+  padding: 0.8rem 0.95rem;
+  background: var(--bg);
+  border: 1px solid var(--line);
+  border-radius: 11px;
+  font-size: 0.96rem;
+  transition:
+    border-color 0.18s,
+    box-shadow 0.18s;
+}
+
+.field textarea {
+  resize: vertical;
+  min-height: 110px;
+}
+
+.field select {
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='none' stroke='%23A0A0AB' stroke-width='2' stroke-linecap='round' stroke-linejoin='round' d='m6 9 6 6 6-6'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 0.85rem center;
+  background-size: 18px;
+  padding-right: 2.6rem;
+  cursor: pointer;
+}
+
+.field input::placeholder,
+.field textarea::placeholder {
+  color: var(--text-dim);
+}
+
+.field input:focus,
+.field select:focus,
+.field textarea:focus {
+  outline: none;
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--accent) 18%, transparent);
+}
+
+.field.has-error input,
+.field.has-error textarea {
+  border-color: var(--error);
+}
+
+.field-check {
+  grid-template-columns: auto 1fr;
+  align-items: start;
+  gap: 0.7rem;
+  margin-top: 0.3rem;
+}
+
+.field-check input {
+  width: 19px;
+  height: 19px;
+  margin-top: 0.18rem;
+  accent-color: var(--accent);
+  cursor: pointer;
+}
+
+.field-check label {
+  font-size: 0.84rem;
+  line-height: 1.55;
+  font-weight: 500;
+}
+
+.field-check a {
+  color: var(--accent-hi);
+}
+
+.field-check .error {
+  grid-column: 1 / -1;
+}
+
+.error {
+  font-size: 0.8rem;
+  color: var(--error);
+  min-height: 0;
+}
+
+.error:empty {
+  display: none;
+}
+
+/* Honeypot spam trap: moved off-screen, see partials/contact-form.njk */
+.hp {
+  position: absolute;
+  left: -9999px;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+}
+
+.form-status {
+  font-size: 0.92rem;
+  text-align: center;
+}
+
+.form-status.ok {
+  color: var(--ok);
+}
+
+.form-status.err {
+  color: var(--error);
+}
+
+/* Confirmation that replaces the form after it was sent */
+.form-success {
+  background: var(--surface);
+  border: 1px solid color-mix(in srgb, var(--ok) 35%, transparent);
+  border-radius: var(--radius-lg);
+  padding: clamp(2rem, 4vw, 3rem);
+  text-align: center;
+  display: grid;
+  justify-items: center;
+  gap: 0.85rem;
+  box-shadow: var(--shadow);
+}
+
+.form-success[hidden] {
+  display: none;
+}
+
+.success-ico {
+  width: 58px;
+  height: 58px;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  background: color-mix(in srgb, var(--ok) 14%, transparent);
+  color: var(--ok);
+  margin-bottom: 0.4rem;
+}
+
+.success-ico svg {
+  width: 28px;
+  height: 28px;
+  stroke-width: 2.5;
+}
+
+.form-success p {
+  color: var(--text-muted);
+  font-size: 0.96rem;
+  max-width: 34em;
+}
+
+.form-success .success-hint {
+  color: var(--text-dim);
+  font-size: 0.88rem;
+  margin-top: 0.6rem;
+}
+
+.form-success .btn {
+  max-width: 320px;
+}

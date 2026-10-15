@@ -1,0 +1,15 @@
+{#
+  Fixed contact bar, only visible on phones. Both channels are always one
+  thumb tap away. While the contact section is in view the bar slides
+  away – everything is listed there in detail anyway.
+#}
+<div class="mobile-cta" id="mobileCta">
+  <a class="mcta mcta-wa" href="{{ contactLinks.whatsapp }}" target="_blank" rel="noopener">
+    {% icon "whatsapp", "" %}
+    WhatsApp
+  </a>
+  <a class="mcta mcta-tel" href="{{ contactLinks.phone }}">
+    {% icon "phone", "" %}
+    Anrufen
+  </a>
+</div>

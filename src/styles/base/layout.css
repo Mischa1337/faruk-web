@@ -1,0 +1,29 @@
+/* ── Page layout ───────────────────────────────────────── */
+.wrap {
+  width: 100%;
+  max-width: var(--wrap);
+  margin-inline: auto;
+  padding-inline: var(--gutter);
+}
+
+.wrap-narrow {
+  max-width: var(--wrap-narrow);
+}
+
+.section {
+  padding-block: var(--section-y);
+}
+
+.section-alt {
+  background: var(--bg-alt);
+  border-block: 1px solid var(--line-soft);
+}
+
+.section-head {
+  max-width: 660px;
+  margin-bottom: clamp(2.5rem, 5vw, 3.75rem);
+}
+
+.section-head .section-lead {
+  margin-top: 1.1rem;
+}

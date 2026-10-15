@@ -1,0 +1,29 @@
+/* ── Accessibility helpers ─────────────────────────────── */
+
+/* "Skip to content" link, only visible when focused via keyboard */
+.skip-link {
+  position: absolute;
+  left: 1rem;
+  top: -100px;
+  z-index: 200;
+  background: var(--accent);
+  color: var(--on-accent);
+  font-weight: 700;
+  padding: 0.7rem 1.1rem;
+  border-radius: 8px;
+  transition: top 0.2s var(--ease);
+}
+
+.skip-link:focus {
+  top: 1rem;
+}
+
+/* Visible to screen readers only */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}

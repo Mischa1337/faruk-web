@@ -1,0 +1,144 @@
+/* ── Pricing ───────────────────────────────────────────────
+   Four cards: 4 side by side, then 2 × 2, stacked on phones – fixed steps
+   so that no card stands alone in the last row. Cards in a row are equally
+   tall (default "stretch"); the buttons are pushed down with
+   margin-top: auto and line up. */
+.pricing {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 1.15rem;
+}
+
+@media (width <= 1080px) {
+  .pricing {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (width <= 600px) {
+  .pricing {
+    grid-template-columns: 1fr;
+  }
+}
+
+.price {
+  position: relative;
+  background: var(--surface);
+  border: 1px solid var(--line-soft);
+  border-radius: var(--radius-lg);
+  padding: clamp(1.75rem, 3vw, 2.25rem);
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.price-featured {
+  background: linear-gradient(
+    165deg,
+    color-mix(in srgb, var(--accent) 9%, transparent) 0%,
+    var(--surface) 55%
+  );
+  border-color: color-mix(in srgb, var(--accent) 40%, transparent);
+  box-shadow: 0 20px 60px -25px color-mix(in srgb, var(--accent) 40%, transparent);
+}
+
+.badge {
+  position: absolute;
+  top: -0.75rem;
+  left: clamp(1.75rem, 3vw, 2.25rem);
+  background: var(--accent);
+  color: var(--on-accent);
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 0.3rem 0.8rem;
+  border-radius: 100px;
+}
+
+.price h3 {
+  font-size: 1.05rem;
+  color: var(--text-muted);
+  font-weight: 700;
+  letter-spacing: 0.02em;
+}
+
+/* Single price (e.g. monthly online coaching) */
+.price-tag {
+  display: flex;
+  align-items: baseline;
+  gap: 0.4rem;
+}
+
+.price-tag .amount {
+  font-size: clamp(2.4rem, 2rem + 1.6vw, 3.1rem);
+  font-weight: 800;
+  letter-spacing: -0.04em;
+  line-height: 1;
+}
+
+.price-tag .unit {
+  font-size: 0.95rem;
+  color: var(--text-dim);
+  font-weight: 600;
+}
+
+/* Two price rows (60 / 90 min) in one card */
+.price-rows {
+  display: grid;
+}
+
+.price-rows > div {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 0.75rem;
+  padding: 0.55rem 0;
+}
+
+.price-rows > div + div {
+  border-top: 1px solid var(--line-soft);
+}
+
+.price-rows dt {
+  font-size: 0.9rem;
+  color: var(--text-dim);
+  font-weight: 600;
+}
+
+.price-rows dd {
+  margin: 0;
+  font-size: 1.05rem;
+  color: var(--text-dim);
+  font-weight: 600;
+}
+
+.price-rows .amount {
+  font-size: clamp(1.75rem, 1.5rem + 0.8vw, 2.15rem);
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  line-height: 1;
+  color: var(--text);
+}
+
+.price-desc {
+  font-size: 0.94rem;
+  color: var(--text-muted);
+}
+
+.price .ticks {
+  margin-bottom: 0.5rem;
+}
+
+.price .btn {
+  margin-top: auto;
+  white-space: normal;
+  text-align: center;
+}
+
+.price-foot {
+  margin-top: 1.75rem;
+  text-align: center;
+  font-size: 0.92rem;
+  color: var(--text-dim);
+}

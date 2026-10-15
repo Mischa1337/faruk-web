@@ -1,0 +1,51 @@
+/* ── Typography ────────────────────────────────────────── */
+h1,
+h2,
+h3 {
+  line-height: 1.08;
+  letter-spacing: -0.025em;
+  font-weight: 800;
+  text-wrap: balance;
+}
+
+h1 {
+  font-size: clamp(2.6rem, 1.6rem + 4.4vw, 4.6rem);
+}
+
+h2 {
+  font-size: clamp(1.95rem, 1.35rem + 2.5vw, 3rem);
+}
+
+h3 {
+  font-size: clamp(1.15rem, 1.05rem + 0.45vw, 1.4rem);
+  letter-spacing: -0.015em;
+}
+
+p {
+  text-wrap: pretty;
+}
+
+.eyebrow,
+.h1-kicker {
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--accent-hi);
+  margin-bottom: 0.9rem;
+}
+
+/* Sits inside the <h1> (see sections/hero.njk), so it has to reset the
+   heading's line height and wrapping. */
+.h1-kicker {
+  display: block;
+  line-height: 1.5;
+  text-wrap: wrap;
+}
+
+.lead,
+.section-lead {
+  color: var(--text-muted);
+  font-size: clamp(1.05rem, 1rem + 0.35vw, 1.22rem);
+  line-height: 1.7;
+}

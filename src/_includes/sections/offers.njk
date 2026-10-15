@@ -1,0 +1,27 @@
+{# Offer cards; content in _data/offers.json #}
+<section class="section" id="angebote">
+  <div class="wrap">
+    <header class="section-head reveal">
+      <p class="eyebrow">Angebote</p>
+      <h2>Dein Weg zum Ziel – vier Möglichkeiten, wie wir zusammenarbeiten können</h2>
+      <p class="section-lead">Jedes Angebot startet mit einem ehrlichen Gespräch über deine Wünsche und Ziele. Danach entscheiden wir gemeinsam, welches Format am besten zu dir und deinem Leben passt.</p>
+    </header>
+
+    <div class="cards">
+      {%- for offer in offers %}
+      <article class="card reveal">
+        <div class="card-ico" aria-hidden="true">
+          {% icon offer.icon, "" %}
+        </div>
+        <h3>{{ offer.title | safe }}</h3>
+        <p>{{ offer.text | safe }}</p>
+        <ul class="ticks">
+          {%- for feature in offer.features %}
+          <li>{{ feature | safe }}</li>
+          {%- endfor %}
+        </ul>
+      </article>
+      {%- endfor %}
+    </div>
+  </div>
+</section>

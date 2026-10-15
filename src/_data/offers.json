@@ -1,0 +1,63 @@
+[
+  {
+    "title": "Personal Training 1:1",
+    "icon": "dumbbell",
+    "text": "Die ganze Einheit gehört dir. Ich begleite dich bei jeder Übungsausführung, passe das Training flexibel an deine Tagesform an und helfe dir dabei, sicher und zielgerichtet zu trainieren.",
+    "features": [
+      "Individueller Trainingsplan",
+      "Direkte Technikkorrektur während jeder Einheit",
+      "60 oder 90 Minuten persönliche Betreuung"
+    ],
+    "schema": {
+      "name": "Personal Training 1:1",
+      "serviceType": "Personal Training",
+      "description": "Individuelle 1:1-Betreuung, 60 oder 90 Minuten."
+    }
+  },
+  {
+    "title": "Duo-Training",
+    "icon": "duo",
+    "text": "Gemeinsam trainieren, sich gegenseitig motivieren und dabei von persönlicher Betreuung profitieren. Ideal für Paare, Freunde oder Geschwister mit ähnlichen Zielen.",
+    "features": [
+      "Günstiger pro Person",
+      "Gemeinsam motivierter ins Training",
+      "Individuell auf beide Leistungsstände angepasst"
+    ],
+    "schema": {
+      "name": "Duo-Training zu zweit",
+      "serviceType": "Personal Training",
+      "description": "Gemeinsames Training für zwei Personen."
+    }
+  },
+  {
+    "title": "Online-Coaching",
+    "icon": "smartphone",
+    "text": "Du trainierst selbstständig, aber nicht allein. Du erhältst einen individuell geplanten Trainingsablauf, regelmäßige Rückmeldungen zu deiner Technik und persönliche Check-ins. So weißt du auch genau dann, was zu tun ist, wenn wir nicht gemeinsam im Studio stehen.",
+    "features": [
+      "Ortsunabhängig und maximal flexibel",
+      "Regelmäßige Anpassung des Trainingsplans",
+      "Technik-Feedback per Video",
+      "Direkter Support und Fragen per Chat"
+    ],
+    "schema": {
+      "name": "Online-Coaching",
+      "serviceType": "Fernbetreuung",
+      "description": "Monatliche Betreuung mit Trainingsplan und Video-Analyse."
+    }
+  },
+  {
+    "title": "Ernährungs&shy;coaching",
+    "icon": "clock",
+    "text": "Keine kurzfristige Diät und keine Verbotslisten. Gemeinsam entwickeln wir Ernährungs&shy;gewohnheiten, die zu deinem Alltag passen und die du langfristig beibehalten kannst.",
+    "features": [
+      "Alltagstaugliche Empfehlungen",
+      "Ohne starre Verbote",
+      "Individuell auf deine Ziele abgestimmt",
+      "Perfekt kombinierbar mit Personal Training oder Online-Coaching"
+    ],
+    "schema": {
+      "name": "Ernährungscoaching",
+      "serviceType": "Ernährungsberatung"
+    }
+  }
+]

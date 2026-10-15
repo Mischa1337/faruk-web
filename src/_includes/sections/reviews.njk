@@ -1,0 +1,28 @@
+{#
+  Real Google reviews, used with the authors' consent; content in
+  _data/reviews.json. Update the rating in _data/site.json when new
+  reviews come in.
+#}
+<section class="section" id="erfolge">
+  <div class="wrap">
+    <header class="section-head reveal">
+      <p class="eyebrow">Erfolge</p>
+      <h2>Was meine Kundinnen und Kunden sagen</h2>
+      <p class="section-lead rating-summary"><span class="stars" aria-hidden="true">★★★★★</span> {{ site.googleReviews.rating }} von 5 Sternen bei Google</p>
+    </header>
+
+    <div class="quotes">
+      {%- for review in reviews %}
+      <figure class="quote{% if review.featured %} quote-featured{% endif %} reveal">
+        <div class="stars" role="img" aria-label="5 von 5 Sternen">★★★★★</div>
+        <blockquote><p>{{ review.text }}</p></blockquote>
+        <figcaption><strong>{{ review.author }}</strong><span>Google-Bewertung</span></figcaption>
+      </figure>
+      {%- endfor %}
+    </div>
+
+    <p class="quotes-more reveal">
+      <a class="btn btn-ghost" href="{{ site.googleReviews.url }}" target="_blank" rel="noopener">Alle Bewertungen auf Google ansehen</a>
+    </p>
+  </div>
+</section>

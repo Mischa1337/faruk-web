@@ -1,0 +1,19 @@
+/* ── Print ─────────────────────────────────────────────── */
+@media print {
+  .site-header,
+  .mobile-cta,
+  .hero-bg,
+  .nav-toggle {
+    display: none !important;
+  }
+
+  body {
+    background: #fff;
+    color: #000;
+  }
+
+  .js .reveal {
+    opacity: 1;
+    transform: none;
+  }
+}
