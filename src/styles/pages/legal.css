@@ -1,0 +1,137 @@
+/* ── Sub-pages (imprint, privacy policy, 404) ──────────────
+   These pages use a slimmer header (.header-legal) with a small,
+   always visible navigation instead of the fold-out menu. */
+.header-inner > .legal-nav {
+  margin-left: auto;
+}
+
+.legal-nav ul {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+  list-style: none;
+  padding: 0;
+}
+
+.legal-nav a {
+  display: flex;
+  align-items: center;
+  min-height: 44px;
+  padding: 0.5rem 0.85rem;
+  border-radius: 9px;
+  text-decoration: none;
+  font-size: 0.92rem;
+  font-weight: 600;
+  color: var(--text-muted);
+  transition:
+    color 0.18s,
+    background-color 0.18s;
+}
+
+.legal-nav a:hover {
+  color: var(--text);
+  background: var(--overlay);
+}
+
+/* Logo, navigation and light/dark toggle share the header. The narrower the
+   screen, the leaner it gets: first without the tagline, then without the
+   word mark, and at the very narrowest without the "Startseite" link – the
+   logo links there as well. */
+@media (width <= 640px) {
+  .header-legal .header-inner {
+    column-gap: 0.5rem;
+  }
+
+  .header-legal .brand-sub {
+    display: none;
+  }
+
+  .legal-nav a {
+    padding: 0.5rem 0.55rem;
+    font-size: 0.85rem;
+  }
+}
+
+@media (width <= 480px) {
+  .header-legal .brand-text {
+    display: none;
+  }
+}
+
+@media (width <= 360px) {
+  .legal-nav li:first-child:not(:last-child) {
+    display: none;
+  }
+}
+
+/* ── Legal text ── */
+.legal {
+  padding-top: clamp(7rem, 12vw, 9rem);
+  padding-bottom: var(--section-y);
+}
+
+.legal h1 {
+  font-size: clamp(2.1rem, 1.6rem + 2vw, 3rem);
+  margin-bottom: 2.5rem;
+}
+
+.legal h2 {
+  font-size: clamp(1.25rem, 1.1rem + 0.7vw, 1.55rem);
+  margin-top: 2.75rem;
+  margin-bottom: 0.85rem;
+}
+
+.legal h3 {
+  font-size: 1.05rem;
+  margin-top: 1.75rem;
+  margin-bottom: 0.5rem;
+}
+
+.legal p,
+.legal li {
+  color: var(--text-muted);
+  font-size: 0.97rem;
+}
+
+.legal p {
+  margin-bottom: 0.9rem;
+}
+
+.legal ul {
+  margin: 0 0 0.9rem 1.2rem;
+  display: grid;
+  gap: 0.35rem;
+}
+
+.legal a {
+  color: var(--accent-hi);
+}
+
+.legal address {
+  font-style: normal;
+  margin-bottom: 0.9rem;
+  color: var(--text-muted);
+}
+
+/* Row of buttons, e.g. on the 404 page */
+.legal-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.85rem;
+  margin-top: 2rem;
+}
+
+.legal-back {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-top: 3rem;
+  font-size: 0.93rem;
+  font-weight: 650;
+  color: var(--accent-hi);
+  text-decoration: none;
+}
+
+.legal-back:hover {
+  text-decoration: underline;
+}

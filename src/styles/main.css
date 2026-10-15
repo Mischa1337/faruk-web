@@ -1,0 +1,53 @@
+/* ═══════════════════════════════════════════════════════════
+   AFP-Coaching · Stylesheet entry point
+
+   This file only defines the cascade order. esbuild bundles all
+   imports into a single, minified css/style.css at build time.
+
+   Layers, from generic to specific:
+     base/        design tokens, reset, typography, page layout
+     utilities/   accessibility helpers
+     components/  reusable building blocks (buttons, cards, forms …)
+     layout/      site-wide frame: header, footer, mobile contact bar
+     sections/    one file per section of the home page, in page order
+     pages/       styles only used by individual sub-pages
+     utilities/   motion and print, last so they can override
+
+   Responsive rules live next to the component they belong to,
+   ordered from wide to narrow. No external dependencies, system
+   fonts only (no third-party font requests, GDPR-friendly).
+   ═══════════════════════════════════════════════════════════ */
+
+@import './base/tokens.css';
+@import './base/reset.css';
+@import './base/typography.css';
+@import './base/layout.css';
+
+@import './utilities/accessibility.css';
+
+@import './components/button.css';
+@import './components/icon.css';
+@import './components/card.css';
+@import './components/theme-toggle.css';
+@import './components/form.css';
+
+@import './layout/header.css';
+@import './layout/footer.css';
+@import './layout/mobile-cta.css';
+
+@import './sections/hero.css';
+@import './sections/trustbar.css';
+@import './sections/offers.css';
+@import './sections/about.css';
+@import './sections/process.css';
+@import './sections/gallery.css';
+@import './sections/reviews.css';
+@import './sections/partners.css';
+@import './sections/pricing.css';
+@import './sections/faq.css';
+@import './sections/contact.css';
+
+@import './pages/legal.css';
+
+@import './utilities/motion.css';
+@import './utilities/print.css';

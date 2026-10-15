@@ -1,0 +1,5 @@
+_site/
+node_modules/
+package-lock.json
+# Templates are HTML with Nunjucks tags, which Prettier cannot format
+*.njk

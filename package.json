@@ -1,0 +1,33 @@
+{
+  "name": "afp-coaching-website",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Website of AFP-Coaching – personal training on site and online.",
+  "type": "module",
+  "engines": {
+    "node": ">=20"
+  },
+  "scripts": {
+    "dev": "eleventy --serve --port=4321",
+    "build": "eleventy",
+    "lint": "npm run lint:js && npm run lint:css && npm run lint:format",
+    "lint:js": "eslint .",
+    "lint:css": "stylelint \"src/styles/**/*.css\"",
+    "lint:format": "prettier --check .",
+    "format": "prettier --write .",
+    "validate": "html-validate \"_site/**/*.html\"",
+    "test": "node --test",
+    "check": "npm run lint && npm run build && npm run validate && npm test"
+  },
+  "devDependencies": {
+    "@11ty/eleventy": "^3.1.6",
+    "@eslint/js": "^10.0.1",
+    "esbuild": "^0.28.2",
+    "eslint": "^10.12.0",
+    "globals": "^17.13.0",
+    "html-validate": "^11.16.2",
+    "prettier": "^3.9.10",
+    "stylelint": "^17.16.0",
+    "stylelint-config-standard": "^40.0.0"
+  }
+}

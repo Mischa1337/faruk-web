@@ -1,0 +1,29 @@
+/* ── Gallery ("Einblicke") ─────────────────────────────────
+   Two photos side by side, stacked on phones. All images are cropped to
+   4:3 so the rows have equal height. */
+.gallery {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1.15rem;
+}
+
+@media (width <= 600px) {
+  .gallery {
+    grid-template-columns: 1fr;
+  }
+}
+
+.gallery-item img {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--line-soft);
+  box-shadow: var(--shadow);
+}
+
+.gallery-item figcaption {
+  margin-top: 0.75rem;
+  font-size: 0.88rem;
+  color: var(--text-dim);
+}

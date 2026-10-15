@@ -1,0 +1,187 @@
+import { CONFIG } from '../../config.js';
+import { $, scrollBehavior } from '../../lib/dom.js';
+import { RULES, buildMailBody, fieldValue } from './validation.js';
+
+/* Time trap: humans need at least a few seconds to fill in the form,
+   bots submit almost instantly. Anything faster is not a person. */
+const MIN_FILL_MS = 3000;
+
+/* Lock against double clicks and rapid repeated sending */
+const COOLDOWN_MS = 60_000;
+
+/** Contact form: validation, spam protection and sending. */
+export function initContactForm() {
+  const form = $('#contactForm');
+  if (!form) return;
+
+  const status = $('#formStatus');
+  const submitButton = $('#submitBtn');
+  const success = $('#formSuccess');
+
+  let loadedAt = Date.now();
+  let sentAt = 0;
+  let sending = false;
+
+  const setStatus = (text, kind = '') => {
+    if (!status) return;
+    status.textContent = text;
+    status.className = kind ? `form-status ${kind}` : 'form-status';
+  };
+
+  const showSuccess = () => {
+    if (!success) return;
+    form.hidden = true;
+    success.hidden = false;
+    success.setAttribute('tabindex', '-1');
+    success.focus();
+    success.scrollIntoView({ block: 'center', behavior: scrollBehavior() });
+  };
+
+  const validateAll = () => {
+    let firstInvalid = null;
+
+    for (const rule of RULES) {
+      const input = document.getElementById(rule.id);
+      if (!input) continue;
+      const valid = rule.isValid(fieldValue(input));
+      showError(input, valid ? '' : rule.message);
+      if (!valid && !firstInvalid) firstInvalid = input;
+    }
+
+    if (firstInvalid) {
+      firstInvalid.focus();
+      firstInvalid.scrollIntoView({ block: 'center', behavior: scrollBehavior() });
+    }
+    return !firstInvalid;
+  };
+
+  attachLiveValidation();
+
+  form.addEventListener('submit', async (event) => {
+    event.preventDefault();
+
+    /* ── Spam protection, step 1: honeypot ──
+       The field is moved off-screen via CSS and hidden from screen readers.
+       No human can fill it in – bots stubbornly fill in everything. We
+       pretend everything went fine instead of showing an error: a bot that
+       sees an error message would otherwise try a different approach. */
+    if ($('#f-hp')?.value) {
+      showSuccess();
+      return;
+    }
+
+    /* ── Spam protection, step 2: time trap ──
+       Deliberately NO fake confirmation as with the honeypot: this hurdle
+       could theoretically hit a very fast human (autofill plus instant
+       click). So we show an honest message and allow a second try – a bot
+       won't manage it, a human simply clicks again. No real enquiry is lost. */
+    if (Date.now() - loadedAt < MIN_FILL_MS) {
+      setStatus(
+        'Fast geschafft – bitte klicke noch einmal auf „Jetzt unverbindlich anfragen".',
+        'err',
+      );
+      loadedAt = 0;
+      return;
+    }
+
+    /* ── Spam protection, step 3: lock against repeated sending ── */
+    if (sending) return;
+    if (sentAt && Date.now() - sentAt < COOLDOWN_MS) {
+      setStatus('Deine Anfrage ist bereits unterwegs. Einen Moment bitte.', 'ok');
+      return;
+    }
+
+    if (!validateAll()) {
+      setStatus('Bitte prüfe die markierten Felder.', 'err');
+      return;
+    }
+
+    // The keys stay German: Formspree shows them as field names in the
+    // e-mail Faruk receives.
+    const formData = new FormData(form);
+    const data = {
+      name: formData.get('name'),
+      email: formData.get('email'),
+      telefon: formData.get('telefon'),
+      quelle: formData.get('quelle'),
+      nachricht: formData.get('nachricht'),
+      // Sent empty so that Formspree knows the field and filters on its own
+      _gotcha: formData.get('_gotcha') || '',
+    };
+
+    if (!CONFIG.formEndpoint) {
+      openMailFallback(data);
+      setStatus(
+        'Dein E-Mail-Programm öffnet sich mit der fertigen Nachricht – bitte nur noch abschicken.',
+        'ok',
+      );
+      return;
+    }
+
+    sending = true;
+    submitButton.disabled = true;
+    const label = submitButton.textContent;
+    submitButton.textContent = 'Wird gesendet …';
+    setStatus('');
+
+    try {
+      const response = await fetch(CONFIG.formEndpoint, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+        body: JSON.stringify(data),
+      });
+      if (!response.ok) throw new Error(`HTTP ${response.status}`);
+      sentAt = Date.now();
+      form.reset();
+      showSuccess();
+    } catch {
+      setStatus(
+        `Das Senden hat nicht geklappt. Schreib mir bitte direkt per WhatsApp oder an ${CONFIG.fallbackMail}.`,
+        'err',
+      );
+    } finally {
+      sending = false;
+      submitButton.disabled = false;
+      submitButton.textContent = label;
+    }
+  });
+}
+
+/** Shows or clears the error message of a single field. */
+function showError(input, message) {
+  const box = $(`.error[data-for="${input.id}"]`);
+  input.closest('.field')?.classList.toggle('has-error', Boolean(message));
+  input.setAttribute('aria-invalid', message ? 'true' : 'false');
+  if (box) box.textContent = message;
+}
+
+/**
+ * Clears an error as soon as the field is corrected, and checks a field
+ * when it is left – a typo in the e-mail shows up before clicking "send".
+ * Empty fields are left alone on blur, otherwise tabbing through the form
+ * would produce a wall of errors.
+ */
+function attachLiveValidation() {
+  for (const rule of RULES) {
+    const input = document.getElementById(rule.id);
+    if (!input) continue;
+    const isCheckbox = input.type === 'checkbox';
+    const valid = () => rule.isValid(fieldValue(input));
+
+    input.addEventListener(isCheckbox ? 'change' : 'input', () => {
+      if (valid()) showError(input, '');
+    });
+
+    input.addEventListener('blur', () => {
+      if (!isCheckbox && !input.value.trim()) return;
+      if (!valid()) showError(input, rule.message);
+    });
+  }
+}
+
+/** Without a form service: open the visitor's mail app with a ready-made message. */
+function openMailFallback(data) {
+  const subject = encodeURIComponent(`Anfrage Personal Training – ${data.name}`);
+  const body = encodeURIComponent(buildMailBody(data));
+  window.location.href = `mailto:${CONFIG.fallbackMail}?subject=${subject}&body=${body}`;
+}

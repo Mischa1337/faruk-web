@@ -1,0 +1,53 @@
+{
+  "plans": [
+    {
+      "name": "Einzeltermin",
+      "rates": [
+        { "duration": "60 Min", "amount": "80" },
+        { "duration": "90 Min", "amount": "100" }
+      ],
+      "description": "Zum Reinschnuppern oder für unregelmäßige Termine.",
+      "features": ["1:1-Betreuung", "Ort nach Absprache", "Keine Mindestlaufzeit"]
+    },
+    {
+      "name": "5er-Karte",
+      "rates": [
+        { "duration": "60 Min", "amount": "385" },
+        { "duration": "90 Min", "amount": "485" }
+      ],
+      "description": "Für einen festen Einstieg über mehrere Wochen.",
+      "features": ["Nur 77 € bzw. 97 € pro Einheit", "1:1-Betreuung", "Ort nach Absprache"]
+    },
+    {
+      "name": "10er-Karte",
+      "featured": true,
+      "badge": "Beliebteste Wahl",
+      "rates": [
+        { "duration": "60 Min", "amount": "750" },
+        { "duration": "90 Min", "amount": "950" }
+      ],
+      "description": "Der Klassiker. Genug Zeit, um echte Fortschritte zu sehen.",
+      "features": [
+        "Nur 75 € bzw. 95 € pro Einheit",
+        "WhatsApp-Support zwischendurch",
+        "6 Monate gültig"
+      ]
+    },
+    {
+      "name": "Online-Coaching",
+      "price": { "amount": "119", "unit": "€ / Monat" },
+      "description": "Für alle, die selbstständig trainieren, aber Struktur brauchen.",
+      "features": [
+        "Regelmäßige Anpassung des Trainingsplans",
+        "Technik-Feedback per Video",
+        "Monatlich kündbar",
+        "Support per Chat"
+      ]
+    }
+  ],
+  "cta": "Erstgespräch vereinbaren",
+  "footnotes": [
+    "Duo-Training: 85 € pro Person für eine Einheit von 120 Minuten.",
+    "Firmen- &amp; Gruppenangebote: Individuelle Konditionen auf Anfrage."
+  ]
+}

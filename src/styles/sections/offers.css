@@ -1,0 +1,21 @@
+/* ── Offers ────────────────────────────────────────────────
+   Like the pricing: 4 side by side, then 2 × 2, stacked on phones –
+   never a single card alone in the last row. Card styles live in
+   components/card.css. */
+.cards {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 1.15rem;
+}
+
+@media (width <= 1080px) {
+  .cards {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (width <= 600px) {
+  .cards {
+    grid-template-columns: 1fr;
+  }
+}

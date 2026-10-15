@@ -1,0 +1,64 @@
+{
+  "url": "https://afp-coaching.de",
+  "name": "AFP-Coaching – Personal Training",
+  "shortName": "AFP-Coaching",
+  "tagline": "Achtsamkeit • Fortschritt • Präzision",
+  "footerClaim": "Personal Training vor Ort und online",
+  "language": "de",
+  "locale": "de_DE",
+  "themeColor": "#0A0A0B",
+  "ogImage": "/img/og-vorschau.jpg",
+  "owner": {
+    "name": "Faruk Palteki",
+    "legalName": "Ahmet Faruk Palteki",
+    "jobTitle": "Personal Trainer",
+    "languages": ["de", "en", "tr"],
+    "expertise": [
+      "Krafttraining",
+      "Functional Training",
+      "Medical Fitness",
+      "Rückentraining",
+      "Gewichtsreduktion",
+      "Beweglichkeit",
+      "Ernährung"
+    ]
+  },
+  "contact": {
+    "email": "kontakt@afp-coaching.de",
+    "phoneDisplay": "0176-42755110",
+    "phone": "+4917642755110",
+    "whatsappHours": "Mo–Sa, 8–20 Uhr",
+    "instagram": {
+      "handle": "@faruk.palteki.pt",
+      "url": "https://www.instagram.com/faruk.palteki.pt/"
+    }
+  },
+  "whatsappMessages": {
+    "default": "Hallo Faruk, ich interessiere mich für Personal Training.",
+    "afterForm": "Hallo Faruk, ich habe gerade eine Anfrage über die Website geschickt."
+  },
+  "address": {
+    "street": "Ludwigstraße 44",
+    "postalCode": "35390",
+    "city": "Gießen",
+    "region": "Hessen",
+    "country": "DE",
+    "countryName": "Deutschland",
+    "latitude": "50.5866",
+    "longitude": "8.6742"
+  },
+  "openingHours": {
+    "days": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
+    "opens": "07:00",
+    "closes": "21:00"
+  },
+  "business": {
+    "description": "Personal Training vor Ort sowie Online-Coaching und Ernährungscoaching.",
+    "priceRange": "€€",
+    "paymentAccepted": "Barzahlung, Überweisung"
+  },
+  "googleReviews": {
+    "rating": "5,0",
+    "url": "https://share.google/CqYeLzq6lVKHe4CS8"
+  }
+}

@@ -1,0 +1,25 @@
+{#
+  Two tiny inline scripts that must run before the first paint, so they
+  cannot live in the deferred bundle.
+
+  1. Safety net for the reveal animation: sections only start invisible if
+     JavaScript really runs. If js/main.js fails to load within two
+     seconds, the `js` class is removed again and everything shows up.
+     Without it half the page would be blank – and Google would see an
+     empty page.
+  2. Applies the stored light/dark choice before rendering, otherwise the
+     dark scheme would flash briefly. The choice is saved by
+     scripts/modules/theme-toggle.js.
+#}
+<script>
+  document.documentElement.classList.add('js');
+  setTimeout(function () {
+    if (!window.__siteReady) document.documentElement.classList.remove('js');
+  }, 2000);
+</script>
+<script>
+  try {
+    var t = localStorage.getItem('theme');
+    if (t === 'light' || t === 'dark') document.documentElement.setAttribute('data-theme', t);
+  } catch (e) {}
+</script>

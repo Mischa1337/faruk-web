@@ -1,0 +1,21 @@
+{#
+  Questions and answers in _data/faq.json. The same entries feed the
+  FAQPage structured data, so both always match word for word.
+#}
+<section class="section section-alt" id="faq">
+  <div class="wrap wrap-narrow">
+    <header class="section-head reveal">
+      <p class="eyebrow">FAQ</p>
+      <h2>Häufige Fragen zum Personal Training</h2>
+    </header>
+
+    <div class="faq">
+      {%- for item in faq %}
+      <details class="reveal">
+        <summary>{{ item.question }}</summary>
+        <div class="faq-body"><p>{{ item.answer | safe }}</p></div>
+      </details>
+      {%- endfor %}
+    </div>
+  </div>
+</section>

@@ -1,0 +1,18 @@
+{#
+  Slim header of the sub-pages. The links come from the page's front
+  matter (`headerLinks`), so every page decides which siblings it shows.
+#}
+<header class="site-header is-stuck header-legal">
+  <div class="wrap header-inner">
+    {%- set brandHref = "/" %}{% set brandLabel = "Zur Startseite" %}
+    {% include "partials/brand.njk" %}
+    <nav class="legal-nav" aria-label="Hauptnavigation">
+      <ul>
+        {%- for item in headerLinks %}
+        <li><a href="{{ item.href }}">{{ item.label }}</a></li>
+        {%- endfor %}
+      </ul>
+    </nav>
+    {% include "partials/theme-toggle.njk" %}
+  </div>
+</header>

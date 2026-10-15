@@ -1,0 +1,70 @@
+{#
+  Contact form. Behaviour (validation, spam protection, sending) lives in
+  scripts/modules/contact-form/. Every required field has an error box
+  (<p class="error" data-for="…">) that the script fills in.
+#}
+<form class="contact-form" id="contactForm" novalidate>
+  <p class="form-intro">Oder schreib mir direkt hier:</p>
+
+  <div class="field-row">
+    <div class="field">
+      <label for="f-name">Name <span aria-hidden="true">*</span></label>
+      <input type="text" id="f-name" name="name" required autocomplete="name" placeholder="Vor- und Nachname" aria-describedby="err-f-name">
+      <p class="error" id="err-f-name" data-for="f-name"></p>
+    </div>
+    <div class="field">
+      <label for="f-mail">E-Mail <span aria-hidden="true">*</span></label>
+      <input type="email" id="f-mail" name="email" required autocomplete="email" placeholder="deine-email@beispiel.de" aria-describedby="err-f-mail">
+      <p class="error" id="err-f-mail" data-for="f-mail"></p>
+    </div>
+  </div>
+
+  {#- Full width: hint and placeholder are too long for half a row #}
+  <div class="field">
+    <label for="f-tel">Telefon <span class="opt">(Empfohlen für das Erstgespräch)</span></label>
+    <input type="tel" id="f-tel" name="telefon" autocomplete="tel" placeholder="Für eine schnelle Terminabsprache">
+  </div>
+
+  <div class="field">
+    <label for="f-source">Wie bist du auf mich aufmerksam geworden? <span aria-hidden="true">*</span></label>
+    <input type="text" id="f-source" name="quelle" required aria-describedby="err-f-source">
+    <p class="error" id="err-f-source" data-for="f-source"></p>
+  </div>
+
+  <div class="field">
+    <label for="f-msg">Nachricht <span aria-hidden="true">*</span></label>
+    <textarea id="f-msg" name="nachricht" rows="5" required placeholder="Was möchtest du erreichen? Gibt es aktuelle Herausforderungen, Besonderheiten oder Wunschzeiten für unser kostenloses Erstgespräch?" aria-describedby="err-f-msg"></textarea>
+    <p class="error" id="err-f-msg" data-for="f-msg"></p>
+  </div>
+
+  {#
+    Spam trap (honeypot). The field name `_gotcha` is chosen on purpose:
+    Formspree knows it and discards filled-in submissions on the server.
+    So the trap works even if a bot bypasses the form and posts directly
+    to the endpoint.
+  #}
+  <div class="hp" aria-hidden="true"><label for="f-hp">Bitte leer lassen</label><input type="text" id="f-hp" name="_gotcha" tabindex="-1" autocomplete="off"></div>
+
+  <div class="field field-check">
+    <input type="checkbox" id="f-consent" name="einwilligung" required aria-describedby="err-f-consent">
+    <label for="f-consent">Ich habe die <a href="/datenschutz.html">Datenschutzerklärung</a> gelesen und bin damit einverstanden, dass meine Angaben zur Bearbeitung meiner Anfrage gespeichert werden. <span aria-hidden="true">*</span></label>
+    <p class="error" id="err-f-consent" data-for="f-consent"></p>
+  </div>
+
+  <button type="submit" class="btn btn-primary btn-block btn-lg" id="submitBtn">Jetzt unverbindlich anfragen</button>
+  <p class="form-status" id="formStatus" role="status" aria-live="polite"></p>
+</form>
+
+{#- Confirmation after successful sending: replaces the form so it is clear the message is out #}
+<div class="form-success" id="formSuccess" hidden>
+  <div class="success-ico" aria-hidden="true">
+    {% icon "check", "" %}
+  </div>
+  <h3>Danke, deine Anfrage ist da!</h3>
+  <p>Ich melde mich innerhalb von 24&nbsp;Stunden bei dir – meistens deutlich schneller.</p>
+  <p class="success-hint">Wenn es eilig ist, erreichst du mich am schnellsten direkt:</p>
+  <a class="btn btn-ghost btn-block" href="{{ contactLinks.whatsappAfterForm }}" target="_blank" rel="noopener">
+    {% icon "whatsapp" %}
+    Per WhatsApp schreiben
+  </a>
+</div>

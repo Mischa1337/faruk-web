@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="{{ site.language }}" data-theme="dark">
+<head>
+{% include "partials/head.njk" %}
+</head>
+
+<body>
+<a class="skip-link" href="#main">Zum Inhalt springen</a>
+
+{% if isHome %}{% include "partials/header-home.njk" %}{% else %}{% include "partials/header-subpage.njk" %}{% endif %}
+
+{{ content | safe }}
+
+{% include "partials/footer.njk" %}
+{%- if isHome %}
+
+{% include "partials/mobile-cta.njk" %}
+
+{% include "partials/icons.njk" %}
+
+{% include "partials/structured-data.njk" %}
+{%- endif %}
+
+<script src="/js/main.js" defer></script>
+</body>
+</html>

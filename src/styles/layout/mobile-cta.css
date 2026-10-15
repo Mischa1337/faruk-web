@@ -1,0 +1,65 @@
+/* ── Fixed contact bar on phones ───────────────────────────
+   WhatsApp and phone are always one thumb tap away. The bar slides away
+   while the contact section is in view (modules/mobile-cta.js). */
+.mobile-cta {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 95;
+  display: none;
+  gap: 0.6rem;
+  padding: 0.7rem var(--gutter);
+  padding-bottom: calc(0.7rem + env(safe-area-inset-bottom, 0px));
+  background: color-mix(in srgb, var(--bg) 93%, transparent);
+  backdrop-filter: saturate(180%) blur(14px);
+  border-top: 1px solid var(--line-soft);
+  transition: transform 0.3s var(--ease);
+}
+
+.mobile-cta.is-hidden {
+  transform: translateY(115%);
+}
+
+@media (width <= 780px) {
+  .mobile-cta {
+    display: flex;
+  }
+
+  /* Room at the bottom, so the fixed bar never covers the footer */
+  .site-footer {
+    padding-bottom: 6rem;
+  }
+}
+
+.mcta {
+  flex: 1;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  min-height: 48px;
+  border-radius: 100px;
+  font-weight: 700;
+  font-size: 0.95rem;
+  text-decoration: none;
+  border: 1px solid transparent;
+}
+
+.mcta svg {
+  width: 20px;
+  height: 20px;
+  flex: none;
+  stroke-width: 1.9;
+}
+
+.mcta-wa {
+  background: var(--whatsapp);
+  color: var(--on-whatsapp);
+}
+
+.mcta-tel {
+  background: var(--overlay);
+  border-color: var(--line);
+  color: var(--text);
+}

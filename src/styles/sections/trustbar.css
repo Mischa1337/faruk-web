@@ -1,0 +1,63 @@
+/* ── Trust bar ("at a glance") ─────────────────────────── */
+.trustbar {
+  border-block: 1px solid var(--line-soft);
+  background: var(--bg-alt);
+  padding-block: clamp(2rem, 4vw, 2.75rem);
+}
+
+.trust-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: clamp(1.25rem, 3vw, 2.5rem);
+  text-align: center;
+}
+
+/* Every item spans two grid rows (figure / caption) and adopts them via
+   subgrid. The figure row is thus as tall as the tallest one, and all
+   captions start on the same line – even when a longer text wraps. */
+.trust-item {
+  display: grid;
+  grid-row: span 2;
+  grid-template-rows: subgrid;
+  row-gap: 0.35rem;
+}
+
+/* All figures share the same height (min-height = large font size) and sit
+   at the bottom, so headings and captions line up even if one item is set
+   smaller or its caption wraps onto two lines. */
+.trust-item strong {
+  font-size: clamp(1.7rem, 1.3rem + 1.4vw, 2.5rem);
+  min-height: clamp(1.7rem, 1.3rem + 1.4vw, 2.5rem);
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  color: var(--accent-hi);
+  line-height: 1;
+}
+
+/* Text instead of a number ("Vor Ort & online") – smaller to stay on one line */
+.trust-item-text strong {
+  font-size: clamp(1.3rem, 1rem + 0.75vw, 1.75rem);
+}
+
+.trust-item span {
+  font-size: 0.86rem;
+  color: var(--text-muted);
+  line-height: 1.4;
+}
+
+@media (width <= 940px) {
+  .trust-grid {
+    grid-template-columns: repeat(2, 1fr);
+    row-gap: 2rem;
+  }
+}
+
+@media (width <= 420px) {
+  .trust-grid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+}

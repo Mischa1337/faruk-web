@@ -1,0 +1,42 @@
+{#
+  <head> of every page. Page-specific values come from the front matter:
+    title        max. ~60 characters
+    description  max. ~155 characters, otherwise Google truncates it. Not a
+                 ranking factor, but it decides whether people click.
+    robots       defaults to indexable; sub-pages set "noindex, follow"
+    noCanonical  true on the 404 page
+#}
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>{{ title }}</title>
+{%- if description %}
+<meta name="description" content="{{ description }}">
+{%- endif %}
+{%- if not noCanonical %}
+<link rel="canonical" href="{{ site.url }}{{ page.url }}">
+{%- endif %}
+<meta name="robots" content="{{ robots or 'index, follow, max-image-preview:large' }}">
+{%- if isHome %}
+<meta name="author" content="{{ site.owner.name }}">
+<meta name="geo.region" content="{{ site.address.country }}">
+{%- endif %}
+<meta name="theme-color" content="{{ site.themeColor }}">
+{%- if isHome %}
+
+{#- Link preview when shared (WhatsApp, Instagram bio, Facebook) #}
+<meta property="og:type" content="website">
+<meta property="og:locale" content="{{ site.locale }}">
+<meta property="og:site_name" content="{{ site.name }}">
+<meta property="og:title" content="{{ ogTitle }}">
+<meta property="og:description" content="{{ ogDescription }}">
+<meta property="og:url" content="{{ site.url }}{{ page.url }}">
+<meta property="og:image" content="{{ site.url }}{{ site.ogImage }}">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+{%- endif %}
+
+<link rel="icon" href="/img/favicon.png" type="image/png">
+<link rel="apple-touch-icon" href="/img/favicon.png">
+<link rel="stylesheet" href="/css/style.css">
+{% include "partials/head-scripts.njk" %}

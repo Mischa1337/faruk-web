@@ -1,0 +1,81 @@
+/* ── Contact ───────────────────────────────────────────────
+   Contact channels on the left, form on the right. Form styles live in
+   components/form.css. */
+.contact-grid {
+  display: grid;
+  grid-template-columns: 1fr 1.05fr;
+  gap: clamp(2.5rem, 5vw, 4.5rem);
+  align-items: start;
+}
+
+@media (width <= 940px) {
+  .contact-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.contact-copy h2 {
+  margin-bottom: 1.1rem;
+}
+
+.contact-list {
+  list-style: none;
+  padding: 0;
+  margin-top: 2.25rem;
+  display: grid;
+  gap: 0.6rem;
+}
+
+.contact-list a {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 1rem 1.15rem;
+  border: 1px solid var(--line-soft);
+  border-radius: var(--radius);
+  background: var(--surface);
+  text-decoration: none;
+  transition:
+    border-color 0.2s,
+    background-color 0.2s,
+    transform 0.2s var(--ease);
+}
+
+.contact-list a:hover {
+  border-color: var(--line-strong);
+  background: var(--surface-2);
+  transform: translateX(3px);
+}
+
+.contact-list .ico {
+  width: 21px;
+  height: 21px;
+  color: var(--accent-hi);
+}
+
+.contact-list li:first-child .ico {
+  color: var(--whatsapp);
+}
+
+.contact-list span {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.35;
+  font-size: 0.85rem;
+  color: var(--text-dim);
+}
+
+.contact-list strong {
+  font-size: 0.98rem;
+  color: var(--text);
+}
+
+.contact-area {
+  margin-top: 1.75rem;
+  font-size: 0.9rem;
+  color: var(--text-dim);
+}
+
+.contact-area strong {
+  color: var(--text-muted);
+}

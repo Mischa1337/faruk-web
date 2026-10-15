@@ -1,0 +1,28 @@
+{
+  "extends": "stylelint-config-standard",
+  "rules": {
+    "import-notation": "string",
+    "at-rule-empty-line-before": [
+      "always",
+      {
+        "except": ["blockless-after-same-name-blockless", "first-nested"],
+        "ignore": ["after-comment"],
+        "ignoreAtRules": ["import"]
+      }
+    ],
+    "no-descending-specificity": null,
+    "value-keyword-case": [
+      "lower",
+      {
+        "ignoreProperties": ["/^--font$/"]
+      }
+    ],
+    "selector-class-pattern": [
+      "^[a-z][a-z0-9]*(-[a-z0-9]+)*$",
+      {
+        "message": "Class names are kebab-case (e.g. .price-featured)"
+      }
+    ],
+    "custom-property-empty-line-before": null
+  }
+}

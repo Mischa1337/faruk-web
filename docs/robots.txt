@@ -1,5 +1,0 @@
-# Alle Suchmaschinen dürfen die Seite vollständig lesen.
-User-agent: *
-Allow: /
-
-Sitemap: https://afp-coaching.de/sitemap.xml

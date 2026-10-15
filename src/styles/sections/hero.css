@@ -1,0 +1,122 @@
+/* ── Hero ──────────────────────────────────────────────── */
+.hero {
+  position: relative;
+  padding-top: clamp(8rem, 14vw, 11rem);
+  padding-bottom: clamp(4rem, 8vw, 6.5rem);
+  overflow: hidden;
+}
+
+.hero-bg {
+  position: absolute;
+  inset: -20% -10% auto;
+  height: 90%;
+  background:
+    radial-gradient(
+      50% 55% at 25% 20%,
+      color-mix(in srgb, var(--accent) 16%, transparent) 0%,
+      transparent 70%
+    ),
+    radial-gradient(
+      40% 50% at 80% 10%,
+      color-mix(in srgb, var(--accent-hi) 10%, transparent) 0%,
+      transparent 70%
+    );
+  pointer-events: none;
+}
+
+.hero-inner {
+  position: relative;
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr;
+  gap: clamp(2.5rem, 5vw, 4.5rem);
+  align-items: center;
+}
+
+.hero-copy h1 {
+  margin-bottom: 1.4rem;
+}
+
+.hero-copy .lead {
+  max-width: 34em;
+}
+
+/* Line between heading and body copy, slightly larger than the latter */
+.hero-claim {
+  font-size: clamp(1.15rem, 1.05rem + 0.5vw, 1.4rem);
+  line-height: 1.5;
+  color: var(--text-muted);
+  max-width: 30em;
+  margin-bottom: 1.1rem;
+}
+
+/* Emphasis in the grey copy: bold and in full text colour */
+.hero-claim strong,
+.hero-copy .lead strong {
+  color: var(--text);
+  font-weight: 700;
+}
+
+.hero-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.85rem;
+  margin-top: 2.2rem;
+}
+
+.hero-note {
+  margin-top: 1.1rem;
+  font-size: 0.88rem;
+  color: var(--text-dim);
+}
+
+.hero-photo {
+  position: relative;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  box-shadow: var(--shadow-lg);
+  border: 1px solid var(--line-soft);
+}
+
+.hero-photo img {
+  width: 100%;
+  aspect-ratio: 4 / 5;
+  object-fit: cover;
+}
+
+.hero-photo::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, var(--photo-shade), transparent 45%);
+  pointer-events: none;
+}
+
+@media (width <= 940px) {
+  /* Single column: heading and buttons first, so they are visible right
+     away on phones. The photo follows directly below. */
+  .hero-inner {
+    grid-template-columns: 1fr;
+  }
+
+  .hero {
+    padding-bottom: clamp(3rem, 6vw, 5rem);
+  }
+
+  .hero-photo {
+    margin-top: 1rem;
+  }
+
+  /* The portrait is cropped to landscape here. Without object-position the
+     browser would crop around the centre and cut off the head; 20 % moves
+     the visible area up. */
+  .hero-photo img {
+    aspect-ratio: 16 / 11;
+    object-position: center 20%;
+  }
+}
+
+@media (width <= 780px) {
+  .hero-actions .btn {
+    flex: 1 1 100%;
+  }
+}

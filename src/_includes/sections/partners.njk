@@ -1,0 +1,24 @@
+{# Partner cards; to add a partner, add an entry to _data/partners.json #}
+<section class="section section-alt" id="partner">
+  <div class="wrap">
+    <header class="section-head reveal">
+      <p class="eyebrow">Partner</p>
+      <h2>Starke Partner an meiner Seite</h2>
+      <p class="section-lead">Gutes Training endet nicht im Studio. Mit diesen Partnern arbeite ich zusammen, damit du rundum gut betreut bist.</p>
+    </header>
+
+    <div class="partners">
+      {%- for partner in partners %}
+      <article class="card partner reveal">
+        <div class="card-ico" aria-hidden="true">
+          {% icon partner.icon, "" %}
+        </div>
+        <p class="partner-kind">{{ partner.kind }}</p>
+        <h3>{{ partner.name }}</h3>
+        <p>{{ partner.text }}</p>
+        <a class="partner-link" href="{{ partner.url }}" target="_blank" rel="noopener">Zur Website {% icon "external" %}<span class="sr-only"> (öffnet in neuem Tab)</span></a>
+      </article>
+      {%- endfor %}
+    </div>
+  </div>
+</section>
