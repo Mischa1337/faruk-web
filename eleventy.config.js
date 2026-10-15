@@ -7,7 +7,7 @@
  * See ARCHITECTURE.md for an overview.
  */
 import { HtmlBasePlugin } from '@11ty/eleventy';
-import { buildAssets } from './config/assets.js';
+import { assetUrl, buildAssets } from './config/assets.js';
 import { registerFilters } from './config/filters.js';
 
 export default function (eleventyConfig) {
@@ -18,6 +18,7 @@ export default function (eleventyConfig) {
   eleventyConfig.on('eleventy.before', ({ directories }) => buildAssets(directories.output));
   eleventyConfig.addWatchTarget('src/styles/');
   eleventyConfig.addWatchTarget('src/scripts/');
+  eleventyConfig.addFilter('asset', assetUrl);
 
   // Escape template output by default; trusted HTML from the data files is marked `| safe`
   eleventyConfig.setNunjucksEnvironmentOptions({ autoescape: true });

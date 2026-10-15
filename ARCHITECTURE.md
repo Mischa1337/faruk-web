@@ -40,6 +40,11 @@ src/public/**       ─► copied as is                      ─► _site/img/�
 
 `_site/` is build output: never edited by hand and not committed.
 
+CSS and JS are referenced with a content hash (`/css/style.css?v=1a2b3c4d`,
+via the `asset` filter). GitHub Pages lets browsers cache files for ten
+minutes; without the hash a returning visitor could get new HTML combined
+with a stale stylesheet right after a deploy.
+
 ## Content model
 
 Rule of thumb: **content that repeats lives in data files, prose lives in

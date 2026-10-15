@@ -69,7 +69,7 @@ describe('every page', () => {
       const ids = new Set(all(html, /\sid="([^"]+)"/g));
       for (const href of all(html, /\s(?:href|src)="([^"]+)"/g)) {
         if (/^(https?:|mailto:|tel:)/.test(href)) continue;
-        const [path, hash] = href.split('#');
+        const [path, hash] = href.split('?')[0].split('#');
         if (!path) {
           assert.ok(ids.has(hash), `${page}: missing anchor #${hash}`);
           continue;
@@ -80,6 +80,14 @@ describe('every page', () => {
           assert.ok(read(file).includes(`id="${hash}"`), `${page}: missing anchor ${href}`);
         }
       }
+    }
+  });
+
+  test('references CSS and JS with a content hash, so browsers never mix old and new files', () => {
+    for (const page of pages) {
+      const html = read(page);
+      assert.match(html, /href="\/css\/style\.css\?v=[0-9a-f]{8}"/, page);
+      assert.match(html, /src="\/js\/main\.js\?v=[0-9a-f]{8}"/, page);
     }
   });
 
