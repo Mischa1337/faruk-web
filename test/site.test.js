@@ -127,6 +127,23 @@ describe('home page', () => {
       assert.doesNotMatch(acceptedAnswer.text, /<[^>]+>/, 'answers must be plain text');
     }
   });
+
+  test('offers every visible price in the structured data', () => {
+    const html = read('index.html');
+    const json = first(html, /<script type="application\/ld\+json">([\s\S]*?)<\/script>/);
+    const business = JSON.parse(json)['@graph'][0];
+    const structured = business.makesOffer.filter((offer) => offer.price).map((o) => o.price);
+
+    const visible = [
+      ...all(html, /<span class="amount">(\d+)<\/span>/g),
+      ...all(html, /Duo-Training: (\d+) €/g),
+    ];
+    assert.deepEqual(structured.sort(), visible.sort());
+    for (const offer of business.makesOffer) {
+      assert.equal(offer.itemOffered['@type'], 'Service');
+      if (offer.price) assert.equal(offer.priceCurrency, 'EUR');
+    }
+  });
 });
 
 describe('sub-pages', () => {

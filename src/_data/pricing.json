@@ -2,6 +2,7 @@
   "plans": [
     {
       "name": "Einzeltermin",
+      "offer": "personal-training",
       "rates": [
         {
           "duration": "60 Min",
@@ -22,6 +23,7 @@
     },
     {
       "name": "5er-Karte",
+      "offer": "personal-training",
       "rates": [
         {
           "duration": "60 Min",
@@ -41,6 +43,7 @@
     },
     {
       "name": "10er-Karte",
+      "offer": "personal-training",
       "featured": true,
       "badge": "Beliebteste Wahl",
       "rates": [
@@ -64,9 +67,11 @@
     },
     {
       "name": "Online-Coaching",
+      "offer": "online-coaching",
       "price": {
         "amount": "119",
-        "unit": "€ / Monat"
+        "unit": "€ / Monat",
+        "unitCode": "MON"
       },
       "description": "Für alle, die selbstständig trainieren, aber Struktur brauchen.",
       "features": [
@@ -77,9 +82,13 @@
       ]
     }
   ],
+  "duo": {
+    "offer": "duo-training",
+    "amount": "85",
+    "minutes": 120
+  },
   "cta": "Erstgespräch vereinbaren",
   "footnotes": [
-    "Duo-Training: 85 € pro Person für eine extralange Einheit von 120 Minuten.",
     "Firmen- &amp; Gruppenangebote: Individuelle Konditionen auf Anfrage.",
     "Ernährungscoaching: Preis auf Anfrage – ich berate dich gern persönlich."
   ]

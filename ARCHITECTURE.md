@@ -64,7 +64,7 @@ escaped automatically (`autoescape: true`).
 
 ## SEO and GEO
 
-- **Structured data** (JSON-LD: `LocalBusiness`, `FAQPage`, `Person`,
+- **Structured data** (JSON-LD: `LocalBusiness` with priced offers, `FAQPage`, `Person`,
   `WebSite`) is generated in [`config/structured-data.js`](config/structured-data.js)
   from the same data as the visible page. The FAQ in the structured data is
   therefore always word for word identical to the visible FAQ, which a test

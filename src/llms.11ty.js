@@ -20,7 +20,7 @@ const formatPrice = (plan) =>
     ? plan.rates.map((rate) => `${rate.duration} ${rate.amount} €`).join(', ')
     : `${plan.price.amount} ${plan.price.unit}`;
 
-export function render({ site, offers, pricing, faq }) {
+export function render({ site, offers, pricing, pricingNotes, faq }) {
   const { owner, address, contact } = site;
 
   return `# ${site.name}
@@ -43,7 +43,7 @@ ${list(offers.map((offer) => `**${stripTags(offer.title)}**: ${stripTags(offer.t
 
 ${list([
   ...pricing.plans.map((plan) => `**${plan.name}**: ${formatPrice(plan)} – ${plan.description}`),
-  ...pricing.footnotes.map(stripTags),
+  ...pricingNotes.map(stripTags),
 ])}
 
 ## Häufige Fragen

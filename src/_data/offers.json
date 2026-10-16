@@ -1,5 +1,6 @@
 [
   {
+    "id": "personal-training",
     "title": "Personal Training 1:1",
     "icon": "dumbbell",
     "text": "Die ganze Einheit gehört dir. Ich begleite dich bei jeder Übungsausführung, passe das Training flexibel an deine Tagesform an und helfe dir dabei, sicher und zielgerichtet zu trainieren.",
@@ -15,6 +16,7 @@
     }
   },
   {
+    "id": "duo-training",
     "title": "Duo-Training",
     "icon": "duo",
     "text": "Gemeinsam trainieren, sich gegenseitig motivieren und dabei von persönlicher Betreuung profitieren. Ideal für Paare, Freunde oder Geschwister mit ähnlichen Zielen.",
@@ -30,6 +32,7 @@
     }
   },
   {
+    "id": "online-coaching",
     "title": "Online-Coaching",
     "icon": "smartphone",
     "text": "Du trainierst selbstständig, aber nicht allein. Du erhältst einen individuell geplanten Trainingsablauf, regelmäßige Rückmeldungen zu deiner Technik und persönliche Check-ins. So weißt du auch genau dann, was zu tun ist, wenn wir nicht gemeinsam im Studio stehen.",
@@ -46,6 +49,7 @@
     }
   },
   {
+    "id": "ernaehrungscoaching",
     "title": "Ernährungs&shy;coaching",
     "icon": "clock",
     "text": "Keine kurzfristige Diät und keine Verbotslisten. Gemeinsam entwickeln wir Ernährungs&shy;gewohnheiten, die zu deinem Alltag passen und die du langfristig beibehalten kannst.",
