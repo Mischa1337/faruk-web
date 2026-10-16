@@ -3,39 +3,71 @@
     {
       "name": "Einzeltermin",
       "rates": [
-        { "duration": "60 Min", "amount": "80" },
-        { "duration": "90 Min", "amount": "100" }
+        {
+          "duration": "60 Min",
+          "amount": "80"
+        },
+        {
+          "duration": "90 Min",
+          "amount": "100"
+        }
       ],
       "description": "Zum Reinschnuppern oder für unregelmäßige Termine.",
-      "features": ["1:1-Betreuung", "Ort nach Absprache", "Keine Mindestlaufzeit"]
+      "features": [
+        "1:1-Personal Training (vor Ort nach Absprache)",
+        "Flexible Termine ohne Mindestlaufzeit",
+        "Individuelle Anpassung an deine Tagesform",
+        "Ideal zum Reinschnuppern oder für unregelmäßige Einheiten"
+      ]
     },
     {
       "name": "5er-Karte",
       "rates": [
-        { "duration": "60 Min", "amount": "385" },
-        { "duration": "90 Min", "amount": "485" }
+        {
+          "duration": "60 Min",
+          "amount": "385"
+        },
+        {
+          "duration": "90 Min",
+          "amount": "485"
+        }
       ],
       "description": "Für einen festen Einstieg über mehrere Wochen.",
-      "features": ["Nur 77 € bzw. 97 € pro Einheit", "1:1-Betreuung", "Ort nach Absprache"]
+      "features": [
+        "1:1-Personal Training (vor Ort nach Absprache)",
+        "Nur 77 € bzw. 97 € pro Trainingseinheit",
+        "Fester Einstieg über mehrere Wochen"
+      ]
     },
     {
       "name": "10er-Karte",
       "featured": true,
       "badge": "Beliebteste Wahl",
       "rates": [
-        { "duration": "60 Min", "amount": "750" },
-        { "duration": "90 Min", "amount": "950" }
+        {
+          "duration": "60 Min",
+          "amount": "750"
+        },
+        {
+          "duration": "90 Min",
+          "amount": "950"
+        }
       ],
       "description": "Der Klassiker. Genug Zeit, um echte Fortschritte zu sehen.",
       "features": [
-        "Nur 75 € bzw. 95 € pro Einheit",
-        "WhatsApp-Support zwischendurch",
-        "6 Monate gültig"
+        "1:1-Personal Training (vor Ort nach Absprache)",
+        "Nur 75 € bzw. 95 € pro Trainingseinheit",
+        "Der Klassiker für echte, langfristige Fortschritte",
+        "Inklusive WhatsApp-Support für deine Fragen zwischendurch",
+        "Volle 6 Monate lang flexibel gültig"
       ]
     },
     {
       "name": "Online-Coaching",
-      "price": { "amount": "119", "unit": "€ / Monat" },
+      "price": {
+        "amount": "119",
+        "unit": "€ / Monat"
+      },
       "description": "Für alle, die selbstständig trainieren, aber Struktur brauchen.",
       "features": [
         "Regelmäßige Anpassung des Trainingsplans",
@@ -48,6 +80,7 @@
   "cta": "Erstgespräch vereinbaren",
   "footnotes": [
     "Duo-Training: 85 € pro Person für eine extralange Einheit von 120 Minuten.",
-    "Firmen- &amp; Gruppenangebote: Individuelle Konditionen auf Anfrage."
+    "Firmen- &amp; Gruppenangebote: Individuelle Konditionen auf Anfrage.",
+    "Ernährungscoaching: Preis auf Anfrage – ich berate dich gern persönlich."
   ]
 }
