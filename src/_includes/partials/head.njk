@@ -18,7 +18,6 @@
 <meta name="robots" content="{{ robots or 'index, follow, max-image-preview:large' }}">
 {%- if isHome %}
 <meta name="author" content="{{ site.owner.name }}">
-<meta name="geo.region" content="{{ site.address.country }}">
 {%- endif %}
 <meta name="theme-color" media="(prefers-color-scheme: light)" content="{{ site.themeColors.light }}">
 <meta name="theme-color" media="(prefers-color-scheme: dark)" content="{{ site.themeColors.dark }}">
@@ -37,7 +36,10 @@
 <meta name="twitter:card" content="summary_large_image">
 {%- endif %}
 
-<link rel="icon" href="/img/favicon.png" type="image/png">
+{#- Browser tabs pick the best size; Google shows the icon next to search results (min. 48 px) #}
+<link rel="icon" href="/favicon.ico" sizes="48x48">
+<link rel="icon" href="/img/favicon-96.png" type="image/png" sizes="96x96">
+<link rel="icon" href="/img/icon-192.png" type="image/png" sizes="192x192">
 <link rel="apple-touch-icon" href="/img/favicon.png">
 <link rel="stylesheet" href="{{ '/css/style.css' | asset }}">
 {% include "partials/head-scripts.njk" %}
