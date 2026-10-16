@@ -2,6 +2,7 @@
 _site/
 node_modules/
 .lighthouseci/
+lighthouse-reports/
 
 # System files
 .DS_Store
