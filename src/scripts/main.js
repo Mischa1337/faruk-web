@@ -16,6 +16,7 @@ import { initScrollSpy } from './modules/scroll-spy.js';
 import { initReveal } from './modules/reveal.js';
 import { initMobileCta } from './modules/mobile-cta.js';
 import { initReviewToggles } from './modules/review-toggles.js';
+import { initInterestLinks } from './modules/interest-links.js';
 import { initContactForm } from './modules/contact-form/index.js';
 
 // Tells the safety net in <head> that the script has arrived, so the
@@ -31,3 +32,4 @@ initReveal();
 initMobileCta();
 initReviewToggles();
 initContactForm();
+initInterestLinks();
