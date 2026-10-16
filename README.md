@@ -42,10 +42,11 @@ npm run dev      # local server with live reload on http://localhost:4321
 | Behaviour (menu, form, theme toggle …)        | `src/scripts/modules/`                     |
 | Contact form endpoint (Formspree)             | `src/scripts/config.js`                    |
 | Imprint, privacy policy                       | `src/impressum.njk`, `src/datenschutz.njk` |
-| Images                                        | `src/public/img/`                          |
+| Photos (optimised automatically)              | `src/img/`                                 |
+| Logo, favicons, social preview                | `src/public/`                              |
 
 Content data is the single source of truth: the FAQ, offers and contact
-details also feed the structured data for Google (JSON-LD) and `llms.txt` for
+details and prices also feed the structured data for Google (JSON-LD) and `llms.txt` for
 AI assistants, so they can never contradict the visible page.
 
 ## Scripts
@@ -85,7 +86,8 @@ src/
     sections/       one file per section of the home page
   styles/           CSS, bundled by esbuild into css/style.css
   scripts/          ES modules, bundled by esbuild into js/main.js
-  public/           static files copied as they are (images)
+  img/              photos, turned into AVIF/WebP in several widths
+  public/           static files copied as they are (logo, favicons)
   index.njk         home page: list of sections
   impressum.njk     imprint
   datenschutz.njk   privacy policy

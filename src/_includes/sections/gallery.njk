@@ -1,7 +1,7 @@
 {#
-  Photos from training sessions, all in 4:3 (about 1200 × 900 px, below
-  300 KB). To add a photo, append another <figure> – the grid arranges
-  itself. Keep an even number so none stands alone in a row. Only use
+  Photos from training sessions, all in 4:3 (about 1200 × 900 px), stored
+  in src/img/. To add a photo, append another <figure> with the same
+  `sizes` – the grid arranges itself. Keep an even number so none stands alone in a row. Only use
   photos the pictured clients have agreed to.
 #}
 <section class="section" id="einblicke">
@@ -13,12 +13,14 @@
 
     <div class="gallery">
       <figure class="gallery-item reveal">
-        <img src="/img/einblick-technik.jpg" width="1200" height="900" loading="lazy" decoding="async"
+        <img src="/img/einblick-technik.jpg" loading="lazy" decoding="async"
+             sizes="(max-width: 600px) 100vw, (max-width: 1220px) 50vw, 580px"
              alt="Faruk korrigiert im Studio die Technik eines Kunden bei Split Squats mit Kettlebell">
         <figcaption>Präzise Technikkorrektur – für ein sicheres und effektives Training.</figcaption>
       </figure>
       <figure class="gallery-item reveal">
-        <img src="/img/einblick-stabilitaet.jpg" width="880" height="660" loading="lazy" decoding="async"
+        <img src="/img/einblick-stabilitaet.jpg" loading="lazy" decoding="async"
+             sizes="(max-width: 600px) 100vw, (max-width: 1220px) 50vw, 580px"
              alt="Faruk begleitet eine Kundin bei einer Stabilitätsübung im Vierfüßlerstand">
         <figcaption>Fokus auf Rückengesundheit – gezieltes Stabilitätstraining für einen starken Rücken im Alltag.</figcaption>
       </figure>
