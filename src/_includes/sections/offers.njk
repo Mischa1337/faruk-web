@@ -20,6 +20,7 @@
           <li>{{ feature | safe }}</li>
           {%- endfor %}
         </ul>
+        <a class="card-link" href="#kontakt" data-interest="{{ offer.title | replace("&shy;", "") }}">Jetzt anfragen<span aria-hidden="true"> →</span></a>
       </article>
       {%- endfor %}
     </div>

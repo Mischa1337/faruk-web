@@ -5,28 +5,28 @@
       "href": "#angebote"
     },
     {
-      "label": "Über mich",
-      "href": "#ueber-mich"
-    },
-    {
       "label": "Ablauf",
       "href": "#ablauf"
-    },
-    {
-      "label": "Erfolge",
-      "href": "#erfolge"
-    },
-    {
-      "label": "Kooperationen",
-      "href": "#kooperationen"
     },
     {
       "label": "Preise",
       "href": "#preise"
     },
     {
+      "label": "Über mich",
+      "href": "#ueber-mich"
+    },
+    {
+      "label": "Erfolge",
+      "href": "#erfolge"
+    },
+    {
       "label": "FAQ",
       "href": "#faq"
+    },
+    {
+      "label": "Kooperationen",
+      "href": "#kooperationen"
     }
   ],
   "cta": {

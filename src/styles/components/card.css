@@ -1,6 +1,9 @@
 /* ── Card ──────────────────────────────────────────────────
    Surface used by the offers and the partners. */
 .card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
   background: var(--surface);
   border: 1px solid var(--line-soft);
   border-radius: var(--radius-lg);
@@ -45,6 +48,32 @@
 
 .card .ticks {
   margin-top: 1.1rem;
+}
+
+/* "Jetzt anfragen" sits at the bottom of the card; its ::after stretches
+   over the whole card so a click anywhere leads to the contact form. */
+.card-link {
+  margin-top: auto;
+  padding-top: 1.3rem;
+  font-weight: 700;
+  color: var(--accent-hi);
+  text-decoration: none;
+}
+
+.card-link::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+}
+
+.card-link:focus-visible {
+  outline: none;
+}
+
+.card:has(.card-link:focus-visible) {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
 }
 
 /* ── Tick list ─────────────────────────────────────────────

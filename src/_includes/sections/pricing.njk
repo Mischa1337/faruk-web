@@ -1,5 +1,5 @@
 {# Price cards; prices and features in _data/pricing.json #}
-<section class="section" id="preise">
+<section class="section section-alt" id="preise">
   <div class="wrap">
     <header class="section-head reveal">
       <p class="eyebrow">Preise</p>
@@ -29,7 +29,7 @@
           <li>{{ feature }}</li>
           {%- endfor %}
         </ul>
-        <a class="btn {{ 'btn-primary' if plan.featured else 'btn-ghost' }} btn-block" href="#kontakt">{{ pricing.cta }}</a>
+        <a class="btn {{ 'btn-primary' if plan.featured else 'btn-ghost' }} btn-block" href="#kontakt" data-interest="{{ plan.name }}">{{ pricing.cta }}</a>
       </article>
       {%- endfor %}
     </div>
