@@ -1,8 +1,11 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
+import { readFileSync } from 'node:fs';
 import {
+  MAX_LENGTH,
   RULES,
   buildMailBody,
+  buildMailSubject,
   fieldValue,
 } from '../src/scripts/modules/contact-form/validation.js';
 
@@ -54,4 +57,17 @@ test('fallback mail body lists all fields and marks a missing phone', () => {
     body,
     'Name: Max\nE-Mail: max@mail.de\nTelefon: –\nAufmerksam geworden durch: Instagram\n\nIch möchte stärker werden.',
   );
+});
+
+test('mail subject names the sender', () => {
+  assert.equal(buildMailSubject('Max'), 'Anfrage Personal Training – Max');
+});
+
+test('maxlength in the form matches the limits the worker enforces', () => {
+  const markup = readFileSync('src/_includes/partials/contact-form.njk', 'utf8');
+  for (const [name, max] of Object.entries(MAX_LENGTH)) {
+    const input = markup.match(new RegExp(`<(?:input|textarea)[^>]*name="${name}"[^>]*>`))?.[0];
+    assert.ok(input, `field ${name} exists`);
+    assert.match(input, new RegExp(`maxlength="${max}"`), name);
+  }
 });

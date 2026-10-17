@@ -1,6 +1,5 @@
-import { CONFIG } from '../../config.js';
 import { $, scrollBehavior } from '../../lib/dom.js';
-import { RULES, buildMailBody, fieldValue } from './validation.js';
+import { RULES, buildMailBody, buildMailSubject, fieldValue } from './validation.js';
 
 /* Time trap: humans need at least a few seconds to fill in the form,
    bots submit almost instantly. Anything faster is not a person. */
@@ -8,6 +7,9 @@ const MIN_FILL_MS = 3000;
 
 /* Lock against double clicks and rapid repeated sending */
 const COOLDOWN_MS = 60_000;
+
+/* The worker gives up on the mail server after 10 s; this leaves room for that */
+const REQUEST_TIMEOUT_MS = 20_000;
 
 /** Contact form: validation, spam protection and sending. */
 export function initContactForm() {
@@ -17,10 +19,19 @@ export function initContactForm() {
   const status = $('#formStatus');
   const submitButton = $('#submitBtn');
   const success = $('#formSuccess');
+  const fallbackButton = $('#mailFallbackBtn');
+  const { endpoint, mail } = form.dataset;
 
   let loadedAt = Date.now();
   let sentAt = 0;
   let sending = false;
+  let unsent = null;
+
+  /* If sending fails, the visitor can still send the message from their own
+     mail app – nothing they typed is lost. */
+  fallbackButton?.addEventListener('click', () => {
+    if (unsent) openMailFallback(mail, unsent);
+  });
 
   const setStatus = (text, kind = '') => {
     if (!status) return;
@@ -96,8 +107,7 @@ export function initContactForm() {
       return;
     }
 
-    // The keys stay German: Formspree shows them as field names in the
-    // e-mail Faruk receives.
+    // These keys are the worker's API (worker/src/validation.js).
     const formData = new FormData(form);
     const data = {
       name: formData.get('name'),
@@ -105,12 +115,12 @@ export function initContactForm() {
       telefon: formData.get('telefon'),
       quelle: formData.get('quelle'),
       nachricht: formData.get('nachricht'),
-      // Sent empty so that Formspree knows the field and filters on its own
+      // Always sent, so the worker can check the trap as well
       _gotcha: formData.get('_gotcha') || '',
     };
 
-    if (!CONFIG.formEndpoint) {
-      openMailFallback(data);
+    if (!endpoint) {
+      openMailFallback(mail, data);
       setStatus(
         'Dein E-Mail-Programm öffnet sich mit der fertigen Nachricht – bitte nur noch abschicken.',
         'ok',
@@ -119,24 +129,30 @@ export function initContactForm() {
     }
 
     sending = true;
+    if (fallbackButton) fallbackButton.hidden = true;
     submitButton.disabled = true;
     const label = submitButton.textContent;
     submitButton.textContent = 'Wird gesendet …';
     setStatus('');
 
     try {
-      const response = await fetch(CONFIG.formEndpoint, {
+      const response = await fetch(endpoint, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
         body: JSON.stringify(data),
+        // Optional chaining: older Safari versions lack AbortSignal.timeout
+        signal: AbortSignal.timeout?.(REQUEST_TIMEOUT_MS),
       });
       if (!response.ok) throw new Error(`HTTP ${response.status}`);
       sentAt = Date.now();
+      unsent = null;
       form.reset();
       showSuccess();
     } catch {
+      unsent = data;
+      if (fallbackButton) fallbackButton.hidden = false;
       setStatus(
-        `Das Senden hat nicht geklappt. Schreib mir bitte direkt per WhatsApp oder an ${CONFIG.fallbackMail}.`,
+        'Das Senden hat leider nicht geklappt. Du kannst deine Nachricht mit deinem E-Mail-Programm senden oder mir per WhatsApp schreiben.',
         'err',
       );
     } finally {
@@ -179,9 +195,9 @@ function attachLiveValidation() {
   }
 }
 
-/** Without a form service: open the visitor's mail app with a ready-made message. */
-function openMailFallback(data) {
-  const subject = encodeURIComponent(`Anfrage Personal Training – ${data.name}`);
+/** Opens the visitor's mail app with a ready-made message. */
+function openMailFallback(mail, data) {
+  const subject = encodeURIComponent(buildMailSubject(data.name));
   const body = encodeURIComponent(buildMailBody(data));
-  window.location.href = `mailto:${CONFIG.fallbackMail}?subject=${subject}&body=${body}`;
+  window.location.href = `mailto:${mail}?subject=${subject}&body=${body}`;
 }
