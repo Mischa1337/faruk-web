@@ -13,9 +13,12 @@
           </a>
         </li>
         <li>
-          <a href="{{ contactLinks.email }}">
+          {#- With a mouse a click copies the address, on touch devices it opens
+              the mail app; CSS shows the matching hint (scripts/modules/copy-email.js) #}
+          <a href="{{ contactLinks.email }}" class="contact-email" data-copy="{{ site.contact.email }}">
             {% icon "mail" %}
-            <span><strong>{{ site.contact.email }}</strong>Für alles Ausführliche</span>
+            <span><strong>{{ site.contact.email }}</strong><span class="hint-mail">Öffnet deine Mail-App</span><span class="hint-copy" aria-live="polite">Klicken zum Kopieren</span></span>
+            {% icon "copy", "ico ico-copy" %}
           </a>
         </li>
         <li>
@@ -26,7 +29,7 @@
         </li>
       </ul>
 
-      <p class="contact-area"><strong>Egal, wo du zu Hause bist:</strong> Vor Ort trainiere ich mit dir in Gießen und Umgebung – mein Online-Coaching funktioniert von überall.</p>
+      <p class="contact-area"><strong>Egal, wo du zu Hause bist:</strong> Vor Ort trainiere ich mit dir in Gießen&nbsp;und&nbsp;Umgebung – mein Online-Coaching funktioniert von überall.</p>
     </div>
 
     <div class="contact-form-wrap reveal">

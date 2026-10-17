@@ -19,6 +19,7 @@ export function initContactForm() {
   const status = $('#formStatus');
   const submitButton = $('#submitBtn');
   const success = $('#formSuccess');
+  const successName = $('#successName');
   const fallbackButton = $('#mailFallbackBtn');
   const { endpoint, mail } = form.dataset;
 
@@ -39,8 +40,11 @@ export function initContactForm() {
     status.className = kind ? `form-status ${kind}` : 'form-status';
   };
 
-  const showSuccess = () => {
+  /** Replaces the form with the confirmation, addressed by first name if known. */
+  const showSuccess = (name = '') => {
     if (!success) return;
+    const firstName = name.trim().split(/\s+/)[0];
+    if (successName) successName.textContent = firstName ? `, ${firstName}` : '';
     form.hidden = true;
     success.hidden = false;
     success.setAttribute('tabindex', '-1');
@@ -147,7 +151,7 @@ export function initContactForm() {
       sentAt = Date.now();
       unsent = null;
       form.reset();
-      showSuccess();
+      showSuccess(data.name);
     } catch {
       unsent = data;
       if (fallbackButton) fallbackButton.hidden = false;

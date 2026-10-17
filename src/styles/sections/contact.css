@@ -70,6 +70,41 @@
   color: var(--text);
 }
 
+/* E-mail card: the hint says what a click does. Touch devices (and pages
+   without JavaScript) open the mail app; with a mouse the script copies
+   the address instead – same media query as scripts/modules/copy-email.js. */
+.contact-list .hint-copy,
+.contact-list .ico-copy {
+  display: none;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .js .contact-list .hint-mail {
+    display: none;
+  }
+
+  .js .contact-list .hint-copy {
+    display: inline;
+  }
+
+  .js .contact-list .ico-copy {
+    display: block;
+    margin-left: auto;
+    color: var(--text-dim);
+    opacity: 0;
+    transition: opacity 0.2s;
+  }
+
+  .js .contact-email:hover .ico-copy,
+  .js .contact-email:focus-visible .ico-copy {
+    opacity: 1;
+  }
+}
+
+.contact-email.is-copied .hint-copy {
+  color: var(--ok);
+}
+
 .contact-area {
   margin-top: 1.75rem;
   font-size: 0.9rem;

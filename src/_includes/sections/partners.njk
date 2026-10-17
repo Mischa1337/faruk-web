@@ -13,7 +13,8 @@
         <div class="card-ico" aria-hidden="true">
           {% icon partner.icon, "" %}
         </div>
-        <p class="partner-kind">{{ partner.kind }}</p>
+        {#- A non-breaking space keeps each "·" at the end of a line, never at the start #}
+        <p class="partner-kind">{{ partner.kind | escape | replace(" · ", "&nbsp;· ") | safe }}</p>
         <h3>{{ partner.name }}</h3>
         <p>{{ partner.text }}</p>
         <a class="partner-link" href="{{ partner.url }}" target="_blank" rel="noopener">Zur Website {% icon "external" %}<span class="sr-only"> (öffnet in neuem Tab)</span></a>
