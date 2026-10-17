@@ -20,7 +20,7 @@ export function buildMessage(data, env) {
     to: env.MAIL_TO,
     // "Reply" in the mail app answers the visitor, not the sender mailbox
     reply: { name: data.name, email: data.email },
-    subject: buildMailSubject(data.name),
+    subject: buildMailSubject(data.name, data.interesse),
     text: [
       buildMailBody(data),
       '',

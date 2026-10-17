@@ -29,10 +29,24 @@ test('ignores unknown fields such as the honeypot', () => {
   const result = validateSubmission({ ...valid, _gotcha: '', admin: true });
   assert.deepEqual(Object.keys(result.data).sort(), [
     'email',
+    'interesse',
     'nachricht',
     'name',
     'quelle',
     'telefon',
+  ]);
+});
+
+test('the chosen offer is optional, single-line and limited in length', () => {
+  assert.equal(
+    validateSubmission({ ...valid, interesse: '10er-Karte' }).data.interesse,
+    '10er-Karte',
+  );
+  assert.deepEqual(validateSubmission({ ...valid, interesse: 'A\r\nBcc: x@y.de' }).fields, [
+    'interesse',
+  ]);
+  assert.deepEqual(validateSubmission({ ...valid, interesse: 'x'.repeat(61) }).fields, [
+    'interesse',
   ]);
 });
 

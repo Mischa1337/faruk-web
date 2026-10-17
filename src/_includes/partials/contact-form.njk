@@ -35,6 +35,17 @@
     <p class="error" id="err-f-source" data-for="f-source"></p>
   </div>
 
+  {#
+    Chosen offer: filled in by the offer and price buttons
+    (scripts/modules/interest-links.js) and sent as its own field, so the
+    message stays free for the visitor's own words.
+  #}
+  <input type="hidden" id="f-interest" name="interesse">
+  <p class="interest-chip" id="interestChip" aria-live="polite" hidden>
+    <span>Dein Interesse: <strong id="interestLabel"></strong></span>
+    <button type="button" id="interestClear" aria-label="Interesse entfernen">{% icon "x" %}</button>
+  </p>
+
   <div class="field">
     <label for="f-msg">Nachricht <span aria-hidden="true">*</span></label>
     <textarea id="f-msg" name="nachricht" rows="5" required maxlength="5000" placeholder="Was möchtest du erreichen? Gibt es aktuelle Herausforderungen, Besonderheiten oder Wunschzeiten für unser kostenloses Erstgespräch?" aria-describedby="err-f-msg"></textarea>

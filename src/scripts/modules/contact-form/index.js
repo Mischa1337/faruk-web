@@ -119,6 +119,7 @@ export function initContactForm() {
       telefon: formData.get('telefon'),
       quelle: formData.get('quelle'),
       nachricht: formData.get('nachricht'),
+      interesse: formData.get('interesse') || '',
       // Always sent, so the worker can check the trap as well
       _gotcha: formData.get('_gotcha') || '',
     };
@@ -201,7 +202,7 @@ function attachLiveValidation() {
 
 /** Opens the visitor's mail app with a ready-made message. */
 function openMailFallback(mail, data) {
-  const subject = encodeURIComponent(buildMailSubject(data.name));
+  const subject = encodeURIComponent(buildMailSubject(data.name, data.interesse));
   const body = encodeURIComponent(buildMailBody(data));
   window.location.href = `mailto:${mail}?subject=${subject}&body=${body}`;
 }

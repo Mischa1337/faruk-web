@@ -20,6 +20,8 @@ const FIELDS = {
   telefon: { required: false, singleLine: true },
   quelle: { required: true, min: MIN_LENGTH.quelle, singleLine: true },
   nachricht: { required: true, min: MIN_LENGTH.nachricht },
+  // Offer chosen via a price or offer button; also part of the subject
+  interesse: { required: false, singleLine: true },
 };
 
 const LINE_BREAK = /[\r\n]/;
