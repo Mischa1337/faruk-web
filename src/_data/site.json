@@ -28,7 +28,7 @@
   },
   "contact": {
     "email": "kontakt@afp-coaching.de",
-    "formEndpoint": "",
+    "formEndpoint": "https://afp-contact.afp-worker.workers.dev",
     "phoneDisplay": "0176-42755110",
     "phone": "+4917642755110",
     "whatsappHours": "Mo–Sa, 8–20 Uhr",
