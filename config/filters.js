@@ -35,8 +35,8 @@ export function icon(name, className = 'ico') {
 
 export function registerFilters(eleventyConfig) {
   eleventyConfig.addFilter('stripTags', stripTags);
-  eleventyConfig.addFilter('structuredData', (site, offers, faq) =>
-    toJsonLd(buildStructuredData({ site, offers, faq }, { stripTags })),
+  eleventyConfig.addFilter('structuredData', (site, offers, pricing, faq) =>
+    toJsonLd(buildStructuredData({ site, offers, pricing, faq }, { stripTags })),
   );
   eleventyConfig.addShortcode('icon', icon);
 }

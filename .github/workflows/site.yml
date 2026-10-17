@@ -1,7 +1,7 @@
 # Checks every change and publishes the site to GitHub Pages from main.
 #
 #   check       formatting, linting, build, HTML validation, tests
-#   lighthouse  performance / accessibility / SEO budgets (lighthouserc.json)
+#   lighthouse  performance / accessibility / SEO budgets, mobile and desktop (lighthouserc.json)
 #   deploy      only on main: publishes _site/ to GitHub Pages
 name: Site
 
@@ -67,14 +67,20 @@ jobs:
       - run: npm ci
       # Built without PATH_PREFIX, because Lighthouse serves _site/ from the root
       - run: npm run build
-      - name: Run Lighthouse CI
-        run: npx --yes @lhci/cli@0.15.1 autorun
+      # Mobile first: Google ranks the mobile version of a page
+      - name: Run Lighthouse CI (mobile)
+        run: npx --yes @lhci/cli@0.15.1 autorun --upload.outputDir=lighthouse-reports/mobile
+      - name: Run Lighthouse CI (desktop)
+        if: always()
+        run: >-
+          npx --yes @lhci/cli@0.15.1 autorun --collect.settings.preset=desktop
+          --upload.outputDir=lighthouse-reports/desktop
       - name: Upload Lighthouse reports
         if: always()
         uses: actions/upload-artifact@v4
         with:
           name: lighthouse-reports
-          path: .lighthouseci/
+          path: lighthouse-reports/
 
   deploy:
     if: github.ref == 'refs/heads/main'

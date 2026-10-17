@@ -1,18 +1,33 @@
 /**
  * Eleventy configuration.
  *
- *   src/         sources (templates, data, styles, scripts, static files)
+ *   src/         sources (templates, data, styles, scripts, photos, static files)
  *   _site/       generated website – never edit, never commit
  *
  * See ARCHITECTURE.md for an overview.
  */
 import { HtmlBasePlugin } from '@11ty/eleventy';
+import { eleventyImageTransformPlugin } from '@11ty/eleventy-img';
 import { assetUrl, buildAssets } from './config/assets.js';
 import { registerFilters } from './config/filters.js';
 
 export default function (eleventyConfig) {
-  // Static files (images, favicon) are copied unchanged to the site root
+  // Static files (logo, favicons, social preview) are copied unchanged to the site root
   eleventyConfig.addPassthroughCopy({ 'src/public': '/' });
+
+  // Photos in src/img/: every <img src="/img/…"> becomes a <picture> with
+  // AVIF and WebP in several widths, so phones download a fraction of the
+  // original. The `sizes` attribute in the template tells the browser how
+  // wide the image is displayed. Leave out width/height there: the plugin
+  // adds the real dimensions, and a `width` attribute would limit the output
+  // to that single size. The originals are copied as well, so their
+  // URLs (e.g. the trainer photo in the structured data) stay valid.
+  eleventyConfig.addPlugin(eleventyImageTransformPlugin, {
+    formats: ['avif', 'webp', 'jpeg'],
+    widths: [480, 800, 1200],
+    failOnError: true,
+  });
+  eleventyConfig.addPassthroughCopy({ 'src/img': '/img' });
 
   // CSS and JS are bundled by esbuild before every (re)build
   eleventyConfig.on('eleventy.before', ({ directories }) => buildAssets(directories.output));

@@ -8,10 +8,12 @@
   "locale": "de_DE",
   "themeColors": { "light": "#FFFFFF", "dark": "#121212" },
   "ogImage": "/img/og-vorschau.jpg",
+  "logo": "/img/icon-512.png",
   "owner": {
     "name": "Faruk Palteki",
     "legalName": "Ahmet Faruk Palteki",
     "jobTitle": "Personal Trainer",
+    "photo": "/img/ueber-mich.jpg",
     "languages": ["de", "en", "tr"],
     "expertise": [
       "Krafttraining",
@@ -21,7 +23,8 @@
       "Gewichtsreduktion",
       "Beweglichkeit",
       "Ernährung"
-    ]
+    ],
+    "credentials": ["Fitnesstrainer A-Lizenz", "Fitnesstrainer B-Lizenz"]
   },
   "contact": {
     "email": "kontakt@afp-coaching.de",

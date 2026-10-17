@@ -3,8 +3,7 @@
     "collect": {
       "staticDistDir": "./_site",
       "url": ["http://localhost/index.html", "http://localhost/impressum.html"],
-      "numberOfRuns": 3,
-      "settings": { "preset": "desktop" }
+      "numberOfRuns": 3
     },
     "assert": {
       "assertMatrix": [
@@ -26,7 +25,7 @@
     },
     "upload": {
       "target": "filesystem",
-      "outputDir": ".lighthouseci"
+      "outputDir": "lighthouse-reports"
     }
   }
 }

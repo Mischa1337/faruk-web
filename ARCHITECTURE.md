@@ -35,7 +35,8 @@ src/_includes/**   ├─► Eleventy (Nunjucks) ─► _site/*.html, sitemap.xm
 src/*.njk         ─┘
 src/styles/main.css ─► esbuild (bundle, prefix, minify) ─► _site/css/style.css
 src/scripts/main.js ─► esbuild (bundle, minify, IIFE)   ─► _site/js/main.js
-src/public/**       ─► copied as is                      ─► _site/img/…
+src/img/*.jpg       ─► eleventy-img (AVIF, WebP, 3 widths) ─► _site/img/…
+src/public/**       ─► copied as is                      ─► _site/…
 ```
 
 `_site/` is build output: never edited by hand and not committed.
@@ -64,7 +65,7 @@ escaped automatically (`autoescape: true`).
 
 ## SEO and GEO
 
-- **Structured data** (JSON-LD: `LocalBusiness`, `FAQPage`, `Person`,
+- **Structured data** (JSON-LD: `LocalBusiness` with priced offers, `FAQPage`, `Person`,
   `WebSite`) is generated in [`config/structured-data.js`](config/structured-data.js)
   from the same data as the visible page. The FAQ in the structured data is
   therefore always word for word identical to the visible FAQ, which a test
