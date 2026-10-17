@@ -18,6 +18,7 @@ import { initMobileCta } from './modules/mobile-cta.js';
 import { initReviewToggles } from './modules/review-toggles.js';
 import { initInterestLinks } from './modules/interest-links.js';
 import { initContactForm } from './modules/contact-form/index.js';
+import { initCopyEmail } from './modules/copy-email.js';
 
 // Tells the safety net in <head> that the script has arrived, so the
 // reveal animation may stay active (see partials/head-scripts.njk).
@@ -32,4 +33,5 @@ initReveal();
 initMobileCta();
 initReviewToggles();
 initContactForm();
+initCopyEmail();
 initInterestLinks();
