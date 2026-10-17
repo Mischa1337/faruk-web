@@ -8,7 +8,8 @@ Live at [afp-coaching.de](https://afp-coaching.de).
 A static site built with [Eleventy](https://www.11ty.dev/) and
 [esbuild](https://esbuild.github.io/): plain HTML, CSS and JavaScript in the
 browser – no framework, no cookies, no tracking and no requests to
-third-party servers.
+third-party servers while browsing. The contact form posts to a small
+Cloudflare Worker that sends it by e-mail ([`worker/`](worker/README.md)).
 
 | Lighthouse (home page) | Score |
 | ---------------------- | ----- |
@@ -40,7 +41,7 @@ npm run dev      # local server with live reload on http://localhost:4321
 | Look of a section                             | `src/styles/sections/<section>.css`        |
 | Colours, spacing, fonts                       | `src/styles/base/tokens.css`               |
 | Behaviour (menu, form, theme toggle …)        | `src/scripts/modules/`                     |
-| Contact form endpoint (Formspree)             | `src/scripts/config.js`                    |
+| Contact form endpoint (worker URL)            | `src/_data/site.json` (`formEndpoint`)     |
 | Imprint, privacy policy                       | `src/impressum.njk`, `src/datenschutz.njk` |
 | Photos (optimised automatically)              | `src/img/`                                 |
 | Logo, favicons, social preview                | `src/public/`                              |
@@ -68,9 +69,10 @@ Every push and pull request runs [`.github/workflows/site.yml`](.github/workflow
 1. **Lint** – ESLint, Stylelint, Prettier
 2. **Build** – Eleventy + esbuild
 3. **Validate** – html-validate on every generated page
-4. **Test** – form validation unit tests; SEO regression tests (one `<h1>` per
-   page, canonical URLs, `noindex` on legal pages, structured data matching
-   the visible FAQ, sitemap, no broken internal links or anchors)
+4. **Test** – form validation and contact worker unit tests; SEO regression
+   tests (one `<h1>` per page, canonical URLs, `noindex` on legal pages,
+   structured data matching the visible FAQ, sitemap, no broken internal
+   links or anchors)
 5. **Lighthouse CI** – fails below 95 accessibility / best practices and below
    100 SEO on the home page ([`lighthouserc.json`](lighthouserc.json))
 6. **Deploy** – only from `main`, to GitHub Pages
@@ -95,6 +97,7 @@ src/
   sitemap.njk, robots.njk, llms.11ty.js
 config/             build helpers (asset bundling, filters, structured data)
 test/               automated tests
+worker/             Cloudflare Worker that sends the contact form (own package.json)
 eleventy.config.js  build configuration
 ```
 
@@ -105,3 +108,9 @@ More background on the design decisions: [ARCHITECTURE.md](ARCHITECTURE.md).
 GitHub Actions builds the site and publishes it to GitHub Pages on every push
 to `main` (repository settings → Pages → Source: **GitHub Actions**). A change
 is live about two minutes after it is merged.
+
+The contact worker is deployed to Cloudflare by
+[`.github/workflows/worker.yml`](.github/workflows/worker.yml) whenever it
+changes, and [`contact-health.yml`](.github/workflows/contact-health.yml)
+checks once a day that it can still log in to the mail server. Setup and
+details: [worker/README.md](worker/README.md).

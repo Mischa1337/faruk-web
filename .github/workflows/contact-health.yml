@@ -1,0 +1,35 @@
+# Daily check that the contact form can still send mail: the worker logs in
+# to the mail server and quits without sending anything (GET /health).
+# If the check fails, GitHub e-mails the person who last changed this
+# workflow – long before a real enquiry could get lost unnoticed.
+#
+# Needs two repository settings (Settings → Secrets and variables → Actions):
+#   variable CONTACT_WORKER_URL    e.g. https://afp-contact.<account>.workers.dev
+#   secret   CONTACT_HEALTH_TOKEN  same value as the worker's HEALTH_TOKEN
+# Until the variable exists, the job is skipped.
+#
+# GitHub pauses scheduled workflows after 60 days without activity in the
+# repository and announces it by e-mail; re-enable it in the Actions tab.
+name: Contact form health
+
+on:
+  schedule:
+    - cron: '17 6 * * *' # daily at 06:17 UTC
+  workflow_dispatch:
+
+permissions: {}
+
+jobs:
+  health:
+    if: vars.CONTACT_WORKER_URL != ''
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check the SMTP login through the worker
+        # Retries ride out short outages, so only lasting problems raise an alarm
+        run: >-
+          curl --fail-with-body --silent --show-error --max-time 30
+          --retry 2 --retry-delay 60
+          --header "Authorization: Bearer $TOKEN" "$URL/health"
+        env:
+          URL: ${{ vars.CONTACT_WORKER_URL }}
+          TOKEN: ${{ secrets.CONTACT_HEALTH_TOKEN }}

@@ -114,6 +114,29 @@ functions, unit-tested) and [`index.js`](src/scripts/modules/contact-form/index.
 (DOM wiring, spam protection, sending). Spam protection works without a
 CAPTCHA: a honeypot field, a minimum fill-in time and a send cooldown.
 
+## Contact form backend
+
+A static host cannot send e-mail, and the browser can neither keep a
+mailbox password secret nor speak SMTP. So the form posts to a
+[Cloudflare Worker](worker/README.md) – the only server code in the
+project – which checks the submission again and sends it through the
+site's IONOS mailbox to a fixed address.
+
+- **Free and bounded.** Workers Free without a payment method: exceeding a
+  limit makes requests fail, it never creates costs. A global daily limit
+  (Durable Object) caps how many mails bots could ever trigger.
+- **Shared rules.** The worker imports patterns, length limits and the mail
+  builders from the browser's `validation.js`, so both sides check the same
+  rules and the e-mail looks the same as the mailto fallback.
+- **Testable core.** Request handling and rate-limit logic are plain
+  functions; SMTP, health check and storage are injected, so `node:test`
+  covers the worker without the Workers runtime.
+- **Degrades gracefully.** Without a configured endpoint
+  (`contact.formEndpoint` in `site.json`) the form opens the visitor's mail
+  app. If sending fails, the same mailto message is offered as a way out.
+  The privacy policy switches its text on the same setting, and a test
+  ensures form and privacy policy always agree.
+
 ## Paths
 
 Templates use root-relative URLs (`/css/style.css`). When the site is served
