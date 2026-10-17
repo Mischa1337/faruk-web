@@ -65,8 +65,9 @@
   <div class="success-ico" aria-hidden="true">
     {% icon "check", "" %}
   </div>
-  <h3>Danke, deine Anfrage ist da!</h3>
-  <p>Ich melde mich innerhalb von 24&nbsp;Stunden bei dir – meistens deutlich schneller.</p>
+  {#- The script puts ", <first name>" into the span #}
+  <h3>Danke<span id="successName"></span> – deine Nachricht ist angekommen!</h3>
+  <p>Ich melde mich so schnell wie möglich bei dir, sobald ich sie gelesen habe.</p>
   <p class="success-hint">Wenn es eilig ist, erreichst du mich am schnellsten direkt:</p>
   <a class="btn btn-ghost btn-block" href="{{ contactLinks.whatsappAfterForm }}" target="_blank" rel="noopener">
     {% icon "whatsapp" %}
