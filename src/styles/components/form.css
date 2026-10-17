@@ -155,6 +155,11 @@
   color: var(--error);
 }
 
+/* Way out when sending fails, see contact-form/index.js */
+.form-fallback[hidden] {
+  display: none;
+}
+
 /* Confirmation that replaces the form after it was sent */
 .form-success {
   background: var(--surface);

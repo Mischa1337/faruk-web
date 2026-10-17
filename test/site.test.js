@@ -154,6 +154,22 @@ describe('sub-pages', () => {
   });
 });
 
+describe('contact form', () => {
+  const { formEndpoint } = JSON.parse(readFileSync('src/_data/site.json', 'utf8')).contact;
+
+  test('sends to the worker only when an endpoint is configured', () => {
+    const form = first(read('index.html'), /(<form[^>]*id="contactForm"[^>]*>)/);
+    assert.match(form, /data-mail="kontakt@afp-coaching\.de"/);
+    assert.equal(form.includes('data-endpoint='), Boolean(formEndpoint));
+  });
+
+  test('privacy policy describes the way the form actually sends', () => {
+    const privacy = read('datenschutz.html');
+    assert.equal(privacy.includes('Cloudflare'), Boolean(formEndpoint));
+    assert.equal(privacy.includes('mailto:-Link'), !formEndpoint);
+  });
+});
+
 describe('crawler files', () => {
   test('sitemap lists exactly the indexable pages', () => {
     const locations = all(read('sitemap.xml'), /<loc>([^<]+)<\/loc>/g);

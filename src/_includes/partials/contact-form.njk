@@ -2,19 +2,23 @@
   Contact form. Behaviour (validation, spam protection, sending) lives in
   scripts/modules/contact-form/. Every required field has an error box
   (<p class="error" data-for="…">) that the script fills in.
+
+  data-endpoint: URL of the contact worker (site.contact.formEndpoint). Without
+  it the form opens the visitor's mail app instead. The privacy policy
+  switches its text on the same value.
 #}
-<form class="contact-form" id="contactForm" novalidate>
+<form class="contact-form" id="contactForm" novalidate data-mail="{{ site.contact.email }}"{% if site.contact.formEndpoint %} data-endpoint="{{ site.contact.formEndpoint }}"{% endif %}>
   <p class="form-intro">Oder schreib mir direkt hier:</p>
 
   <div class="field-row">
     <div class="field">
       <label for="f-name">Name <span aria-hidden="true">*</span></label>
-      <input type="text" id="f-name" name="name" required autocomplete="name" placeholder="Vor- und Nachname" aria-describedby="err-f-name">
+      <input type="text" id="f-name" name="name" required maxlength="100" autocomplete="name" placeholder="Vor- und Nachname" aria-describedby="err-f-name">
       <p class="error" id="err-f-name" data-for="f-name"></p>
     </div>
     <div class="field">
       <label for="f-mail">E-Mail <span aria-hidden="true">*</span></label>
-      <input type="email" id="f-mail" name="email" required autocomplete="email" placeholder="deine-email@beispiel.de" aria-describedby="err-f-mail">
+      <input type="email" id="f-mail" name="email" required maxlength="254" autocomplete="email" placeholder="deine-email@beispiel.de" aria-describedby="err-f-mail">
       <p class="error" id="err-f-mail" data-for="f-mail"></p>
     </div>
   </div>
@@ -22,26 +26,25 @@
   {#- Full width: hint and placeholder are too long for half a row #}
   <div class="field">
     <label for="f-tel">Telefon <span class="opt">(Empfohlen für das Erstgespräch)</span></label>
-    <input type="tel" id="f-tel" name="telefon" autocomplete="tel" placeholder="Für eine schnelle Terminabsprache">
+    <input type="tel" id="f-tel" name="telefon" maxlength="40" autocomplete="tel" placeholder="Für eine schnelle Terminabsprache">
   </div>
 
   <div class="field">
     <label for="f-source">Wie bist du auf mich aufmerksam geworden? <span aria-hidden="true">*</span></label>
-    <input type="text" id="f-source" name="quelle" required aria-describedby="err-f-source">
+    <input type="text" id="f-source" name="quelle" required maxlength="200" aria-describedby="err-f-source">
     <p class="error" id="err-f-source" data-for="f-source"></p>
   </div>
 
   <div class="field">
     <label for="f-msg">Nachricht <span aria-hidden="true">*</span></label>
-    <textarea id="f-msg" name="nachricht" rows="5" required placeholder="Was möchtest du erreichen? Gibt es aktuelle Herausforderungen, Besonderheiten oder Wunschzeiten für unser kostenloses Erstgespräch?" aria-describedby="err-f-msg"></textarea>
+    <textarea id="f-msg" name="nachricht" rows="5" required maxlength="5000" placeholder="Was möchtest du erreichen? Gibt es aktuelle Herausforderungen, Besonderheiten oder Wunschzeiten für unser kostenloses Erstgespräch?" aria-describedby="err-f-msg"></textarea>
     <p class="error" id="err-f-msg" data-for="f-msg"></p>
   </div>
 
   {#
-    Spam trap (honeypot). The field name `_gotcha` is chosen on purpose:
-    Formspree knows it and discards filled-in submissions on the server.
-    So the trap works even if a bot bypasses the form and posts directly
-    to the endpoint.
+    Spam trap (honeypot). The contact worker checks the field `_gotcha` as
+    well, so the trap also works when a bot bypasses the form and posts
+    directly to the endpoint (worker/src/handler.js).
   #}
   <div class="hp" aria-hidden="true"><label for="f-hp">Bitte leer lassen</label><input type="text" id="f-hp" name="_gotcha" tabindex="-1" autocomplete="off"></div>
 
@@ -53,6 +56,8 @@
 
   <button type="submit" class="btn btn-primary btn-block btn-lg" id="submitBtn">Jetzt unverbindlich anfragen</button>
   <p class="form-status" id="formStatus" role="status" aria-live="polite"></p>
+  {#- Shown only when sending fails: opens the mail app with the message already written #}
+  <button type="button" class="btn btn-ghost btn-block form-fallback" id="mailFallbackBtn" hidden>Mit deinem E-Mail-Programm senden</button>
 </form>
 
 {#- Confirmation after successful sending: replaces the form so it is clear the message is out #}

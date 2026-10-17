@@ -108,17 +108,52 @@ headerLinks:
     </p>
 
     {#
-      Only valid while the form works without a form service (formEndpoint
-      in scripts/config.js is empty). If e.g. Formspree is set up, this
-      paragraph has to be rewritten.
+      Follows the form: with site.contact.formEndpoint set, the form sends
+      through the contact worker (worker/); without it, it opens the
+      visitor's mail app. The text below switches on the same value.
     #}
     <h3>Versand des Kontaktformulars</h3>
+    {% if site.contact.formEndpoint %}
+    <p>
+      Wenn du das Kontaktformular absendest, werden deine Angaben verschlüsselt an einen kleinen
+      Dienst (einen sogenannten Worker) bei Cloudflare übertragen. Er prüft die Angaben und leitet
+      sie als E-Mail an mein Postfach weiter. Cloudflare speichert die Inhalte des Formulars dabei
+      nicht, sondern verarbeitet sie nur für den Versand.
+    </p>
+    <p>
+      Anbieter ist die Cloudflare,&nbsp;Inc., 101 Townsend St., San Francisco, CA&nbsp;94107, USA. Mit
+      Cloudflare besteht ein Vertrag zur Auftragsverarbeitung nach Art. 28 DSGVO. Dabei kann es zu
+      einer Übermittlung von Daten in die USA kommen. Die Cloudflare,&nbsp;Inc. ist unter dem EU-US
+      Data Privacy Framework zertifiziert; die Übermittlung ist damit durch den
+      Angemessenheitsbeschluss der Europäischen Kommission gemäß Art. 45 DSGVO abgesichert. Weitere
+      Informationen findest du in der
+      <a href="https://www.cloudflare.com/de-de/privacypolicy/" target="_blank" rel="noopener">Datenschutzerklärung von Cloudflare</a>.
+    </p>
+    <p>
+      Zum Schutz vor massenhaft automatisch versendeten Anfragen ist die Zahl der Nachrichten pro
+      Absender begrenzt. Dafür wird deine IP-Adresse nicht im Klartext gespeichert, sondern nur als
+      pseudonymisierter Prüfwert (Hash mit einem täglich wechselnden Zufallswert), der nach einer
+      Stunde automatisch gelöscht wird. Zur Fehlersuche protokolliert der Dienst lediglich, ob ein
+      Versand geklappt hat – ohne Formularinhalte und ohne IP-Adresse; diese Protokolle löscht
+      Cloudflare nach drei Tagen.
+    </p>
+    <p>
+      Mein E-Mail-Postfach liegt bei der IONOS&nbsp;SE, Elgendorfer Str. 57, 56410 Montabaur,
+      Deutschland, die als Auftragsverarbeiter die E-Mail versendet und speichert.
+    </p>
+    <p>
+      <strong>Rechtsgrundlage:</strong> für die Übermittlung deiner Anfrage wie oben beschrieben;
+      für die Begrenzung der Nachrichten Art. 6 Abs. 1 lit. f DSGVO. Mein berechtigtes Interesse
+      liegt darin, das Kontaktformular vor Missbrauch und Spam zu schützen.
+    </p>
+    {% else %}
     <p>
       Das Kontaktformular auf dieser Website öffnet beim Absenden lediglich dein eigenes E-Mail-Programm
       mit einer vorbereiteten Nachricht (mailto:-Link). Über die Website selbst werden dabei keine Daten
       erfasst oder an Dritte übermittelt; der Versand erfolgt ausschließlich über deinen eigenen
       E-Mail-Anbieter.
     </p>
+    {% endif %}
 
     <h2>7. Kontaktaufnahme über WhatsApp</h2>
     <p>

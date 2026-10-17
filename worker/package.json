@@ -1,0 +1,19 @@
+{
+  "name": "afp-contact-worker",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Cloudflare Worker that sends the contact form of afp-coaching.de by SMTP.",
+  "type": "module",
+  "scripts": {
+    "dev": "wrangler dev",
+    "deploy": "wrangler deploy",
+    "build": "wrangler deploy --dry-run --outdir dist",
+    "test": "node --test"
+  },
+  "dependencies": {
+    "worker-mailer": "1.2.1"
+  },
+  "devDependencies": {
+    "wrangler": "4.151.1"
+  }
+}

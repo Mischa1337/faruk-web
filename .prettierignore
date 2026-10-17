@@ -1,5 +1,7 @@
 _site/
 node_modules/
+worker/dist/
+worker/.wrangler/
 package-lock.json
 # Templates are HTML with Nunjucks tags, which Prettier cannot format
 *.njk
