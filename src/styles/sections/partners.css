@@ -1,9 +1,10 @@
 /* ── Partners ──────────────────────────────────────────────
-   The grid arranges itself for one, two or more partners. Card styles
-   live in components/card.css. */
+   The grid arranges itself for one, two or more partners: auto-fit lets
+   the cards share the full width instead of leaving empty columns.
+   Card styles live in components/card.css. */
 .partners {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(min(100%, 340px), 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 340px), 1fr));
   gap: clamp(1rem, 2vw, 1.5rem);
 }
 
