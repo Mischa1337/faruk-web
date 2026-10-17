@@ -1,0 +1,32 @@
+// Cloudflare Worker that sends the contact form of afp-coaching.de.
+// Secrets are not in this file – set them once with `npx wrangler secret put`:
+//   SMTP_PASSWORD  password of the sender mailbox MAIL_FROM
+//   HEALTH_TOKEN   random string the monitoring job sends to /health
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "afp-contact",
+  "main": "src/index.js",
+  "compatibility_date": "2026-10-01",
+  "workers_dev": true,
+  "preview_urls": false,
+  // Keep only the worker's own log lines (no request details such as IP
+  // addresses), stored by Cloudflare for three days
+  "observability": { "enabled": true, "logs": { "invocation_logs": false } },
+  "vars": {
+    // Only these sites may submit the form (CORS); comma-separated
+    "ALLOWED_ORIGINS": "https://afp-coaching.de,https://www.afp-coaching.de,https://mischa1337.github.io",
+    // The only recipient – the worker can never send anywhere else
+    "MAIL_TO": "kontakt@afp-coaching.de",
+    // Sender mailbox at IONOS; also the SMTP user name
+    "MAIL_FROM": "formular@afp-coaching.de",
+    "SMTP_HOST": "smtp.ionos.de",
+    // 465 = TLS from the start, 587 = STARTTLS
+    "SMTP_PORT": "465",
+    // Upper limit of e-mails per day (UTC), however many senders there are
+    "DAILY_LIMIT": "30",
+  },
+  "durable_objects": {
+    "bindings": [{ "name": "RATE_LIMITER", "class_name": "RateLimiter" }],
+  },
+  "migrations": [{ "tag": "v1", "new_sqlite_classes": ["RateLimiter"] }],
+}
