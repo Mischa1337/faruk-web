@@ -5,9 +5,9 @@
     "icon": "dumbbell",
     "text": "Die ganze Einheit gehört dir. Ich begleite dich bei jeder Übungsausführung, passe das Training flexibel an deine Tagesform an und helfe dir dabei, sicher und zielgerichtet zu trainieren.",
     "features": [
-      "Individueller Trainingsplan",
-      "Direkte Technikkorrektur während jeder Einheit",
-      "60 oder 90 Minuten persönliche Betreuung"
+      "<strong>Direkte Technikkorrektur:</strong> Sofortiges Feedback während jeder Übung für maximale Sicherheit.",
+      "<strong>Flexible Live-Steuerung:</strong> Anpassung von Intensität und Gewichten in Echtzeit an deine Tagesform.",
+      "<strong>Persönliche Betreuung:</strong> Volle 60 oder 90 Minuten, in denen ausschließlich du und deine Ziele im Mittelpunkt stehen."
     ],
     "schema": {
       "name": "Personal Training 1:1",
@@ -21,9 +21,9 @@
     "icon": "duo",
     "text": "Gemeinsam trainieren, sich gegenseitig motivieren und dabei von persönlicher Betreuung profitieren. Ideal für Paare, Freunde oder Geschwister mit ähnlichen Zielen.",
     "features": [
-      "Günstiger pro Person",
-      "Gemeinsam motivierter ins Training",
-      "Individuell auf beide Leistungsstände angepasst"
+      "<strong>Geteilte Kosten:</strong> Ein deutlich günstigerer Preis pro Person im Vergleich zum Einzel-Training.",
+      "<strong>Höhere Motivation:</strong> Gemeinsam mit dem Lieblingsmenschen, Freunden oder Familie spürbar leichter am Ball bleiben.",
+      "<strong>Individuelle Skalierung:</strong> Die Übungen werden für beide Teilnehmer passend auf den jeweiligen Leistungsstand abgestimmt."
     ],
     "schema": {
       "name": "Duo-Training zu zweit",
@@ -37,10 +37,10 @@
     "icon": "smartphone",
     "text": "Du trainierst selbstständig, aber nicht allein. Du erhältst einen individuell geplanten Trainingsablauf, regelmäßige Rückmeldungen zu deiner Technik und persönliche Check-ins. So weißt du auch genau dann, was zu tun ist, wenn wir nicht gemeinsam im Studio stehen.",
     "features": [
-      "Ortsunabhängig und maximal flexibel",
-      "Regelmäßige Anpassung des Trainingsplans",
-      "Technik-Feedback per Video",
-      "Direkter Support und Fragen per Chat"
+      "<strong>Maximale Flexibilität:</strong> Ortsunabhängig und zeitlich völlig frei nach deinem eigenen Zeitplan trainieren.",
+      "<strong>Maßgeschneiderter Trainingsablauf:</strong> Ein strukturierter Leitfaden, der regelmäßig an deine Fortschritte angepasst wird.",
+      "<strong>Digitales Technik-Feedback:</strong> Analyse deiner Übungsausführung per Video-Check für dauerhaften Erfolg.",
+      "<strong>Direkter Chat-Support:</strong> Schnelle Antworten auf all deine Fragen über den direkten Messenger-Kontakt."
     ],
     "schema": {
       "name": "Online-Coaching",
@@ -54,10 +54,10 @@
     "icon": "clock",
     "text": "Keine kurzfristige Diät und keine Verbotslisten. Gemeinsam entwickeln wir Ernährungs&shy;gewohnheiten, die zu deinem Alltag passen und die du langfristig beibehalten kannst.",
     "features": [
-      "Alltagstaugliche Empfehlungen",
-      "Ohne starre Verbote",
-      "Individuell auf deine Ziele abgestimmt",
-      "Perfekt kombinierbar mit Personal Training oder Online-Coaching"
+      "<strong>Alltagstaugliche Gewohnheiten:</strong> Praktische und leicht umsetzbare Empfehlungen statt komplizierter Regeln.",
+      "<strong>Ohne Verbote:</strong> Keine hungerbasierten Diäten, sondern ein flexibler Ansatz für langfristigen Erfolg.",
+      "<strong>Zielgerichtete Abstimmung:</strong> Perfekt auf deine körperlichen Ziele und deinen Alltag ausgerichtet.",
+      "<strong>Optimale Kombination:</strong> Ideal als Ergänzung zu deinem Personal Training oder Online-Coaching buchbar."
     ],
     "schema": {
       "name": "Ernährungscoaching",

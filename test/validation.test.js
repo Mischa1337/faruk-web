@@ -59,8 +59,20 @@ test('fallback mail body lists all fields and marks a missing phone', () => {
   );
 });
 
-test('mail subject names the sender', () => {
+test('mail subject names the sender and the chosen offer', () => {
   assert.equal(buildMailSubject('Max'), 'Anfrage Personal Training – Max');
+  assert.equal(buildMailSubject('Max', '10er-Karte'), 'Anfrage 10er-Karte – Max');
+});
+
+test('mail body starts with the chosen offer when there is one', () => {
+  const body = buildMailBody({
+    name: 'Max',
+    email: 'max@mail.de',
+    quelle: 'Instagram',
+    nachricht: 'Hallo',
+    interesse: 'Duo-Training',
+  });
+  assert.ok(body.startsWith('Interesse: Duo-Training\nName: Max\n'));
 });
 
 test('maxlength in the form matches the limits the worker enforces', () => {
@@ -68,6 +80,8 @@ test('maxlength in the form matches the limits the worker enforces', () => {
   for (const [name, max] of Object.entries(MAX_LENGTH)) {
     const input = markup.match(new RegExp(`<(?:input|textarea)[^>]*name="${name}"[^>]*>`))?.[0];
     assert.ok(input, `field ${name} exists`);
+    // Hidden fields are filled by the script, not typed, and take no maxlength
+    if (input.includes('type="hidden"')) continue;
     assert.match(input, new RegExp(`maxlength="${max}"`), name);
   }
 });

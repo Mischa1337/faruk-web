@@ -138,6 +138,52 @@
   display: none;
 }
 
+/* Offer chosen via a price or offer button (scripts/modules/interest-links.js) */
+.interest-chip {
+  justify-self: start;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.35rem 0.4rem 0.35rem 0.85rem;
+  border: 1px solid color-mix(in srgb, var(--accent) 35%, transparent);
+  border-radius: 100px;
+  background: var(--accent-soft);
+  font-size: 0.88rem;
+  color: var(--text-muted);
+}
+
+.interest-chip[hidden] {
+  display: none;
+}
+
+.interest-chip strong {
+  color: var(--text);
+}
+
+.interest-chip button {
+  display: grid;
+  place-items: center;
+  width: 1.6rem;
+  height: 1.6rem;
+  padding: 0;
+  border: 0;
+  border-radius: 50%;
+  background: transparent;
+  color: var(--text-muted);
+  cursor: pointer;
+}
+
+.interest-chip button:hover {
+  background: color-mix(in srgb, var(--accent) 15%, transparent);
+  color: var(--text);
+}
+
+.interest-chip .ico {
+  width: 0.9rem;
+  height: 0.9rem;
+  stroke-width: 2.5;
+}
+
 /* Honeypot spam trap: moved off-screen, see partials/contact-form.njk */
 .hp {
   position: absolute;

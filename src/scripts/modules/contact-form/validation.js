@@ -15,8 +15,15 @@ export const EMAIL_PATTERN = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
 /** Minimum lengths of the required text fields, after trimming. */
 export const MIN_LENGTH = { name: 2, quelle: 2, nachricht: 10 };
 
-/** Maximum lengths; the inputs carry the same values as `maxlength`. */
-export const MAX_LENGTH = { name: 100, email: 254, telefon: 40, quelle: 200, nachricht: 5000 };
+/** Maximum lengths; the visible inputs carry the same values as `maxlength`. */
+export const MAX_LENGTH = {
+  name: 100,
+  email: 254,
+  telefon: 40,
+  quelle: 200,
+  nachricht: 5000,
+  interesse: 60,
+};
 
 /** One rule per required field, keyed by the input's id. */
 export const RULES = [
@@ -50,15 +57,20 @@ export const RULES = [
 /** Returns the value a rule checks: `checked` for checkboxes, the text otherwise. */
 export const fieldValue = (input) => (input.type === 'checkbox' ? input.checked : input.value);
 
-/** Subject line of the enquiry e-mail. */
-export const buildMailSubject = (name) => `Anfrage Personal Training – ${name}`;
+/**
+ * Subject line of the enquiry e-mail: names the chosen offer, if any, so
+ * Faruk sees what it is about right in his inbox.
+ */
+export const buildMailSubject = (name, interest = '') =>
+  `Anfrage ${interest || 'Personal Training'} – ${name}`;
 
 /**
  * Builds the plain-text body of the enquiry e-mail.
- * @param {{name: string, email: string, telefon?: string, quelle: string, nachricht: string}} data
+ * @param {{name: string, email: string, telefon?: string, quelle: string, nachricht: string, interesse?: string}} data
  */
 export function buildMailBody(data) {
   return [
+    ...(data.interesse ? [`Interesse: ${data.interesse}`] : []),
     `Name: ${data.name}`,
     `E-Mail: ${data.email}`,
     `Telefon: ${data.telefon || '–'}`,

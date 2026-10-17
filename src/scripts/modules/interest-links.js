@@ -1,19 +1,24 @@
 /**
  * Links with data-interest (offer cards, price buttons) lead to the
- * contact form and pre-fill the message with the chosen offer, as long
- * as the visitor has not typed anything yet.
+ * contact form and note the chosen offer above the message field. It is
+ * sent as its own field (`interesse`), so the message stays free for the
+ * visitor's own words and Faruk sees the offer in the mail's subject.
  */
 export function initInterestLinks() {
-  const message = document.getElementById('f-msg');
-  if (!message) return;
+  const input = document.getElementById('f-interest');
+  const chip = document.getElementById('interestChip');
+  const label = document.getElementById('interestLabel');
+  if (!input || !chip || !label) return;
+
+  const choose = (value) => {
+    input.value = value;
+    label.textContent = value;
+    chip.hidden = !value;
+  };
 
   document.querySelectorAll('[data-interest]').forEach((link) => {
-    link.addEventListener('click', () => {
-      if (message.value.trim() && !message.dataset.prefilled) return;
-      message.value = `Ich interessiere mich für: ${link.dataset.interest}.\n\n`;
-      message.dataset.prefilled = 'true';
-    });
+    link.addEventListener('click', () => choose(link.dataset.interest));
   });
 
-  message.addEventListener('input', () => delete message.dataset.prefilled);
+  document.getElementById('interestClear')?.addEventListener('click', () => choose(''));
 }

@@ -26,7 +26,7 @@
         <p class="price-desc">{{ plan.description }}</p>
         <ul class="ticks">
           {%- for feature in plan.features %}
-          <li>{{ feature }}</li>
+          <li>{{ feature | safe }}</li>
           {%- endfor %}
         </ul>
         <a class="btn {{ 'btn-primary' if plan.featured else 'btn-ghost' }} btn-block" href="#kontakt" data-interest="{{ plan.name }}">{{ pricing.cta }}</a>

@@ -31,6 +31,12 @@ test('uses the same subject and body as the mailto fallback', () => {
   );
 });
 
+test('names the chosen offer in subject and body', () => {
+  const message = buildMessage({ ...data, interesse: '5er-Karte' }, env);
+  assert.equal(message.subject, 'Anfrage 5er-Karte – Max Mustermann');
+  assert.ok(message.text.startsWith('Interesse: 5er-Karte\nName: Max Mustermann'));
+});
+
 test('ends with a signature that says where the mail comes from', () => {
   const { text } = buildMessage(data, env);
   assert.match(text, /\n-- \nGesendet über das Kontaktformular auf afp-coaching\.de\./);

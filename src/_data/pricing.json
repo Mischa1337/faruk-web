@@ -15,10 +15,9 @@
       ],
       "description": "Zum Reinschnuppern oder für unregelmäßige Termine.",
       "features": [
-        "1:1-Personal Training (vor Ort nach Absprache)",
-        "Flexible Termine ohne Mindestlaufzeit",
-        "Individuelle Anpassung an deine Tagesform",
-        "Ideal zum Reinschnuppern oder für unregelmäßige Einheiten"
+        "<strong>Volle Flexibilität:</strong> Du buchst deine Termine ganz spontan und flexibel nach Bedarf.",
+        "<strong>Keine Bindung:</strong> Du kaufst nur das, was du aktuell nutzt – ohne Vorauszahlung oder Kontingent.",
+        "<strong>Unverbindlicher Einstieg:</strong> Ideal, um das 1:1-Training oder einen neuen Trainingsschwerpunkt einfach mal auszuprobieren."
       ]
     },
     {
@@ -36,9 +35,9 @@
       ],
       "description": "Für einen festen Einstieg über mehrere Wochen.",
       "features": [
-        "1:1-Personal Training (vor Ort nach Absprache)",
-        "Nur 77 € bzw. 97 € pro Trainingseinheit",
-        "Fester Einstieg über mehrere Wochen"
+        "<strong>Preiseffekt:</strong> Nur 77 € bzw. 97 € pro Trainingseinheit.",
+        "<strong>Gezielter Zeitraum:</strong> Ein kompakter und fester Rahmen, um deine Einheiten über mehrere Wochen hinweg konzentriert durchzuziehen.",
+        "<strong>2 Monate Gültigkeit:</strong> Die Einheiten können flexibel innerhalb von zwei Monaten eingelöst werden."
       ]
     },
     {
@@ -58,11 +57,9 @@
       ],
       "description": "Der Klassiker. Genug Zeit, um echte Fortschritte zu sehen.",
       "features": [
-        "1:1-Personal Training (vor Ort nach Absprache)",
-        "Nur 75 € bzw. 95 € pro Trainingseinheit",
-        "Der Klassiker für echte, langfristige Fortschritte",
-        "Inklusive WhatsApp-Support für deine Fragen zwischendurch",
-        "Volle 6 Monate lang flexibel gültig"
+        "<strong>Preiseffekt:</strong> Nur 75 € bzw. 95 € pro Trainingseinheit.",
+        "<strong>Fortlaufende Betreuung:</strong> Der bewährte Weg für eine regelmäßige Zusammenarbeit, um deine sportlichen Ziele Schritt für Schritt zu erreichen.",
+        "<strong>4 Monate Gültigkeit:</strong> Maximaler zeitlicher Spielraum von vier Monaten für deine Einheiten."
       ]
     },
     {
@@ -89,7 +86,7 @@
   },
   "cta": "Erstgespräch vereinbaren",
   "footnotes": [
-    "Firmen- &amp; Gruppenangebote: Individuelle Konditionen auf Anfrage.",
-    "Ernährungscoaching: Preis auf Anfrage – ich berate dich gern persönlich."
+    "Ernährungscoaching: Preis auf Anfrage – ich berate dich gern persönlich.",
+    "Firmen- &amp; Gruppenangebote: Individuelle Konditionen auf Anfrage."
   ]
 }
