@@ -21,11 +21,16 @@
   padding: clamp(1.6rem, 3vw, 2.1rem);
   border: 1px solid var(--line-soft);
   border-radius: var(--radius-lg);
-  background: linear-gradient(
-    160deg,
-    var(--surface) 0%,
-    color-mix(in srgb, var(--surface) 40%, transparent) 100%
-  );
+  background: var(--surface);
+  transition:
+    border-color var(--dur),
+    box-shadow var(--dur);
+}
+
+/* Not clickable: lights up for orientation, without lifting */
+.step:hover {
+  border-color: var(--highlight-border);
+  box-shadow: var(--highlight-ring);
 }
 
 .step-num {

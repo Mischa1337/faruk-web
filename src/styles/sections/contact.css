@@ -36,15 +36,16 @@
   background: var(--surface);
   text-decoration: none;
   transition:
-    border-color 0.2s,
-    background-color 0.2s,
-    transform 0.2s var(--ease);
+    border-color var(--dur-fast),
+    background-color var(--dur-fast),
+    box-shadow var(--dur-fast);
 }
 
-.contact-list a:hover {
-  border-color: var(--accent);
+.contact-list a:hover,
+.contact-list a:focus-visible {
+  border-color: var(--highlight-border);
+  box-shadow: var(--highlight-ring);
   background: var(--surface-2);
-  transform: translateX(3px);
 }
 
 .contact-list .ico {
@@ -92,7 +93,7 @@
     margin-left: auto;
     color: var(--text-dim);
     opacity: 0;
-    transition: opacity 0.2s;
+    transition: opacity var(--dur-fast);
   }
 
   .js .contact-email:hover .ico-copy,

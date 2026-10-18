@@ -47,11 +47,14 @@
   font-size: 0.9rem;
   color: var(--text-muted);
   text-decoration: none;
-  transition: color 0.18s;
+  transition: color var(--dur-fast);
 }
 
+/* Text links: green and underlined, like "Zur Website" and "Zurück" */
 .footer-nav a:hover {
   color: var(--accent-hi);
+  text-decoration: underline;
+  text-underline-offset: 3px;
 }
 
 .footer-legal {

@@ -26,21 +26,19 @@
   background: var(--surface);
   border: 1px solid var(--line-soft);
   border-radius: var(--radius-lg);
-  padding: clamp(1.75rem, 3vw, 2.25rem);
+  padding: clamp(1.6rem, 3vw, 2.1rem);
   display: flex;
   flex-direction: column;
   gap: 1rem;
   transition:
-    transform 0.25s var(--ease),
-    border-color 0.25s,
-    box-shadow 0.25s;
+    border-color var(--dur),
+    box-shadow var(--dur);
 }
 
-/* Same green highlight as the offer cards (components/card.css) */
+/* Only the button is clickable, so the card lights up without lifting */
 .price:hover {
-  transform: translateY(-4px);
-  border-color: var(--accent);
-  box-shadow: 0 0 0 3px color-mix(in srgb, var(--accent) 18%, transparent);
+  border-color: var(--highlight-border);
+  box-shadow: var(--highlight-ring);
 }
 
 .price-featured {
@@ -55,14 +53,14 @@
 
 .price-featured:hover {
   box-shadow:
-    0 0 0 3px color-mix(in srgb, var(--accent) 18%, transparent),
+    var(--highlight-ring),
     0 20px 60px -25px color-mix(in srgb, var(--accent) 40%, transparent);
 }
 
 .badge {
   position: absolute;
   top: -0.75rem;
-  left: clamp(1.75rem, 3vw, 2.25rem);
+  left: clamp(1.6rem, 3vw, 2.1rem);
   background: var(--accent);
   color: var(--on-accent);
   font-size: 0.72rem;
@@ -70,7 +68,7 @@
   letter-spacing: 0.08em;
   text-transform: uppercase;
   padding: 0.3rem 0.8rem;
-  border-radius: 100px;
+  border-radius: var(--radius-pill);
 }
 
 .price h3 {
