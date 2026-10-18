@@ -14,7 +14,7 @@
   background: color-mix(in srgb, var(--bg) 93%, transparent);
   backdrop-filter: saturate(180%) blur(14px);
   border-top: 1px solid var(--line-soft);
-  transition: transform 0.3s var(--ease);
+  transition: transform var(--dur) var(--ease);
 }
 
 .mobile-cta.is-hidden {
@@ -39,7 +39,7 @@
   justify-content: center;
   gap: 0.5rem;
   min-height: 48px;
-  border-radius: 100px;
+  border-radius: var(--radius-pill);
   font-weight: 700;
   font-size: 0.95rem;
   text-decoration: none;

@@ -6,7 +6,7 @@
   gap: 0.6rem;
   padding: 0.82rem 1.5rem;
   border: 1px solid transparent;
-  border-radius: 100px;
+  border-radius: var(--radius-pill);
   font-weight: 700;
   font-size: 0.95rem;
   letter-spacing: -0.005em;
@@ -14,10 +14,10 @@
   cursor: pointer;
   white-space: nowrap;
   transition:
-    transform 0.16s var(--ease),
-    background-color 0.2s,
-    border-color 0.2s,
-    box-shadow 0.2s;
+    transform var(--dur-fast) var(--ease),
+    background-color var(--dur-fast),
+    border-color var(--dur-fast),
+    box-shadow var(--dur-fast);
 }
 
 .btn:hover {
@@ -51,9 +51,10 @@
   backdrop-filter: blur(8px);
 }
 
+/* Light green instead of grey, matching the highlighted boxes */
 .btn-ghost:hover {
-  background: var(--overlay-strong);
-  border-color: var(--line-strong);
+  background: var(--accent-soft);
+  border-color: var(--highlight-border);
 }
 
 .btn-lg {

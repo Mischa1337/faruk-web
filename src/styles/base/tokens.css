@@ -18,6 +18,12 @@
   --on-accent: #fff;
   --accent-soft: color-mix(in srgb, var(--accent) 10%, transparent);
 
+  /* Highlight for boxes under the pointer and focused fields – the same
+     green everywhere. Clickable boxes also lift a little; boxes you can't
+     click only get border and ring, so they don't pretend to be buttons. */
+  --highlight-border: var(--accent);
+  --highlight-ring: 0 0 0 3px color-mix(in srgb, var(--accent) 18%, transparent);
+
   /* Primary buttons and logo */
   --btn-bg: var(--brand);
   --btn-bg-hover: #154a33;
@@ -50,8 +56,17 @@
     ui-sans-serif, -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', Arial,
     'Noto Sans', sans-serif;
 
+  /* Corner radii: small controls, medium boxes, large cards, pills */
+  --radius-sm: 10px;
   --radius: 14px;
   --radius-lg: 22px;
+  --radius-pill: 100px;
+
+  /* Transition durations: links, buttons and colours / boxes and panels.
+     Longer one-off animations (reveal on scroll, form confirmation) keep
+     their own timing. */
+  --dur-fast: 0.2s;
+  --dur: 0.25s;
 
   /* Shadow colours are separate so the dark scheme only has to swap them */
   --shadow-a: rgb(10 50 33 / 6%);

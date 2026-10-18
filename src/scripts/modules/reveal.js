@@ -18,7 +18,7 @@ export function initReveal() {
         .filter((entry) => entry.isIntersecting)
         .forEach((entry, i) => {
           // Small offset so that cards appearing together show up one after another
-          entry.target.style.transitionDelay = `${Math.min(i * STAGGER_MS, MAX_DELAY_MS)}ms`;
+          entry.target.style.animationDelay = `${Math.min(i * STAGGER_MS, MAX_DELAY_MS)}ms`;
           entry.target.classList.add('is-visible');
           observer.unobserve(entry.target);
         });

@@ -2,21 +2,23 @@
    Important: elements are only hidden under `.js`. A tiny inline script in
    <head> sets that class and removes it again if js/main.js fails to load.
    Without this detour the page would be blank without JavaScript – for
-   visitors and search engines alike. */
-.reveal {
-  transition:
-    opacity 0.7s var(--ease),
-    transform 0.7s var(--ease);
-}
-
-.js .reveal {
+   visitors and search engines alike.
+   An animation rather than a transition: once played it leaves nothing
+   behind, so the components' own hover transitions (cards lifting, borders
+   turning green) keep their timing and delay. */
+.js .reveal:not(.is-visible) {
   opacity: 0;
-  transform: translateY(18px);
 }
 
 .js .reveal.is-visible {
-  opacity: 1;
-  transform: none;
+  animation: reveal-in 0.7s var(--ease) backwards;
+}
+
+@keyframes reveal-in {
+  from {
+    opacity: 0;
+    transform: translateY(18px);
+  }
 }
 
 /* ── Respect reduced motion ── */
@@ -32,8 +34,7 @@
     transition-duration: 0.01ms !important;
   }
 
-  .js .reveal {
+  .js .reveal:not(.is-visible) {
     opacity: 1;
-    transform: none;
   }
 }

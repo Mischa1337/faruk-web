@@ -9,21 +9,36 @@
   border: 1px solid var(--line-soft);
   border-radius: var(--radius);
   overflow: hidden;
-  transition: border-color 0.2s;
+  transition:
+    border-color var(--dur-fast),
+    box-shadow var(--dur-fast);
+}
+
+/* The question under the pointer or keyboard focus lights up; an open
+   question keeps the green border, so it is clear which one is open. */
+.faq details:hover,
+.faq details:has(summary:focus-visible) {
+  border-color: var(--highlight-border);
+  box-shadow: var(--highlight-ring);
 }
 
 .faq details[open] {
-  border-color: var(--line-strong);
+  border-color: var(--highlight-border);
+}
+
+/* The whole box shows the focus, so the summary needs no outline of its own */
+.faq summary:focus-visible {
+  outline: none;
 }
 
 .faq summary {
   list-style: none;
   cursor: pointer;
   padding: 1.15rem 3.25rem 1.15rem 1.4rem;
-  font-weight: 650;
+  font-weight: 600;
   font-size: 1.02rem;
   position: relative;
-  transition: color 0.2s;
+  transition: color var(--dur-fast);
 }
 
 .faq summary::-webkit-details-marker {
@@ -46,7 +61,7 @@
   height: 15px;
   background: currentcolor;
   mask: var(--icon) center / contain no-repeat;
-  transition: transform 0.25s var(--ease);
+  transition: transform var(--dur) var(--ease);
   color: var(--text-dim);
 }
 

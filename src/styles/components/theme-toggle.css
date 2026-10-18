@@ -15,12 +15,12 @@
   height: 44px;
   background: var(--overlay);
   border: 1px solid var(--line);
-  border-radius: 11px;
+  border-radius: var(--radius-sm);
   color: var(--text-muted);
   cursor: pointer;
   transition:
-    color 0.18s,
-    background-color 0.18s;
+    color var(--dur-fast),
+    background-color var(--dur-fast);
 }
 
 .theme-toggle[hidden] {

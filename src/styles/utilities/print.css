@@ -12,8 +12,7 @@
     color: #000;
   }
 
-  .js .reveal {
+  .js .reveal:not(.is-visible) {
     opacity: 1;
-    transform: none;
   }
 }

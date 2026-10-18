@@ -10,8 +10,8 @@
   color: var(--on-accent);
   font-weight: 700;
   padding: 0.7rem 1.1rem;
-  border-radius: 8px;
-  transition: top 0.2s var(--ease);
+  border-radius: var(--radius-sm);
+  transition: top var(--dur-fast) var(--ease);
 }
 
 .skip-link:focus {
