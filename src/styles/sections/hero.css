@@ -92,18 +92,34 @@
 }
 
 @media (width <= 940px) {
-  /* Single column: heading and buttons first, so they are visible right
-     away on phones. The photo follows directly below. */
+  /* Single column with the photo between heading and text. The copy box
+     dissolves (display: contents), so its children become grid items
+     themselves and the photo can be ordered in after the <h1>. Spacing
+     comes from their own margins, hence no gap. */
   .hero-inner {
     grid-template-columns: 1fr;
+    gap: 0;
+  }
+
+  .hero-copy {
+    display: contents;
+  }
+
+  .hero-copy > * {
+    order: 2;
+  }
+
+  .hero-copy h1 {
+    order: 0;
+  }
+
+  .hero-photo {
+    order: 1;
+    margin-bottom: 1.6rem;
   }
 
   .hero {
     padding-bottom: clamp(3rem, 6vw, 5rem);
-  }
-
-  .hero-photo {
-    margin-top: 1rem;
   }
 
   /* The portrait is cropped to landscape here. Without object-position the

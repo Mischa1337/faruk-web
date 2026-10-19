@@ -20,8 +20,24 @@
 }
 
 @media (width <= 940px) {
+  /* Single column with the photo between heading and text – the same
+     display: contents technique as in the hero. */
   .about-grid {
     grid-template-columns: 1fr;
+    gap: 0;
+  }
+
+  .about-copy {
+    display: contents;
+  }
+
+  .about-photo {
+    order: 1;
+    margin-bottom: 1.6rem;
+  }
+
+  .about-body {
+    order: 2;
   }
 
   /* At full width the portrait would be over 1000 px tall – hence landscape.

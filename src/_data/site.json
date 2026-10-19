@@ -3,7 +3,7 @@
   "name": "AFP-Coaching – Personal Training",
   "shortName": "AFP-Coaching",
   "tagline": "Achtsamkeit • Fortschritt • Präzision",
-  "footerClaim": "Personal Training vor Ort und online",
+  "footerClaim": "Personal Training in Gießen und online",
   "language": "de",
   "locale": "de_DE",
   "themeColors": { "light": "#FFFFFF", "dark": "#121212" },
@@ -13,7 +13,7 @@
     "name": "Faruk Palteki",
     "legalName": "Ahmet Faruk Palteki",
     "jobTitle": "Personal Trainer",
-    "photo": "/img/ueber-mich.jpg",
+    "photo": "/img/faruk-palteki-krafttraining-giessen.jpg",
     "languages": ["de", "en", "tr"],
     "expertise": [
       "Krafttraining",

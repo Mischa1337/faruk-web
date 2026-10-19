@@ -18,6 +18,11 @@
   --on-accent: #fff;
   --accent-soft: color-mix(in srgb, var(--accent) 10%, transparent);
 
+  /* Letters that must stand out from the body text (the A, F and P of the
+     philosophy). The dark brand green is too close to the anthracite text
+     for that, so light mode uses a brighter green (5.3:1 on white). */
+  --accent-vivid: #1f7a4c;
+
   /* Highlight for boxes under the pointer and focused fields – the same
      green everywhere. Clickable boxes also lift a little; boxes you can't
      click only get border and ring, so they don't pretend to be buttons. */
@@ -93,6 +98,7 @@
 
     --accent: #4caf75; /* mint green, readable on dark backgrounds */
     --accent-hi: #4caf75;
+    --accent-vivid: #4caf75;
     --on-accent: var(--brand);
     --btn-bg: #fff;
     --btn-bg-hover: #e3efe8;
@@ -123,6 +129,7 @@
 
   --accent: #4caf75; /* mint green, readable on dark backgrounds */
   --accent-hi: #4caf75;
+  --accent-vivid: #4caf75;
   --on-accent: var(--brand);
   --btn-bg: #fff;
   --btn-bg-hover: #e3efe8;

@@ -20,7 +20,7 @@ const formatPrice = (plan) =>
     ? plan.rates.map((rate) => `${rate.duration} ${rate.amount} €`).join(', ')
     : `${plan.price.amount} ${plan.price.unit}`;
 
-export function render({ site, offers, pricing, pricingNotes, faq }) {
+export function render({ site, philosophy, offers, pricing, pricingNotes, faq }) {
   const { owner, address, contact } = site;
 
   return `# ${site.name}
@@ -34,6 +34,12 @@ ${list([
   'Sprachen: Deutsch, Englisch, Türkisch',
   `Standort: ${address.street}, ${address.postalCode} ${address.city}; Online-Coaching ortsunabhängig`,
 ])}
+
+## Philosophie
+
+AFP steht für Achtsamkeit, Fortschritt und Präzision.
+
+${list(philosophy.map((pillar) => `**${pillar.title}** – ${pillar.claim}: ${pillar.text}`))}
 
 ## Angebote
 

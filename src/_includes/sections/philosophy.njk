@@ -1,0 +1,26 @@
+{#
+  The three values behind the name: Achtsamkeit, Fortschritt, Präzision.
+  Their initials are set in the accent colour, so "AFP" can be read down
+  the page. Content in _data/philosophy.json.
+#}
+<section class="section" id="philosophie">
+  <div class="wrap">
+    <header class="section-head reveal">
+      <p class="eyebrow">Philosophie</p>
+      <h2>Warum AFP-Coaching? Meine Philosophie für dich</h2>
+    </header>
+
+    <div class="pillars">
+      {%- for pillar in philosophy %}
+      <article class="pillar reveal">
+        <div class="card-ico" aria-hidden="true">
+          {% icon pillar.icon, "" %}
+        </div>
+        <h3><span class="pillar-initial">{{ pillar.title[0] }}</span>{{ pillar.title.slice(1) }}</h3>
+        <p class="pillar-claim">{{ pillar.claim }}</p>
+        <p>{{ pillar.text }}</p>
+      </article>
+      {%- endfor %}
+    </div>
+  </div>
+</section>

@@ -187,8 +187,8 @@
   transform: translateY(-7px) rotate(-45deg);
 }
 
-/* Phones: "Erstgespräch" moves to the fixed bottom bar (.mobile-cta) and
-   into the menu; the menu folds out across the full width. */
+/* Phones: "Erstgespräch" moves into the menu (quick contact is covered by
+   the round buttons, .mobile-cta); the menu folds out across the full width. */
 @media (width <= 780px) {
   .header-inner {
     column-gap: 0.6rem;

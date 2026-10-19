@@ -19,6 +19,13 @@
   border-block: 1px solid var(--line-soft);
 }
 
+/* Two plain sections in a row (philosophy → offers) share one spacing
+   instead of doubling it – without a background change in between, the
+   doubled gap would look like a hole. */
+.section:not(.section-alt) + .section:not(.section-alt) {
+  padding-top: 0;
+}
+
 .section-head {
   max-width: 660px;
   margin-bottom: clamp(2.5rem, 5vw, 3.75rem);
