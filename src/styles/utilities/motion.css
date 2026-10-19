@@ -4,7 +4,7 @@
    Without this detour the page would be blank without JavaScript – for
    visitors and search engines alike.
    An animation rather than a transition: once played it leaves nothing
-   behind, so the components' own hover transitions (cards lifting, borders
+   behind, so the components' own hover transitions (buttons lifting, borders
    turning green) keep their timing and delay. */
 .js .reveal:not(.is-visible) {
   opacity: 0;
