@@ -1,24 +1,29 @@
-/* ── Fixed contact bar on phones ───────────────────────────
-   WhatsApp and phone are always one thumb tap away. The bar slides away
-   while the contact section is in view (modules/mobile-cta.js). */
+/* ── Contact buttons on phones ─────────────────────────────
+   Two small round buttons in the bottom right corner: phone and WhatsApp.
+   Muted on purpose – a button only takes on its full colour once the
+   first tap has unfolded its label (.is-armed). They show up after the
+   hero and slide away at the contact section (modules/mobile-cta.js). */
 .mobile-cta {
   position: fixed;
-  left: 0;
-  right: 0;
-  bottom: 0;
+  right: var(--gutter);
+  bottom: calc(1rem + env(safe-area-inset-bottom, 0px));
   z-index: 95;
   display: none;
+  flex-direction: column;
+  align-items: flex-end;
   gap: 0.6rem;
-  padding: 0.7rem var(--gutter);
-  padding-bottom: calc(0.7rem + env(safe-area-inset-bottom, 0px));
-  background: color-mix(in srgb, var(--bg) 93%, transparent);
-  backdrop-filter: saturate(180%) blur(14px);
-  border-top: 1px solid var(--line-soft);
-  transition: transform var(--dur) var(--ease);
+  transition:
+    opacity var(--dur) var(--ease),
+    transform var(--dur) var(--ease),
+    visibility var(--dur);
 }
 
-.mobile-cta.is-hidden {
-  transform: translateY(115%);
+/* Hidden only while the script is in charge – without it the buttons
+   simply stay visible as plain links. */
+.js .mobile-cta:not(.is-visible) {
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(0.75rem);
 }
 
 @media (width <= 780px) {
@@ -26,24 +31,31 @@
     display: flex;
   }
 
-  /* Room at the bottom, so the fixed bar never covers the footer */
+  /* Room at the bottom, so the buttons never cover the footer */
   .site-footer {
     padding-bottom: 6rem;
   }
 }
 
 .mcta {
-  flex: 1;
   display: inline-flex;
   align-items: center;
-  justify-content: center;
-  gap: 0.5rem;
-  min-height: 48px;
+  height: 48px;
+  padding-inline: 13px;
   border-radius: var(--radius-pill);
+  border: 1px solid var(--line);
+  background: color-mix(in srgb, var(--bg) 85%, transparent);
+  backdrop-filter: saturate(180%) blur(14px);
+  box-shadow: var(--shadow);
+  color: var(--accent-hi);
   font-weight: 700;
   font-size: 0.95rem;
   text-decoration: none;
-  border: 1px solid transparent;
+  transition:
+    padding var(--dur) var(--ease),
+    background-color var(--dur),
+    border-color var(--dur),
+    color var(--dur);
 }
 
 .mcta svg {
@@ -53,13 +65,35 @@
   stroke-width: 1.9;
 }
 
-.mcta-wa {
+/* Folded away, but still read out by screen readers */
+.mcta-label {
+  max-width: 0;
+  overflow: hidden;
+  white-space: nowrap;
+  opacity: 0;
+  transition:
+    max-width var(--dur) var(--ease),
+    margin var(--dur) var(--ease),
+    opacity var(--dur);
+}
+
+.mcta.is-armed {
+  padding-right: 1.15rem;
+  border-color: transparent;
+}
+
+.mcta.is-armed .mcta-label {
+  max-width: 10rem;
+  margin-left: 0.5rem;
+  opacity: 1;
+}
+
+.mcta-wa.is-armed {
   background: var(--whatsapp);
   color: var(--on-whatsapp);
 }
 
-.mcta-tel {
-  background: var(--overlay);
-  border-color: var(--line);
-  color: var(--text);
+.mcta-tel.is-armed {
+  background: var(--btn-bg);
+  color: var(--on-accent);
 }

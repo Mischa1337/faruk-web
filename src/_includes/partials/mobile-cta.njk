@@ -1,15 +1,19 @@
 {#
-  Fixed contact bar, only visible on phones. Both channels are always one
-  thumb tap away. While the contact section is in view the bar slides
-  away – everything is listed there in detail anyway.
+  Two small round contact buttons in the bottom right corner, only on
+  phones. They appear once the hero (which has its own WhatsApp button)
+  is out of view and slide away again at the contact section.
+
+  The first tap only unfolds the label, the second one opens WhatsApp or
+  the phone app – so a thumb brushing past while scrolling does nothing
+  (modules/mobile-cta.js). Without JavaScript they work as plain links.
 #}
 <div class="mobile-cta" id="mobileCta">
-  <a class="mcta mcta-wa" href="{{ contactLinks.whatsapp }}" target="_blank" rel="noopener">
-    {% icon "whatsapp", "" %}
-    WhatsApp
-  </a>
   <a class="mcta mcta-tel" href="{{ contactLinks.phone }}">
     {% icon "phone", "" %}
-    Anrufen
+    <span class="mcta-label">Anrufen</span>
+  </a>
+  <a class="mcta mcta-wa" href="{{ contactLinks.whatsapp }}" target="_blank" rel="noopener">
+    {% icon "whatsapp", "" %}
+    <span class="mcta-label">WhatsApp öffnen</span>
   </a>
 </div>

@@ -6,6 +6,7 @@
  *
  * See ARCHITECTURE.md for an overview.
  */
+import { parse } from 'node:path';
 import { HtmlBasePlugin } from '@11ty/eleventy';
 import { eleventyImageTransformPlugin } from '@11ty/eleventy-img';
 import { assetUrl, buildAssets } from './config/assets.js';
@@ -22,9 +23,13 @@ export default function (eleventyConfig) {
   // adds the real dimensions, and a `width` attribute would limit the output
   // to that single size. The originals are copied as well, so their
   // URLs (e.g. the trainer photo in the structured data) stay valid.
+  // The generated files keep the descriptive name of the original
+  // (faruk-personal-trainer-giessen-800.webp instead of a hash) – file names
+  // are a small signal for image search.
   eleventyConfig.addPlugin(eleventyImageTransformPlugin, {
     formats: ['avif', 'webp', 'jpeg'],
     widths: [480, 800, 1200],
+    filenameFormat: (id, src, width, format) => `${parse(src).name}-${width}.${format}`,
     failOnError: true,
   });
   eleventyConfig.addPassthroughCopy({ 'src/img': '/img' });

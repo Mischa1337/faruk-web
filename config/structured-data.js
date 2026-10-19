@@ -96,6 +96,8 @@ export function buildStructuredData({ site, offers, pricing, faq }, { stripTags 
       addressRegion: address.region,
       addressCountry: address.country,
     },
+    // Training on site happens in the home town; online coaching is not tied to a place
+    areaServed: { '@type': 'City', name: address.city },
     geo: {
       '@type': 'GeoCoordinates',
       latitude: address.latitude,
