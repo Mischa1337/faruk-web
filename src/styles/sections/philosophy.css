@@ -1,40 +1,56 @@
 /* ── Philosophy ("Warum AFP-Coaching?") ────────────────────
-   Three values side by side, divided by thin lines instead of boxes, so
-   the section reads lighter than the offer cards right below it. Stacked
-   below 780 px, like the process steps. */
+   Boxes like the process steps: three side by side, stacked below 780 px.
+   The large initials replace the step numbers and read "AFP" across. */
 .pillars {
-  --pillar-gap: clamp(1.75rem, 4vw, 3rem);
-
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: var(--pillar-gap);
-}
-
-.pillar + .pillar {
-  border-left: 1px solid var(--line-soft);
-  padding-left: var(--pillar-gap);
+  gap: 1.15rem;
 }
 
 @media (width <= 780px) {
   .pillars {
     grid-template-columns: 1fr;
   }
+}
 
-  .pillar + .pillar {
-    border-left: 0;
-    padding-left: 0;
-    border-top: 1px solid var(--line-soft);
-    padding-top: var(--pillar-gap);
-  }
+.pillar {
+  padding: clamp(1.6rem, 3vw, 2.1rem);
+  border: 1px solid var(--line-soft);
+  border-radius: var(--radius-lg);
+  background: var(--surface);
+  transition:
+    border-color var(--dur),
+    box-shadow var(--dur);
+}
+
+/* Not clickable: lights up for orientation, without lifting */
+.pillar:hover {
+  border-color: var(--highlight-border);
+  box-shadow: var(--highlight-ring);
+}
+
+/* Large initial on the left, icon on the right – A, F and P read across */
+.pillar-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 1.1rem;
+}
+
+.pillar-head .card-ico {
+  margin-bottom: 0;
+}
+
+.pillar-letter {
+  font-size: clamp(2.6rem, 2.1rem + 1.6vw, 3.4rem);
+  font-weight: 800;
+  line-height: 1;
+  letter-spacing: -0.03em;
+  color: var(--accent-hi);
 }
 
 .pillar h3 {
   margin-bottom: 0.35rem;
-}
-
-/* A, F and P in the accent colour – together they spell the name */
-.pillar-initial {
-  color: var(--accent-vivid);
 }
 
 .pillar-claim {

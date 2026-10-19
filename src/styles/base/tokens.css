@@ -13,19 +13,15 @@
      ON the brand colour (badge, primary button). When changing a colour,
      re-check contrast (at least 4.5:1, e.g. with the browser devtools). */
   --brand: #0a3221; /* dark green of the logo */
+  --mint: #4caf75; /* light green for accents on dark backgrounds */
   --accent: var(--brand);
   --accent-hi: var(--brand);
   --on-accent: #fff;
   --accent-soft: color-mix(in srgb, var(--accent) 10%, transparent);
 
-  /* Letters that must stand out from the body text (the A, F and P of the
-     philosophy). The dark brand green is too close to the anthracite text
-     for that, so light mode uses a brighter green (5.3:1 on white). */
-  --accent-vivid: #1f7a4c;
-
   /* Highlight for boxes under the pointer and focused fields – the same
-     green everywhere. Clickable boxes also lift a little; boxes you can't
-     click only get border and ring, so they don't pretend to be buttons. */
+     green everywhere. Boxes only get border and ring and never lift: only
+     buttons do, so no box pretends to be one. */
   --highlight-border: var(--accent);
   --highlight-ring: 0 0 0 3px color-mix(in srgb, var(--accent) 18%, transparent);
 
@@ -39,6 +35,10 @@
   --bg-alt: #eef3f0;
   --surface: #f4f7f5;
   --surface-2: #e9f0ec;
+
+  /* Boxes on the tinted sections (.section-alt). On the sage background
+     the sage boxes would blend in, so they turn white there. */
+  --surface-on-alt: #fff;
   --line: #d5e0d9;
   --line-soft: #e2e9e4;
   --line-strong: #b7c9be;
@@ -96,9 +96,8 @@
   :root:not([data-theme='light']) {
     color-scheme: dark;
 
-    --accent: #4caf75; /* mint green, readable on dark backgrounds */
-    --accent-hi: #4caf75;
-    --accent-vivid: #4caf75;
+    --accent: var(--mint);
+    --accent-hi: var(--mint);
     --on-accent: var(--brand);
     --btn-bg: #fff;
     --btn-bg-hover: #e3efe8;
@@ -107,6 +106,7 @@
     --bg-alt: #161a18;
     --surface: #1a2e24;
     --surface-2: #213a2e;
+    --surface-on-alt: var(--surface);
     --line: #2b4537;
     --line-soft: #22372c;
     --line-strong: #3a5a49;
@@ -127,9 +127,8 @@
 :root[data-theme='dark'] {
   color-scheme: dark;
 
-  --accent: #4caf75; /* mint green, readable on dark backgrounds */
-  --accent-hi: #4caf75;
-  --accent-vivid: #4caf75;
+  --accent: var(--mint);
+  --accent-hi: var(--mint);
   --on-accent: var(--brand);
   --btn-bg: #fff;
   --btn-bg-hover: #e3efe8;
@@ -138,6 +137,7 @@
   --bg-alt: #161a18;
   --surface: #1a2e24;
   --surface-2: #213a2e;
+  --surface-on-alt: var(--surface);
   --line: #2b4537;
   --line-soft: #22372c;
   --line-strong: #3a5a49;

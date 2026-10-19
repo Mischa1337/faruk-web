@@ -1,9 +1,9 @@
 {#
   The three values behind the name: Achtsamkeit, Fortschritt, Präzision.
-  Their initials are set in the accent colour, so "AFP" can be read down
-  the page. Content in _data/philosophy.json.
+  Boxes like the process steps; the large initials read "AFP" across
+  them. Content in _data/philosophy.json.
 #}
-<section class="section" id="philosophie">
+<section class="section section-alt" id="philosophie">
   <div class="wrap">
     <header class="section-head reveal">
       <p class="eyebrow">Philosophie</p>
@@ -13,10 +13,11 @@
     <div class="pillars">
       {%- for pillar in philosophy %}
       <article class="pillar reveal">
-        <div class="card-ico" aria-hidden="true">
-          {% icon pillar.icon, "" %}
+        <div class="pillar-head" aria-hidden="true">
+          <span class="pillar-letter">{{ pillar.title[0] }}</span>
+          <span class="card-ico">{% icon pillar.icon, "" %}</span>
         </div>
-        <h3><span class="pillar-initial">{{ pillar.title[0] }}</span>{{ pillar.title.slice(1) }}</h3>
+        <h3>{{ pillar.title }}</h3>
         <p class="pillar-claim">{{ pillar.claim }}</p>
         <p>{{ pillar.text }}</p>
       </article>
