@@ -5,6 +5,7 @@
  */
 import {
   EMAIL_PATTERN,
+  LANGUAGE_PATTERN,
   MAX_LENGTH,
   MIN_LENGTH,
 } from '../../src/scripts/modules/contact-form/validation.js';
@@ -22,6 +23,8 @@ const FIELDS = {
   nachricht: { required: true, min: MIN_LENGTH.nachricht },
   // Offer chosen via a price or offer button; also part of the subject
   interesse: { required: false, singleLine: true },
+  // Language of the page the form was sent from; noted in the mail
+  sprache: { required: false, pattern: LANGUAGE_PATTERN, singleLine: true },
 };
 
 const LINE_BREAK = /[\r\n]/;

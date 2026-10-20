@@ -1,5 +1,5 @@
 ---
-layout: layouts/base.njk
+layout: layouts/home.njk
 permalink: index.html
 isHome: true
 title: Personal Training in Gießen & Online-Coaching | AFP-Coaching
@@ -11,25 +11,9 @@ sitemap:
   priority: "1.0"
 ---
 {#
-  Home page (one-pager). Each section lives in its own file under
-  _includes/sections/; its styles under styles/sections/ with the same
-  name. Reorder or remove sections here.
+  German home page; the sections are listed in _includes/layouts/home.njk.
 
   Gießen is named in title, description and hero for local search, always
   next to "online": training on site happens in Gießen, online coaching
   works from anywhere – nobody from elsewhere should feel excluded.
 #}
-<main id="main">
-{% include "sections/hero.njk" %}
-{% include "sections/trustbar.njk" %}
-{% include "sections/philosophy.njk" %}
-{% include "sections/offers.njk" %}
-{% include "sections/process.njk" %}
-{% include "sections/gallery.njk" %}
-{% include "sections/pricing.njk" %}
-{% include "sections/about.njk" %}
-{% include "sections/reviews.njk" %}
-{% include "sections/faq.njk" %}
-{% include "sections/partners.njk" %}
-{% include "sections/contact.njk" %}
-</main>

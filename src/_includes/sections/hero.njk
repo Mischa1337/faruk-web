@@ -9,26 +9,19 @@
         "Personal Training (in Gießen)" and "Online-Coaching" do.
       #}
       <h1>
-        <span class="h1-kicker">Personal Training in Gießen &amp; Online-Coaching</span>
-        Training, das zu deinem Leben passt.
+        <span class="h1-kicker">{{ text.hero.kicker }}</span>
+        {{ text.hero.title }}
       </h1>
-      <p class="hero-claim">
-        Für <strong>mehr Kraft</strong>, <strong>mehr Energie</strong> und einen Körper,
-        <strong>auf den du dich verlassen kannst</strong>.
-      </p>
-      <p class="lead">
-        Hallo, ich bin Faruk, dein Personal Trainer in Gießen. Gemeinsam finden wir heraus, was du brauchst, um deine Ziele zu erreichen.
-        Dein Training passe ich <strong>individuell an dich und deinen Alltag an</strong> – und ich bleibe an deiner Seite,
-        <strong>auch wenn es mal nicht leichtfällt</strong>.
-      </p>
+      <p class="hero-claim">{{ text.hero.claim | safe }}</p>
+      <p class="lead">{{ text.hero.lead | safe }}</p>
       <div class="hero-actions">
-        <a class="btn btn-primary btn-lg" href="#kontakt">Kostenloses Erstgespräch</a>
+        <a class="btn btn-primary btn-lg" href="#kontakt">{{ text.hero.cta }}</a>
         <a class="btn btn-ghost btn-lg" href="{{ contactLinks.whatsapp }}" target="_blank" rel="noopener">
           {% icon "whatsapp" %}
-          Per WhatsApp schreiben
+          {{ text.hero.whatsapp }}
         </a>
       </div>
-      <p class="hero-note">Unverbindlich · Antwort meist innerhalb von 24&nbsp;Stunden</p>
+      <p class="hero-note">{{ text.hero.note | safe }}</p>
     </div>
 
     <figure class="hero-photo">
@@ -38,7 +31,7 @@
       #}
       <img src="/img/faruk-personal-trainer-giessen.jpg" fetchpriority="high" decoding="async"
            sizes="(max-width: 940px) 100vw, 480px"
-           alt="Faruk, Personal Trainer in Gießen, im Freien vor grünen Bäumen">
+           alt="{{ text.hero.photoAlt }}">
     </figure>
   </div>
 </section>

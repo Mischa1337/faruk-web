@@ -1,0 +1,35 @@
+{
+  "label": { "de": "Auf einen Blick", "en": "At a glance" },
+  "items": [
+    {
+      "value": { "de": "Seit 2019", "en": "Since 2019" },
+      "caption": {
+        "de": "Erfahrung in der Trainings&shy;betreuung",
+        "en": "of experience in personal coaching"
+      }
+    },
+    {
+      "textValue": true,
+      "value": {
+        "de": "Zerti&shy;fizierter Personal Trainer",
+        "en": "Certified Personal Trainer"
+      },
+      "caption": {
+        "de": "inkl. Fitness&shy;trainer A- &amp; B-Lizenz",
+        "en": "incl. fitness trainer A &amp; B licence"
+      }
+    },
+    {
+      "value": { "de": "0&nbsp;€", "en": "€0" },
+      "caption": { "de": "für dein Erstgespräch", "en": "for your first consultation" }
+    },
+    {
+      "textValue": true,
+      "value": { "de": "Vor Ort &amp; online", "en": "On site &amp; online" },
+      "caption": {
+        "de": "im Studio, outdoor, bei dir – oder von überall",
+        "en": "in the gym, outdoors, at your place – or from anywhere"
+      }
+    }
+  ]
+}

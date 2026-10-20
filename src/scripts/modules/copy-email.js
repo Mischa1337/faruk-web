@@ -1,4 +1,5 @@
 import { $ } from '../lib/dom.js';
+import { t } from '../lib/i18n.js';
 
 /* On a desktop many people write e-mails in the browser (Gmail, Web.de …).
    There a mailto link only triggers a browser prompt and then opens a mail
@@ -32,7 +33,7 @@ export function initCopyEmail() {
     }
 
     link.classList.add('is-copied');
-    hint.textContent = '✓ Adresse kopiert';
+    hint.textContent = t.emailCopied;
     clearTimeout(timer);
     timer = setTimeout(() => {
       link.classList.remove('is-copied');

@@ -1,65 +1,150 @@
 [
   {
     "id": "personal-training",
-    "title": "Personal Training 1:1",
+    "title": {
+      "de": "Personal Training 1:1",
+      "en": "1:1 Personal Training"
+    },
     "icon": "dumbbell",
-    "text": "Die ganze Einheit gehört dir. Ich begleite dich bei jeder Übungsausführung, passe das Training flexibel an deine Tagesform an und helfe dir dabei, sicher und zielgerichtet zu trainieren.",
-    "features": [
-      "<strong>Direkte Technikkorrektur:</strong> Sofortiges Feedback während jeder Übung für maximale Sicherheit.",
-      "<strong>Mentale Entlastung:</strong> Kein Mitdenken oder Planen für dich – ich führe dich durch die Einheit und hole das Beste aus deiner Stunde heraus.",
-      "<strong>Persönliche Betreuung:</strong> Volle 60 oder 90 Minuten, in denen ausschließlich du und deine Ziele im Mittelpunkt stehen."
-    ],
+    "text": {
+      "de": "Die ganze Einheit gehört dir. Ich begleite dich bei jeder Übungsausführung, passe das Training flexibel an deine Tagesform an und helfe dir dabei, sicher und zielgerichtet zu trainieren.",
+      "en": "The whole session is yours. I guide you through every exercise, adapt the training to how you feel on the day and help you train safely and with purpose."
+    },
+    "features": {
+      "de": [
+        "<strong>Direkte Technikkorrektur:</strong> Sofortiges Feedback während jeder Übung für maximale Sicherheit.",
+        "<strong>Mentale Entlastung:</strong> Kein Mitdenken oder Planen für dich – ich führe dich durch die Einheit und hole das Beste aus deiner Stunde heraus.",
+        "<strong>Persönliche Betreuung:</strong> Volle 60 oder 90 Minuten, in denen ausschließlich du und deine Ziele im Mittelpunkt stehen."
+      ],
+      "en": [
+        "<strong>Direct technique coaching:</strong> Instant feedback during every exercise for maximum safety.",
+        "<strong>Mental relief:</strong> No thinking ahead or planning for you – I lead you through the session and get the most out of your hour.",
+        "<strong>Personal attention:</strong> A full 60 or 90 minutes focused entirely on you and your goals."
+      ]
+    },
     "schema": {
-      "name": "Personal Training 1:1",
-      "serviceType": "Personal Training",
-      "description": "Individuelle 1:1-Betreuung, 60 oder 90 Minuten."
+      "name": {
+        "de": "Personal Training 1:1",
+        "en": "1:1 Personal Training"
+      },
+      "serviceType": {
+        "de": "Personal Training",
+        "en": "Personal training"
+      },
+      "description": {
+        "de": "Individuelle 1:1-Betreuung, 60 oder 90 Minuten.",
+        "en": "Individual 1:1 coaching, 60 or 90 minutes."
+      }
     }
   },
   {
     "id": "duo-training",
-    "title": "Duo-Training",
+    "title": {
+      "de": "Duo-Training",
+      "en": "Duo Training"
+    },
     "icon": "duo",
-    "text": "Gemeinsam trainieren, sich gegenseitig motivieren und dabei von persönlicher Betreuung profitieren. Ideal für Paare, Freunde oder Geschwister mit ähnlichen Zielen.",
-    "features": [
-      "<strong>Geteilte Kosten:</strong> Ein deutlich günstigerer Preis pro Person im Vergleich zum Einzel-Training.",
-      "<strong>Feste Verbindlichkeit:</strong> Die gegenseitige Verabredung hilft dir dabei, dauerhaft am Ball zu bleiben und das Training fest in den Alltag zu integrieren.",
-      "<strong>Individuelle Skalierung:</strong> Die Übungen werden für beide Teilnehmer passend auf den jeweiligen Leistungsstand abgestimmt."
-    ],
+    "text": {
+      "de": "Gemeinsam trainieren, sich gegenseitig motivieren und dabei von persönlicher Betreuung profitieren. Ideal für Paare, Freunde oder Geschwister mit ähnlichen Zielen.",
+      "en": "Train together, motivate each other and still get personal coaching. Ideal for couples, friends or siblings with similar goals."
+    },
+    "features": {
+      "de": [
+        "<strong>Geteilte Kosten:</strong> Ein deutlich günstigerer Preis pro Person im Vergleich zum Einzel-Training.",
+        "<strong>Feste Verbindlichkeit:</strong> Die gegenseitige Verabredung hilft dir dabei, dauerhaft am Ball zu bleiben und das Training fest in den Alltag zu integrieren.",
+        "<strong>Individuelle Skalierung:</strong> Die Übungen werden für beide Teilnehmer passend auf den jeweiligen Leistungsstand abgestimmt."
+      ],
+      "en": [
+        "<strong>Shared costs:</strong> A considerably lower price per person than one-to-one training.",
+        "<strong>Built-in commitment:</strong> Having a training date with each other helps you stay on track and make training a fixed part of everyday life.",
+        "<strong>Individual scaling:</strong> The exercises are adapted to each participant’s current level."
+      ]
+    },
     "schema": {
-      "name": "Duo-Training zu zweit",
-      "serviceType": "Personal Training",
-      "description": "Gemeinsames Training für zwei Personen."
+      "name": {
+        "de": "Duo-Training zu zweit",
+        "en": "Duo training for two"
+      },
+      "serviceType": {
+        "de": "Personal Training",
+        "en": "Personal training"
+      },
+      "description": {
+        "de": "Gemeinsames Training für zwei Personen.",
+        "en": "Training together for two people."
+      }
     }
   },
   {
     "id": "online-coaching",
-    "title": "Online-Coaching",
+    "title": {
+      "de": "Online-Coaching",
+      "en": "Online Coaching"
+    },
     "icon": "smartphone",
-    "text": "Du trainierst selbstständig, aber nicht allein. Du erhältst einen individuell geplanten Trainingsablauf, regelmäßige Rückmeldungen und persönliche Check-ins. So weißt du auch genau dann, was zu tun ist, wenn wir nicht gemeinsam im Studio stehen.",
-    "features": [
-      "<strong>Maßgeschneiderter Fahrplan:</strong> Ein strukturierter Leitfaden, der regelmäßig an deine Fortschritte angepasst wird.",
-      "<strong>Digitales Technik-Feedback:</strong> Analyse deiner Übungsausführung per Video-Check für dauerhaften Erfolg.",
-      "<strong>Direkter Chat-Support:</strong> Schnelle Antworten auf all deine Fragen über den direkten Messenger-Kontakt."
-    ],
+    "text": {
+      "de": "Du trainierst selbstständig, aber nicht allein. Du erhältst einen individuell geplanten Trainingsablauf, regelmäßige Rückmeldungen und persönliche Check-ins. So weißt du auch genau dann, was zu tun ist, wenn wir nicht gemeinsam im Studio stehen.",
+      "en": "You train on your own, but you’re not alone. You get an individually planned training programme, regular feedback and personal check-ins – so you know exactly what to do, even when we’re not in the gym together."
+    },
+    "features": {
+      "de": [
+        "<strong>Maßgeschneiderter Fahrplan:</strong> Ein strukturierter Leitfaden, der regelmäßig an deine Fortschritte angepasst wird.",
+        "<strong>Digitales Technik-Feedback:</strong> Analyse deiner Übungsausführung per Video-Check für dauerhaften Erfolg.",
+        "<strong>Direkter Chat-Support:</strong> Schnelle Antworten auf all deine Fragen über den direkten Messenger-Kontakt."
+      ],
+      "en": [
+        "<strong>Tailor-made roadmap:</strong> A structured guide that is regularly adjusted to your progress.",
+        "<strong>Digital technique feedback:</strong> Video checks of your exercise form for lasting success.",
+        "<strong>Direct chat support:</strong> Quick answers to all your questions via messenger."
+      ]
+    },
     "schema": {
-      "name": "Online-Coaching",
-      "serviceType": "Fernbetreuung",
-      "description": "Monatliche Betreuung mit Trainingsplan und Video-Analyse."
+      "name": {
+        "de": "Online-Coaching",
+        "en": "Online coaching"
+      },
+      "serviceType": {
+        "de": "Fernbetreuung",
+        "en": "Remote coaching"
+      },
+      "description": {
+        "de": "Monatliche Betreuung mit Trainingsplan und Video-Analyse.",
+        "en": "Monthly coaching with training plan and video analysis."
+      }
     }
   },
   {
     "id": "ernaehrungscoaching",
-    "title": "Ernährungs&shy;coaching",
+    "title": {
+      "de": "Ernährungs&shy;coaching",
+      "en": "Nutrition Coaching"
+    },
     "icon": "salad",
-    "text": "Keine kurzfristige Diät und keine Verbotsliste. Gemeinsam entwickeln wir Ernährungs&shy;gewohnheiten, die zu deinem Alltag passen und die du langfristig beibehalten kannst.",
-    "features": [
-      "<strong>Alltagstaugliche Gewohnheiten:</strong> Praktische und leicht umsetzbare Empfehlungen statt komplizierter Regeln.",
-      "<strong>Nachhaltiger Ansatz ohne Hunger:</strong> Wir streichen keine Lebensmittelgruppen. Ein flexibler Ansatz sorgt dafür, dass du deine körperlichen Ziele erreichst, ohne auf den Genuss im sozialen Leben zu verzichten.",
-      "<strong>Optionale Kombination:</strong> Ideal als Ergänzung zu deinem Personal Training oder Online-Coaching buchbar."
-    ],
+    "text": {
+      "de": "Keine kurzfristige Diät und keine Verbotsliste. Gemeinsam entwickeln wir Ernährungs&shy;gewohnheiten, die zu deinem Alltag passen und die du langfristig beibehalten kannst.",
+      "en": "No short-term diet and no list of forbidden foods. Together we develop eating habits that fit your everyday life and that you can keep up in the long run."
+    },
+    "features": {
+      "de": [
+        "<strong>Alltagstaugliche Gewohnheiten:</strong> Praktische und leicht umsetzbare Empfehlungen statt komplizierter Regeln.",
+        "<strong>Nachhaltiger Ansatz ohne Hunger:</strong> Wir streichen keine Lebensmittelgruppen. Ein flexibler Ansatz sorgt dafür, dass du deine körperlichen Ziele erreichst, ohne auf den Genuss im sozialen Leben zu verzichten.",
+        "<strong>Optionale Kombination:</strong> Ideal als Ergänzung zu deinem Personal Training oder Online-Coaching buchbar."
+      ],
+      "en": [
+        "<strong>Habits that work in real life:</strong> Practical, easy-to-follow advice instead of complicated rules.",
+        "<strong>Sustainable, without going hungry:</strong> We don’t cut out any food groups. A flexible approach helps you reach your physical goals without giving up enjoyment in your social life.",
+        "<strong>Optional add-on:</strong> Ideal to combine with your personal training or online coaching."
+      ]
+    },
     "schema": {
-      "name": "Ernährungscoaching",
-      "serviceType": "Ernährungsberatung"
+      "name": {
+        "de": "Ernährungscoaching",
+        "en": "Nutrition coaching"
+      },
+      "serviceType": {
+        "de": "Ernährungsberatung",
+        "en": "Nutritional counselling"
+      }
     }
   }
 ]

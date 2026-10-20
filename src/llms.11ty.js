@@ -6,7 +6,7 @@
  * Written as a JavaScript template because it is plain text, not HTML,
  * and must not be HTML-escaped.
  */
-import { stripTags } from '../config/filters.js';
+import { fill, stripTags } from '../config/filters.js';
 
 export const data = {
   permalink: 'llms.txt',
@@ -20,7 +20,7 @@ const formatPrice = (plan) =>
     ? plan.rates.map((rate) => `${rate.duration} ${rate.amount} €`).join(', ')
     : `${plan.price.amount} ${plan.price.unit}`;
 
-export function render({ site, philosophy, offers, pricing, pricingNotes, faq }) {
+export function render({ site, philosophy, offers, pricing, faq }) {
   const { owner, address, contact } = site;
 
   return `# ${site.name}
@@ -50,7 +50,8 @@ ${list(offers.map((offer) => `**${stripTags(offer.title)}**: ${stripTags(offer.t
 
 ${list([
   ...pricing.plans.map((plan) => `**${plan.name}**: ${formatPrice(plan)} – ${plan.description}`),
-  ...pricingNotes.map(stripTags),
+  fill(pricing.duo.note, pricing.duo),
+  ...pricing.footnotes.map(stripTags),
 ])}
 
 ## Häufige Fragen

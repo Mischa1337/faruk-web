@@ -1,29 +1,25 @@
 {#
   Photos from training sessions, all in 4:3 (about 1200 × 900 px), stored
-  in src/img/. To add a photo, append another <figure> with the same
-  `sizes` – the grid arranges itself. Keep an even number so none stands alone in a row. Only use
-  photos the pictured clients have agreed to.
+  in src/img/ and listed in _data/text/gallery.json. To add a photo, add an
+  entry there – the grid arranges itself. Keep an even number so none
+  stands alone in a row. Only use photos the pictured clients have agreed to.
 #}
 <section class="section" id="einblicke">
   <div class="wrap">
     <header class="section-head reveal">
-      <p class="eyebrow">Einblicke</p>
-      <h2>So sieht Training mit mir aus</h2>
+      <p class="eyebrow">{{ text.gallery.eyebrow }}</p>
+      <h2>{{ text.gallery.title }}</h2>
     </header>
 
     <div class="gallery">
+      {%- for photo in text.gallery.photos %}
       <figure class="gallery-item reveal">
-        <img src="/img/personal-training-giessen-technik-kettlebell.jpg" loading="lazy" decoding="async"
+        <img src="{{ photo.src }}" loading="lazy" decoding="async"
              sizes="(max-width: 600px) 100vw, (max-width: 1220px) 50vw, 580px"
-             alt="Faruk korrigiert im Studio die Technik eines Kunden bei Split Squats mit Kettlebell">
-        <figcaption>Präzise Technikkorrektur – für ein sicheres und effektives Training.</figcaption>
+             alt="{{ photo.alt }}">
+        <figcaption>{{ photo.caption }}</figcaption>
       </figure>
-      <figure class="gallery-item reveal">
-        <img src="/img/personal-training-giessen-stabilitaetsuebung.jpg" loading="lazy" decoding="async"
-             sizes="(max-width: 600px) 100vw, (max-width: 1220px) 50vw, 580px"
-             alt="Faruk begleitet eine Kundin bei einer Stabilitätsübung im Vierfüßlerstand">
-        <figcaption>Fokus auf Rückengesundheit – gezieltes Stabilitätstraining für einen starken Rücken im Alltag.</figcaption>
-      </figure>
+      {%- endfor %}
     </div>
   </div>
 </section>

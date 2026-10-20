@@ -1,0 +1,28 @@
+{
+  "eyebrow": { "de": "Einblicke", "en": "Insights" },
+  "title": { "de": "So sieht Training mit mir aus", "en": "What training with me looks like" },
+  "photos": [
+    {
+      "src": "/img/personal-training-giessen-technik-kettlebell.jpg",
+      "alt": {
+        "de": "Faruk korrigiert im Studio die Technik eines Kunden bei Split Squats mit Kettlebell",
+        "en": "Faruk correcting a client’s technique during kettlebell split squats in the gym"
+      },
+      "caption": {
+        "de": "Präzise Technikkorrektur – für ein sicheres und effektives Training.",
+        "en": "Precise technique coaching – for safe and effective training."
+      }
+    },
+    {
+      "src": "/img/personal-training-giessen-stabilitaetsuebung.jpg",
+      "alt": {
+        "de": "Faruk begleitet eine Kundin bei einer Stabilitätsübung im Vierfüßlerstand",
+        "en": "Faruk guiding a client through a stability exercise on all fours"
+      },
+      "caption": {
+        "de": "Fokus auf Rückengesundheit – gezieltes Stabilitätstraining für einen starken Rücken im Alltag.",
+        "en": "Focus on back health – targeted stability training for a strong back in everyday life."
+      }
+    }
+  ]
+}

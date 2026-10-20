@@ -1,14 +1,14 @@
-{# Header of the home page: logo, call to action, theme toggle and fold-out menu #}
+{# Header of the home page: logo, call to action, language switch, theme toggle and fold-out menu #}
 <header class="site-header" id="siteHeader">
   <div class="wrap header-inner">
-    {%- set brandHref = "#top" %}{% set brandLabel = "Startseite" %}
+    {%- set brandHref = "#top" %}{% set brandLabel = text.ui.homeLabel %}
     {% include "partials/brand.njk" %}
 
-    <button class="nav-toggle" type="button" id="navToggle" aria-expanded="false" aria-controls="siteNav" aria-label="Menü öffnen">
+    <button class="nav-toggle" type="button" id="navToggle" aria-expanded="false" aria-controls="siteNav" aria-label="{{ text.ui.openMenu }}">
       <span class="nav-toggle-bars" aria-hidden="true"><i></i><i></i><i></i></span>
     </button>
 
-    <nav class="site-nav" id="siteNav" aria-label="Hauptnavigation">
+    <nav class="site-nav" id="siteNav" aria-label="{{ text.ui.mainNav }}">
       <ul>
         {%- for item in navigation.main %}
         <li><a href="{{ item.href }}">{{ item.label }}</a></li>
@@ -17,6 +17,7 @@
       </ul>
     </nav>
     <a class="btn btn-primary btn-sm header-cta" href="{{ navigation.cta.href }}">{{ navigation.cta.label }}</a>
+    {% include "partials/lang-switch.njk" %}
     {% include "partials/theme-toggle.njk" %}
   </div>
 </header>

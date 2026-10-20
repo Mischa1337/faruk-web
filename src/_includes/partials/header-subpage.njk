@@ -4,9 +4,9 @@
 #}
 <header class="site-header is-stuck header-legal">
   <div class="wrap header-inner">
-    {%- set brandHref = "/" %}{% set brandLabel = "Zur Startseite" %}
+    {%- set brandHref = "/" %}{% set brandLabel = text.ui.backHomeLabel %}
     {% include "partials/brand.njk" %}
-    <nav class="legal-nav" aria-label="Hauptnavigation">
+    <nav class="legal-nav" aria-label="{{ text.ui.mainNav }}">
       <ul>
         {%- for item in headerLinks %}
         <li><a href="{{ item.href }}">{{ item.label }}</a></li>

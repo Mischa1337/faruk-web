@@ -1,6 +1,6 @@
 /* ── Site header ───────────────────────────────────────────
-   Fixed bar with logo, "Erstgespräch" button, light/dark toggle and the
-   menu button (☰). Quick links to single sections are left out on
+   Fixed bar with logo, "Erstgespräch" button, language switch, light/dark
+   toggle and the menu button (☰). Quick links to single sections are left out on
    purpose: visitors should read the page in order and not jump straight
    to the prices. The menu items fold out on every
    width: as a narrow card on desktop, full width on phones. */
@@ -75,6 +75,7 @@
   margin-left: auto;
 }
 
+.lang-switch,
 .theme-toggle {
   order: 2;
 }
@@ -198,8 +199,9 @@
     display: none;
   }
 
-  .theme-toggle {
-    margin-left: auto;
+  /* Pushes the buttons together on the right, whichever of them exist */
+  .brand {
+    margin-right: auto;
   }
 
   .site-nav {
@@ -241,9 +243,43 @@
   }
 }
 
-/* Includes room for the light/dark toggle */
+/* Small phones: logo, language switch, light/dark toggle and menu button
+   share the bar. Slightly smaller boxes and logo keep "AFP-Coaching" on
+   one line; below 360 px only the logo remains. */
+@media (width <= 420px) {
+  .header-inner {
+    column-gap: 0.4rem;
+  }
+
+  .brand {
+    gap: 0.5rem;
+  }
+
+  .brand-mark {
+    width: 56px;
+    height: 27px;
+  }
+
+  .brand-text {
+    white-space: nowrap;
+  }
+
+  .lang-switch,
+  .theme-toggle,
+  .nav-toggle {
+    width: 40px;
+    height: 40px;
+  }
+}
+
 @media (width <= 399px) {
   .brand-sub {
+    display: none;
+  }
+}
+
+@media (width <= 359px) {
+  .brand-text {
     display: none;
   }
 }

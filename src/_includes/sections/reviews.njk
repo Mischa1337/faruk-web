@@ -1,28 +1,32 @@
 {#
   Real Google reviews, used with the authors' consent; content in
   _data/reviews.json. Update the rating in _data/site.json when new
-  reviews come in.
+  reviews come in. The reviews stay in their original German on every
+  page – translating them would put words into real people's mouths.
 #}
 <section class="section section-alt" id="erfolge">
   <div class="wrap">
     <header class="section-head reveal">
-      <p class="eyebrow">Erfolge</p>
-      <h2>Was meine Kundinnen und Kunden sagen</h2>
-      <p class="section-lead rating-summary"><span class="stars" aria-hidden="true">★★★★★</span> {{ site.googleReviews.rating }} von 5 Sternen bei Google</p>
+      <p class="eyebrow">{{ text.reviews.eyebrow }}</p>
+      <h2>{{ text.reviews.title }}</h2>
+      <p class="section-lead rating-summary"><span class="stars" aria-hidden="true">★★★★★</span> {{ text.reviews.rating | fill(site.googleReviews) }}</p>
+      {%- if text.reviews.languageNote %}
+      <p class="reviews-note">{{ text.reviews.languageNote }}</p>
+      {%- endif %}
     </header>
 
     <div class="quotes">
       {%- for review in reviews %}
       <figure class="quote{% if review.featured %} quote-featured{% endif %} reveal">
-        <div class="stars" role="img" aria-label="5 von 5 Sternen">★★★★★</div>
-        <blockquote><p>{{ review.text }}</p></blockquote>
-        <figcaption><strong>{{ review.author }}</strong><span>Google-Bewertung</span></figcaption>
+        <div class="stars" role="img" aria-label="{{ text.reviews.stars }}">★★★★★</div>
+        <blockquote{% if lang != "de" %} lang="de"{% endif %}><p>{{ review.text }}</p></blockquote>
+        <figcaption><strong>{{ review.author }}</strong><span>{{ text.reviews.source }}</span></figcaption>
       </figure>
       {%- endfor %}
     </div>
 
     <p class="quotes-more reveal">
-      <a class="btn btn-ghost" href="{{ site.googleReviews.url }}" target="_blank" rel="noopener">Alle Bewertungen auf Google ansehen</a>
+      <a class="btn btn-ghost" href="{{ site.googleReviews.url }}" target="_blank" rel="noopener">{{ text.reviews.all }}</a>
     </p>
   </div>
 </section>

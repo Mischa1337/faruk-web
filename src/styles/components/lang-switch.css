@@ -1,0 +1,26 @@
+/* ── Language switch ("EN" / "DE") ─────────────────────────
+   Same box as the light/dark toggle next to it. Shows the short code of
+   the other language instead of a flag (partials/lang-switch.njk). */
+.lang-switch {
+  display: grid;
+  place-items: center;
+  flex: none;
+  width: 44px;
+  height: 44px;
+  background: var(--overlay);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-sm);
+  color: var(--text-muted);
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-decoration: none;
+  transition:
+    color var(--dur-fast),
+    background-color var(--dur-fast);
+}
+
+.lang-switch:hover {
+  color: var(--text);
+  background: var(--overlay-strong);
+}

@@ -1,4 +1,5 @@
 import { $, $$ } from '../lib/dom.js';
+import { t } from '../lib/i18n.js';
 
 /** Fold-out menu (☰): open/close, close on link click, outside click and Escape. */
 export function initNavigation() {
@@ -11,7 +12,7 @@ export function initNavigation() {
   const setOpen = (open) => {
     nav.classList.toggle('is-open', open);
     toggle.setAttribute('aria-expanded', String(open));
-    toggle.setAttribute('aria-label', open ? 'Menü schließen' : 'Menü öffnen');
+    toggle.setAttribute('aria-label', open ? t.menuClose : t.menuOpen);
   };
 
   toggle.addEventListener('click', () => setOpen(!isOpen()));

@@ -2,11 +2,18 @@
   "url": "https://afp-coaching.de",
   "name": "AFP-Coaching – Personal Training",
   "shortName": "AFP-Coaching",
-  "tagline": "Achtsamkeit • Fortschritt • Präzision",
-  "footerClaim": "Personal Training in Gießen und online",
-  "language": "de",
-  "locale": "de_DE",
-  "themeColors": { "light": "#FFFFFF", "dark": "#121212" },
+  "tagline": {
+    "de": "Achtsamkeit • Fortschritt • Präzision",
+    "en": "Mindfulness • Progress • Precision"
+  },
+  "footerClaim": {
+    "de": "Personal Training in Gießen und online",
+    "en": "Personal training in Giessen and online"
+  },
+  "themeColors": {
+    "light": "#FFFFFF",
+    "dark": "#121212"
+  },
   "ogImage": "/img/og-vorschau.jpg",
   "logo": "/img/icon-512.png",
   "owner": {
@@ -15,31 +22,58 @@
     "jobTitle": "Personal Trainer",
     "photo": "/img/faruk-palteki-krafttraining-giessen.jpg",
     "languages": ["de", "en", "tr"],
-    "expertise": [
-      "Krafttraining",
-      "Functional Training",
-      "Medical Fitness",
-      "Rückentraining",
-      "Gewichtsreduktion",
-      "Beweglichkeit",
-      "Ernährung"
-    ],
-    "credentials": ["Fitnesstrainer A-Lizenz", "Fitnesstrainer B-Lizenz"]
+    "expertise": {
+      "de": [
+        "Krafttraining",
+        "Functional Training",
+        "Medical Fitness",
+        "Rückentraining",
+        "Gewichtsreduktion",
+        "Beweglichkeit",
+        "Ernährung"
+      ],
+      "en": [
+        "Strength training",
+        "Functional training",
+        "Medical fitness",
+        "Back training",
+        "Weight loss",
+        "Mobility",
+        "Nutrition"
+      ]
+    },
+    "credentials": {
+      "de": ["Fitnesstrainer A-Lizenz", "Fitnesstrainer B-Lizenz"],
+      "en": ["Fitness trainer A licence", "Fitness trainer B licence"]
+    },
+    "credentialCategory": {
+      "de": "Lizenz",
+      "en": "license"
+    }
   },
   "contact": {
     "email": "kontakt@afp-coaching.de",
     "formEndpoint": "https://afp-contact.afp-worker.workers.dev",
     "phoneDisplay": "0176-42755110",
     "phone": "+4917642755110",
-    "whatsappHours": "Mo–Sa, 8–20 Uhr",
+    "whatsappHours": {
+      "de": "Mo–Sa, 8–20 Uhr",
+      "en": "Mon–Sat, 8 am–8 pm"
+    },
     "instagram": {
       "handle": "@faruk.palteki.pt",
       "url": "https://www.instagram.com/faruk.palteki.pt/"
     }
   },
   "whatsappMessages": {
-    "default": "Hallo Faruk, ich interessiere mich für Personal Training.",
-    "afterForm": "Hallo Faruk, ich habe gerade eine Anfrage über die Website geschickt."
+    "default": {
+      "de": "Hallo Faruk, ich interessiere mich für Personal Training.",
+      "en": "Hi Faruk, I’m interested in personal training."
+    },
+    "afterForm": {
+      "de": "Hallo Faruk, ich habe gerade eine Anfrage über die Website geschickt.",
+      "en": "Hi Faruk, I’ve just sent you an enquiry through your website."
+    }
   },
   "address": {
     "street": "Ludwigstraße 44",
@@ -52,7 +86,10 @@
     "longitude": "8.6742"
   },
   "serviceArea": [
-    "Gießen",
+    {
+      "de": "Gießen",
+      "en": "Giessen"
+    },
     "Buseck",
     "Butzbach",
     "Fernwald",
@@ -73,12 +110,21 @@
     "closes": "21:00"
   },
   "business": {
-    "description": "Personal Training vor Ort sowie Online-Coaching und Ernährungscoaching.",
+    "description": {
+      "de": "Personal Training vor Ort sowie Online-Coaching und Ernährungscoaching.",
+      "en": "Personal training on site, online coaching and nutrition coaching."
+    },
     "priceRange": "€€",
-    "paymentAccepted": "Barzahlung, Überweisung"
+    "paymentAccepted": {
+      "de": "Barzahlung, Überweisung",
+      "en": "Cash, bank transfer"
+    }
   },
   "googleReviews": {
-    "rating": "5,0",
+    "rating": {
+      "de": "5,0",
+      "en": "5.0"
+    },
     "url": "https://share.google/CqYeLzq6lVKHe4CS8"
   }
 }

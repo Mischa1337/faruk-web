@@ -1,15 +1,16 @@
+{# Contact channels and form; texts in _data/text/contact.json and _data/text/form.json #}
 <section class="section" id="kontakt">
   <div class="wrap contact-grid">
     <div class="contact-copy reveal">
-      <p class="eyebrow">Kontakt</p>
-      <h2>Lass uns starten!</h2>
-      <p class="section-lead">Schreib mir einfach, was du erreichen möchtest. Unser Erstgespräch ist kostenlos und absolut unverbindlich – danach entscheidest du ganz in Ruhe.</p>
+      <p class="eyebrow">{{ text.contact.eyebrow }}</p>
+      <h2>{{ text.contact.title }}</h2>
+      <p class="section-lead">{{ text.contact.lead }}</p>
 
       <ul class="contact-list">
         <li>
           <a href="{{ contactLinks.whatsapp }}" target="_blank" rel="noopener">
             {% icon "whatsapp" %}
-            <span><strong>WhatsApp: {{ site.contact.phoneDisplay }}</strong>Schnellste Antwort · {{ site.contact.whatsappHours }}</span>
+            <span><strong>WhatsApp: {{ site.contact.phoneDisplay }}</strong>{{ text.contact.whatsappHint }} · {{ site.contact.whatsappHours }}</span>
           </a>
         </li>
         <li>
@@ -17,21 +18,21 @@
               the mail app; CSS shows the matching hint (scripts/modules/copy-email.js) #}
           <a href="{{ contactLinks.email }}" class="contact-email" data-copy="{{ site.contact.email }}">
             {% icon "mail" %}
-            <span><strong>{{ site.contact.email }}</strong><span class="hint-mail">Öffnet deine Mail-App</span><span class="hint-copy" aria-live="polite">Klicken zum Kopieren</span></span>
+            <span><strong>{{ site.contact.email }}</strong><span class="hint-mail">{{ text.contact.mailHint }}</span><span class="hint-copy" aria-live="polite">{{ text.contact.copyHint }}</span></span>
             {% icon "copy", "ico ico-copy" %}
           </a>
         </li>
         <li>
           <a href="{{ site.contact.instagram.url }}" target="_blank" rel="noopener">
             {% icon "instagram" %}
-            <span><strong>{{ site.contact.instagram.handle }}</strong>Training &amp; Alltag</span>
+            <span><strong>{{ site.contact.instagram.handle }}</strong>{{ text.contact.instagramHint }}</span>
           </a>
         </li>
       </ul>
 
-      <p class="contact-area"><strong>Egal, wo du zu Hause bist:</strong> Vor Ort trainiere ich mit dir in Gießen&nbsp;und&nbsp;Umgebung – mein Online-Coaching funktioniert von überall.</p>
+      <p class="contact-area">{{ text.contact.area | safe }}</p>
       {# Same towns as the service area in the Google Business Profile (site.json → serviceArea) #}
-      <ul class="service-area" aria-label="Training vor Ort in">
+      <ul class="service-area" aria-label="{{ text.contact.areaLabel }}">
         {%- for town in site.serviceArea %}
         <li>{{ town }}</li>
         {%- endfor %}

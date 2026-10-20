@@ -27,6 +27,15 @@ export function toJsonLd(data) {
   return JSON.stringify(data, null, 2).replace(/</g, '\\u003c');
 }
 
+/**
+ * Fills placeholders in a text from an object:
+ * fill("{amount} € for {minutes} min", { amount: 85, minutes: 120 }) → "85 € for 120 min".
+ * Lets translated texts carry numbers that are maintained only once.
+ */
+export function fill(text, values) {
+  return String(text).replace(/\{(\w+)\}/g, (placeholder, key) => values[key] ?? placeholder);
+}
+
 /** {% icon "name" %} → inline reference to a symbol of the SVG sprite. */
 export function icon(name, className = 'ico') {
   const cls = className ? ` class="${className}"` : '';
@@ -35,8 +44,11 @@ export function icon(name, className = 'ico') {
 
 export function registerFilters(eleventyConfig) {
   eleventyConfig.addFilter('stripTags', stripTags);
-  eleventyConfig.addFilter('structuredData', (site, offers, pricing, faq) =>
-    toJsonLd(buildStructuredData({ site, offers, pricing, faq }, { stripTags })),
+  eleventyConfig.addFilter('fill', fill);
+  eleventyConfig.addFilter('structuredData', (site, offers, pricing, faq, pageUrl, locale) =>
+    toJsonLd(
+      buildStructuredData({ site, offers, pricing, faq, pageUrl, locale }, { stripTags, fill }),
+    ),
   );
   eleventyConfig.addShortcode('icon', icon);
 }

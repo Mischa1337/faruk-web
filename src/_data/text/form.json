@@ -1,0 +1,48 @@
+{
+  "intro": { "de": "Oder schreib mir direkt hier:", "en": "Or write to me right here:" },
+  "name": { "de": "Name", "en": "Name" },
+  "namePlaceholder": { "de": "Vor- und Nachname", "en": "First and last name" },
+  "email": { "de": "E-Mail", "en": "Email" },
+  "emailPlaceholder": { "de": "deine-email@beispiel.de", "en": "your-email@example.com" },
+  "phone": { "de": "Telefon", "en": "Phone" },
+  "phoneHint": {
+    "de": "(Empfohlen für das Erstgespräch)",
+    "en": "(recommended for the first consultation)"
+  },
+  "phonePlaceholder": {
+    "de": "Für eine schnelle Terminabsprache",
+    "en": "For quickly arranging a time"
+  },
+  "source": {
+    "de": "Wie bist du auf mich aufmerksam geworden?",
+    "en": "How did you hear about me?"
+  },
+  "interest": { "de": "Dein Interesse:", "en": "Your interest:" },
+  "interestClear": { "de": "Interesse entfernen", "en": "Remove interest" },
+  "message": { "de": "Nachricht", "en": "Message" },
+  "messagePlaceholder": {
+    "de": "Was möchtest du erreichen? Gibt es aktuelle Herausforderungen, Besonderheiten oder Wunschzeiten für unser kostenloses Erstgespräch?",
+    "en": "What would you like to achieve? Are there any current challenges, special circumstances or preferred times for our free first consultation?"
+  },
+  "honeypot": { "de": "Bitte leer lassen", "en": "Please leave empty" },
+  "consent": {
+    "de": "Ich habe die <a href=\"/datenschutz.html\">Datenschutzerklärung</a> gelesen und bin damit einverstanden, dass meine Angaben zur Bearbeitung meiner Anfrage gespeichert werden.",
+    "en": "I have read the <a href=\"/datenschutz.html\" hreflang=\"de\">privacy policy</a> (in German) and agree that my details will be stored to process my enquiry."
+  },
+  "submit": { "de": "Jetzt unverbindlich anfragen", "en": "Send enquiry – no obligation" },
+  "mailFallback": {
+    "de": "Mit deinem E-Mail-Programm senden",
+    "en": "Send with your email program"
+  },
+  "successThanks": { "de": "Danke", "en": "Thank you" },
+  "successTitle": { "de": "deine Nachricht ist angekommen!", "en": "your message has arrived!" },
+  "successText": {
+    "de": "Ich melde mich so schnell wie möglich bei dir, sobald ich sie gelesen habe.",
+    "en": "I’ll get back to you as soon as possible once I’ve read it."
+  },
+  "successHint": {
+    "de": "Wenn es eilig ist, erreichst du mich am schnellsten direkt:",
+    "en": "If it’s urgent, the fastest way to reach me is directly:"
+  },
+  "whatsapp": { "de": "Per WhatsApp schreiben", "en": "Message me on WhatsApp" }
+}

@@ -1,10 +1,10 @@
-{# Offer cards; content in _data/offers.json #}
+{# Offer cards; content in _data/offers.json, heading in _data/text/offers.json #}
 <section class="section" id="angebote">
   <div class="wrap">
     <header class="section-head reveal">
-      <p class="eyebrow">Angebote</p>
-      <h2>Dein Weg zum Ziel – 4&nbsp;Möglichkeiten, wie wir zusammenarbeiten können</h2>
-      <p class="section-lead">Jedes Angebot startet mit einem ehrlichen Gespräch über deine Wünsche und Ziele. Danach entscheiden wir gemeinsam, welches Format am besten zu dir und deinem Leben passt.</p>
+      <p class="eyebrow">{{ text.offers.eyebrow }}</p>
+      <h2>{{ text.offers.title | safe }}</h2>
+      <p class="section-lead">{{ text.offers.lead }}</p>
     </header>
 
     <div class="cards">
@@ -20,7 +20,7 @@
           <li>{{ feature | safe }}</li>
           {%- endfor %}
         </ul>
-        <a class="card-link" href="#kontakt" data-interest="{{ offer.title | replace("&shy;", "") }}">Jetzt anfragen<span aria-hidden="true"> →</span></a>
+        <a class="card-link" href="#kontakt" data-interest="{{ offer.title | replace("&shy;", "") }}">{{ text.offers.cta }}<span aria-hidden="true"> →</span></a>
       </article>
       {%- endfor %}
     </div>

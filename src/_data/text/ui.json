@@ -1,0 +1,13 @@
+{
+  "skipLink": { "de": "Zum Inhalt springen", "en": "Skip to content" },
+  "homeLabel": { "de": "Startseite", "en": "Home" },
+  "backHomeLabel": { "de": "Zur Startseite", "en": "Back to the home page" },
+  "mainNav": { "de": "Hauptnavigation", "en": "Main navigation" },
+  "openMenu": { "de": "Menü öffnen", "en": "Open menu" },
+  "footerNav": { "de": "Fußzeile", "en": "Footer" },
+  "rights": { "de": "Alle Rechte vorbehalten.", "en": "All rights reserved." },
+  "themeToggle": { "de": "Farbschema wechseln", "en": "Switch colour scheme" },
+  "call": { "de": "Anrufen", "en": "Call" },
+  "openWhatsApp": { "de": "WhatsApp öffnen", "en": "Open WhatsApp" },
+  "newTab": { "de": "(öffnet in neuem Tab)", "en": "(opens in a new tab)" }
+}

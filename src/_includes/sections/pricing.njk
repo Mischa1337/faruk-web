@@ -1,10 +1,10 @@
-{# Price cards; prices and features in _data/pricing.json #}
+{# Price cards; prices and features in _data/pricing.json, heading in _data/text/pricing.json #}
 <section class="section section-alt" id="preise">
   <div class="wrap">
     <header class="section-head reveal">
-      <p class="eyebrow">Preise</p>
-      <h2>Preise – transparent und ohne Vertragsbindung</h2>
-      <p class="section-lead">Online-Coaching kannst du von überall aus nutzen. Bei allen Terminen vor Ort ist die Anfahrt innerhalb von Gießen bereits inklusive.</p>
+      <p class="eyebrow">{{ text.pricing.eyebrow }}</p>
+      <h2>{{ text.pricing.title }}</h2>
+      <p class="section-lead">{{ text.pricing.lead }}</p>
     </header>
 
     <div class="pricing">
@@ -35,7 +35,8 @@
     </div>
 
     <p class="price-foot reveal">
-      {{ pricingNotes | join("<br>\n      ") | safe }}
+      {{ pricing.duo.note | fill(pricing.duo) }}<br>
+      {{ pricing.footnotes | join("<br>\n      ") | safe }}
     </p>
   </div>
 </section>
