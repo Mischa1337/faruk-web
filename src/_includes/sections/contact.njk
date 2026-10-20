@@ -30,6 +30,12 @@
       </ul>
 
       <p class="contact-area"><strong>Egal, wo du zu Hause bist:</strong> Vor Ort trainiere ich mit dir in Gießen&nbsp;und&nbsp;Umgebung – mein Online-Coaching funktioniert von überall.</p>
+      {# Same towns as the service area in the Google Business Profile (site.json → serviceArea) #}
+      <ul class="service-area" aria-label="Training vor Ort in">
+        {%- for town in site.serviceArea %}
+        <li>{{ town }}</li>
+        {%- endfor %}
+      </ul>
     </div>
 
     <div class="contact-form-wrap reveal">

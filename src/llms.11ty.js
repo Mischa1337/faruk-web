@@ -33,6 +33,7 @@ ${list([
   `Schwerpunkte: ${owner.expertise.join(', ')}`,
   'Sprachen: Deutsch, Englisch, Türkisch',
   `Standort: ${address.street}, ${address.postalCode} ${address.city}; Online-Coaching ortsunabhängig`,
+  `Training vor Ort in: ${site.serviceArea.join(', ')}`,
 ])}
 
 ## Philosophie

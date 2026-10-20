@@ -51,6 +51,22 @@
     "latitude": "50.5866",
     "longitude": "8.6742"
   },
+  "serviceArea": [
+    "Gießen",
+    "Buseck",
+    "Butzbach",
+    "Fernwald",
+    "Heuchelheim",
+    "Lahnau",
+    "Langgöns",
+    "Linden",
+    "Marburg",
+    "Pohlheim",
+    "Reiskirchen",
+    "Staufenberg",
+    "Wettenberg",
+    "Wetzlar"
+  ],
   "openingHours": {
     "days": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
     "opens": "07:00",

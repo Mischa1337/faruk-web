@@ -115,3 +115,21 @@
 .contact-area strong {
   color: var(--text-muted);
 }
+
+/* Towns for training on site as small, quiet tags */
+.service-area {
+  list-style: none;
+  padding: 0;
+  margin-top: 0.85rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+}
+
+.service-area li {
+  padding: 0.2rem 0.65rem;
+  border: 1px solid var(--line-soft);
+  border-radius: var(--radius-pill);
+  font-size: 0.8rem;
+  color: var(--text-dim);
+}

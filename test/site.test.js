@@ -128,6 +128,19 @@ describe('home page', () => {
     }
   });
 
+  test('names the same towns in the structured data as in the contact section', () => {
+    const html = read('index.html');
+    const json = first(html, /<script type="application\/ld\+json">([\s\S]*?)<\/script>/);
+    const business = JSON.parse(json)['@graph'][0];
+    const list = first(html, /<ul class="service-area"[^>]*>([\s\S]*?)<\/ul>/);
+    const visible = all(list, /<li>([^<]*)<\/li>/g).map(decode);
+    assert.ok(visible.length > 1);
+    assert.deepEqual(
+      business.areaServed.map((place) => place.name),
+      visible,
+    );
+  });
+
   test('offers every visible price in the structured data', () => {
     const html = read('index.html');
     const json = first(html, /<script type="application\/ld\+json">([\s\S]*?)<\/script>/);

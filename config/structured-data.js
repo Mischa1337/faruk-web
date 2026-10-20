@@ -96,8 +96,9 @@ export function buildStructuredData({ site, offers, pricing, faq }, { stripTags 
       addressRegion: address.region,
       addressCountry: address.country,
     },
-    // Training on site happens in the home town; online coaching is not tied to a place
-    areaServed: { '@type': 'City', name: address.city },
+    // Towns for training on site – the same list as the service area in the
+    // Google Business Profile (site.json → serviceArea); online coaching is not tied to a place
+    areaServed: site.serviceArea.map((name) => ({ '@type': 'City', name })),
     geo: {
       '@type': 'GeoCoordinates',
       latitude: address.latitude,
