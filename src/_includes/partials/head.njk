@@ -15,6 +15,14 @@
 {%- if not noCanonical %}
 <link rel="canonical" href="{{ site.url }}{{ page.url }}">
 {%- endif %}
+{%- if alternates.length %}
+
+{#- The same page in every language, so search engines show each visitor the matching one #}
+{%- for alternate in alternates %}
+<link rel="alternate" hreflang="{{ alternate.lang }}" href="{{ site.url }}{{ alternate.url }}">
+{%- endfor %}
+<link rel="alternate" hreflang="x-default" href="{{ site.url }}/">
+{%- endif %}
 <meta name="robots" content="{{ robots or 'index, follow, max-image-preview:large' }}">
 {%- if isHome %}
 <meta name="author" content="{{ site.owner.name }}">
@@ -25,7 +33,7 @@
 
 {#- Link preview when shared (WhatsApp, Instagram bio, Facebook) #}
 <meta property="og:type" content="website">
-<meta property="og:locale" content="{{ site.locale }}">
+<meta property="og:locale" content="{{ locale }}">
 <meta property="og:site_name" content="{{ site.name }}">
 <meta property="og:title" content="{{ ogTitle }}">
 <meta property="og:description" content="{{ ogDescription }}">

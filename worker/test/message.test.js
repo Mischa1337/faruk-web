@@ -37,6 +37,12 @@ test('names the chosen offer in subject and body', () => {
   assert.ok(message.text.startsWith('Interesse: 5er-Karte\nName: Max Mustermann'));
 });
 
+test('notes enquiries from the English page, so Faruk knows the language to answer in', () => {
+  const english = buildMessage({ ...data, sprache: 'en' }, env);
+  assert.ok(english.text.startsWith('Sprache: Englisch (Anfrage über die englische Seite)\nName:'));
+  assert.ok(buildMessage({ ...data, sprache: 'de' }, env).text.startsWith('Name:'));
+});
+
 test('ends with a signature that says where the mail comes from', () => {
   const { text } = buildMessage(data, env);
   assert.match(text, /\n-- \nGesendet über das Kontaktformular auf afp-coaching\.de\./);

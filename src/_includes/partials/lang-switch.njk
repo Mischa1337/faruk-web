@@ -1,0 +1,11 @@
+{#
+  Link to the same page in the other language(s): a short code ("EN")
+  instead of a flag – flags stand for countries, not languages. The name
+  is read out in its own language (lang/hreflang). Only rendered where a
+  translation exists (`alternates`, see _data/eleventyComputed.js).
+#}
+{%- for alternate in alternates %}
+{%- if alternate.lang != lang %}
+<a class="lang-switch" href="{{ alternate.url }}" hreflang="{{ alternate.lang }}" lang="{{ alternate.lang }}" title="{{ alternate.name }}" aria-label="{{ alternate.name }}">{{ alternate.lang | upper }}</a>
+{%- endif %}
+{%- endfor %}

@@ -1,92 +1,186 @@
 {
   "plans": [
     {
-      "name": "Einzeltermin",
+      "name": {
+        "de": "Einzeltermin",
+        "en": "Single session"
+      },
       "offer": "personal-training",
       "rates": [
         {
-          "duration": "60 Min",
+          "duration": {
+            "de": "60 Min",
+            "en": "60 min"
+          },
           "amount": "80"
         },
         {
-          "duration": "90 Min",
+          "duration": {
+            "de": "90 Min",
+            "en": "90 min"
+          },
           "amount": "100"
         }
       ],
-      "description": "Zum Reinschnuppern oder für unregelmäßige Termine.",
-      "features": [
-        "<strong>Volle Flexibilität:</strong> Du buchst deine Termine ganz spontan und flexibel nach Bedarf.",
-        "<strong>Keine Bindung:</strong> Du kaufst nur das, was du aktuell nutzt – ohne Vorauszahlung oder Kontingent.",
-        "<strong>Unverbindlicher Einstieg:</strong> Ideal, um das 1:1-Training oder einen neuen Trainingsschwerpunkt einfach mal auszuprobieren."
-      ]
+      "description": {
+        "de": "Zum Reinschnuppern oder für unregelmäßige Termine.",
+        "en": "For trying it out or for occasional sessions."
+      },
+      "features": {
+        "de": [
+          "<strong>Volle Flexibilität:</strong> Du buchst deine Termine ganz spontan und flexibel nach Bedarf.",
+          "<strong>Keine Bindung:</strong> Du kaufst nur das, was du aktuell nutzt – ohne Vorauszahlung oder Kontingent.",
+          "<strong>Unverbindlicher Einstieg:</strong> Ideal, um das 1:1-Training oder einen neuen Trainingsschwerpunkt einfach mal auszuprobieren."
+        ],
+        "en": [
+          "<strong>Complete flexibility:</strong> Book your sessions spontaneously, whenever you need them.",
+          "<strong>No commitment:</strong> You only pay for what you use – no prepayment or session package.",
+          "<strong>Easy start:</strong> Ideal for trying out 1:1 training or a new training focus."
+        ]
+      }
     },
     {
-      "name": "5er-Karte",
+      "name": {
+        "de": "5er-Karte",
+        "en": "5-session pack"
+      },
       "offer": "personal-training",
       "rates": [
         {
-          "duration": "60 Min",
+          "duration": {
+            "de": "60 Min",
+            "en": "60 min"
+          },
           "amount": "385"
         },
         {
-          "duration": "90 Min",
+          "duration": {
+            "de": "90 Min",
+            "en": "90 min"
+          },
           "amount": "485"
         }
       ],
-      "description": "Für einen festen Einstieg über mehrere Wochen.",
-      "features": [
-        "<strong>Preiseffekt:</strong> Nur 77 € bzw. 97 € pro Trainingseinheit.",
-        "<strong>Gezielter Zeitraum:</strong> Ein kompakter und fester Rahmen, um deine Einheiten über mehrere Wochen hinweg konzentriert durchzuziehen.",
-        "<strong>2 Monate Gültigkeit:</strong> Die Einheiten können flexibel innerhalb von zwei Monaten eingelöst werden."
-      ]
+      "description": {
+        "de": "Für einen festen Einstieg über mehrere Wochen.",
+        "en": "For a committed start over several weeks."
+      },
+      "features": {
+        "de": [
+          "<strong>Preiseffekt:</strong> Nur 77 € bzw. 97 € pro Trainingseinheit.",
+          "<strong>Gezielter Zeitraum:</strong> Ein kompakter und fester Rahmen, um deine Einheiten über mehrere Wochen hinweg konzentriert durchzuziehen.",
+          "<strong>2 Monate Gültigkeit:</strong> Die Einheiten können flexibel innerhalb von zwei Monaten eingelöst werden."
+        ],
+        "en": [
+          "<strong>Better value:</strong> Only €77 or €97 per session.",
+          "<strong>Focused period:</strong> A compact, fixed framework to get your sessions done over several weeks.",
+          "<strong>Valid for 2 months:</strong> Use your sessions flexibly within two months."
+        ]
+      }
     },
     {
-      "name": "10er-Karte",
+      "name": {
+        "de": "10er-Karte",
+        "en": "10-session pack"
+      },
       "offer": "personal-training",
       "featured": true,
-      "badge": "Beliebteste Wahl",
+      "badge": {
+        "de": "Beliebteste Wahl",
+        "en": "Most popular"
+      },
       "rates": [
         {
-          "duration": "60 Min",
+          "duration": {
+            "de": "60 Min",
+            "en": "60 min"
+          },
           "amount": "750"
         },
         {
-          "duration": "90 Min",
+          "duration": {
+            "de": "90 Min",
+            "en": "90 min"
+          },
           "amount": "950"
         }
       ],
-      "description": "Der Klassiker. Genug Zeit, um echte Fortschritte zu sehen.",
-      "features": [
-        "<strong>Preiseffekt:</strong> Nur 75 € bzw. 95 € pro Trainingseinheit.",
-        "<strong>Fortlaufende Betreuung:</strong> Der bewährte Weg für eine regelmäßige Zusammenarbeit, um deine sportlichen Ziele Schritt für Schritt zu erreichen.",
-        "<strong>4 Monate Gültigkeit:</strong> Maximaler zeitlicher Spielraum von vier Monaten für deine Einheiten."
-      ]
+      "description": {
+        "de": "Der Klassiker. Genug Zeit, um echte Fortschritte zu sehen.",
+        "en": "The classic. Enough time to see real progress."
+      },
+      "features": {
+        "de": [
+          "<strong>Preiseffekt:</strong> Nur 75 € bzw. 95 € pro Trainingseinheit.",
+          "<strong>Fortlaufende Betreuung:</strong> Der bewährte Weg für eine regelmäßige Zusammenarbeit, um deine sportlichen Ziele Schritt für Schritt zu erreichen.",
+          "<strong>4 Monate Gültigkeit:</strong> Maximaler zeitlicher Spielraum von vier Monaten für deine Einheiten."
+        ],
+        "en": [
+          "<strong>Better value:</strong> Only €75 or €95 per session.",
+          "<strong>Ongoing coaching:</strong> The proven way to work together regularly and reach your fitness goals step by step.",
+          "<strong>Valid for 4 months:</strong> Up to four months to use your sessions."
+        ]
+      }
     },
     {
-      "name": "Online-Coaching",
+      "name": {
+        "de": "Online-Coaching",
+        "en": "Online coaching"
+      },
       "offer": "online-coaching",
       "price": {
         "amount": "119",
-        "unit": "€ / Monat",
+        "unit": {
+          "de": "€ / Monat",
+          "en": "€ / month"
+        },
         "unitCode": "MON"
       },
-      "description": "Für alle, die selbstständig trainieren, aber Struktur brauchen.",
-      "features": [
-        "Regelmäßige Anpassung des Trainingsplans",
-        "Technik-Feedback per Video",
-        "Monatlich kündbar",
-        "Support per Chat"
-      ]
+      "description": {
+        "de": "Für alle, die selbstständig trainieren, aber Struktur brauchen.",
+        "en": "For everyone who trains on their own but needs structure."
+      },
+      "features": {
+        "de": [
+          "Regelmäßige Anpassung des Trainingsplans",
+          "Technik-Feedback per Video",
+          "Monatlich kündbar",
+          "Support per Chat"
+        ],
+        "en": [
+          "Regular updates to your training plan",
+          "Technique feedback via video",
+          "Cancel monthly",
+          "Chat support"
+        ]
+      }
     }
   ],
   "duo": {
     "offer": "duo-training",
     "amount": "85",
-    "minutes": 120
+    "minutes": 120,
+    "note": {
+      "de": "Duo-Training: {amount} € pro Person für eine extralange Einheit von {minutes} Minuten.",
+      "en": "Duo training: €{amount} per person for an extra-long session of {minutes} minutes."
+    },
+    "schemaName": {
+      "de": "Duo-Training – {minutes} Min (pro Person)",
+      "en": "Duo training – {minutes} min (per person)"
+    }
   },
-  "cta": "Erstgespräch vereinbaren",
-  "footnotes": [
-    "Ernährungscoaching: Preis auf Anfrage – ich berate dich gern persönlich.",
-    "Firmen- &amp; Gruppenangebote: Individuelle Konditionen auf Anfrage."
-  ]
+  "cta": {
+    "de": "Erstgespräch vereinbaren",
+    "en": "Book a free consultation"
+  },
+  "footnotes": {
+    "de": [
+      "Ernährungscoaching: Preis auf Anfrage – ich berate dich gern persönlich.",
+      "Firmen- &amp; Gruppenangebote: Individuelle Konditionen auf Anfrage."
+    ],
+    "en": [
+      "Nutrition coaching: price on request – I’m happy to advise you personally.",
+      "Corporate &amp; group offers: individual terms on request."
+    ]
+  }
 }

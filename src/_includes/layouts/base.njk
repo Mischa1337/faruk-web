@@ -1,11 +1,11 @@
 <!DOCTYPE html>
-<html lang="{{ site.language }}">
+<html lang="{{ lang }}">
 <head>
 {% include "partials/head.njk" %}
 </head>
 
 <body>
-<a class="skip-link" href="#main">Zum Inhalt springen</a>
+<a class="skip-link" href="#main">{{ text.ui.skipLink }}</a>
 
 {% if isHome %}{% include "partials/header-home.njk" %}{% else %}{% include "partials/header-subpage.njk" %}{% endif %}
 

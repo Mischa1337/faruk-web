@@ -1,9 +1,10 @@
 import { $$ } from '../lib/dom.js';
+import { t } from '../lib/i18n.js';
 
 const STORAGE_KEY = 'theme';
 const LABELS = {
-  dark: 'Helles Farbschema aktivieren',
-  light: 'Dunkles Farbschema aktivieren',
+  dark: t.themeToLight,
+  light: t.themeToDark,
 };
 
 /**

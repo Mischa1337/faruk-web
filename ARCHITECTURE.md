@@ -48,13 +48,14 @@ with a stale stylesheet right after a deploy.
 
 ## Content model
 
-Rule of thumb: **content that repeats lives in data files, prose lives in
-templates.**
+Rule of thumb: **templates hold the markup, data files hold every visible
+text.** That way each section's markup exists once, whatever the language.
 
-- Lists of similar items – offers, price cards, FAQ, reviews, partners,
-  navigation – are JSON in `src/_data/` and rendered with loops.
-- One-off prose – hero, about me, process – stays as HTML in its section
-  template, where it is easiest to read and edit.
+- Lists of similar items – offers, price cards, FAQ, reviews, partners, the
+  three values of the philosophy, navigation – are JSON in `src/_data/` and
+  rendered with loops.
+- The texts of each section (headings, prose, labels) are in
+  `src/_data/text/<section>.json`, named like the section template.
 - Business facts (address, phone, opening hours, owner) live in
   `src/_data/site.json` and are reused by the page, the legal pages, the
   structured data and `llms.txt`.
@@ -62,6 +63,36 @@ templates.**
 Text fields in the data files may contain inline HTML (`<strong>`, `&shy;`,
 `&nbsp;`). Templates mark exactly those fields as `| safe`; everything else is
 escaped automatically (`autoescape: true`).
+
+## Languages
+
+German is the main language at `/`, English lives at `/en/`.
+
+- **Translations side by side.** Every text is stored as
+  `{ "de": "…", "en": "…" }` in the data files; whatever is the same in
+  every language (prices, URLs, icons, ids) is written once.
+- **Resolved once per page.** [`src/_data/eleventyComputed.js`](src/_data/eleventyComputed.js)
+  turns the data into the page's language with `localize()` from
+  [`config/i18n.js`](config/i18n.js). `lang` is German by default
+  (`src/_data/lang.js`) and English for everything in `src/en/`
+  (`en.11tydata.json`). Templates simply write `{{ text.hero.title }}` or
+  `{{ offer.title }}` and never deal with languages.
+- **Nothing goes out half translated.** A translation without all
+  languages stops the build, and a test checks that every text in
+  `src/_data/text/` exists in every language.
+- **One home page layout.** Both home pages are thin files on
+  `layouts/home.njk`. The head links all language versions (`hreflang`),
+  the header shows a language switch ("EN" / "DE" – a code, not a flag).
+- **Deliberately German only:** the legal pages (the German version is the
+  binding one) and the Google reviews (translating them would put words
+  into real people's mouths).
+- **Scripts** take their messages (form errors, menu labels) from
+  [`src/scripts/lib/strings.js`](src/scripts/lib/strings.js), chosen by
+  `<html lang>`. Enquiries from the English page reach Faruk in German with
+  a note on the language.
+- **Adding a language:** add it to `LANGUAGES` in `config/i18n.js`, create
+  `src/<code>/` with a directory data file and an `index.njk`, and add the
+  texts – the build fails until every translation exists.
 
 ## SEO and GEO
 
@@ -72,6 +103,9 @@ escaped automatically (`autoescape: true`).
   verifies as well.
 - **`llms.txt`** gives AI assistants a plain-text summary of offers, prices,
   FAQ and contact details ([`src/llms.11ty.js`](src/llms.11ty.js)).
+- **Every language version** has its own URL, `hreflang` links to the
+  others and its own structured data graph (`/en/#business`), so German and
+  English texts never mix in one entity.
 - **Sitemap** lists only indexable pages; `lastmod` is the date of the last
   commit that touched `src/`.
 - **Legal pages and the 404 page** are `noindex, follow`.
@@ -85,14 +119,14 @@ escaped automatically (`autoescape: true`).
 [`src/styles/main.css`](src/styles/main.css) only lists imports. Their order
 defines the cascade, from generic to specific:
 
-| Folder        | Contents                                                  |
-| ------------- | --------------------------------------------------------- |
-| `base/`       | design tokens, reset, typography, page layout             |
-| `utilities/`  | accessibility helpers; motion and print at the very end   |
-| `components/` | reusable parts: button, icon, card, theme toggle, form    |
-| `layout/`     | site frame: header, footer, mobile contact bar            |
-| `sections/`   | one file per home page section, same name as its template |
-| `pages/`      | styles used only by the legal pages                       |
+| Folder        | Contents                                                                |
+| ------------- | ----------------------------------------------------------------------- |
+| `base/`       | design tokens, reset, typography, page layout                           |
+| `utilities/`  | accessibility helpers; motion and print at the very end                 |
+| `components/` | reusable parts: button, icon, card, language switch, theme toggle, form |
+| `layout/`     | site frame: header, footer, mobile contact bar                          |
+| `sections/`   | one file per home page section, same name as its template               |
+| `pages/`      | styles used only by the legal pages                                     |
 
 All colours are custom properties in `base/tokens.css`. The colour scheme
 follows the visitor's system setting (`prefers-color-scheme`): light by

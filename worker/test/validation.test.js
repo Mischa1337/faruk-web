@@ -33,8 +33,17 @@ test('ignores unknown fields such as the honeypot', () => {
     'nachricht',
     'name',
     'quelle',
+    'sprache',
     'telefon',
   ]);
+});
+
+test('the page language is optional and must be a language code', () => {
+  assert.equal(validateSubmission(valid).data.sprache, '');
+  assert.equal(validateSubmission({ ...valid, sprache: 'en' }).data.sprache, 'en');
+  for (const bad of ['english', 'e', 'EN', 'e\n']) {
+    assert.deepEqual(validateSubmission({ ...valid, sprache: bad }).fields, ['sprache'], bad);
+  }
 });
 
 test('the chosen offer is optional, single-line and limited in length', () => {

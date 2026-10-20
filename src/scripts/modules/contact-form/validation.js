@@ -2,8 +2,8 @@
  * Validation rules of the contact form.
  *
  * Pure functions without DOM access, so they can be unit-tested
- * (see test/validation.test.js). Messages are shown to visitors and
- * therefore German.
+ * (see test/validation.test.js). The error messages shown to visitors
+ * live in lib/strings.js, in every language, keyed by the rule's id.
  *
  * The contact worker (worker/src/) imports the patterns, limits and mail
  * builders from here, so browser and server check the same rules and the
@@ -23,36 +23,28 @@ export const MAX_LENGTH = {
   quelle: 200,
   nachricht: 5000,
   interesse: 60,
+  sprache: 2,
 };
+
+/** Language code of the page the enquiry was sent from (<html lang>). */
+export const LANGUAGE_PATTERN = /^[a-z]{2}$/;
 
 /** One rule per required field, keyed by the input's id. */
 export const RULES = [
-  {
-    id: 'f-name',
-    isValid: (value) => value.trim().length >= MIN_LENGTH.name,
-    message: 'Bitte gib deinen Namen an.',
-  },
-  {
-    id: 'f-mail',
-    isValid: (value) => EMAIL_PATTERN.test(value.trim()),
-    message: 'Bitte gib eine gültige E-Mail-Adresse an.',
-  },
-  {
-    id: 'f-source',
-    isValid: (value) => value.trim().length >= MIN_LENGTH.quelle,
-    message: 'Bitte sag mir kurz, wie du auf mich aufmerksam geworden bist.',
-  },
-  {
-    id: 'f-msg',
-    isValid: (value) => value.trim().length >= MIN_LENGTH.nachricht,
-    message: `Bitte beschreibe kurz dein Anliegen (mind. ${MIN_LENGTH.nachricht} Zeichen).`,
-  },
-  {
-    id: 'f-consent',
-    isValid: (checked) => checked === true,
-    message: 'Bitte stimme der Datenschutzerklärung zu.',
-  },
+  { id: 'f-name', isValid: (value) => value.trim().length >= MIN_LENGTH.name },
+  { id: 'f-mail', isValid: (value) => EMAIL_PATTERN.test(value.trim()) },
+  { id: 'f-source', isValid: (value) => value.trim().length >= MIN_LENGTH.quelle },
+  { id: 'f-msg', isValid: (value) => value.trim().length >= MIN_LENGTH.nachricht },
+  { id: 'f-consent', isValid: (checked) => checked === true },
 ];
+
+/**
+ * Line for enquiries from a page in another language than German, so
+ * Faruk knows which language to answer in. The mail itself stays German.
+ */
+const LANGUAGE_NOTES = {
+  en: 'Sprache: Englisch (Anfrage über die englische Seite)',
+};
 
 /** Returns the value a rule checks: `checked` for checkboxes, the text otherwise. */
 export const fieldValue = (input) => (input.type === 'checkbox' ? input.checked : input.value);
@@ -66,10 +58,11 @@ export const buildMailSubject = (name, interest = '') =>
 
 /**
  * Builds the plain-text body of the enquiry e-mail.
- * @param {{name: string, email: string, telefon?: string, quelle: string, nachricht: string, interesse?: string}} data
+ * @param {{name: string, email: string, telefon?: string, quelle: string, nachricht: string, interesse?: string, sprache?: string}} data
  */
 export function buildMailBody(data) {
   return [
+    ...(LANGUAGE_NOTES[data.sprache] ? [LANGUAGE_NOTES[data.sprache]] : []),
     ...(data.interesse ? [`Interesse: ${data.interesse}`] : []),
     `Name: ${data.name}`,
     `E-Mail: ${data.email}`,

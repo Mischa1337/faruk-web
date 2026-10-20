@@ -1,57 +1,96 @@
 {
   "main": [
     {
-      "label": "Angebote",
+      "label": {
+        "de": "Angebote",
+        "en": "Services"
+      },
       "href": "#angebote"
     },
     {
-      "label": "Ablauf",
+      "label": {
+        "de": "Ablauf",
+        "en": "How it works"
+      },
       "href": "#ablauf"
     },
     {
-      "label": "Preise",
+      "label": {
+        "de": "Preise",
+        "en": "Prices"
+      },
       "href": "#preise"
     },
     {
-      "label": "Über mich",
+      "label": {
+        "de": "Über mich",
+        "en": "About me"
+      },
       "href": "#ueber-mich"
     },
     {
-      "label": "Erfolge",
+      "label": {
+        "de": "Erfolge",
+        "en": "Reviews"
+      },
       "href": "#erfolge"
     },
     {
-      "label": "FAQ",
+      "label": {
+        "de": "FAQ",
+        "en": "FAQ"
+      },
       "href": "#faq"
     },
     {
-      "label": "Kooperationen",
+      "label": {
+        "de": "Kooperationen",
+        "en": "Partners"
+      },
       "href": "#kooperationen"
     }
   ],
   "cta": {
-    "label": "Erstgespräch",
+    "label": {
+      "de": "Erstgespräch",
+      "en": "Free consultation"
+    },
     "href": "#kontakt"
   },
   "footerHome": [
     {
-      "label": "Angebote",
+      "label": {
+        "de": "Angebote",
+        "en": "Services"
+      },
       "href": "#angebote"
     },
     {
-      "label": "Preise",
+      "label": {
+        "de": "Preise",
+        "en": "Prices"
+      },
       "href": "#preise"
     },
     {
-      "label": "Kontakt",
+      "label": {
+        "de": "Kontakt",
+        "en": "Contact"
+      },
       "href": "#kontakt"
     },
     {
-      "label": "Impressum",
+      "label": {
+        "de": "Impressum",
+        "en": "Legal notice (German)"
+      },
       "href": "/impressum.html"
     },
     {
-      "label": "Datenschutz",
+      "label": {
+        "de": "Datenschutz",
+        "en": "Privacy policy (German)"
+      },
       "href": "/datenschutz.html"
     }
   ],

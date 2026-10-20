@@ -1,0 +1,17 @@
+{
+  "eyebrow": { "de": "Kontakt", "en": "Contact" },
+  "title": { "de": "Lass uns starten!", "en": "Let’s get started!" },
+  "lead": {
+    "de": "Schreib mir einfach, was du erreichen möchtest. Unser Erstgespräch ist kostenlos und absolut unverbindlich – danach entscheidest du ganz in Ruhe.",
+    "en": "Just tell me what you’d like to achieve. Our first consultation is free and completely non-binding – afterwards you can decide in your own time."
+  },
+  "whatsappHint": { "de": "Schnellste Antwort", "en": "Fastest reply" },
+  "mailHint": { "de": "Öffnet deine Mail-App", "en": "Opens your mail app" },
+  "copyHint": { "de": "Klicken zum Kopieren", "en": "Click to copy" },
+  "instagramHint": { "de": "Training & Alltag", "en": "Training & everyday life" },
+  "area": {
+    "de": "<strong>Egal, wo du zu Hause bist:</strong> Vor Ort trainiere ich mit dir in Gießen&nbsp;und&nbsp;Umgebung – mein Online-Coaching funktioniert von überall.",
+    "en": "<strong>Wherever you live:</strong> I train with you on site in Giessen&nbsp;and the surrounding area – my online coaching works from anywhere."
+  },
+  "areaLabel": { "de": "Training vor Ort in", "en": "Training on site in" }
+}

@@ -12,6 +12,12 @@ const SITE_URL = 'https://afp-coaching.de';
 const output = '_site';
 const read = (file) => readFileSync(join(output, file), 'utf8');
 
+/** The home page in every language: file, URL and the language it must declare. */
+const HOMES = [
+  { file: 'index.html', url: '/', lang: 'de' },
+  { file: 'en/index.html', url: '/en/', lang: 'en' },
+];
+
 const all = (html, pattern) => [...html.matchAll(pattern)].map((match) => match[1]);
 const first = (html, pattern) => html.match(pattern)?.[1];
 const meta = (html, name) => first(html, new RegExp(`<meta name="${name}" content="([^"]*)"`));
@@ -29,7 +35,9 @@ before(async () => {
     configPath: 'eleventy.config.js',
   });
   await eleventy.write();
-  pages = readdirSync(output).filter((file) => file.endsWith('.html'));
+  pages = readdirSync(output, { recursive: true })
+    .filter((file) => file.endsWith('.html'))
+    .map((file) => file.split('\\').join('/'));
 });
 
 describe('every page', () => {
@@ -37,15 +45,16 @@ describe('every page', () => {
     assert.deepEqual(pages.sort(), [
       '404.html',
       'datenschutz.html',
+      'en/index.html',
       'impressum.html',
       'index.html',
     ]);
   });
 
-  test('has German language, a viewport and a reasonable title', () => {
+  test('declares its language (English in en/, German elsewhere), a viewport and a reasonable title', () => {
     for (const page of pages) {
       const html = read(page);
-      assert.match(html, /<html lang="de"/, page);
+      assert.match(html, page.startsWith('en/') ? /<html lang="en"/ : /<html lang="de"/, page);
       assert.ok(meta(html, 'viewport'), `${page}: viewport`);
       const title = decode(first(html, /<title>([^<]*)<\/title>/) ?? '');
       assert.ok(title.length > 10 && title.length <= 60, `${page}: title "${title}"`);
@@ -74,7 +83,7 @@ describe('every page', () => {
           assert.ok(ids.has(hash), `${page}: missing anchor #${hash}`);
           continue;
         }
-        const file = path === '/' ? 'index.html' : path.replace(/^\//, '');
+        const file = (path.endsWith('/') ? `${path}index.html` : path).replace(/^\//, '');
         assert.ok(existsSync(join(output, file)), `${page}: broken link ${href}`);
         if (hash) {
           assert.ok(read(file).includes(`id="${hash}"`), `${page}: missing anchor ${href}`);
@@ -102,46 +111,97 @@ describe('every page', () => {
   });
 });
 
-describe('home page', () => {
-  test('is indexable with canonical URL and social preview', () => {
-    const html = read('index.html');
-    assert.match(meta(html, 'robots'), /^index, follow/);
-    assert.match(html, new RegExp(`<link rel="canonical" href="${SITE_URL}/">`));
-    assert.match(html, new RegExp(`<meta property="og:image" content="${SITE_URL}/img/`));
-  });
+describe('home pages', () => {
+  const graphOf = (html) =>
+    JSON.parse(first(html, /<script type="application\/ld\+json">([\s\S]*?)<\/script>/))['@graph'];
 
-  test('has valid structured data whose FAQ matches the visible FAQ word for word', () => {
-    const html = read('index.html');
-    const json = first(html, /<script type="application\/ld\+json">([\s\S]*?)<\/script>/);
-    const graph = JSON.parse(json)['@graph'];
-    const types = graph.map((node) => [node['@type']].flat()[0]);
-    assert.deepEqual(types, ['LocalBusiness', 'FAQPage', 'Person', 'WebSite']);
-
-    const visible = all(html, /<summary>([^<]*)<\/summary>/g).map(decode);
-    const structured = graph.find((node) => node['@type'] === 'FAQPage').mainEntity;
-    assert.deepEqual(
-      structured.map((q) => q.name),
-      visible,
-    );
-    for (const { acceptedAnswer } of structured) {
-      assert.doesNotMatch(acceptedAnswer.text, /<[^>]+>/, 'answers must be plain text');
+  test('are indexable with canonical URL and social preview', () => {
+    for (const { file, url } of HOMES) {
+      const html = read(file);
+      assert.match(meta(html, 'robots'), /^index, follow/, file);
+      assert.match(html, new RegExp(`<link rel="canonical" href="${SITE_URL}${url}">`), file);
+      assert.match(html, new RegExp(`<meta property="og:image" content="${SITE_URL}/img/`), file);
     }
   });
 
-  test('offers every visible price in the structured data', () => {
-    const html = read('index.html');
-    const json = first(html, /<script type="application\/ld\+json">([\s\S]*?)<\/script>/);
-    const business = JSON.parse(json)['@graph'][0];
-    const structured = business.makesOffer.filter((offer) => offer.price).map((o) => o.price);
+  test('point to each other with hreflang and the language switch', () => {
+    for (const { file, lang } of HOMES) {
+      const html = read(file);
+      for (const other of HOMES) {
+        assert.ok(
+          html.includes(
+            `<link rel="alternate" hreflang="${other.lang}" href="${SITE_URL}${other.url}">`,
+          ),
+          `${file} → ${other.lang}`,
+        );
+      }
+      assert.ok(html.includes(`hreflang="x-default" href="${SITE_URL}/"`), file);
+      const switches = all(html, /<a class="lang-switch" href="([^"]+)"/g);
+      assert.deepEqual(
+        switches,
+        HOMES.filter((other) => other.lang !== lang).map((other) => other.url),
+        file,
+      );
+    }
+  });
 
-    const visible = [
-      ...all(html, /<span class="amount">(\d+)<\/span>/g),
-      ...all(html, /Duo-Training: (\d+) €/g),
-    ];
-    assert.deepEqual(structured.sort(), visible.sort());
-    for (const offer of business.makesOffer) {
-      assert.equal(offer.itemOffered['@type'], 'Service');
-      if (offer.price) assert.equal(offer.priceCurrency, 'EUR');
+  test('have valid structured data whose FAQ matches the visible FAQ word for word', () => {
+    for (const { file } of HOMES) {
+      const html = read(file);
+      const graph = graphOf(html);
+      const types = graph.map((node) => [node['@type']].flat()[0]);
+      assert.deepEqual(types, ['LocalBusiness', 'FAQPage', 'Person', 'WebSite'], file);
+
+      const visible = all(html, /<summary>([^<]*)<\/summary>/g).map(decode);
+      const structured = graph.find((node) => node['@type'] === 'FAQPage').mainEntity;
+      assert.deepEqual(
+        structured.map((q) => decode(q.name)),
+        visible,
+        file,
+      );
+      for (const { acceptedAnswer } of structured) {
+        assert.doesNotMatch(acceptedAnswer.text, /<[^>]+>/, 'answers must be plain text');
+      }
+    }
+  });
+
+  test('describe each language version as its own graph', () => {
+    for (const { file, url, lang } of HOMES) {
+      const graph = graphOf(read(file));
+      assert.equal(graph[0]['@id'], `${SITE_URL}${url}#business`, file);
+      assert.match(graph.at(-1).inLanguage, new RegExp(`^${lang}-`), file);
+    }
+  });
+
+  test('name the same towns in the structured data as in the contact section', () => {
+    for (const { file } of HOMES) {
+      const html = read(file);
+      const list = first(html, /<ul class="service-area"[^>]*>([\s\S]*?)<\/ul>/);
+      const visible = all(list, /<li>([^<]*)<\/li>/g).map(decode);
+      assert.ok(visible.length > 1, file);
+      assert.deepEqual(
+        graphOf(html)[0].areaServed.map((place) => place.name),
+        visible,
+        file,
+      );
+    }
+  });
+
+  test('offer every visible price in the structured data', () => {
+    for (const { file } of HOMES) {
+      const html = read(file);
+      const business = graphOf(html)[0];
+      const structured = business.makesOffer.filter((offer) => offer.price).map((o) => o.price);
+
+      const visible = [
+        ...all(html, /<span class="amount">(\d+)<\/span>/g),
+        ...all(html, /Duo[- ]training: €?(\d+)/gi),
+      ];
+      assert.deepEqual(structured.sort(), visible.sort(), file);
+      for (const offer of business.makesOffer) {
+        assert.equal(offer.itemOffered['@type'], 'Service');
+        if (offer.price) assert.equal(offer.priceCurrency, 'EUR');
+      }
     }
   });
 });
@@ -173,7 +233,7 @@ describe('contact form', () => {
 describe('crawler files', () => {
   test('sitemap lists exactly the indexable pages', () => {
     const locations = all(read('sitemap.xml'), /<loc>([^<]+)<\/loc>/g);
-    assert.deepEqual(locations, [`${SITE_URL}/`]);
+    assert.deepEqual(locations, [`${SITE_URL}/`, `${SITE_URL}/en/`]);
     assert.match(read('sitemap.xml'), /<lastmod>\d{4}-\d{2}-\d{2}<\/lastmod>/);
   });
 

@@ -1,12 +1,19 @@
 /**
- * Builds the schema.org graph (JSON-LD) of the home page from the content
+ * Builds the schema.org graph (JSON-LD) of a home page from the content
  * data files: business with priced offers, FAQ, person and website.
  *
  * Prices come from pricing.json – the same data as the price cards – so
  * search engines and AI assistants always see the current prices.
+ *
+ * The data arrives already in the page's language. Every language version
+ * describes its own graph (ids below its own URL, e.g. /en/#business), so
+ * German and English texts never get mixed up in one entity.
  */
-export function buildStructuredData({ site, offers, pricing, faq }, { stripTags }) {
-  const id = (fragment) => `${site.url}/#${fragment}`;
+export function buildStructuredData(
+  { site, offers, pricing, faq, pageUrl = '/', locale = 'de_DE' },
+  { stripTags, fill },
+) {
+  const id = (fragment) => `${site.url}${pageUrl}#${fragment}`;
   const url = (path) => `${site.url}${path}`;
   const { address, contact, openingHours, owner, business } = site;
 
@@ -61,11 +68,7 @@ export function buildStructuredData({ site, offers, pricing, faq }, { stripTags 
             }),
           ],
     ),
-    pricedOffer(
-      pricing.duo.offer,
-      `Duo-Training – ${pricing.duo.minutes} Min (pro Person)`,
-      pricing.duo.amount,
-    ),
+    pricedOffer(pricing.duo.offer, fill(pricing.duo.schemaName, pricing.duo), pricing.duo.amount),
   ];
 
   // Services without a fixed price (e.g. nutrition coaching) are still listed, price on request
@@ -79,7 +82,7 @@ export function buildStructuredData({ site, offers, pricing, faq }, { stripTags 
     '@id': id('business'),
     name: site.name,
     description: business.description,
-    url: `${site.url}/`,
+    url: url(pageUrl),
     telephone: contact.phone,
     email: contact.email,
     image: url(site.ogImage),
@@ -96,8 +99,9 @@ export function buildStructuredData({ site, offers, pricing, faq }, { stripTags 
       addressRegion: address.region,
       addressCountry: address.country,
     },
-    // Training on site happens in the home town; online coaching is not tied to a place
-    areaServed: { '@type': 'City', name: address.city },
+    // Towns for training on site – the same list as the service area in the
+    // Google Business Profile (site.json → serviceArea); online coaching is not tied to a place
+    areaServed: site.serviceArea.map((name) => ({ '@type': 'City', name })),
     geo: {
       '@type': 'GeoCoordinates',
       latitude: address.latitude,
@@ -137,7 +141,7 @@ export function buildStructuredData({ site, offers, pricing, faq }, { stripTags 
     knowsAbout: owner.expertise,
     hasCredential: owner.credentials.map((name) => ({
       '@type': 'EducationalOccupationalCredential',
-      credentialCategory: 'Lizenz',
+      credentialCategory: owner.credentialCategory,
       name,
     })),
   };
@@ -145,9 +149,9 @@ export function buildStructuredData({ site, offers, pricing, faq }, { stripTags 
   const website = {
     '@type': 'WebSite',
     '@id': id('website'),
-    url: `${site.url}/`,
+    url: url(pageUrl),
     name: site.name,
-    inLanguage: 'de-DE',
+    inLanguage: locale.replace('_', '-'),
     publisher: { '@id': id('business') },
   };
 

@@ -1,4 +1,5 @@
 import { $, scrollBehavior } from '../../lib/dom.js';
+import { t } from '../../lib/i18n.js';
 import { RULES, buildMailBody, buildMailSubject, fieldValue } from './validation.js';
 
 /* Time trap: humans need at least a few seconds to fill in the form,
@@ -59,7 +60,7 @@ export function initContactForm() {
       const input = document.getElementById(rule.id);
       if (!input) continue;
       const valid = rule.isValid(fieldValue(input));
-      showError(input, valid ? '' : rule.message);
+      showError(input, valid ? '' : t.errors[rule.id]);
       if (!valid && !firstInvalid) firstInvalid = input;
     }
 
@@ -91,10 +92,7 @@ export function initContactForm() {
        click). So we show an honest message and allow a second try – a bot
        won't manage it, a human simply clicks again. No real enquiry is lost. */
     if (Date.now() - loadedAt < MIN_FILL_MS) {
-      setStatus(
-        'Fast geschafft – bitte klicke noch einmal auf „Jetzt unverbindlich anfragen".',
-        'err',
-      );
+      setStatus(t.form.tooFast, 'err');
       loadedAt = 0;
       return;
     }
@@ -102,12 +100,12 @@ export function initContactForm() {
     /* ── Spam protection, step 3: lock against repeated sending ── */
     if (sending) return;
     if (sentAt && Date.now() - sentAt < COOLDOWN_MS) {
-      setStatus('Deine Anfrage ist bereits unterwegs. Einen Moment bitte.', 'ok');
+      setStatus(t.form.alreadySent, 'ok');
       return;
     }
 
     if (!validateAll()) {
-      setStatus('Bitte prüfe die markierten Felder.', 'err');
+      setStatus(t.form.checkFields, 'err');
       return;
     }
 
@@ -120,16 +118,14 @@ export function initContactForm() {
       quelle: formData.get('quelle'),
       nachricht: formData.get('nachricht'),
       interesse: formData.get('interesse') || '',
+      sprache: formData.get('sprache') || '',
       // Always sent, so the worker can check the trap as well
       _gotcha: formData.get('_gotcha') || '',
     };
 
     if (!endpoint) {
       openMailFallback(mail, data);
-      setStatus(
-        'Dein E-Mail-Programm öffnet sich mit der fertigen Nachricht – bitte nur noch abschicken.',
-        'ok',
-      );
+      setStatus(t.form.mailAppOpens, 'ok');
       return;
     }
 
@@ -137,7 +133,7 @@ export function initContactForm() {
     if (fallbackButton) fallbackButton.hidden = true;
     submitButton.disabled = true;
     const label = submitButton.textContent;
-    submitButton.textContent = 'Wird gesendet …';
+    submitButton.textContent = t.form.sending;
     setStatus('');
 
     try {
@@ -156,10 +152,7 @@ export function initContactForm() {
     } catch {
       unsent = data;
       if (fallbackButton) fallbackButton.hidden = false;
-      setStatus(
-        'Das Senden hat leider nicht geklappt. Du kannst deine Nachricht mit deinem E-Mail-Programm senden oder mir per WhatsApp schreiben.',
-        'err',
-      );
+      setStatus(t.form.failed, 'err');
     } finally {
       sending = false;
       submitButton.disabled = false;
@@ -195,7 +188,7 @@ function attachLiveValidation() {
 
     input.addEventListener('blur', () => {
       if (!isCheckbox && !input.value.trim()) return;
-      if (!valid()) showError(input, rule.message);
+      if (!valid()) showError(input, t.errors[rule.id]);
     });
   }
 }

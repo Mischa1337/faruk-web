@@ -1,10 +1,10 @@
-{# Cooperation partners; to add a partner, add an entry to _data/partners.json #}
+{# Cooperation partners; to add a partner, add an entry to _data/partners.json. Heading in _data/text/partners.json #}
 <section class="section section-alt" id="kooperationen">
   <div class="wrap">
     <header class="section-head reveal">
-      <p class="eyebrow">Kooperationen</p>
-      <h2>Starke Partner an deiner Seite</h2>
-      <p class="section-lead">Meine Betreuung geht über das reine Training hinaus. Ich arbeite mit ausgewählten Partnern aus verschiedenen Bereichen zusammen, damit du rundum gut versorgt bist. Wenn du mal Unterstützung brauchst, leite ich dich gerne an die passenden Profis weiter.</p>
+      <p class="eyebrow">{{ text.partners.eyebrow }}</p>
+      <h2>{{ text.partners.title }}</h2>
+      <p class="section-lead">{{ text.partners.lead }}</p>
     </header>
 
     <div class="partners">
@@ -17,7 +17,7 @@
         <p class="partner-kind">{{ partner.kind | escape | replace(" · ", "&nbsp;· ") | safe }}</p>
         <h3>{{ partner.name }}</h3>
         <p>{{ partner.text }}</p>
-        <a class="partner-link" href="{{ partner.url }}" target="_blank" rel="noopener">Zur Website {% icon "external" %}<span class="sr-only"> (öffnet in neuem Tab)</span></a>
+        <a class="partner-link" href="{{ partner.url }}" target="_blank" rel="noopener">{{ text.partners.link }} {% icon "external" %}<span class="sr-only"> {{ text.ui.newTab }}</span></a>
       </article>
       {%- endfor %}
     </div>

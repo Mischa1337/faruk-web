@@ -2,8 +2,8 @@
 
 [![Site](https://github.com/Mischa1337/faruk-web/actions/workflows/site.yml/badge.svg)](https://github.com/Mischa1337/faruk-web/actions/workflows/site.yml)
 
-Website of AFP-Coaching – personal training on site and online coaching.
-Live at [afp-coaching.de](https://afp-coaching.de).
+Website of AFP-Coaching – personal training on site and online coaching, in
+German and English. Live at [afp-coaching.de](https://afp-coaching.de).
 
 A static site built with [Eleventy](https://www.11ty.dev/) and
 [esbuild](https://esbuild.github.io/): plain HTML, CSS and JavaScript in the
@@ -36,8 +36,11 @@ npm run dev      # local server with live reload on http://localhost:4321
 | Prices, offers, FAQ, reviews, partners        | `src/_data/*.json`                         |
 | Phone, e-mail, address, WhatsApp text         | `src/_data/site.json`                      |
 | Menu and footer links                         | `src/_data/navigation.json`                |
-| Text of a section (hero, about me, process …) | `src/_includes/sections/<section>.njk`     |
-| Order of the sections                         | `src/index.njk`                            |
+| Text of a section (hero, about me, process …) | `src/_data/text/<section>.json`            |
+| English version of a text                     | right next to the German one (`"en"`)      |
+| Messages of the scripts (form errors …)       | `src/scripts/lib/strings.js`               |
+| Markup of a section                           | `src/_includes/sections/<section>.njk`     |
+| Order of the sections                         | `src/_includes/layouts/home.njk`           |
 | Look of a section                             | `src/styles/sections/<section>.css`        |
 | Colours, spacing, fonts                       | `src/styles/base/tokens.css`               |
 | Behaviour (menu, form, theme toggle …)        | `src/scripts/modules/`                     |
@@ -69,10 +72,10 @@ Every push and pull request runs [`.github/workflows/site.yml`](.github/workflow
 1. **Lint** – ESLint, Stylelint, Prettier
 2. **Build** – Eleventy + esbuild
 3. **Validate** – html-validate on every generated page
-4. **Test** – form validation and contact worker unit tests; SEO regression
-   tests (one `<h1>` per page, canonical URLs, `noindex` on legal pages,
-   structured data matching the visible FAQ, sitemap, no broken internal
-   links or anchors)
+4. **Test** – form validation and contact worker unit tests; translations
+   complete in every language; SEO regression tests (one `<h1>` per page,
+   canonical URLs, `hreflang`, `noindex` on legal pages, structured data
+   matching the visible FAQ, sitemap, no broken internal links or anchors)
 5. **Lighthouse CI** – fails below 95 accessibility / best practices and below
    100 SEO on the home page ([`lighthouserc.json`](lighthouserc.json))
 6. **Deploy** – only from `main`, to GitHub Pages
@@ -81,21 +84,23 @@ Every push and pull request runs [`.github/workflows/site.yml`](.github/workflow
 
 ```
 src/
-  _data/            content and settings (JSON) – single source of truth
+  _data/            content and settings (JSON) – single source of truth, in every language
+    text/           texts of the sections, one file per section
   _includes/
-    layouts/        page skeletons (base, sub-page)
+    layouts/        page skeletons (base, home page, sub-page)
     partials/       header, footer, head, icons, contact form, JSON-LD
     sections/       one file per section of the home page
   styles/           CSS, bundled by esbuild into css/style.css
   scripts/          ES modules, bundled by esbuild into js/main.js
   img/              photos, turned into AVIF/WebP in several widths
   public/           static files copied as they are (logo, favicons)
-  index.njk         home page: list of sections
+  index.njk         German home page
+  en/               English home page (lang: en)
   impressum.njk     imprint
   datenschutz.njk   privacy policy
   404.njk           error page
   sitemap.njk, robots.njk, llms.11ty.js
-config/             build helpers (asset bundling, filters, structured data)
+config/             build helpers (asset bundling, filters, languages, structured data)
 test/               automated tests
 worker/             Cloudflare Worker that sends the contact form (own package.json)
 eleventy.config.js  build configuration

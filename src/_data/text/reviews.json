@@ -1,0 +1,12 @@
+{
+  "eyebrow": { "de": "Erfolge", "en": "Reviews" },
+  "title": { "de": "Was meine Kundinnen und Kunden sagen", "en": "What my clients say" },
+  "rating": {
+    "de": "{rating} von 5 Sternen bei Google",
+    "en": "{rating} out of 5 stars on Google"
+  },
+  "languageNote": { "de": "", "en": "The reviews are shown in their original German." },
+  "stars": { "de": "5 von 5 Sternen", "en": "5 out of 5 stars" },
+  "source": { "de": "Google-Bewertung", "en": "Google review" },
+  "all": { "de": "Alle Bewertungen auf Google ansehen", "en": "See all reviews on Google" }
+}
