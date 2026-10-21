@@ -14,8 +14,11 @@ on:
 permissions:
   contents: read
 
+# One group per pull request and one per branch, so a pull request run never
+# cancels the deploy from main. Grouping by ref alone is not enough: a pull
+# request run that only starts after the merge reports main as its ref.
 concurrency:
-  group: site-${{ github.ref }}
+  group: site-${{ github.event.pull_request.number || github.ref }}
   cancel-in-progress: true
 
 jobs:
@@ -36,9 +39,11 @@ jobs:
       # Tests build their own copy of the site, so they run before the real build
       - run: npm test
 
+      # Deploy steps run for pushes to main only – never for a pull request,
+      # even one that is already merged (see concurrency above)
       - name: Configure Pages
         id: pages
-        if: github.ref == 'refs/heads/main'
+        if: github.event_name != 'pull_request' && github.ref == 'refs/heads/main'
         uses: actions/configure-pages@v5
 
       - name: Build
@@ -50,7 +55,7 @@ jobs:
       - run: npm run validate
 
       - name: Upload site for GitHub Pages
-        if: github.ref == 'refs/heads/main'
+        if: github.event_name != 'pull_request' && github.ref == 'refs/heads/main'
         uses: actions/upload-pages-artifact@v3
         with:
           path: _site/
@@ -83,7 +88,7 @@ jobs:
           path: lighthouse-reports/
 
   deploy:
-    if: github.ref == 'refs/heads/main'
+    if: github.event_name != 'pull_request' && github.ref == 'refs/heads/main'
     needs: [check, lighthouse]
     runs-on: ubuntu-latest
     permissions:

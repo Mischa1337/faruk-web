@@ -26,8 +26,10 @@ on:
 permissions:
   contents: read
 
+# One group per pull request and one per branch (see site.yml for why the
+# pull request number is needed)
 concurrency:
-  group: worker-${{ github.ref }}
+  group: worker-${{ github.event.pull_request.number || github.ref }}
   # Never abort a deploy halfway
   cancel-in-progress: false
 
@@ -51,8 +53,12 @@ jobs:
       # Bundles without uploading – catches import and config errors on every PR
       - run: npm run build
 
+      # Pushes to main only – a pull request that is already merged also
+      # reports main as its ref, but must never deploy
       - name: Deploy to Cloudflare
-        if: github.ref == 'refs/heads/main' && vars.CLOUDFLARE_ACCOUNT_ID != ''
+        if: >-
+          github.event_name != 'pull_request' && github.ref == 'refs/heads/main' &&
+          vars.CLOUDFLARE_ACCOUNT_ID != ''
         run: npx wrangler deploy
         env:
           CLOUDFLARE_ACCOUNT_ID: ${{ vars.CLOUDFLARE_ACCOUNT_ID }}
