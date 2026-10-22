@@ -8,7 +8,7 @@
     "icon": "dumbbell",
     "text": {
       "de": "Die ganze Einheit gehört dir. Ich begleite dich bei jeder Übungsausführung, passe das Training flexibel an deine Tagesform an und helfe dir dabei, sicher und zielgerichtet zu trainieren.",
-      "en": "The whole session is yours. I guide you through every exercise, adapt the training to how you feel on the day and help you train safely and with purpose."
+      "en": "The entire session is yours. I guide you through every exercise, adapt the training to how you feel that day and ensure you train safely and with purpose."
     },
     "features": {
       "de": [
@@ -17,9 +17,9 @@
         "<strong>Persönliche Betreuung:</strong> Volle 60 oder 90 Minuten, in denen ausschließlich du und deine Ziele im Mittelpunkt stehen."
       ],
       "en": [
-        "<strong>Direct technique coaching:</strong> Instant feedback during every exercise for maximum safety.",
-        "<strong>Mental relief:</strong> No thinking ahead or planning for you – I lead you through the session and get the most out of your hour.",
-        "<strong>Personal attention:</strong> A full 60 or 90 minutes focused entirely on you and your goals."
+        "<strong>Direct technique coaching:</strong> Instant feedback during every exercise for maximum safety and efficiency.",
+        "<strong>Mental relief:</strong> No planning or overthinking required – I lead you through the session and get the most out of your hour.",
+        "<strong>Dedicated attention:</strong> A full 60 or 90 minutes focused entirely on you and your goals."
       ]
     },
     "schema": {
@@ -46,7 +46,7 @@
     "icon": "duo",
     "text": {
       "de": "Gemeinsam trainieren, sich gegenseitig motivieren und dabei von persönlicher Betreuung profitieren. Ideal für Paare, Freunde oder Geschwister mit ähnlichen Zielen.",
-      "en": "Train together, motivate each other and still get personal coaching. Ideal for couples, friends or siblings with similar goals."
+      "en": "Train together, motivate each other and still receive personalised coaching. Ideal for couples, friends or siblings with similar goals."
     },
     "features": {
       "de": [
@@ -55,8 +55,8 @@
         "<strong>Individuelle Skalierung:</strong> Die Übungen werden für beide Teilnehmer passend auf den jeweiligen Leistungsstand abgestimmt."
       ],
       "en": [
-        "<strong>Shared costs:</strong> A considerably lower price per person than one-to-one training.",
-        "<strong>Built-in commitment:</strong> Having a training date with each other helps you stay on track and make training a fixed part of everyday life.",
+        "<strong>Shared costs:</strong> A significantly lower price per person than one-to-one training.",
+        "<strong>Built-in commitment:</strong> Having a training date with each other keeps you accountable and turns training into a seamless routine.",
         "<strong>Individual scaling:</strong> The exercises are adapted to each participant’s current level."
       ]
     },
@@ -84,7 +84,7 @@
     "icon": "smartphone",
     "text": {
       "de": "Du trainierst selbstständig, aber nicht allein. Du erhältst einen individuell geplanten Trainingsablauf, regelmäßige Rückmeldungen und persönliche Check-ins. So weißt du auch genau dann, was zu tun ist, wenn wir nicht gemeinsam im Studio stehen.",
-      "en": "You train on your own, but you’re not alone. You get an individually planned training programme, regular feedback and personal check-ins – so you know exactly what to do, even when we’re not in the gym together."
+      "en": "You train on your own, but you’re never alone. You get an individually planned training programme, regular feedback and personal check-ins – so you always know exactly what to do, even when I’m not there in person."
     },
     "features": {
       "de": [
@@ -93,8 +93,8 @@
         "<strong>Direkter Chat-Support:</strong> Schnelle Antworten auf all deine Fragen über den direkten Messenger-Kontakt."
       ],
       "en": [
-        "<strong>Tailor-made roadmap:</strong> A structured guide that is regularly adjusted to your progress.",
-        "<strong>Digital technique feedback:</strong> Video checks of your exercise form for lasting success.",
+        "<strong>Tailor-made roadmap:</strong> A structured guide that is dynamically adjusted based on your progress.",
+        "<strong>Digital technique feedback:</strong> Video checks of your exercise form for long-term success.",
         "<strong>Direct chat support:</strong> Quick answers to all your questions via messenger."
       ]
     },
@@ -122,7 +122,7 @@
     "icon": "salad",
     "text": {
       "de": "Keine kurzfristige Diät und keine Verbotsliste. Gemeinsam entwickeln wir Ernährungs&shy;gewohnheiten, die zu deinem Alltag passen und die du langfristig beibehalten kannst.",
-      "en": "No crash diets and no lists of forbidden foods. Together we develop eating habits that fit your everyday life and that you can keep up in the long run."
+      "en": "No crash diets and no lists of forbidden foods. Together we develop eating habits that fit your everyday life and last a lifetime."
     },
     "features": {
       "de": [
@@ -132,7 +132,7 @@
       ],
       "en": [
         "<strong>Habits that work in real life:</strong> Practical, easy-to-follow advice instead of complicated rules.",
-        "<strong>Sustainable, without going hungry:</strong> We don’t cut out any food groups. A flexible approach helps you reach your physical goals without giving up enjoyment in your social life.",
+        "<strong>Sustainable, without deprivation:</strong> We don’t cut out any food groups. A flexible approach helps you reach your physical goals without missing out on social life and enjoyment.",
         "<strong>Optional add-on:</strong> Ideal to combine with your personal training or online coaching."
       ]
     },

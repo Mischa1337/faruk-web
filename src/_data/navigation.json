@@ -10,7 +10,7 @@
     {
       "label": {
         "de": "Ablauf",
-        "en": "How it works"
+        "en": "How It Works"
       },
       "href": "#ablauf"
     },
@@ -24,14 +24,14 @@
     {
       "label": {
         "de": "Über mich",
-        "en": "About me"
+        "en": "About Me"
       },
       "href": "#ueber-mich"
     },
     {
       "label": {
         "de": "Erfolge",
-        "en": "Reviews"
+        "en": "Testimonials"
       },
       "href": "#erfolge"
     },

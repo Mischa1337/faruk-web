@@ -1,6 +1,6 @@
 {
-  "eyebrow": { "de": "Erfolge", "en": "Reviews" },
-  "title": { "de": "Was meine Kundinnen und Kunden sagen", "en": "What my clients say" },
+  "eyebrow": { "de": "Erfolge", "en": "Testimonials" },
+  "title": { "de": "Was meine Kundinnen und Kunden sagen", "en": "What My Clients Say" },
   "rating": {
     "de": "{rating} von 5 Sternen bei Google",
     "en": "{rating} out of 5 stars on Google"

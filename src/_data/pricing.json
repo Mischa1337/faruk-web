@@ -3,7 +3,7 @@
     {
       "name": {
         "de": "Einzeltermin",
-        "en": "Single session"
+        "en": "Single Session"
       },
       "offer": "personal-training",
       "rates": [
@@ -23,8 +23,8 @@
         }
       ],
       "description": {
-        "de": "Zum Reinschnuppern oder für unregelmäßige Termine.",
-        "en": "For trying it out or for occasional sessions."
+        "de": "Ideal für ein Probetraining oder unregelmäßige Termine.",
+        "en": "For trying it out or for occasional check-ins."
       },
       "features": {
         "de": [
@@ -34,7 +34,7 @@
         ],
         "en": [
           "<strong>Complete flexibility:</strong> Book your sessions spontaneously, whenever you need them.",
-          "<strong>No commitment:</strong> You only pay for what you use – no prepayment or session package.",
+          "<strong>No commitment:</strong> Pay as you go – you only pay for what you use.",
           "<strong>Easy start:</strong> Ideal for trying out 1:1 training or a new training focus."
         ]
       }
@@ -42,7 +42,7 @@
     {
       "name": {
         "de": "5er-Karte",
-        "en": "5-session pack"
+        "en": "5-Session Pack"
       },
       "offer": "personal-training",
       "rates": [
@@ -67,12 +67,12 @@
       },
       "features": {
         "de": [
-          "<strong>Preiseffekt:</strong> Nur 77 € bzw. 97 € pro Trainingseinheit.",
+          "<strong>Dein Vorteil:</strong> Nur 77 € bzw. 97 € pro Trainingseinheit.",
           "<strong>Gezielter Zeitraum:</strong> Ein kompakter und fester Rahmen, um deine Einheiten über mehrere Wochen hinweg konzentriert durchzuziehen.",
           "<strong>2 Monate Gültigkeit:</strong> Die Einheiten können flexibel innerhalb von zwei Monaten eingelöst werden."
         ],
         "en": [
-          "<strong>Better value:</strong> Only €77 or €97 per session.",
+          "<strong>Great value:</strong> Only €77 or €97 per session.",
           "<strong>Focused period:</strong> A compact, fixed framework to get your sessions done over several weeks.",
           "<strong>Valid for 2 months:</strong> Use your sessions flexibly within two months."
         ]
@@ -81,13 +81,13 @@
     {
       "name": {
         "de": "10er-Karte",
-        "en": "10-session pack"
+        "en": "10-Session Pack"
       },
       "offer": "personal-training",
       "featured": true,
       "badge": {
         "de": "Beliebteste Wahl",
-        "en": "Most popular"
+        "en": "Most Popular"
       },
       "rates": [
         {
@@ -107,32 +107,32 @@
       ],
       "description": {
         "de": "Der Klassiker. Genug Zeit, um echte Fortschritte zu sehen.",
-        "en": "The classic. Enough time to see real progress."
+        "en": "The classic choice. Enough time to see real progress."
       },
       "features": {
         "de": [
-          "<strong>Preiseffekt:</strong> Nur 75 € bzw. 95 € pro Trainingseinheit.",
+          "<strong>Dein Vorteil:</strong> Nur 75 € bzw. 95 € pro Trainingseinheit.",
           "<strong>Fortlaufende Betreuung:</strong> Der bewährte Weg für eine regelmäßige Zusammenarbeit, um deine sportlichen Ziele Schritt für Schritt zu erreichen.",
-          "<strong>4 Monate Gültigkeit:</strong> Maximaler zeitlicher Spielraum von vier Monaten für deine Einheiten."
+          "<strong>4 Monate Gültigkeit:</strong> Die Einheiten können flexibel innerhalb von vier Monaten eingelöst werden."
         ],
         "en": [
-          "<strong>Better value:</strong> Only €75 or €95 per session.",
+          "<strong>Best value:</strong> Only €75 or €95 per session.",
           "<strong>Ongoing coaching:</strong> The proven way to work together regularly and reach your fitness goals step by step.",
-          "<strong>Valid for 4 months:</strong> Up to four months to use your sessions."
+          "<strong>Valid for 4 months:</strong> Use your sessions flexibly within four months."
         ]
       }
     },
     {
       "name": {
         "de": "Online-Coaching",
-        "en": "Online coaching"
+        "en": "Online Coaching"
       },
       "offer": "online-coaching",
       "price": {
         "amount": "119",
         "unit": {
           "de": "€ / Monat",
-          "en": "€ / month"
+          "en": "/ month"
         },
         "unitCode": "MON"
       },
@@ -149,8 +149,8 @@
         ],
         "en": [
           "Regular updates to your training plan",
-          "Technique feedback via video",
-          "Cancel monthly",
+          "Form and technique analysis via video",
+          "Cancel monthly at any time",
           "Chat support"
         ]
       }
@@ -193,6 +193,6 @@
   },
   "footnotes": {
     "de": ["Firmen- &amp; Gruppenangebote: Individuelle Konditionen auf Anfrage."],
-    "en": ["Corporate &amp; group offers: individual terms on request."]
+    "en": ["Corporate &amp; group offers: customised packages on request."]
   }
 }

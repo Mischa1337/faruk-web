@@ -116,11 +116,18 @@
   color: var(--text-muted);
 }
 
-/* Towns for training on site as small, quiet tags */
+/* Towns for training on site as small, quiet tags under a small heading */
+.service-area-title {
+  margin-top: 1.25rem;
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--text-muted);
+}
+
 .service-area {
   list-style: none;
   padding: 0;
-  margin-top: 0.85rem;
+  margin-top: 0.6rem;
   display: flex;
   flex-wrap: wrap;
   gap: 0.4rem;

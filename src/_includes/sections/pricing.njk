@@ -7,6 +7,9 @@
       <p class="section-lead">{{ text.pricing.lead }}</p>
     </header>
 
+    {#- English writes the euro sign before the amount (€80), German after it (80 €) #}
+    {%- set euroBefore = "€" if lang == "en" else "" %}
+    {%- set euroAfter = "" if lang == "en" else " €" %}
     <div class="pricing">
       {%- for plan in pricing.plans %}
       <article class="price{% if plan.featured %} price-featured{% endif %} reveal">
@@ -17,11 +20,11 @@
         {%- if plan.rates %}
         <dl class="price-rows">
           {%- for rate in plan.rates %}
-          <div><dt>{{ rate.duration }}</dt><dd><span class="amount">{{ rate.amount }}</span> €</dd></div>
+          <div><dt>{{ rate.duration }}</dt><dd>{{ euroBefore }}<span class="amount">{{ rate.amount }}</span>{{ euroAfter }}</dd></div>
           {%- endfor %}
         </dl>
         {%- else %}
-        <p class="price-tag"><span class="amount">{{ plan.price.amount }}</span><span class="unit">{{ plan.price.unit }}</span></p>
+        <p class="price-tag">{%- if euroBefore %}<span class="currency">€</span>{% endif %}<span class="amount">{{ plan.price.amount }}</span><span class="unit">{{ plan.price.unit }}</span></p>
         {%- endif %}
         <p class="price-desc">{{ plan.description }}</p>
         <ul class="ticks">

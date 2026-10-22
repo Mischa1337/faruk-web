@@ -32,7 +32,8 @@
 
       <p class="contact-area">{{ text.contact.area | safe }}</p>
       {# Same towns as the service area in the Google Business Profile (site.json → serviceArea) #}
-      <ul class="service-area" aria-label="{{ text.contact.areaLabel }}">
+      <h3 class="service-area-title" id="service-area-title">{{ text.contact.areaTitle }}</h3>
+      <ul class="service-area" aria-labelledby="service-area-title">
         {%- for town in site.serviceArea %}
         <li>{{ town }}</li>
         {%- endfor %}
