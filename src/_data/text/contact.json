@@ -1,17 +1,20 @@
 {
   "eyebrow": { "de": "Kontakt", "en": "Contact" },
-  "title": { "de": "Lass uns starten!", "en": "Let’s get started!" },
+  "title": { "de": "Lass uns starten!", "en": "Let’s Get Started!" },
   "lead": {
     "de": "Schreib mir einfach, was du erreichen möchtest. Unser Erstgespräch ist kostenlos und absolut unverbindlich – danach entscheidest du ganz in Ruhe.",
-    "en": "Just tell me what you’d like to achieve. Our first consultation is free and completely non-binding – afterwards you can decide in your own time."
+    "en": "Just tell me what you’d like to achieve. Our initial consultation is free and completely non-binding – take all the time you need to decide afterwards."
   },
-  "whatsappHint": { "de": "Schnellste Antwort", "en": "Fastest reply" },
+  "whatsappHint": { "de": "Schnellste Antwort", "en": "Fastest response" },
   "mailHint": { "de": "Öffnet deine Mail-App", "en": "Opens your mail app" },
-  "copyHint": { "de": "Klicken zum Kopieren", "en": "Click to copy" },
-  "instagramHint": { "de": "Training & Alltag", "en": "Training & everyday life" },
+  "copyHint": { "de": "Klicken zum Kopieren", "en": "Click to copy address" },
+  "instagramHint": { "de": "Training & Alltag", "en": "Training insights & daily life" },
   "area": {
     "de": "<strong>Egal, wo du zu Hause bist:</strong> Vor Ort trainiere ich mit dir in Gießen&nbsp;und&nbsp;Umgebung – mein Online-Coaching funktioniert von überall.",
-    "en": "<strong>Wherever you live:</strong> I train with you on site in Giessen&nbsp;and the surrounding area – my online coaching works from anywhere."
+    "en": "<strong>No Matter Where You Live:</strong> I train with you on site in Giessen&nbsp;and the surrounding area – my online coaching works from anywhere in the world."
   },
-  "areaLabel": { "de": "Training vor Ort in", "en": "Training on site in" }
+  "areaTitle": {
+    "de": "Mein Einzugsgebiet für Vor-Ort-Training",
+    "en": "My Service Area for On-Site Training"
+  }
 }

@@ -7,7 +7,7 @@
   "phone": { "de": "Telefon", "en": "Phone" },
   "phoneHint": {
     "de": "(Empfohlen für das Erstgespräch)",
-    "en": "(recommended for the first consultation)"
+    "en": "(recommended for the initial consultation)"
   },
   "phonePlaceholder": {
     "de": "Für eine schnelle Terminabsprache",
@@ -22,7 +22,7 @@
   "message": { "de": "Nachricht", "en": "Message" },
   "messagePlaceholder": {
     "de": "Was möchtest du erreichen? Gibt es aktuelle Herausforderungen, Besonderheiten oder Wunschzeiten für unser kostenloses Erstgespräch?",
-    "en": "What would you like to achieve? Are there any current challenges, special circumstances or preferred times for our free first consultation?"
+    "en": "What would you like to achieve? Are there any current challenges, special circumstances or preferred times for our free initial consultation?"
   },
   "honeypot": { "de": "Bitte leer lassen", "en": "Please leave empty" },
   "consent": {

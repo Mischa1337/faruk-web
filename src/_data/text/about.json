@@ -2,7 +2,7 @@
   "eyebrow": { "de": "Über mich", "en": "About me" },
   "title": {
     "de": "Vom Jurastudium zur Leidenschaft: Hi, ich bin Faruk",
-    "en": "From law school to my passion: Hi, I’m Faruk"
+    "en": "From Law School to My Passion: Hi, I’m Faruk"
   },
   "photoAlt": {
     "de": "Faruk Palteki beim Training im Freien",
@@ -10,17 +10,17 @@
   },
   "paragraphs": {
     "de": [
-      "Neben meinem Jurastudium habe ich meine Leidenschaft für das Krafttraining über die Jahre immer weiter vertieft. Was als mein eigener Ausgleich begann, wurde schließlich zu meiner Berufung: Seit <strong>2019</strong> begleite ich Menschen auf ihrem Weg zu mehr Fitness und Kraft. Dabei durfte ich bereits die unterschiedlichsten Ziele, Ausgangssituationen und Alltagsherausforderungen kennenlernen.",
+      "Neben meinem Jurastudium habe ich meine Leidenschaft für das Krafttraining über die Jahre immer weiter vertieft. Was als mein eigener Ausgleich begann, wurde schließlich zu meiner Berufung: Seit <strong>2019</strong> unterstütze ich Menschen auf ihrem Weg zu mehr Fitness und Kraft. Dabei habe ich bereits die unterschiedlichsten Ziele, Ausgangssituationen und Alltagsherausforderungen begleitet.",
       "Heute arbeite ich als selbstständiger <strong>Personal Trainer in Gießen</strong> und bereite mich nebenbei auf meinen ersten Powerlifting-Wettkampf vor. Krafttraining ist für mich deshalb nicht nur mein Beruf, sondern ein fester Bestandteil meines Lebens.",
       "Was ich in all den Jahren gelernt habe? <strong>Gutes Training muss nicht kompliziert sein. Es muss zu dem Menschen passen, der es macht.</strong>",
       "Aus diesem Grund habe ich AFP-Coaching gegründet. Für mich stehen <strong>Achtsamkeit</strong> im Umgang mit dir und deinem Körper, sichtbarer <strong>Fortschritt</strong> und gelebte <strong>Präzision</strong> im gesamten Betreuungsprozess an oberster Stelle. Nur so wird das Training zu einem festen Bestandteil deines Alltags, der dir spürbar mehr Lebensqualität schenkt.",
       "Genau diese Erfahrung möchte ich an dich weitergeben. Lass uns gemeinsam starten!"
     ],
     "en": [
-      "While studying law, I continued to fuel my passion for strength training over the years. What started as my own way of balancing things out eventually became my calling: since <strong>2019</strong> I’ve been supporting people on their way to more fitness and strength. Along the way I’ve got to know a wide range of goals, starting points and everyday challenges.",
-      "Today I work as a self-employed <strong>personal trainer in Giessen</strong> and am preparing for my first powerlifting competition on the side. So for me, strength training isn’t just my job – it’s a fixed part of my life.",
-      "What have I learned over all these years? <strong>Good training doesn’t have to be complicated. It has to fit the person doing it.</strong>",
-      "That’s why I founded AFP-Coaching. For me, <strong>mindfulness</strong> in how I treat you and your body, visible <strong>progress</strong> and real <strong>precision</strong> throughout the coaching process come first. That’s the only way training becomes a fixed part of your everyday life – one that noticeably improves your quality of life.",
+      "While studying law, I continued to fuel my passion for strength training over the years. What started as a way to find balance eventually became my calling: since <strong>2019</strong> I’ve been helping people on their journey to more fitness and strength. Along the way I’ve got to know a wide range of goals, starting points and everyday challenges.",
+      "Today I work as an independent <strong>personal trainer in Giessen</strong> and am preparing for my first powerlifting competition on the side. So for me, strength training isn’t just my job – it’s a permanent fixture in my life.",
+      "What have I learned over all these years? <strong>Effective training doesn’t have to be complicated. It has to fit the person doing it.</strong>",
+      "That’s why I founded AFP-Coaching. For me, <strong>mindfulness</strong> in how I treat you and your body, visible <strong>progress</strong> and real <strong>precision</strong> throughout the coaching process come first. That’s the only way training becomes a permanent fixture in your everyday life – one that noticeably elevates your quality of life.",
       "That’s exactly the experience I want to pass on to you. Let’s get started together!"
     ]
   },
@@ -43,7 +43,7 @@
       "label": { "de": "Weitere Schwerpunkte", "en": "Further specialisms" },
       "value": {
         "de": "Medical Fitness • Rückentraining • Functional Training",
-        "en": "Medical fitness • Back training • Functional training"
+        "en": "Medical fitness • Back &amp; core training • Functional training"
       }
     },
     {

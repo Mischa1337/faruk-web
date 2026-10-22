@@ -1,43 +1,43 @@
 {
   "eyebrow": { "de": "Ablauf", "en": "How it works" },
-  "title": { "de": "So läuft dein Start ab", "en": "How your start works" },
+  "title": { "de": "So läuft dein Start ab", "en": "How to Get Started" },
   "lead": {
     "de": "Kein Vertrag, kein Druck. Erst schauen wir in Ruhe, ob die Chemie zwischen uns stimmt.",
-    "en": "No contract, no pressure. First we take our time to see whether we’re a good fit."
+    "en": "No contract, no pressure. First we take our time to see if we’re a perfect match."
   },
   "steps": [
     {
-      "title": { "de": "Kennenlernen", "en": "Getting to know each other" },
+      "title": { "de": "Dein kostenloses Erstgespräch", "en": "Your Free Initial Consultation" },
       "paragraphs": {
         "de": [
           "In einem kostenlosen Erstgespräch sprechen wir darüber, wo du gerade stehst, was du erreichen möchtest und was du dir von mir wünschst.",
           "Ich nehme mir Zeit für deine Fragen, zeige dir meine Arbeitsweise und wir schauen gemeinsam, welche Unterstützung für dich sinnvoll ist. Ganz ohne Verpflichtung – ein persönliches Gespräch, bei dem ausschließlich du und deine Ziele im Mittelpunkt stehen."
         ],
         "en": [
-          "In a free first consultation we talk about where you are right now, what you want to achieve and what you’d like from me.",
-          "I take time for your questions, show you how I work, and together we see what kind of support makes sense for you. No obligation – a personal conversation that is all about you and your goals."
+          "In a free initial consultation we talk about where you are right now, what you want to achieve and what you need from me as your coach.",
+          "I take time for your questions, show you how I work, and together we see what kind of support makes sense for you. No strings attached – a personal conversation that is all about you and your goals."
         ]
       }
     },
     {
-      "title": { "de": "Dein individueller Plan", "en": "Your individual plan" },
+      "title": { "de": "Dein individueller Plan", "en": "Your Individual Plan" },
       "paragraphs": {
         "de": [
           "Auf Basis deiner Ziele, deiner Trainingserfahrung und deiner zeitlichen Möglichkeiten erstelle ich ein Konzept, das sich nahtlos in deinen Alltag integriert. Du bekommst keine Standardvorlage, sondern einen maßgeschneiderten Plan, den du mit Freude langfristig umsetzen kannst."
         ],
         "en": [
-          "Based on your goals, your training experience and the time you have, I create a concept that fits seamlessly into your everyday life. You don’t get a standard template, but a tailor-made plan that you’ll enjoy following in the long run."
+          "Based on your goals, your training experience and availability, I create a concept that fits seamlessly into your everyday life. You don’t get a one-size-fits-all template, but a tailor-made plan that you’ll enjoy following long-term."
         ]
       }
     },
     {
-      "title": { "de": "Gemeinsam dranbleiben", "en": "Staying on track together" },
+      "title": { "de": "Gemeinsam dranbleiben", "en": "Staying on Track Together" },
       "paragraphs": {
         "de": [
           "Training funktioniert nur, wenn es zu deinem Leben passt. Deshalb überprüfen wir regelmäßig deine Fortschritte, passen Übungen an und optimieren den Plan, wenn sich dein Alltag verändert. Ich bleibe an deiner Seite – damit dein Training sich mit dir weiterentwickelt."
         ],
         "en": [
-          "Training only works if it fits your life. That’s why we regularly review your progress, adjust exercises and fine-tune the plan when your everyday life changes. I’ll stay by your side – so your training develops along with you."
+          "Training only works if it adapts to your life. That’s why we regularly review your progress, fine-tune your exercises and adjust the plan when your everyday life changes. I’ll stay by your side – so your training evolves right along with you."
         ]
       }
     }

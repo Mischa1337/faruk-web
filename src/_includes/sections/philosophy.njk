@@ -10,7 +10,7 @@
       <p class="eyebrow">{{ text.philosophy.eyebrow }}</p>
       <h2>{{ text.philosophy.title }}</h2>
       {%- if text.philosophy.lead %}
-      <p class="section-lead">{{ text.philosophy.lead }}</p>
+      <p class="section-lead">{{ text.philosophy.lead | safe }}</p>
       {%- endif %}
     </header>
 
