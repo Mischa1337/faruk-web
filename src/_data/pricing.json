@@ -169,18 +169,30 @@
       "en": "Duo training – {minutes} min (per person)"
     }
   },
+  "nutrition": {
+    "offer": "ernaehrungscoaching",
+    "amount": "119",
+    "comboAmount": "159",
+    "unitCode": "MON",
+    "note": {
+      "de": "Ernährungscoaching: {amount} € / Monat – in Kombination mit Online-Coaching {comboAmount} € / Monat, mit Personal Training auf Anfrage.",
+      "en": "Nutrition coaching: €{amount} / month – combined with online coaching €{comboAmount} / month, with personal training on request."
+    },
+    "schemaName": {
+      "de": "Ernährungscoaching",
+      "en": "Nutrition coaching"
+    },
+    "comboSchemaName": {
+      "de": "Online-Coaching mit Ernährungscoaching",
+      "en": "Online coaching with nutrition coaching"
+    }
+  },
   "cta": {
     "de": "Erstgespräch vereinbaren",
     "en": "Book a free consultation"
   },
   "footnotes": {
-    "de": [
-      "Ernährungscoaching: Preis auf Anfrage – ich berate dich gern persönlich.",
-      "Firmen- &amp; Gruppenangebote: Individuelle Konditionen auf Anfrage."
-    ],
-    "en": [
-      "Nutrition coaching: price on request – I’m happy to advise you personally.",
-      "Corporate &amp; group offers: individual terms on request."
-    ]
+    "de": ["Firmen- &amp; Gruppenangebote: Individuelle Konditionen auf Anfrage."],
+    "en": ["Corporate &amp; group offers: individual terms on request."]
   }
 }

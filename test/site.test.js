@@ -196,6 +196,8 @@ describe('home pages', () => {
       const visible = [
         ...all(html, /<span class="amount">(\d+)<\/span>/g),
         ...all(html, /Duo[- ]training: €?(\d+)/gi),
+        // Monthly prices in the footnote (nutrition coaching, alone and combined)
+        ...all(html, /€?(\d+)(?: €)? \/ (?:Monat|month)/g),
       ];
       assert.deepEqual(structured.sort(), visible.sort(), file);
       for (const offer of business.makesOffer) {

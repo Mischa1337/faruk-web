@@ -46,33 +46,43 @@ export function buildStructuredData(
     ...extra,
   });
 
-  // One offer per price: every duration of every plan, the monthly coaching and the duo session
+  const monthlyOffer = (offerId, name, amount, unitCode) =>
+    pricedOffer(offerId, name, amount, {
+      priceSpecification: {
+        '@type': 'UnitPriceSpecification',
+        price: amount,
+        priceCurrency: 'EUR',
+        referenceQuantity: { '@type': 'QuantitativeValue', value: 1, unitCode },
+      },
+    });
+
+  // One offer per price: every duration of every plan, the monthly coaching,
+  // the duo session and nutrition coaching (alone and with online coaching)
+  const { duo, nutrition } = pricing;
   const priced = [
     ...pricing.plans.flatMap((plan) =>
       plan.rates
         ? plan.rates.map((rate) =>
             pricedOffer(plan.offer, `${plan.name} – ${rate.duration}`, rate.amount),
           )
-        : [
-            pricedOffer(plan.offer, plan.name, plan.price.amount, {
-              priceSpecification: {
-                '@type': 'UnitPriceSpecification',
-                price: plan.price.amount,
-                priceCurrency: 'EUR',
-                referenceQuantity: {
-                  '@type': 'QuantitativeValue',
-                  value: 1,
-                  unitCode: plan.price.unitCode,
-                },
-              },
-            }),
-          ],
+        : [monthlyOffer(plan.offer, plan.name, plan.price.amount, plan.price.unitCode)],
     ),
-    pricedOffer(pricing.duo.offer, fill(pricing.duo.schemaName, pricing.duo), pricing.duo.amount),
+    pricedOffer(duo.offer, fill(duo.schemaName, duo), duo.amount),
+    monthlyOffer(nutrition.offer, nutrition.schemaName, nutrition.amount, nutrition.unitCode),
+    monthlyOffer(
+      nutrition.offer,
+      nutrition.comboSchemaName,
+      nutrition.comboAmount,
+      nutrition.unitCode,
+    ),
   ];
 
-  // Services without a fixed price (e.g. nutrition coaching) are still listed, price on request
-  const pricedIds = new Set([...pricing.plans.map((plan) => plan.offer), pricing.duo.offer]);
+  // Services without a fixed price are still listed, price on request
+  const pricedIds = new Set([
+    ...pricing.plans.map((plan) => plan.offer),
+    duo.offer,
+    nutrition.offer,
+  ]);
   const onRequest = [...services]
     .filter(([offerId]) => !pricedIds.has(offerId))
     .map(([, service]) => ({ '@type': 'Offer', itemOffered: service }));
