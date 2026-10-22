@@ -51,6 +51,7 @@ ${list(offers.map((offer) => `**${stripTags(offer.title)}**: ${stripTags(offer.t
 ${list([
   ...pricing.plans.map((plan) => `**${plan.name}**: ${formatPrice(plan)} – ${plan.description}`),
   fill(pricing.duo.note, pricing.duo),
+  fill(pricing.nutrition.note, pricing.nutrition),
   ...pricing.footnotes.map(stripTags),
 ])}
 
