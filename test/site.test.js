@@ -27,6 +27,10 @@ const decode = (text) =>
     .replace(/&nbsp;/g, ' ')
     .replace(/&shy;/g, '');
 
+// Search Console ownership check (src/public/): one line of text, not a page.
+// It must stay online, or the Search Console access is lost.
+const GOOGLE_VERIFICATION = 'google22fd2c299a4be63c.html';
+
 let pages;
 
 before(async () => {
@@ -36,8 +40,15 @@ before(async () => {
   });
   await eleventy.write();
   pages = readdirSync(output, { recursive: true })
-    .filter((file) => file.endsWith('.html'))
+    .filter((file) => file.endsWith('.html') && file !== GOOGLE_VERIFICATION)
     .map((file) => file.split('\\').join('/'));
+});
+
+test('keeps the Google Search Console verification file', () => {
+  assert.equal(
+    read(GOOGLE_VERIFICATION).trim(),
+    `google-site-verification: ${GOOGLE_VERIFICATION}`,
+  );
 });
 
 describe('every page', () => {
