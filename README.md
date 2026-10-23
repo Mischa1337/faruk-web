@@ -43,7 +43,7 @@ npm run dev      # local server with live reload on http://localhost:4321
 | Order of the sections                         | `src/_includes/layouts/home.njk`           |
 | Look of a section                             | `src/styles/sections/<section>.css`        |
 | Colours, spacing, fonts                       | `src/styles/base/tokens.css`               |
-| Behaviour (menu, form, theme toggle …)        | `src/scripts/modules/`                     |
+| Behaviour (menu, form, language switch …)     | `src/scripts/modules/`                     |
 | Contact form endpoint (worker URL)            | `src/_data/site.json` (`formEndpoint`)     |
 | Imprint, privacy policy                       | `src/impressum.njk`, `src/datenschutz.njk` |
 | Photos (optimised automatically)              | `src/img/`                                 |

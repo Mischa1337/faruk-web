@@ -93,7 +93,7 @@
    and the logo use a lighter mint green, and primary buttons are white
    with green text. */
 @media (prefers-color-scheme: dark) {
-  :root:not([data-theme='light']) {
+  :root {
     color-scheme: dark;
 
     --accent: var(--mint);
@@ -119,34 +119,4 @@
     --shadow-b: rgb(0 0 0 / 70%);
     --shadow-c: rgb(0 0 0 / 85%);
   }
-}
-
-/* PREVIEW ONLY – remove together with the theme toggle before launch.
-   Forces the dark scheme when it was picked with the toggle on a system
-   set to light. Same values as above. */
-:root[data-theme='dark'] {
-  color-scheme: dark;
-
-  --accent: var(--mint);
-  --accent-hi: var(--mint);
-  --on-accent: var(--brand);
-  --btn-bg: #fff;
-  --btn-bg-hover: #e3efe8;
-  --logo: var(--accent);
-  --bg: #121212;
-  --bg-alt: #161a18;
-  --surface: #1a2e24;
-  --surface-2: #213a2e;
-  --surface-on-alt: var(--surface);
-  --line: #2b4537;
-  --line-soft: #22372c;
-  --line-strong: #3a5a49;
-  --text: #e5e5e5;
-  --text-muted: #b4bab6;
-  --text-dim: #9aa29d;
-  --ok: #4ade80;
-  --error: #ff6b6e;
-  --shadow-a: rgb(0 0 0 / 50%);
-  --shadow-b: rgb(0 0 0 / 70%);
-  --shadow-c: rgb(0 0 0 / 85%);
 }

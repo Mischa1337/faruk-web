@@ -1,6 +1,6 @@
 /* ── Language switch ("EN" / "DE") ─────────────────────────
-   Same box as the light/dark toggle next to it. Shows the short code of
-   the other language instead of a flag (partials/lang-switch.njk). */
+   Same box as the menu button next to it. Shows the short code of the
+   other language instead of a flag (partials/lang-switch.njk). */
 .lang-switch {
   display: grid;
   place-items: center;

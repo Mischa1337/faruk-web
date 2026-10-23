@@ -1,4 +1,4 @@
-{# Header of the home page: logo, call to action, language switch, theme toggle and fold-out menu #}
+{# Header of the home page: logo, call to action, language switch and fold-out menu #}
 <header class="site-header" id="siteHeader">
   <div class="wrap header-inner">
     {%- set brandHref = "#top" %}{% set brandLabel = text.ui.homeLabel %}
@@ -18,6 +18,5 @@
     </nav>
     <a class="btn btn-primary btn-sm header-cta" href="{{ navigation.cta.href }}">{{ navigation.cta.label }}</a>
     {% include "partials/lang-switch.njk" %}
-    {% include "partials/theme-toggle.njk" %}
   </div>
 </header>
