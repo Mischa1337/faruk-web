@@ -33,10 +33,10 @@
   background: var(--accent-soft);
 }
 
-/* Logo, navigation and light/dark toggle share the header. The narrower the
-   screen, the leaner it gets: first without the tagline, then without the
-   word mark, and at the very narrowest without the "Startseite" link – the
-   logo links there as well. */
+/* Logo and navigation share the header. The narrower the screen, the
+   leaner it gets: first without the tagline, then without the word mark,
+   and at the very narrowest without the "Startseite" link – the logo links
+   there as well. */
 @media (width <= 640px) {
   .header-legal .header-inner {
     column-gap: 0.5rem;

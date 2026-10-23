@@ -142,16 +142,14 @@
       },
       "features": {
         "de": [
-          "Regelmäßige Anpassung des Trainingsplans",
-          "Technik-Feedback per Video",
-          "Monatlich kündbar",
-          "Support per Chat"
+          "<strong>Alles inklusive:</strong> Laufend angepasster Trainingsplan, Technik-Feedback per Video und Support per Chat – zu einem festen Monatspreis.",
+          "<strong>Training nach deinem Zeitplan:</strong> Du trainierst, wann und wo es in deinen Alltag passt – im Studio, zu Hause oder unterwegs.",
+          "<strong>Monatlich kündbar:</strong> Keine lange Vertragsbindung – du bleibst, solange dich das Coaching weiterbringt."
         ],
         "en": [
-          "Regular updates to your training plan",
-          "Form and technique analysis via video",
-          "Cancel monthly at any time",
-          "Chat support"
+          "<strong>All inclusive:</strong> A training plan that keeps evolving, video feedback on your technique and chat support – for one fixed monthly price.",
+          "<strong>Train on your schedule:</strong> Work out whenever and wherever it fits your day – at the gym, at home or on the road.",
+          "<strong>Cancel monthly:</strong> No long-term contract – stay as long as the coaching keeps moving you forward."
         ]
       }
     }

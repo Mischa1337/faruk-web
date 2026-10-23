@@ -12,8 +12,6 @@ export const STRINGS = {
   de: {
     menuOpen: 'Menü öffnen',
     menuClose: 'Menü schließen',
-    themeToLight: 'Helles Farbschema aktivieren',
-    themeToDark: 'Dunkles Farbschema aktivieren',
     emailCopied: '✓ Adresse kopiert',
     form: {
       tooFast: 'Fast geschafft – bitte klicke noch einmal auf „Jetzt unverbindlich anfragen".',
@@ -37,8 +35,6 @@ export const STRINGS = {
   en: {
     menuOpen: 'Open menu',
     menuClose: 'Close menu',
-    themeToLight: 'Switch to the light colour scheme',
-    themeToDark: 'Switch to the dark colour scheme',
     emailCopied: '✓ Address copied',
     form: {
       tooFast: 'Almost there – please click “Send enquiry – no obligation” once more.',

@@ -10,7 +10,6 @@
  */
 import { initFooterYear } from './modules/footer-year.js';
 import { initHeader } from './modules/header.js';
-import { initThemeToggle } from './modules/theme-toggle.js';
 import { initNavigation } from './modules/navigation.js';
 import { initScrollSpy } from './modules/scroll-spy.js';
 import { initReveal } from './modules/reveal.js';
@@ -26,7 +25,6 @@ window.__siteReady = true;
 
 initFooterYear();
 initHeader();
-initThemeToggle();
 initNavigation();
 initScrollSpy();
 initReveal();

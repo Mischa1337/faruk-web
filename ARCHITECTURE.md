@@ -119,14 +119,14 @@ German is the main language at `/`, English lives at `/en/`.
 [`src/styles/main.css`](src/styles/main.css) only lists imports. Their order
 defines the cascade, from generic to specific:
 
-| Folder        | Contents                                                                |
-| ------------- | ----------------------------------------------------------------------- |
-| `base/`       | design tokens, reset, typography, page layout                           |
-| `utilities/`  | accessibility helpers; motion and print at the very end                 |
-| `components/` | reusable parts: button, icon, card, language switch, theme toggle, form |
-| `layout/`     | site frame: header, footer, mobile contact bar                          |
-| `sections/`   | one file per home page section, same name as its template               |
-| `pages/`      | styles used only by the legal pages                                     |
+| Folder        | Contents                                                  |
+| ------------- | --------------------------------------------------------- |
+| `base/`       | design tokens, reset, typography, page layout             |
+| `utilities/`  | accessibility helpers; motion and print at the very end   |
+| `components/` | reusable parts: button, icon, card, language switch, form |
+| `layout/`     | site frame: header, footer, mobile contact bar            |
+| `sections/`   | one file per home page section, same name as its template |
+| `pages/`      | styles used only by the legal pages                       |
 
 All colours are custom properties in `base/tokens.css`. The colour scheme
 follows the visitor's system setting (`prefers-color-scheme`): light by
